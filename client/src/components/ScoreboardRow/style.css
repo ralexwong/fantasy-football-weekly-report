@@ -1,0 +1,20 @@
+.scoreboardScores {
+    color:white;
+    background:black;
+}
+
+.scoreboardNames {
+    color:black;
+    background:rgb(221, 221, 221);
+    border-right: 2px solid black;
+}
+
+.scoreboardRecord {
+    color:black;
+    background:rgb(221, 221, 221);
+}
+
+.scoreboardRow {
+    border: 2px solid black;
+    margin-top: 50px;
+}
