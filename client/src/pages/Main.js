@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import API from "../utils/API";
 import Nav from "../components/Nav";
 import { Col, Row, Container } from "../components/Grid";
 import Title from "../components/Title";
@@ -32,7 +31,7 @@ class Main extends Component {
       return (
         <div>
           <Nav />
-          <Container>
+          <Container id="mainContainer">
             <Title />
             <DateRow weekNum={this.state.weekNum}/>
             <Row>

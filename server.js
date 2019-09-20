@@ -1,9 +1,11 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+require('dotenv').config()
+
 
 // Configure body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
@@ -18,11 +20,17 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://user:password123@ds137090.mlab.com:37090/heroku_gvbd5ntj",
+  process.env.MONGODB_URI || "",
   {
     useCreateIndex: true,
-    useNewUrlParser: true
-  }
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
+  err => {
+		/** handle initial connection error */
+		console.log('error connecting to Mongo: ')
+		console.log(err);
+	}
 );
 
 // Start the API server
