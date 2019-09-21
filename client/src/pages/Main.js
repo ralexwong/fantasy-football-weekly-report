@@ -25,11 +25,11 @@ class Main extends Component {
     
   
     componentDidMount() {
-      axios.get(`https://api.sleeper.app/v1/user/wongman`).then(
-        response => {
-          console.log(response.data);
-        }
-      )
+      // axios.get(`https://api.sleeper.app/v1/user/wongman`).then(
+      //   response => {
+      //     console.log(response.data);
+      //   }
+      // )
     }
   
     handleFormSubmit = event => {

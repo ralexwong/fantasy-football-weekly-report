@@ -5,6 +5,8 @@ import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Main from "./pages/Main";
 import Home from "./pages/Home";
+import Login from './pages/login';
+import Signup from './pages/signup';
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
           <Route exact path="/" component={Main} />
           <Route exact path="/report" component={Main} />
           <Route exact path="/league" component={League} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/intro" component={Main} />
           <Route exact path="/books/:id" component={Detail} />
           <Route component={NoMatch} />
         </Switch>

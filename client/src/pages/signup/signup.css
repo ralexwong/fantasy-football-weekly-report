@@ -1,0 +1,3 @@
+#rememberMe {
+    color: rgba(var(--text-color-primary, 255, 255, 255), var(--text-secondary-opacity, 0.5));
+}

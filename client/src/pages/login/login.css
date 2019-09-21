@@ -1,0 +1,59 @@
+#logIn {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    padding-top: 150px;
+}
+
+#body {
+    background: #0084D4;
+    height: 1000px;
+}
+
+.form-label {
+    color:white;
+}
+
+#btn {
+    color:white;
+    border: none;
+    margin: auto;
+    margin-top: 35px;
+    font-size: 1.25em;
+    font-weight: bold;
+    width: 250px;
+    height: 60px;
+    border-radius: 3px;
+    background-color: #003662;
+}
+
+#username {
+    height: 50px;
+    /* width: 0px; */
+}
+
+#password {
+    height: 50px;
+}
+
+#rememberMe {
+    margin: auto;
+}
+
+#rememberMeDiv {
+    margin: 30px 0 0 180px;
+    color: white;
+}
+
+.signUpLink {
+    color:white !important;
+    text-decoration: underline !important;
+}
+
+.section-register-footer {
+    color: white;
+}
+
+hr {
+    width: 40%;
+}

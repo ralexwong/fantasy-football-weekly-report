@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require("body-parser");
-const Profile = require('../../models/profile.js/index.js');
+const Profile = require('../../models/profile.js');
 const Litecoin = require('../../models/litecoin.js');
 const Ethereum = require('../../models/ethereum.js');
 const rp = require('request-promise');
@@ -116,7 +116,6 @@ checker = () => {
   })
 }
 
-setInterval(checker, 60 * 60000);
 
 module.exports = router;
 
