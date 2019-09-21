@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require("body-parser");
-const Bitcoin = require('../../models/bitcoin.js');
+const Profile = require('../../models/profile.js/index.js');
 const Litecoin = require('../../models/litecoin.js');
 const Ethereum = require('../../models/ethereum.js');
 const rp = require('request-promise');
@@ -25,13 +25,13 @@ const requestOptions = {
 };
 
 
-router.get('/bitcoin', (req, res, next) => {
+router.get('/first', (req, res, next) => {
 
-  db.Bitcoin.find({}).sort({ date: -1 })
-    .then(function(dbBitcoin) {
+  db.Profile.find({}).sort({ date: -1 })
+    .then(function(dbProfile) {
 
-      console.log("bitcoin api route hit");
-      res.json(dbBitcoin);
+      console.log("Profile api route hit");
+      res.json(dbProfile);
     })
     .catch(function(err) {
       // If an error occurs, send the error back to the client

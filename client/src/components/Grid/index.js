@@ -4,11 +4,11 @@ import React from "react";
 
 // This Container component allows us to use a bootstrap container without worrying about class names
 export function Container({ fluid, children, id, style }) {
-  return <div id={id ? id : ""} className={`container${fluid ? "-fluid" : ""}`}>{children}</div>;
+  return <div style={style ? style : ""} id={id ? id : ""} className={`container${fluid ? "-fluid" : ""}`}>{children}</div>;
 }
 
 // This Row component lets us use a bootstrap row without having to think about class names
-export function Row({ className, children, id }) {
+export function Row({ className, children, id, style }) {
   return <div id={id ? id : ""} className={className ? className : "row"}>{children}</div>;
 }
 

@@ -7,6 +7,7 @@ import Scoreboard from "../components/Scoreboard";
 import ScoreboardRow from "../components/ScoreboardRow";
 import PlayerCard from "../components/PlayerCard";
 import PureComponent from "../components/GraphPPG";
+import axios from 'axios';
 
 
 class Main extends Component {
@@ -17,21 +18,40 @@ class Main extends Component {
       username: "",
 
     };
+
+    initialDB = () => {
+      
+    }
     
   
     componentDidMount() {
+      axios.get(`https://api.sleeper.app/v1/user/wongman`).then(
+        response => {
+          console.log(response.data);
+        }
+      )
     }
   
     handleFormSubmit = event => {
       event.preventDefault();
 
     };
+    
   
     render() {
+
+      const divStyle = {
+        border: '2px solid black'
+      };
+
+      const rowStyle = {
+        padding: '0 50px 0 50px'
+      }
+      
       return (
         <div>
           <Nav />
-          <Container id="mainContainer">
+          <Container style={divStyle} id="mainContainer">
             <Title />
             <DateRow weekNum={this.state.weekNum}/>
             <Row>
