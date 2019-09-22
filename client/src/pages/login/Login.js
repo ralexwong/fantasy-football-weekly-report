@@ -63,7 +63,7 @@ class Login extends Component {
             return (
                 <div id="body">
                     <Container>
-                        <p id="logIn">Log In</p>
+                        <p id="logIn">Logs In</p>
                         <form className="form-horizontal">
                             <div className="form-group">
                                 <div className="col-1 col-ml-auto">
