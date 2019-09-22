@@ -1,0 +1,68 @@
+img {
+}
+
+h4 {
+    margin-top:40px;
+}
+
+h1 {
+    color: #003662;
+}
+
+.aboutTitle {
+    font-size: 60px;
+    font-weight: 300;
+    line-height: 49px;
+    margin: 0;
+    font-weight: lighter;
+    font-family: "Open Sans";
+    text-align: left;
+    margin-bottom:40px;
+}
+
+#main {
+    background: #0b3e69;
+}
+
+#about {
+    color: white;
+    background: #0084d4;
+    text-align: left;
+    font-family: "Open Sans",sans-serif;
+}
+
+#team {
+    background: #eaeaea;
+}
+
+#policy {
+    background: white;
+}
+
+#policyTitle {
+    font-size: 60px;
+}
+
+
+#policyText {
+    font-size: 1.2rem;
+    line-height: 30px;
+    max-width: 660px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+#signup {
+    background: #0084d4;
+}
+
+
+.width {
+    width: 500px;
+}
+
+.block {
+    height: 100%;
+    width: 100%;
+    padding: 100px 0 100px 0;
+}

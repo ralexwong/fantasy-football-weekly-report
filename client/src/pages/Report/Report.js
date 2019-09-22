@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import Nav from "../components/Nav";
-import { Col, Row, Container } from "../components/Grid";
-import Title from "../components/Title";
-import DateRow from "../components/DateRow";
-import Scoreboard from "../components/Scoreboard";
-import ScoreboardRow from "../components/ScoreboardRow";
-import PlayerCard from "../components/PlayerCard";
-import PureComponent from "../components/GraphPPG";
+import Nav from "../../components/Nav";
+import { Col, Row, Container } from "../../components/Grid";
+import Title from "../../components/Title";
+import DateRow from "../../components/DateRow";
+import Scoreboard from "../../components/Scoreboard";
+import ScoreboardRow from "../../components/ScoreboardRow";
+import PlayerCard from "../../components/PlayerCard";
+import PureComponent from "../../components/GraphPPG";
 import axios from 'axios';
 
 
-class Main extends Component {
+class Report extends Component {
     state = {
       weekNum: 1,
       matchups: [1,2,3,4,5],
@@ -25,7 +25,7 @@ class Main extends Component {
     
   
     componentDidMount() {
-      // axios.get(`https://api.sleeper.app/v1/user/wongman`).then(
+      // axios.get(`https://api.sleeper.app/v1/user/wongman`).then(`
       //   response => {
       //     console.log(response.data);
       //   }
@@ -54,7 +54,7 @@ class Main extends Component {
           <Container style={divStyle} id="mainContainer">
             <Title />
             <DateRow weekNum={this.state.weekNum}/>
-            <Row>
+            <Row style={rowStyle}>
               <Col className="col-6">
                 <Scoreboard weekNum={this.state.weekNum}/>
                 {this.state.matchups.map(matchup => (
@@ -93,6 +93,6 @@ class Main extends Component {
     
   }
   
-  export default Main;
+  export default Report;
 
   
