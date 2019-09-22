@@ -13,7 +13,7 @@ class Index extends Component {
           <div className="block" id="main">
             <Container>
               <p>
-                Fantasy Football Weekly Reportss
+                Fantasy Football Weekly Reports
               </p>
             </Container>
           </div>
