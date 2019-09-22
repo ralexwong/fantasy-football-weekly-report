@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import League from "./pages/League/League";
-import NoMatch from "./pages/NoMatch";
-import Login from './pages/Login/Login';
-import Signup from './pages/Signup/Signup';
-import Intro from './pages/Intro/Intro';
-import Report from './pages/Report/Report';
+import NoMatch from "./pages/NoMatch.js";
+import Login from './pages/Login/Login.js';
+import Signup from './pages/Signup/Signup.js';
+import Intro from './pages/Intro/Intro.js';
+import Report from './pages/Report/Report.js';
 
 function App() {
   return (
