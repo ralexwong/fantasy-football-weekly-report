@@ -50,7 +50,6 @@ class Report extends Component {
       
       return (
         <div>
-          <Nav />
           <Container style={divStyle} id="mainContainer">
             <Title />
             <DateRow weekNum={this.state.weekNum}/>
@@ -62,7 +61,6 @@ class Report extends Component {
                 ))}
               </Col>
               <Col className="col-6">
-                {/* 1/2 scoring player */}
                 <Row>
                   <Col className="col-6">
                     <PlayerCard />
@@ -71,7 +69,6 @@ class Report extends Component {
                     <PlayerCard />
                   </Col>
                 </Row>
-                {/* 3/4 scoring player */}
                 <Row>
                   <Col className="col-6">
                     <PlayerCard />

@@ -34,7 +34,7 @@ class Nav extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
         <Link className="navbar-brand" to="/">
-          Google Books
+          FFWR
         </Link>
         <button
           onClick={this.toggleNav}
@@ -49,22 +49,22 @@ class Nav extends Component {
         </button>
         <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
+          <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
-                className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
-                to="/"
+                className={window.location.pathname === "/report" ? "nav-link active" : "nav-link"}
+                to="/report"
               >
-                Search
+                Report
               </Link>
             </li>
             <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
-                className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}
-                to="/saved"
+                className={window.location.pathname === "/payouts" ? "nav-link active" : "nav-link"}
+                to="/payouts"
               >
-                Saved
+                Payouts
               </Link>
             </li>
           </ul>

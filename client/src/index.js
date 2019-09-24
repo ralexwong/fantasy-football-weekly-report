@@ -3,24 +3,20 @@ import ReactDOM from "react-dom";
 import App from "./App";
 
 import { createStore } from 'redux';
-
-function reducer(state, action) {
-    console.log(action);
-    return 'State';
-}
-
-const store = createStore(reducer);
-
-console.log(store.getState());
-
-const action = {
-    type: 'changeState',
-    payload: {
-        newState: 'New State'
-    }
-};
-
-store.dispatch(action);
+import allReducers from './reducers';
+import { Provider } from 'react-redux';
 
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const mystore = createStore(
+    allReducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+
+
+ReactDOM.render(
+    <Provider>
+        <App />
+    </Provider>, 
+    document.getElementById("root")
+);

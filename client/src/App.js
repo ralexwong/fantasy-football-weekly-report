@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Nav from './components/Nav'
 import League from "./pages/League/League";
 import NoMatch from "./pages/NoMatch";
 import Login from './pages/Login/Login';
@@ -11,6 +12,7 @@ function App() {
   return (
     <Router>
       <div>
+        <Nav />
         <Switch>
           <Route exact path="/" component={Intro} />
           <Route exact path="/report" component={Report} />
