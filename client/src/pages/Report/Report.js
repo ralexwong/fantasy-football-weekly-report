@@ -45,7 +45,7 @@ class Report extends Component {
       };
 
       const rowStyle = {
-        padding: '0 50px 0 50px'
+        padding: '0 50px 0 30px'
       }
       
       return (
