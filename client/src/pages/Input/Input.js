@@ -5,10 +5,11 @@ import { Field, reduxForm } from 'redux-form';
 import { fetchUser } from '../../actions';
 
 class Input extends Component {
-  componentDidMount() {
-    
-  }
+    componentDidMount() {
+        
+    }
 
+    
       // deconstructs {meta} object and uses meta.error && meta.touched
     // displays error message from (validate) if true
     renderError = ({ error, touched }) => {
@@ -35,7 +36,8 @@ class Input extends Component {
     }
 
     onSubmit = (formValues) => {
-
+        console.log(formValues.username);   
+        this.props.fetchUser(formValues.username)
     }
 
   render() {
@@ -43,7 +45,6 @@ class Input extends Component {
       <Container>
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                 <Field name="username" component={this.renderInput} label="Enter Title" />
-                <Field name="description" component={this.renderInput} label="Enter Description" />
                 <button className="ui button primary">Submit</button>
             </form>
       </Container>

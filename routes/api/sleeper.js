@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require("body-parser");
-// const Profile = require('../../models/profile.js');
 const Litecoin = require('../../models/litecoin.js');
 const Ethereum = require('../../models/ethereum.js');
 const rp = require('request-promise');
 const db = require('../../models')
+const axios = require('axios');
 
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -25,6 +25,22 @@ router.get('/first', (req, res, next) => {
     });
 
 });
+
+router.get(`/sleeper`, (req, res, next) => {
+  try {
+    
+  } catch(e) {
+    next(e)
+  }
+  let username = req.query.username;
+  console.log(username);
+  axios.get(`https://api.sleeper.app/v1/user/${username}`)
+    .then(function(resUser) {
+      console.log(resUser.data);
+    }, error => {
+      console.log(error);
+    })
+})
 
 router.get('/ethereum', (req, res, next) => {
 

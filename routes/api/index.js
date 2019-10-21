@@ -1,6 +1,6 @@
 const path = require("path");
 const router = require("express").Router();
-const apiRoutes = require("./coinMarket");
+const apiRoutes = require("./sleeper");
 
 // Book routes
 router.use(apiRoutes);
