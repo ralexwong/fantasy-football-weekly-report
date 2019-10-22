@@ -10,9 +10,7 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Intro from './pages/Intro/Intro';
 import Report from './pages/Report/Report';
-import Input from './pages/Input/Input';
-
-import history from './history';
+import Input1 from './pages/Input/Input';
 
 
 function App() {
@@ -27,7 +25,9 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/intro" component={Intro} />
-          <Route exact path ="/input" component={Input} />
+          <Route exact path ="/input1" component={Input1} />
+          <Route exact path ="/input2" component={Input2} />
+          <Route exact path ="/input3" component={Input3} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />

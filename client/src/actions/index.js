@@ -1,5 +1,5 @@
 import {
-    FETCH_USER
+    FETCH_LEAGUES
 } from './types';
 import history from '../history';
 import axios from 'axios';
@@ -10,10 +10,8 @@ export const fetchUser = (username) => async dispatch => {
         params: {
             username: username
         }
-    }).then(res => {
-        console.log(res);
     })
-    console.log(response);
-
-    dispatch({ type: FETCH_USER, payload: response });
+    const data = await response.data;
+    console.log(data);
+    await dispatch({ type: FETCH_LEAGUES, payload: "p" });
 }

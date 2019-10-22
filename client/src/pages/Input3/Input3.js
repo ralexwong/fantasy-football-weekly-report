@@ -4,7 +4,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Field, reduxForm } from 'redux-form';
 import { fetchUser } from '../../actions';
 
-class Input1 extends Component {
+class Input3 extends Component {
     componentDidMount() {
         
     }
@@ -70,4 +70,4 @@ const validate = formValues => {
 export default connect(null, { fetchUser })(reduxForm({
     form: 'user',
     validate
-})(Input1))
+})(Input3))

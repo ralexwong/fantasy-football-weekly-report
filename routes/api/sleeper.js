@@ -26,20 +26,21 @@ router.get('/first', (req, res, next) => {
 
 });
 
-router.get(`/sleeper`, (req, res, next) => {
+router.get(`/sleeper`, async (req, res, next) => {
   try {
-    
+    const username = req.query.username;
+    const resUser = await axios.get(`https://api.sleeper.app/v1/user/${username}`);
+    const data = resUser.data;
+    console.log(`${username}'s user_id: ${data.user_id}`);
+
+    const user_id = data.user_id;
+    const leagues = await axios.get(`https://api.sleeper.app/v1/user/${user_id}/leagues/nfl/2019`);
+    const leagues_data = leagues.data;
+
+    res.json(leagues_data)
   } catch(e) {
     next(e)
   }
-  let username = req.query.username;
-  console.log(username);
-  axios.get(`https://api.sleeper.app/v1/user/${username}`)
-    .then(function(resUser) {
-      console.log(resUser.data);
-    }, error => {
-      console.log(error);
-    })
 })
 
 router.get('/ethereum', (req, res, next) => {
