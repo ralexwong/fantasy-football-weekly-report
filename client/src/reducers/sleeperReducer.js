@@ -3,11 +3,20 @@ import {
 } from '../actions/types';
 
 
-export default (state = { username: null }, action) => {
+const initialState = {
+    nullUsername: null,
+    leagues: null
+}
+
+
+export default (state = initialState, action) => {
     switch (action.type) {
         case FETCH_LEAGUES:
-            // console.log(action.payload.user_id);
-            return { ...state, username: action.payload.user_id }
+            // if (action.payload === "is not valid username") {
+            //     return { ...state, nullUsername: action.payload }
+            // }
+            console.log(action.payload);
+            return { ...state, leagues: action.payload }
         default:
             return state;
     }

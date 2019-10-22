@@ -13,5 +13,6 @@ export const fetchUser = (username) => async dispatch => {
     })
     const data = await response.data;
     console.log(data);
-    await dispatch({ type: FETCH_LEAGUES, payload: "p" });
+    await dispatch({ type: FETCH_LEAGUES, payload: data });
+    history.push('/input2');
 }

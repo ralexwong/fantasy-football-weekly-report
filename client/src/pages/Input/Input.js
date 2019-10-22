@@ -67,7 +67,11 @@ const validate = formValues => {
     return errors;
 }
 
-export default connect(null, { fetchUser })(reduxForm({
+const mapStateToProps = (state) => {
+    return { nullUsername: state.nullUsername }
+}
+
+export default connect(mapStateToProps, { fetchUser })(reduxForm({
     form: 'user',
     validate
 })(Input1))

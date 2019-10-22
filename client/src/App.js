@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -11,11 +11,16 @@ import Signup from './pages/Signup/Signup';
 import Intro from './pages/Intro/Intro';
 import Report from './pages/Report/Report';
 import Input1 from './pages/Input/Input';
+import Input2 from './pages/Input2/Input2';
+import Input3 from './pages/Input3/Input3';
+
+import history from './history';
+
 
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div>
         <Nav />
         <Switch>
