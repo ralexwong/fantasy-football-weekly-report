@@ -1,9 +1,9 @@
 const path = require("path");
 const router = require("express").Router();
-const apiRoutes = require("./sleeper");
+const sleeperRoute = require("./sleeper");
 
 // Book routes
-router.use(apiRoutes);
+router.use("/sleeper", sleeperRoute);
 
 // For anything else, render the html page
 router.use(function(req, res) {

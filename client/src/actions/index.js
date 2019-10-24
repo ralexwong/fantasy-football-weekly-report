@@ -16,3 +16,7 @@ export const fetchUser = (username) => async dispatch => {
     await dispatch({ type: FETCH_LEAGUES, payload: data });
     history.push('/input2');
 }
+
+export const fetchRosters = (league_id) => async dispatch => {
+    
+}

@@ -67,6 +67,33 @@ class Nav extends Component {
                 Payouts
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={window.location.pathname === "/input1" ? "nav-link active" : "nav-link"}
+                to="/input1"
+              >
+                Input1
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={window.location.pathname === "/input2" ? "nav-link active" : "nav-link"}
+                to="/input2"
+              >
+                Input2
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={window.location.pathname === "/input3" ? "nav-link active" : "nav-link"}
+                to="/input3"
+              >
+                Input3
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

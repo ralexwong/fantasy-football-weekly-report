@@ -1,8 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require("body-parser");
-const Litecoin = require('../../models/litecoin.js');
-const Ethereum = require('../../models/ethereum.js');
+const SleeperAllPlayers = require('../../models/sleeperAllPlayers.js')
 const rp = require('request-promise');
 const db = require('../../models')
 const axios = require('axios');
@@ -11,22 +10,7 @@ const axios = require('axios');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.get('/first', (req, res, next) => {
-
-  db.Profile.find({}).sort({ date: -1 })
-    .then(function(dbProfile) {
-
-      console.log("Profile api route hit");
-      res.json(dbProfile);
-    })
-    .catch(function(err) {
-      // If an error occurs, send the error back to the client
-      res.json(err);
-    });
-
-});
-
-router.get(`/sleeper`, async (req, res, next) => {
+router.get(`/`, async (req, res, next) => {
   try {
     const username = req.query.username;
     const resUser = await axios.get(`https://api.sleeper.app/v1/user/${username}`);
@@ -49,33 +33,33 @@ router.get(`/sleeper`, async (req, res, next) => {
   }
 })
 
-router.get('/ethereum', (req, res, next) => {
+getSleeperAllPlayers = async () => {
+  try {
+    const res = await axios.get("https://api.sleeper.app/v1/players/nfl");
+    const data = res.data;
 
-  db.Ethereum.find({}).sort({ date: -1 })
-    .then(function(dbEthereum) {
-      console.log("ethereum api route hit");
-      res.json(dbEthereum);
-    })
-    .catch(function(err) {
-      // If an error occurs, send the error back to the client
-      res.json(err);
-    });
+    for (let i = 0; i < data.length; i++) {
+      let players = new sleeperAllPlayers({
+        player_id: data[i].player_id,
+        first_name: data[i].first_name,
+        last_name: data[i].last_name,
+        team: data[i].team,
+        position: data[i].position
+      })
 
-});
+      players.save();
+      console.log(data[i].first_name);
+    }
 
-router.get('/litecoin', (req, res, next) => {
+    console.log("all done collecting sleeper players data");
 
-  db.Litecoin.find({}).sort({ date: -1 })
-    .then(function(dbLitecoin) {
-      console.log("litecoin api route hit");
-      res.json(dbLitecoin);
-    })
-    .catch(function(err) {
-      // If an error occurs, send the error back to the client
-      res.json(err);
-    });
+  } catch(err) {
+    console.log(err);
+  }
 
-});
+}
+
+// getSleeperAllPlayers()
 
 checker = () => {
   rp(requestOptions).then(response => {

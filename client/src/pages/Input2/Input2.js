@@ -6,48 +6,19 @@ import { fetchUser } from '../../actions';
 
 class Input2 extends Component {
     componentDidMount() {
-        
+        console.log(this.props);
     }
 
-    
-      // deconstructs {meta} object and uses meta.error && meta.touched
-    // displays error message from (validate) if true
-    renderError = ({ error, touched }) => {
-        if (touched && error) {
-            return (
-                <div className="ui error message">
-                    <div className="header">{error}</div>
-                </div>
-            )
-        }
-    }
-
-    // takes descontructed props from <Field>
-    renderInput = ({ input, label, meta }) => {    
-        // console.log(meta)
-        const className = `field ${meta.error && meta.touched ? 'error' : ''}`
-        return (
-            <div className={className}>
-                <label>{label}</label>
-                <input {...input} autoComplete="off" />
-                {this.renderError(meta)}
-            </div>
-        ); // {...input} === onChange={formProps.input.onChange}  value={formProps.input.value}
-    }
-
-    onSubmit = (formValues) => {
-        console.log(formValues.username);   
-        this.props.fetchUser(formValues.username)
-    }
-
-    onClick = () => {
-        
+    onClick = (e) => {
+        console.log(e.target.getAttribute('id'));
+        const league = e.target.getAttribute('id');
+        localStorage.setItem("league", league)
     }
 
     mapLeagues = (leagues) => {
         return leagues.map(league => {
             return (
-                <div key={league.league_id} onClick={this.onClick} >
+                <div id={league.league_id} key={league.league_id} onClick={(e) => this.onClick(e)} >
                     {league.name}
                 </div>
             )
@@ -57,28 +28,20 @@ class Input2 extends Component {
   render() {
     return (
       <Container>
-
+          {this.props.leagues ? (
+            this.mapLeagues(this.props.leagues)
+          ) : (
+              <div>Leagues not found</div>
+          )}
       </Container>
     )
   }
 }
 
-// checks if user inputted a valid title/description
-const validate = formValues => {
-    const errors = {};
-
-    if (!formValues.username) {
-        errors.username = "You must enter a title";
-    }
-
-    return errors;
-}
-
 const mapStateToProps = (state) => {
-    return { leagues: state.leagues }
+    console.log(state);
+    console.log(state.sleeper.leagues);
+    return { leagues: state.sleeper.leagues }
 }
 
-export default connect(mapStateToProps, { fetchUser })(reduxForm({
-    form: 'user',
-    validate
-})(Input2))
+export default connect(mapStateToProps, { fetchUser })(Input2)
