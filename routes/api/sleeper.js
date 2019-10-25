@@ -52,12 +52,20 @@ router.get(`/fetchRoster`, async (req, res, next) => {
         })
       }
 
+      console.log(arrayRoster);
       const sleeperRoster = new SleeperRoster({
         league_id: data[0].league_id,
-        league_info: {
-          users: [...arrayRoster]
-        }
+        league_info: [...arrayRoster]
       })
+      
+      console.log(sleeperRoster);
+
+      const linkRosterId = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/rosters`);
+      const rosterData = linkRosterId.data;
+
+
+
+      // sleeperRoster.save()
 
     }
     if (rosterFromDatabase.length) {
@@ -70,34 +78,6 @@ router.get(`/fetchRoster`, async (req, res, next) => {
     next(e)
   }
 })
-
-// getSleeperAllPlayers = async () => {
-//   try {
-//     const res = await axios.get("https://api.sleeper.app/v1/players/nfl");
-//     const data = res.data;
-
-//     for (let i = 0; i < data.length; i++) {
-//       let players = new sleeperAllPlayers({
-//         player_id: data[i].player_id,
-//         first_name: data[i].first_name,
-//         last_name: data[i].last_name,
-//         team: data[i].team,
-//         position: data[i].position
-//       })
-
-//       players.save();
-//       console.log(data[i].first_name);
-//     }
-
-//     console.log("all done collecting sleeper players data");
-
-//   } catch(err) {
-//     console.log(err);
-//   }
-
-// }
-
-
 
 checker = () => {
   rp(requestOptions).then(response => {
