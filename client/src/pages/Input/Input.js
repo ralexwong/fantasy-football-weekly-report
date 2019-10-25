@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Col, Row, Container } from "../../components/Grid";
 import { Field, reduxForm } from 'redux-form';
-import { fetchUser } from '../../actions';
+import { fetchLeagues } from '../../actions';
 
 class Input1 extends Component {
     componentDidMount() {
@@ -37,7 +37,7 @@ class Input1 extends Component {
 
     onSubmit = (formValues) => {
         console.log(formValues.username);   
-        this.props.fetchUser(formValues.username)
+        this.props.fetchLeagues(formValues.username)
     }
 
   render() {
@@ -59,11 +59,6 @@ const validate = formValues => {
     if (!formValues.username) {
         errors.username = "You must enter a title";
     }
-
-    if (!formValues.description) {
-        errors.description = "You must enter a description";
-    }
-
     return errors;
 }
 
@@ -71,7 +66,7 @@ const mapStateToProps = (state) => {
     return { nullUsername: state.nullUsername }
 }
 
-export default connect(mapStateToProps, { fetchUser })(reduxForm({
+export default connect(mapStateToProps, { fetchLeagues })(reduxForm({
     form: 'user',
     validate
 })(Input1))

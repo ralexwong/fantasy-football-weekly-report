@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Col, Row, Container } from "../../components/Grid";
 import { Field, reduxForm } from 'redux-form';
-import { fetchUser } from '../../actions';
+import {  } from '../../actions';
 
 class Input3 extends Component {
     componentDidMount() {
@@ -67,7 +67,7 @@ const validate = formValues => {
     return errors;
 }
 
-export default connect(null, { fetchUser })(reduxForm({
+export default connect(null, {  })(reduxForm({
     form: 'user',
     validate
 })(Input3))

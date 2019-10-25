@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Col, Row, Container } from "../../components/Grid";
 import { Field, reduxForm } from 'redux-form';
-import { fetchUser } from '../../actions';
+import { fetchRoster } from '../../actions';
 
 class Input2 extends Component {
     componentDidMount() {
@@ -12,7 +12,8 @@ class Input2 extends Component {
     onClick = (e) => {
         console.log(e.target.getAttribute('id'));
         const league = e.target.getAttribute('id');
-        localStorage.setItem("league", league)
+        localStorage.setItem("league", league);
+        this.props.fetchRoster(league);
     }
 
     mapLeagues = (leagues) => {
@@ -39,9 +40,7 @@ class Input2 extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
-    console.log(state.sleeper.leagues);
     return { leagues: state.sleeper.leagues }
 }
 
-export default connect(mapStateToProps, { fetchUser })(Input2)
+export default connect(mapStateToProps, { fetchRoster })(Input2)

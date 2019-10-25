@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bodyParser = require("body-parser");
 const SleeperAllPlayers = require('../../models/sleeperAllPlayers.js')
+const SleeperRoster = require("../../models/roster.js")
 const rp = require('request-promise');
 const db = require('../../models')
 const axios = require('axios');
@@ -10,7 +11,7 @@ const axios = require('axios');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.get(`/`, async (req, res, next) => {
+router.get(`/fetchLeagues`, async (req, res, next) => {
   try {
     const username = req.query.username;
     const resUser = await axios.get(`https://api.sleeper.app/v1/user/${username}`);
@@ -26,40 +27,77 @@ router.get(`/`, async (req, res, next) => {
       const leagues = await axios.get(`https://api.sleeper.app/v1/user/${user_id}/leagues/nfl/2019`);
       const leagues_data = leagues.data;
   
-      res.json(leagues_data)
+      res.json(leagues_data);
     }
   } catch(e) {
     next(e)
   }
 })
 
-getSleeperAllPlayers = async () => {
+router.get(`/fetchRoster`, async (req, res, next) => {
   try {
-    const res = await axios.get("https://api.sleeper.app/v1/players/nfl");
-    const data = res.data;
+    const league_id = req.query.league_id;
+    const resRoster = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/users`);
+    const data = resRoster.data;
 
-    for (let i = 0; i < data.length; i++) {
-      let players = new sleeperAllPlayers({
-        player_id: data[i].player_id,
-        first_name: data[i].first_name,
-        last_name: data[i].last_name,
-        team: data[i].team,
-        position: data[i].position
+    const rosterFromDatabase = await db.SleeperRoster.find({ "league_id": league_id });
+
+    if (!rosterFromDatabase.length) {
+
+      const arrayRoster = [];
+      for (let i = 0; i < data.length; i++) {
+        arrayRoster.push({
+          user_id: data[i].user_id,
+          display_name: data[i].display_name
+        })
+      }
+
+      const sleeperRoster = new SleeperRoster({
+        league_id: data[0].league_id,
+        league_info: {
+          users: [...arrayRoster]
+        }
       })
 
-      players.save();
-      console.log(data[i].first_name);
+    }
+    if (rosterFromDatabase.length) {
+      console.log("true");
     }
 
-    console.log("all done collecting sleeper players data");
 
-  } catch(err) {
-    console.log(err);
+
+  } catch(e) {
+    next(e)
   }
+})
 
-}
+// getSleeperAllPlayers = async () => {
+//   try {
+//     const res = await axios.get("https://api.sleeper.app/v1/players/nfl");
+//     const data = res.data;
 
-// getSleeperAllPlayers()
+//     for (let i = 0; i < data.length; i++) {
+//       let players = new sleeperAllPlayers({
+//         player_id: data[i].player_id,
+//         first_name: data[i].first_name,
+//         last_name: data[i].last_name,
+//         team: data[i].team,
+//         position: data[i].position
+//       })
+
+//       players.save();
+//       console.log(data[i].first_name);
+//     }
+
+//     console.log("all done collecting sleeper players data");
+
+//   } catch(err) {
+//     console.log(err);
+//   }
+
+// }
+
+
 
 checker = () => {
   rp(requestOptions).then(response => {
