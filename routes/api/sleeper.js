@@ -72,18 +72,43 @@ router.get(`/fetchRoster`, async (req, res, next) => {
       console.log("league saved");
 
       sleeperRoster.save()
+      res.json(sleeperRoster)
 
     }
     if (rosterFromDatabase.length) {
       console.log("league already created");
+      res.json(rosterFromDatabase[0])
     }
-
-    console.log(rosterFromDatabase[0]);
-    res.json(rosterFromDatabase[0])
 
   } catch(e) {
     next(e)
   }
+})
+
+
+router.get(`/fetchMatchupPoints`, async (req, res, next) => {
+  try {
+    const week = req.query.week;
+    const league_id = req.query.league_id;
+
+    const resWeek = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/matchups/${week}`);
+    const data = resWeek.data;
+
+    const array = [];
+    for (let i = 0; i < data.length; i++) {
+      array.push({
+        roster_id: data[i].roster_id,
+        points: data[i].points,
+        matchup_id: data[i].matchup_id
+      })
+    }
+
+    res.json(array)
+    
+  } catch(e) {
+    next(e)
+  }
+
 })
 
 module.exports = router;

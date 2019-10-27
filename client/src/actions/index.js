@@ -2,7 +2,9 @@ import {
     FETCH_LEAGUES,
     INVALID_USERNAME,
     FETCH_ROSTER,
-    FETCH_PAYOUT
+    SET_LEAGUE_ID,
+    FETCH_PAYOUT,
+    FETCH_MATCHUPPOINTS
 } from './types';
 import history from '../history';
 import axios from 'axios';
@@ -23,10 +25,10 @@ export const fetchLeagues = (username) => async dispatch => {
         return;
     }
     await dispatch({ type: FETCH_LEAGUES, payload: data });
-    return history.push('/input2');
+    history.push('/input2');
 }
 
-// Grabs the user's results for the week -------------------------------------------------
+// Grabs the league's roster -------------------------------------------------
 
 export const fetchRoster = (league_id) => async dispatch => {
     const response = await axios.get(`api/sleeper/fetchRoster`, {
@@ -35,10 +37,32 @@ export const fetchRoster = (league_id) => async dispatch => {
         }
     })
     const data = response.data
-    console.log(response);
-    console.log(data);
 
     dispatch({ type: FETCH_ROSTER, payload: data }) 
+    history.push('/input3');
+}
+
+// Set league_id in state just in case ---------------------------------------------
+
+export const setLeague_id = (league_id) => async dispatch => {
+    dispatch({ type: SET_LEAGUE_ID, payload: league_id })
+}
+
+// Grabs the points for that week --------------------------------------------------
+
+export const fetchMatchupPoints = (week, league_id) => async dispatch => {
+    const response = await axios.get(`api/sleeper/fetchMatchupPoints`, {
+        params: {
+            week: week,
+            league_id: league_id
+        }
+    })
+
+    const data = response.data;
+    console.log(data);
+
+    dispatch({ type: FETCH_MATCHUPPOINTS, payload: data });
+    history.push('/report');
 }
 
 // Grabs the user's payouts for that league -----------------------------------------

@@ -1,26 +1,13 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import {  } from '../../actions';
+import { fetchMatchupPoints } from '../../actions';
 
 import Container from "react-bootstrap/container";
 
 class Input3 extends Component {
     componentDidMount() {
         
-    }
-
-    
-      // deconstructs {meta} object and uses meta.error && meta.touched
-    // displays error message from (validate) if true
-    renderError = ({ error, touched }) => {
-        if (touched && error) {
-            return (
-                <div className="ui error message">
-                    <div className="header">{error}</div>
-                </div>
-            )
-        }
     }
 
     // takes descontructed props from <Field>
@@ -31,21 +18,20 @@ class Input3 extends Component {
             <div className={className}>
                 <label>{label}</label>
                 <input {...input} autoComplete="off" />
-                {this.renderError(meta)}
             </div>
         ); // {...input} === onChange={formProps.input.onChange}  value={formProps.input.value}
     }
 
     onSubmit = (formValues) => {
-        console.log(formValues.username);   
-        this.props.fetchUser(formValues.username)
+        console.log(formValues.week);   
+        this.props.fetchMatchupPoints(formValues.week, this.props.league_id)
     }
 
   render() {
     return (
       <Container>
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-                <Field name="username" component={this.renderInput} label="Enter Title" />
+                <Field name="week" component={this.renderInput} label="Enter Week" />
                 <button className="ui button primary">Submit</button>
             </form>
       </Container>
@@ -53,22 +39,10 @@ class Input3 extends Component {
   }
 }
 
-// checks if user inputted a valid title/description
-const validate = formValues => {
-    const errors = {};
-
-    if (!formValues.username) {
-        errors.username = "You must enter a title";
-    }
-
-    if (!formValues.description) {
-        errors.description = "You must enter a description";
-    }
-
-    return errors;
+const mapStateToProps = (state) => {
+    return { league_id: state.sleeper.league_id }
 }
 
-export default connect(null, {  })(reduxForm({
-    form: 'user',
-    validate
+export default connect(mapStateToProps, { fetchMatchupPoints })(reduxForm({
+    form: 'user'
 })(Input3))
