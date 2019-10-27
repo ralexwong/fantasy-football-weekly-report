@@ -84,6 +84,6 @@ const mapStateToProps = (state) => {
 
 }
   
-export default connect(null, { fetchAvater })(Report);
+export default connect(null, { fetchAvatar })(Report);
 
   
