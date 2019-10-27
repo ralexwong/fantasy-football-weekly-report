@@ -1,62 +1,85 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
-import { Col, Row, Container } from "../../components/Grid";
+import Container from "react-bootstrap/container";
+
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { fetchPayout } from '../../actions';
 import Table from 'react-bootstrap/Table'
 
 class League extends Component {
-  state = {
-    table: 
-    {
-      weeks: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
-      title: [],
-      description: [],
-      winner: []
-    }
-  };
 
   componentDidMount() {
     
   }
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+  // takes descontructed props from <Field>
+  renderInput = ({ input }) => {    
+    return (
+      <input {...input} autoComplete="off" />
+    ); // {...input} === onChange={formProps.input.onChange}  value={formProps.input.value}
+  }
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
+  onSubmit = (formValues) => {
+    console.log(formValues.title);   
+      
+  }
+
+
+  mapTableRows = (x) => {
+    for (let i = 0; i < x; i++) {
+      return (
+        <tr>
+          <td>Week {x}</td>
+          <td>
+            <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
+              <Field name="title" component={this.renderInput} label="Enter Title" />
+            </form>
+          </td>
+          <td>
+            <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
+              <Field name="description" component={this.renderInput} label="Enter Title" />
+            </form>
+          </td>
+          <td>
+            <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
+              <Field name="winner" component={this.renderInput} label="Enter Title" />
+            </form>
+          </td>
+        </tr>
+      )
     }
-  };
+  }
 
   render() {
     return (
       <Container>
         <Table striped bordered hover>
           <tbody>
-            {this.state.table.weeks.map(row => (
-              <tr>
-                <td>{row.weeks}</td>
-                <td>{row.title}</td>
-                <td>{row.description}</td>
-                <td>{row.winner}</td>
-              </tr>
-            ))}
+            {this.mapTableRows(13)}
           </tbody>
         </Table>
-        
       </Container>
     )
   }
 }
 
-export default League;
+// checks if user inputted a valid title/description
+const validate = formValues => {
+  const errors = {};
+
+  if (!formValues.title) {
+      errors.title = "You must enter a title";
+  }
+  return errors;
+}
+
+const mapStateToProps = (state) => {
+  return {  }
+}
+
+export default connect(mapStateToProps, { fetchPayout })(reduxForm({
+  form: 'payouts',
+  validate
+})(League))
+
+

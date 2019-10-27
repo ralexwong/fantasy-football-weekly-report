@@ -1,12 +1,15 @@
 import {
     FETCH_LEAGUES,
-    INVALID_USERNAME
+    INVALID_USERNAME,
+    FETCH_ROSTER
+    
 } from '../actions/types';
 
 
 const initialState = {
     nullUsername: null,
-    leagues: null
+    leagues: null,
+
 }
 
 
@@ -17,6 +20,8 @@ export default (state = initialState, action) => {
             return { ...state, nullUsername: null, leagues: action.payload }
         case INVALID_USERNAME:
             return { ...state, nullUsername: action.payload }
+        case FETCH_ROSTER:
+            return {...state, }
         default:
             return state;
     }

@@ -1,12 +1,5 @@
-img {
-}
-
 h4 {
     margin-top:40px;
-}
-
-h1 {
-    color: #003662;
 }
 
 .aboutTitle {
@@ -22,6 +15,7 @@ h1 {
 
 #main {
     background: #0b3e69;
+    color: white;
 }
 
 #about {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Col, Row, Container } from "../../components/Grid";
 import "./signup.css"
 
+import Container from "react-bootstrap/container";
 
 class Signup extends Component {
 	constructor() {

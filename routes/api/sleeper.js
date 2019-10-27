@@ -1,10 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require("body-parser");
-const SleeperAllPlayers = require('../../models/sleeperAllPlayers.js')
 const SleeperRoster = require("../../models/roster.js")
 const rp = require('request-promise');
-const db = require('../../models')
 const axios = require('axios');
 
 
@@ -40,7 +38,7 @@ router.get(`/fetchRoster`, async (req, res, next) => {
     const resRoster = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/users`);
     const data = resRoster.data;
 
-    const rosterFromDatabase = await db.SleeperRoster.find({ "league_id": league_id });
+    const rosterFromDatabase = await SleeperRoster.find({ "league_id": league_id });
 
     if (!rosterFromDatabase.length) {
 
@@ -48,85 +46,45 @@ router.get(`/fetchRoster`, async (req, res, next) => {
       for (let i = 0; i < data.length; i++) {
         arrayRoster.push({
           user_id: data[i].user_id,
-          display_name: data[i].display_name
+          display_name: data[i].display_name,
+          roster_id: ""
         })
       }
 
-      console.log(arrayRoster);
       const sleeperRoster = new SleeperRoster({
         league_id: data[0].league_id,
         league_info: [...arrayRoster]
       })
       
-      console.log(sleeperRoster);
-
       const linkRosterId = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/rosters`);
       const rosterData = linkRosterId.data;
 
 
+      for (let i = 0; i < arrayRoster.length; i++) {
+        for (let j = 0; j < rosterData.length; j++) {
+          if (sleeperRoster.league_info[i].user_id === rosterData[j].owner_id) {
+            sleeperRoster.league_info[i].roster_id = rosterData[j].roster_id
+          }
+        }
+      }
 
-      // sleeperRoster.save()
+      // console.log(sleeperRoster);
+      console.log("league saved");
+
+      sleeperRoster.save()
 
     }
     if (rosterFromDatabase.length) {
-      console.log("true");
+      console.log("league already created");
     }
 
-
+    console.log(rosterFromDatabase[0]);
+    res.json(rosterFromDatabase[0])
 
   } catch(e) {
     next(e)
   }
 })
-
-checker = () => {
-  rp(requestOptions).then(response => {
-    console.log(response.data[1]);
-    console.log(response.data[2]);
-    console.log(response.data[1027]);
-
-    const bitcoin = new Bitcoin({
-      price: response.data[1].quote.USD.price,
-      percentChange24h: response.data[1].quote.USD.percent_change_24h
-
-    })
-
-    const litecoin = new Litecoin({
-      price: response.data[2].quote.USD.price,
-      percentChange24h: response.data[2].quote.USD.percent_change_24h
-    })
-
-    const ethereum = new Ethereum({
-      price: response.data[1027].quote.USD.price,
-      percentChange24h: response.data[1027].quote.USD.percent_change_24h
-    })
-  
-    bitcoin.save().then(data => {
-      return;
-    })
-    .catch(err => {
-      res.json({ message: err })
-    })
-
-    litecoin.save().then(data => {
-      return;
-    })
-    .catch(err => {
-      res.json({ message: err })
-    })
-
-    ethereum.save().then(data => {
-      return;
-    })
-    .catch(err => {
-      res.json({ message: err })
-    })
-  
-  }).catch((err) => {
-    console.log('API call error:', err.message);
-  })
-}
-
 
 module.exports = router;
 

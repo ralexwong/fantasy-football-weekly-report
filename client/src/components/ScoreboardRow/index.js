@@ -1,6 +1,7 @@
 import React from 'react';
 import "./style.css";
-import { Col, Row } from "../Grid";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function ScoreboardRow(props) {
     return (

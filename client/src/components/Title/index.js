@@ -1,10 +1,9 @@
 import React from "react";
 import "./style.css";
-import { Row } from "../Grid";
 
 function Title() {
     return (
-        <Row>
+        <div className="row">
             <div id="titleDiv">
                 <div>
                     <p id="title">DIRTY TRIBUNE</p>
@@ -14,7 +13,7 @@ function Title() {
                     <p id="caption">Welcome to the shitshow</p>
                 </div>
             </div>
-        </Row>
+        </div>
     )
 }
 

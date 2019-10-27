@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
-import { Col, Row, Container } from "../../components/Grid";
+
+import Container from "react-bootstrap/container";
+
 
 class Login extends Component {
     constructor() {

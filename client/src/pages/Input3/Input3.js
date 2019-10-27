@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { Col, Row, Container } from "../../components/Grid";
 import { Field, reduxForm } from 'redux-form';
 import {  } from '../../actions';
+
+import Container from "react-bootstrap/container";
 
 class Input3 extends Component {
     componentDidMount() {

@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
-import Table from 'react-bootstrap/Table'
+
+import Container from "react-bootstrap/container";
 
 class League extends Component {
   state = {
@@ -44,19 +41,7 @@ class League extends Component {
   render() {
     return (
       <Container>
-        <Table striped bordered hover>
-          <tbody>
-            {this.state.table.weeks.map(row => (
-              <tr>
-                <td>{row.weeks}</td>
-                <td>{row.title}</td>
-                <td>{row.description}</td>
-                <td>{row.winner}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-        
+      
       </Container>
     )
   }

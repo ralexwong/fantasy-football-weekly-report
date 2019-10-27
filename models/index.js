@@ -1,7 +1,6 @@
 module.exports = {
+  User: require("./user"),
   Profile: require("./profile"),
-  Ethereum: require("./ethereum"),
-  Litecoin: require("./litecoin"),
   SleeperRoster: require("./roster")
 
 };

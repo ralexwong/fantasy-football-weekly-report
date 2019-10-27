@@ -1,11 +1,14 @@
 import {
     FETCH_LEAGUES,
     INVALID_USERNAME,
-    FETCH_ROSTER
+    FETCH_ROSTER,
+    FETCH_PAYOUT
 } from './types';
 import history from '../history';
 import axios from 'axios';
 
+
+// Grabs the user's leagues -----------------------------------------------
 
 export const fetchLeagues = (username) => async dispatch => {
     const response = await axios.get(`api/sleeper/fetchLeagues`, {
@@ -23,7 +26,7 @@ export const fetchLeagues = (username) => async dispatch => {
     return history.push('/input2');
 }
 
-// ------------------------------------------------------------------------
+// Grabs the user's results for the week -------------------------------------------------
 
 export const fetchRoster = (league_id) => async dispatch => {
     const response = await axios.get(`api/sleeper/fetchRoster`, {
@@ -31,7 +34,15 @@ export const fetchRoster = (league_id) => async dispatch => {
             league_id: league_id
         }
     })
+    const data = response.data
+    console.log(response);
+    console.log(data);
 
+    dispatch({ type: FETCH_ROSTER, payload: data }) 
+}
 
-    dispatch({ type: FETCH_ROSTER }) 
+// Grabs the user's payouts for that league -----------------------------------------
+
+export const fetchPayout = () => async dispatch => {
+    const response = await axios.get(``)
 }

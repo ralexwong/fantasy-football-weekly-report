@@ -1,3 +1,4 @@
 export const FETCH_LEAGUES = 'FETCH_LEAGUES';
 export const INVALID_USERNAME = 'INVALID_USERNAME';
-export const FETCH_ROSTER = 'FETCH_ROSTER'
+export const FETCH_ROSTER = 'FETCH_ROSTER';
+export const FETCH_PAYOUT = 'FETCH_PAYOUT';

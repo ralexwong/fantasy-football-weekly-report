@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { Col, Row, Container } from "../../components/Grid";
 import { Field, reduxForm } from 'redux-form';
 import { fetchLeagues } from '../../actions';
+
+import Container from "react-bootstrap/container";
+
 
 class Input1 extends Component {
     componentDidMount() {

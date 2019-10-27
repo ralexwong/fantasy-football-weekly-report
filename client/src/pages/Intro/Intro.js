@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../../components/Grid";
+import { Link } from 'react-router-dom';
+import Container from "react-bootstrap/container";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import "./intro.css";
 
 class Index extends Component {
@@ -11,10 +14,21 @@ class Index extends Component {
         {/* MAIN CARD START -----------------------> */}
         <Row>
           <div className="block" id="main">
-            <Container>
-              <p>
+            <Container fluid>
+              <h1>
                 Fantasy Football Weekly Reports
-              </p>
+              </h1>
+              <h4>
+                Choose your platform, input your username, choose the week, and your weekly report will be ready!
+              </h4>
+              <Row>
+                <Col>
+                  <img src="./images/fantasy.jpg" alt =""></img>
+                </Col>
+                <Col>
+                  <img src="./images/fantasy2.jpg" alt=""></img>
+                </Col>
+              </Row>
             </Container>
           </div>
         </Row>
@@ -26,20 +40,12 @@ class Index extends Component {
             <Container>
               <Row>
                 <Col size="6">
-                  <p className="aboutTitle">Satoshi-Pulse</p>
+                  {/* <p className="aboutTitle">How it Works!</p> */}
+                  <h2>How it Works!</h2>
                   <h4>
-                    The main use for this application is to tract the sentiment
-                    of the market based on current trending news . Trend
-                    analysis application is one of the best tool beginner
-                    traders are looking for , although sentiment analysis tools
-                    are available , it is quite expensive and complicated for
-                    beginners and hobbyist . This application will solve the
-                    complexity of sentiment analysis by making it as simple as
-                    having 3 inputs and a click of a button .
+                    Navigate onto the first input page and click on the platform you would like to see the report for. Input your username, 
+                    click on your league, choose the week, BLAM!! Weekly report.
                   </h4>
-                </Col>
-                <Col size="6">
-                  <img></img>
                 </Col>
               </Row>
             </Container>
@@ -50,9 +56,10 @@ class Index extends Component {
         {/* DEVS CARD START -----------------------> */}
         <Row>
           <div className="block" id="team">
-            <h1>Meet the Team </h1>
             <Row>
-
+              <Link to="/input">
+                <h1>Let's Get Started!</h1>
+              </Link>
             </Row>
           </div>
         </Row>
@@ -67,45 +74,15 @@ class Index extends Component {
                 We are committed to complying with all U.S. regulations that
                 help prevent, detect and remediate unlawful behavior by
                 customers and virtual currency developers when using the
-                Satoshi-Pulse trading platform or any of the company’s other
-                services. Satoshi-Pulse is not a regulated exchange under U.S.
+                Fantasy Football Weekly Report platform or any of the company’s other
+                services. Fantasy Football Weekly Report is not a regulated exchange under U.S.
                 securities laws.
               </p>
             </Container>
           </div>
         </Row>
         <Row>
-          <div className="block" id="signup">
-            <Container>
-              <div class="formGroup">
-                <label for="input" style={{ color: "white" }}>
-                  Sign Up
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputUsername"
-                  aria-describedby="userName"
-                  placeholder="User Name"
-                />
-              </div>
-              <br />
-              <div class="formGroup">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
-                />
-              </div>
-              <br />
-              <button type="submit" id="submitBtn" class="btn btn-primary">
-                Submit
-              </button>
-              <hr/>
-              <small id="userHelp" class="form-text text-muted">As a verified user of this site you will be able to trade in markets offered by Satoshi-Pulse</small>
-            </Container>
-          </div>
+
         </Row>
         {/* DEVS CARD START -----------------------> */}
       </Container>

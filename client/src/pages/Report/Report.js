@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import Nav from "../../components/Nav";
-import { Col, Row, Container } from "../../components/Grid";
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
 import Scoreboard from "../../components/Scoreboard";
 import ScoreboardRow from "../../components/ScoreboardRow";
 import PlayerCard from "../../components/PlayerCard";
 import PureComponent from "../../components/GraphPPG";
-import axios from 'axios';
+
+import Container from "react-bootstrap/container";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 class Report extends Component {
