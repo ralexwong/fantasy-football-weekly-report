@@ -4,3 +4,4 @@ export const FETCH_ROSTER = 'FETCH_ROSTER';
 export const FETCH_PAYOUT = 'FETCH_PAYOUT';
 export const FETCH_MATCHUPPOINTS = 'FETCH_MATCHUPPOINTS';
 export const SET_LEAGUE_ID = 'SET_LEAGUE_ID';
+export const FETCH_AVATAR = 'FETCH_AVATAR';

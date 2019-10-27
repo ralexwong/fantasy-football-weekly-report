@@ -4,7 +4,8 @@ import {
     FETCH_ROSTER,
     SET_LEAGUE_ID,
     FETCH_PAYOUT,
-    FETCH_MATCHUPPOINTS
+    FETCH_MATCHUPPOINTS,
+    FETCH_AVATAR
 } from './types';
 import history from '../history';
 import axios from 'axios';
@@ -69,4 +70,10 @@ export const fetchMatchupPoints = (week, league_id) => async dispatch => {
 
 export const fetchPayout = () => async dispatch => {
     const response = await axios.get(``)
+}
+
+// Grab sleeper avatar ----------------------------------------------
+
+export const fetchAvatar = () => async dispatch => {
+    
 }
