@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { fetchAvater } from '../../actions';
+import { fetchAvatar } from '../../actions';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
