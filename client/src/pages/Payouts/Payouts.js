@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Container from "react-bootstrap/container";
+import Container from "react-bootstrap/Container";
 
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';

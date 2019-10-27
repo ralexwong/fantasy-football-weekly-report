@@ -9,7 +9,7 @@ import ScoreboardRow from "../../components/ScoreboardRow";
 import PlayerCard from "../../components/PlayerCard";
 import PureComponent from "../../components/GraphPPG";
 
-import Container from "react-bootstrap/container";
+import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 

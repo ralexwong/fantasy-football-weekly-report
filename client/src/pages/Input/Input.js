@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { fetchLeagues } from '../../actions';
 
-import Container from "react-bootstrap/container";
+import Container from "react-bootstrap/Container";
 
 
 class Input1 extends Component {

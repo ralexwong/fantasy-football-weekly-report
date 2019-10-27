@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 
-import Container from "react-bootstrap/container";
+import Container from "react-bootstrap/Container";
 
 class League extends Component {
   state = {
