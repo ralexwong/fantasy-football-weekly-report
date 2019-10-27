@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { fetchRoster, setLeague_id } from '../../actions';
 
-import Container from "react-bootstrap/container";
+import Container from "react-bootstrap/Container";
 
 class Input2 extends Component {
     componentDidMount() {
