@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { fetchMatchupPoints } from '../../actions';
+import { fetchMatchupPoints, setWeekToState } from '../../actions';
 
 import Container from "react-bootstrap/Container";
 
@@ -24,7 +24,8 @@ class Input3 extends Component {
 
     onSubmit = (formValues) => {
         console.log(formValues.week);   
-        this.props.fetchMatchupPoints(formValues.week, this.props.league_id)
+        this.props.fetchMatchupPoints(formValues.week, this.props.league_id);
+        this.props.setWeekToState(formValues.week)
     }
 
   render() {
@@ -43,6 +44,6 @@ const mapStateToProps = (state) => {
     return { league_id: state.sleeper.league_id }
 }
 
-export default connect(mapStateToProps, { fetchMatchupPoints })(reduxForm({
+export default connect(mapStateToProps, { fetchMatchupPoints, setWeekToState })(reduxForm({
     form: 'user'
 })(Input3))

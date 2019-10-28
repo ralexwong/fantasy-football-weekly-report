@@ -103,12 +103,13 @@ router.get(`/fetchMatchupPoints`, async (req, res, next) => {
       })
     }
 
+    console.log(array);
+
     res.json(array)
-    
+
   } catch(e) {
     next(e)
   }
-
 })
 
 module.exports = router;

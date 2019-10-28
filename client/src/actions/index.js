@@ -5,7 +5,9 @@ import {
     SET_LEAGUE_ID,
     FETCH_PAYOUT,
     FETCH_MATCHUPPOINTS,
-    FETCH_AVATAR
+    FETCH_AVATAR,
+    SET_WEEK_TO_STATE,
+    REFACTORED_MATCHUPS
 } from './types';
 import history from '../history';
 import axios from 'axios';
@@ -60,10 +62,16 @@ export const fetchMatchupPoints = (week, league_id) => async dispatch => {
     })
 
     const data = response.data;
-    console.log(data);
+    // console.log(data);
 
     dispatch({ type: FETCH_MATCHUPPOINTS, payload: data });
     history.push('/report');
+}
+
+// Setting week into state for the report page -------------------------------------
+
+export const setWeekToState = (week) => async dispatch => {
+    dispatch({ type: SET_WEEK_TO_STATE, payload: week})
 }
 
 // Grabs the user's payouts for that league -----------------------------------------
@@ -75,5 +83,11 @@ export const fetchPayout = () => async dispatch => {
 // Grab sleeper avatar ----------------------------------------------
 
 export const fetchAvatar = () => async dispatch => {
-    
+
+}
+
+// Push refactored array of matchups so it can be displayed in a pair fashion ---------
+
+export const refactoredMatchups = (matchupArray) => async dispatch => {
+    dispatch({ type: REFACTORED_MATCHUPS, payload: matchupArray })
 }
