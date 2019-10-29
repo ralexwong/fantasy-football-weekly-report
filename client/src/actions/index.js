@@ -103,7 +103,7 @@ export const topScorer = (name, highscore, avatar) => dispatch => {
 
 // Push close matchup score and winner into state --------------------------------
 
-export const closeOne = (name, difference, avatar) => dispatch => {
+export const closeOne = (name, difference, avatar) => async dispatch => {
     const closeOne = { name, difference, avatar };
     dispatch({ type: CLOSE_ONE, payload: closeOne })
 }

@@ -76,6 +76,7 @@ class Report extends Component {
     // push the refactored matchups into state to be mapped out
     this.props.refactoredMatchups(combinedObjects);
 
+    console.log(points);
     this.topScorer(points);
 
     // requires the matchup array and cannot be called at the same time in a different component
@@ -87,9 +88,9 @@ class Report extends Component {
     let difference = 9999;
     let avatar = "";
     for (let i = 0; i < matchups.length; i++) {
-      if (Math.abs(matchups[i].points1 - matchups[i].points2) < difference) {
-        difference = Math.abs(matchups[i].points1 - matchups[i].points2);
-        if (matchups[i].points1 > matchups[i].points2) {
+      if (Math.abs(parseFloat(matchups[i].points1) - parseFloat(matchups[i].points2)) < difference) {
+        difference = Math.abs(parseFloat(matchups[i].points1) - parseFloat(matchups[i].points2));
+        if (parseFloat(matchups[i].points1) > parseFloat(matchups[i].points2)) {
           name = matchups[i].roster1;
           avatar = matchups[i].avatar1
         } else {
@@ -98,16 +99,19 @@ class Report extends Component {
         }
       }
     }
-    this.props.closeOne(name, parseFloat(difference).toFixed(2), avatar);
+
+    const fixedDiffernce = parseFloat(difference).toFixed(2)
+
+    this.props.closeOne(name, fixedDiffernce, avatar);
   }
 
   topScorer = (points) => {
     let name = "";
-    let highscore = 0;
+    let highscore = 0.00;
     let avatar = ""
     for (let i = 0; i < points.length; i++) {
-      if (points[i].points > highscore) {
-        highscore = points[i].points;
+      if (parseFloat(points[i].points) > highscore) {
+        highscore = parseFloat(points[i].points);
         name = points[i].roster_id;
         avatar = points[i].avatar;
       }

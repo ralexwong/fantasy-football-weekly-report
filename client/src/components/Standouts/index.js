@@ -13,13 +13,19 @@ class Standouts extends Component {
 
 
     render() {
+        let url = ""
+        if (this.props.topScorer) {
+            url = `http://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
+        }
         return (
             <div>
+                {this.props.topScorer ? 
+                (
                 <Col className="col-6">
                     <Row>
                         <Col className="col-6">
                             <Card style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src="" />
+                                <Card.Img variant="top" src={url} />
                                 <Card.Body>
                                     <Card.Title>Card Title</Card.Title>
                                     <Card.Text>
@@ -35,6 +41,11 @@ class Standouts extends Component {
                         </Col>
                     </Row>
                 </Col>
+                ) 
+                :
+                (
+                <div></div>
+                )}
             </div>
         )
     }
