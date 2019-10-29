@@ -8,19 +8,19 @@ function ScoreboardRow(props) {
         <Row className="scoreboardRow row">
             <Col className="scoreboardScores col-2">
                 <div>
-                    <p>1{props.points1}</p>
+                    <p>{props.points1}</p>
                 </div>
                 <div>
-                    <p>2{props.points2}</p>
+                    <p>{props.points2}</p>
                 </div>
             </Col>
 
             <Col className="scoreboardNames col-9">
                 <div>
-                    <p>wong{props.name1}</p>
+                    <p>{props.roster1}</p>
                 </div>
                 <div>
-                    <p>man{props.name2}</p>
+                    <p>{props.roster2}</p>
                 </div>
             </Col>
 

@@ -7,7 +7,9 @@ import {
     FETCH_MATCHUPPOINTS,
     FETCH_AVATAR,
     SET_WEEK_TO_STATE,
-    REFACTORED_MATCHUPS
+    REFACTORED_MATCHUPS,
+    TOP_SCORER,
+    CLOSE_ONE
 } from './types';
 import history from '../history';
 import axios from 'axios';
@@ -47,7 +49,7 @@ export const fetchRoster = (league_id) => async dispatch => {
 
 // Set league_id in state just in case ---------------------------------------------
 
-export const setLeague_id = (league_id) => async dispatch => {
+export const setLeague_id = (league_id) => dispatch => {
     dispatch({ type: SET_LEAGUE_ID, payload: league_id })
 }
 
@@ -70,7 +72,7 @@ export const fetchMatchupPoints = (week, league_id) => async dispatch => {
 
 // Setting week into state for the report page -------------------------------------
 
-export const setWeekToState = (week) => async dispatch => {
+export const setWeekToState = (week) => dispatch => {
     dispatch({ type: SET_WEEK_TO_STATE, payload: week})
 }
 
@@ -88,6 +90,20 @@ export const fetchAvatar = () => async dispatch => {
 
 // Push refactored array of matchups so it can be displayed in a pair fashion ---------
 
-export const refactoredMatchups = (matchupArray) => async dispatch => {
+export const refactoredMatchups = (matchupArray) => dispatch => {
     dispatch({ type: REFACTORED_MATCHUPS, payload: matchupArray })
+}
+
+// Push top scorer into state ------------------------------------------------------
+
+export const topScorer = (name, highscore, avatar) => dispatch => {
+    const topScorer = { name, highscore, avatar }
+    dispatch({ type: TOP_SCORER, payload: topScorer });
+}
+
+// Push close matchup score and winner into state --------------------------------
+
+export const closeOne = (name, difference, avatar) => dispatch => {
+    const closeOne = { name, difference, avatar };
+    dispatch({ type: CLOSE_ONE, payload: closeOne })
 }

@@ -6,7 +6,8 @@ const sleeperRosterSchema = new Schema({
   league_info: [{
       user_id: { type: String },
       roster_id: { type: Number },
-      display_name: { type: String }
+      display_name: { type: String },
+      avatar: { type: String }
     }]
 });
 

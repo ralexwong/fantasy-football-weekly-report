@@ -5,7 +5,9 @@ import {
     SET_LEAGUE_ID,
     FETCH_MATCHUPPOINTS,
     SET_WEEK_TO_STATE,
-    REFACTORED_MATCHUPS
+    REFACTORED_MATCHUPS,
+    TOP_SCORER,
+    CLOSE_ONE
     
 } from '../actions/types';
 
@@ -34,6 +36,10 @@ export default (state = initialState, action) => {
             return { ...state, week: action.payload }
         case REFACTORED_MATCHUPS:
             return { ...state, matchups: action.payload }
+        case TOP_SCORER:
+            return { ...state, topScorer: action.payload }
+        case CLOSE_ONE:
+            return { ...state, closeOne: action.payload }
         default:
             return state;
     }
