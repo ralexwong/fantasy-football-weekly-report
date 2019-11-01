@@ -1,54 +1,103 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Legend, Tooltip
+  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
-import "./style.css";
+import { connect } from 'react-redux';
+import { fetchGraphPPG, refactorData, removeGraphData } from '../../actions';
 
-const data = [
-  {
-    name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
-  },
-  {
-    name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
-  },
-  {
-    name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
-  },
-  {
-    name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
-  },
-  {
-    name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
-  },
-  {
-    name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
-  },
-  {
-    name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
-  },
-];
 
-export default class Example extends PureComponent {
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/xqjtetw0/';
+
+class GraphPPG extends React.Component {
+  componentDidMount() {
+    if (!this.props.roster) {
+
+    } else {
+      this.refactorData(this.props.roster, this.props.league_info)
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.removeGraphData()
+  }
+
+  refactorData = (roster, league_info) => {
+    let combinedObjects = [];
+    console.log(roster);
+    for (let i = 0; i < roster.length; i++) {
+      let settings = roster[i].settings;
+      let PPG = (parseInt(settings.fpts) / (parseInt(settings.wins) + parseInt(settings.losses)))
+      combinedObjects.push({ name: roster[i].owner_id, wins: settings.wins, PPG: PPG })
+    }
+
+    for (let i = 0; i < league_info.length; i++) {
+      for (let j = 0; j < roster.length; j++) {
+        if (league_info[i].user_id === combinedObjects[j].name) {
+          combinedObjects[j].name = league_info[i].display_name;
+        }
+      }
+    }
+    console.log(combinedObjects);
+    this.props.refactorData(combinedObjects)
+  }
 
   render() {
+    const data = this.props.data;
+    // const data = [
+    //   {
+    //     name: 'Page A', wins: 4000, pv: 2400, amt: 2400,
+    //   },
+    //   {
+    //     name: 'Page B', wins: 3000, pv: 1398, amt: 2210,
+    //   },
+    //   {
+    //     name: 'Page C', wins: 2000, pv: 9800, amt: 2290,
+    //   },
+    //   {
+    //     name: 'Page D', wins: 2780, pv: 3908, amt: 2000,
+    //   },
+    //   {
+    //     name: 'Page E', wins: 1890, pv: 4800, amt: 2181,
+    //   },
+    //   {
+    //     name: 'Page F', wins: 2390, pv: 3800, amt: 2500,
+    //   },
+    //   {
+    //     name: 'Page G', wins: 3490, pv: 4300, amt: 2100,
+    //   },
+    // ];
     return (
-      <LineChart
-        width={1000}
-        height={600}
-        data={data}
-        margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-        <Tooltip />
-      </LineChart>
+        <BarChart
+          width={1200}
+          height={700}
+          data={data}
+          margin={{
+            top: 20, right: 30, left: 20
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
+          <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
+          <Tooltip />
+          <Legend width={100} wrapperStyle={{ top: 20, right: 90, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' }} />
+          <Bar yAxisId="left" dataKey="PPG" fill="#8884d8" />
+          <Bar yAxisId="right" dataKey="wins" fill="#82ca9d" />
+        </BarChart>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return { 
+    league_id: state.sleeper.league_id,
+    roster: state.sleeper.roster,
+    league_info: state.sleeper.league_info,
+    data: state.sleeper.graphPPG
+  }
+}
+
+export default connect(mapStateToProps, { fetchGraphPPG, refactorData, removeGraphData })(GraphPPG)
+
+
+
+

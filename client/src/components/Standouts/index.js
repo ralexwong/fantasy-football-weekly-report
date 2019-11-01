@@ -13,31 +13,51 @@ class Standouts extends Component {
 
 
     render() {
-        let url = ""
+        let topScorerUrl = "";
         if (this.props.topScorer) {
-            url = `http://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
+            topScorerUrl = `http://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
+        };
+
+        let closeOneUrl = "";
+        if (this.props.closeOne) {
+            closeOneUrl = `http://sleepercdn.com/avatars/${this.props.closeOne.avatar}`
         }
+
         return (
-            <div>
+            <div style={{ padding: '0 0 0 20px  '}}>
                 {this.props.topScorer ? 
                 (
-                <Col className="col-6">
+                <Col>
                     <Row>
-                        <Col className="col-6">
+                        <Col>
+                            <Row>
+                                <p id="scoreboard">TOP SCORER</p>
+                            </Row>
                             <Card style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src={url} />
+                                <Card.Img variant="top" src={topScorerUrl} />
                                 <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
+                                    <Card.Title>{this.props.topScorer.name}</Card.Title>
                                     <Card.Text>
-
+                                        {this.props.topScorer.highscore}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
                         </Col>
                     </Row>
                     <Row>
-                        <Col className="col-6">
-
+                        <Col>
+                            <Row>
+                                <p id="scoreboard">CLOSE ONE</p>
+                            </Row>
+                            <Card style={{ width: '18rem' }}>
+                                <Card.Img variant="top" src={closeOneUrl} />
+                                <Card.Body>
+                                    <Card.Title>{this.props.closeOne.name}</Card.Title>
+                                    <Card.Text>
+                                        {`+ ${this.props.closeOne.difference}`}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
                         </Col>
                     </Row>
                 </Col>

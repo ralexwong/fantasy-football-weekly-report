@@ -10,7 +10,7 @@ class Scoreboard extends React.Component {
 
     render() {
         return (
-            <Col className="col-6">
+            <Col id="scoreboardCol">
                 <Row>
                     <p id="scoreboard">SCOREBOARD</p>
                 </Row>

@@ -28,9 +28,9 @@ router.get(`/fetchLeagues`, async (req, res, next) => {
       // grab the leagues for this user
       const user_id = data.user_id;
       const leagues = await axios.get(`https://api.sleeper.app/v1/user/${user_id}/leagues/nfl/2019`);
-      const leagues_data = leagues.data;
+      const league_data = leagues.data;
   
-      res.json(leagues_data);
+      res.json(league_data);
     }
   } catch(e) {
     next(e)
@@ -42,13 +42,14 @@ router.get(`/fetchRoster`, async (req, res, next) => {
 
     // find the league if its in database or through API
     const league_id = req.query.league_id;
-    const resRoster = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/users`);
-    const data = resRoster.data;
 
     const rosterFromDatabase = await SleeperRoster.find({ "league_id": league_id });
 
     // if this league isn't in the database
     if (!rosterFromDatabase.length) {
+
+      const resRoster = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/users`);
+      const data = resRoster.data;
 
       // pull the relevant info from the API and push it into a new array
       const arrayRoster = [];
@@ -122,6 +123,19 @@ router.get(`/fetchMatchupPoints`, async (req, res, next) => {
     console.log(array);
 
     res.json(array)
+
+  } catch(e) {
+    next(e)
+  }
+})
+
+router.get(`/fetchGraphPPG`, async (req, res, next) => {
+  try {
+    const league_id = req.query.league_id;
+    const response = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/rosters`);
+    const data = response.data;
+
+    res.json(data)
 
   } catch(e) {
     next(e)

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { fetchAvatar, refactoredMatchups, closeOne, topScorer } from '../../actions';
+import { refactoredMatchups, closeOne, topScorer } from '../../actions';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
 import Scoreboard from "../../components/Scoreboard";
-import PureComponent from "../../components/GraphPPG";
+import GraphPPG from "../../components/GraphPPG";
 import Standouts from '../../components/Standouts';
 
 import Container from "react-bootstrap/Container";
@@ -139,7 +139,7 @@ class Report extends Component {
             <Standouts />
           </Row>
           <Row>
-            <PureComponent />
+            <GraphPPG />
           </Row>
         </Container>
       </div>
@@ -158,5 +158,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchAvatar, refactoredMatchups, closeOne, topScorer })(Report);
+export default connect(mapStateToProps, { refactoredMatchups, closeOne, topScorer })(Report);
 

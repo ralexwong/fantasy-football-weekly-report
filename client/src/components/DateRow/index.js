@@ -8,8 +8,16 @@ import Col from 'react-bootstrap/Col';
 class DateRow extends React.Component {
 
     grabDate = () => {
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
         let today = new Date();
-        const date = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear()
+        const day = `${days[today.getDay()]}`;
+        const monthDate = `${months[today.getMonth()]}`
+        const dayDate = today.getDate();
+        const year = today.getFullYear();
+
+        const date = `${day}, ${monthDate} ${dayDate}, ${year}`;
         return date;
     }
 

@@ -5,11 +5,13 @@ import {
     SET_LEAGUE_ID,
     FETCH_PAYOUT,
     FETCH_MATCHUPPOINTS,
-    FETCH_AVATAR,
     SET_WEEK_TO_STATE,
     REFACTORED_MATCHUPS,
     TOP_SCORER,
-    CLOSE_ONE
+    CLOSE_ONE,
+    FETCH_GRAPHPPG,
+    REFACTORED_DATA,
+    REMOVE_GRAPH_DATA
 } from './types';
 import history from '../history';
 import axios from 'axios';
@@ -29,7 +31,7 @@ export const fetchLeagues = (username) => async dispatch => {
         await dispatch({ type: INVALID_USERNAME, payload: data });
         return;
     }
-    await dispatch({ type: FETCH_LEAGUES, payload: data });
+    dispatch({ type: FETCH_LEAGUES, payload: data });
     history.push('/input2');
 }
 
@@ -42,6 +44,8 @@ export const fetchRoster = (league_id) => async dispatch => {
         }
     })
     const data = response.data
+
+    console.log(data);
 
     dispatch({ type: FETCH_ROSTER, payload: data }) 
     history.push('/input3');
@@ -82,12 +86,6 @@ export const fetchPayout = () => async dispatch => {
     const response = await axios.get(``)
 }
 
-// Grab sleeper avatar ----------------------------------------------
-
-export const fetchAvatar = () => async dispatch => {
-
-}
-
 // Push refactored array of matchups so it can be displayed in a pair fashion ---------
 
 export const refactoredMatchups = (matchupArray) => dispatch => {
@@ -106,4 +104,37 @@ export const topScorer = (name, highscore, avatar) => dispatch => {
 export const closeOne = (name, difference, avatar) => async dispatch => {
     const closeOne = { name, difference, avatar };
     dispatch({ type: CLOSE_ONE, payload: closeOne })
+}
+
+// Fetch the data for graphPPG -------------------------------------------------------
+
+export const fetchGraphPPG = (league_id) => async dispatch => {
+    const response = await axios.get(`api/sleeper/fetchGraphPPG`, {
+        params: {
+            league_id: league_id
+        }
+    })
+    const data = response.data;
+    // const array = [];
+
+    // for (let i = 0; i < data.length; i++) {
+    //     const settings = data[i].settings;
+    //     let PPG = (parseInt(settings.fpts) / (parseInt(settings.wins) + parseInt(settings.losses)))
+        
+    //     array.push({ })
+    // }
+
+    dispatch({ type: FETCH_GRAPHPPG, payload: data });
+}
+
+// Push refactored data for graphPPG ------------------------------------
+
+export const refactorData = (data) => dispatch => {
+    dispatch({ type: REFACTORED_DATA, payload: data})
+}
+
+// remove graph data cause the names won't reassign -----------------------
+
+export const removeGraphData = () => dispatch => {
+    dispatch({ type: REMOVE_GRAPH_DATA })
 }

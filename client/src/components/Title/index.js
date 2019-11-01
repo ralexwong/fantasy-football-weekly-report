@@ -7,10 +7,7 @@ function Title() {
             <div id="titleDiv">
                 <div>
                     <p id="title">DIRTY TRIBUNE</p>
-                </div>
-
-                <div>
-                    <p id="caption">Welcome to the shitshow</p>
+                    <p id="caption">Fantasy football is about proving that you are better than your friends. </p>
                 </div>
             </div>
         </div>
