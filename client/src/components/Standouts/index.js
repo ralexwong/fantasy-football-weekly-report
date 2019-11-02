@@ -4,6 +4,7 @@ import {  } from '../../actions';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import './style.css';
 
 class Standouts extends Component {
 
@@ -24,14 +25,12 @@ class Standouts extends Component {
         }
 
         return (
-            <div style={{ padding: '0 0 0 20px  '}}>
-                {this.props.topScorer ? 
-                (
+            <div id="mainCol">
                 <Col>
-                    <Row>
+                    <Row id="topCard">
                         <Col>
                             <Row>
-                                <p id="scoreboard">TOP SCORER</p>
+                                <p className="cardTitle">TOP SCORER</p>
                             </Row>
                             <Card style={{ width: '18rem' }}>
                                 <Card.Img variant="top" src={topScorerUrl} />
@@ -47,7 +46,7 @@ class Standouts extends Component {
                     <Row>
                         <Col>
                             <Row>
-                                <p id="scoreboard">CLOSE ONE</p>
+                                <p className="cardTitle">CLOSE ONE</p>
                             </Row>
                             <Card style={{ width: '18rem' }}>
                                 <Card.Img variant="top" src={closeOneUrl} />
@@ -61,11 +60,6 @@ class Standouts extends Component {
                         </Col>
                     </Row>
                 </Col>
-                ) 
-                :
-                (
-                <div></div>
-                )}
             </div>
         )
     }

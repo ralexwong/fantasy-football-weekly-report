@@ -17,4 +17,13 @@
 .scoreboardRow {
     border: 2px solid black;
     margin-top: 50px;
+    font-size:25px;
+}
+
+.points {
+    text-align: center;
+}
+
+.record {
+    text-align: center;
 }
