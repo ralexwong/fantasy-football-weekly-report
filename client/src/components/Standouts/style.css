@@ -19,7 +19,25 @@
     margin-top: 30px;
 }
 
-.card {
-    max-height: 325px;
-    border: none;
+
+.innerDiv {
+    border: 3px solid black;
+    margin: 2px;
+}
+
+.outerDiv {
+    border: 8px solid black;
+}
+
+.lowerDiv {
+    border: 8px solid black;
+    border-top: none;
+    text-align: center;
+    font-size:20px;
+    font-weight: 600;
+}
+
+.cardImage {
+    display: block;
+    width: 250px;
 }

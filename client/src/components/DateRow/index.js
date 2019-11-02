@@ -26,11 +26,11 @@ class DateRow extends React.Component {
         return (
             <Row id="dateRowDiv">
                 <img src="" alt=""></img>
-                <Col className="col-10">
+                <Col>
                     {this.grabDate()}
                 </Col>
-                <Col >
-                    <p>Season 1 | Week {this.props.week}</p>
+                <Col>
+                    <p style={{float: 'right'}}>Season 1 | Week {this.props.week}</p>
                 </Col>
             </Row>
         );
