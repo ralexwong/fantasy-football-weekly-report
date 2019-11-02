@@ -115,14 +115,6 @@ export const fetchGraphPPG = (league_id) => async dispatch => {
         }
     })
     const data = response.data;
-    // const array = [];
-
-    // for (let i = 0; i < data.length; i++) {
-    //     const settings = data[i].settings;
-    //     let PPG = (parseInt(settings.fpts) / (parseInt(settings.wins) + parseInt(settings.losses)))
-        
-    //     array.push({ })
-    // }
 
     dispatch({ type: FETCH_GRAPHPPG, payload: data });
 }

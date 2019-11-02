@@ -4,6 +4,7 @@ import {
 } from 'recharts';
 import { connect } from 'react-redux';
 import { fetchGraphPPG, refactorData, removeGraphData } from '../../actions';
+import './style.css'
 
 
 
@@ -41,9 +42,8 @@ class GraphPPG extends React.Component {
   }
 
   render() {
-    const data = this.props.data;
-    // const data = [
-    //   {
+    const data = (this.props.data ? (this.props.data) : ( ''
+    //   [{
     //     name: 'Page A', wins: 4000, pv: 2400, amt: 2400,
     //   },
     //   {
@@ -64,25 +64,30 @@ class GraphPPG extends React.Component {
     //   {
     //     name: 'Page G', wins: 3490, pv: 4300, amt: 2100,
     //   },
-    // ];
+    ))
     return (
-        <BarChart
-          width={1200}
-          height={700}
-          data={data}
-          margin={{
-            top: 20, right: 30, left: 20
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
-          <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
-          <Tooltip />
-          <Legend width={100} wrapperStyle={{ top: 20, right: 90, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' }} />
-          <Bar yAxisId="left" dataKey="PPG" fill="#8884d8" />
-          <Bar yAxisId="right" dataKey="wins" fill="#82ca9d" />
-        </BarChart>
+      <div style={{ 'margin-top': '30px' }}>
+          <div id="graphTitle">
+            <p>Wins and PPG</p>
+          </div>
+          <BarChart
+            width={1200}
+            height={700}
+            data={data}
+            margin={{
+              top: 20, right: 70, left: 20
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
+            <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
+            <Tooltip />
+            <Legend width={100} wrapperStyle={{ top: 20, right: 130, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '20px' }} />
+            <Bar yAxisId="left" dataKey="PPG" fill="#8884d8" />
+            <Bar yAxisId="right" dataKey="wins" fill="#82ca9d" />
+          </BarChart>
+        </div>
     );
   }
 }

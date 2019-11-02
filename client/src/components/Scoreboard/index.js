@@ -8,6 +8,18 @@ import ScoreboardRow from '../ScoreboardRow';
 
 class Scoreboard extends React.Component {
 
+    marginAdjust = (matchupsLength) => {
+        if (matchupsLength > 5) {
+            return "'margin-top': '50px'"
+        }
+        if (matchupsLength === 5) {
+            return "'margin-top': '70px'"
+        }
+        if (matchupsLength < 5) {
+            return "'margin-top': '100px'"
+        }
+    }
+
     render() {
         return (
             <Col id="scoreboardCol">
