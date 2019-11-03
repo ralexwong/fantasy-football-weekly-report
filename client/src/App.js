@@ -13,6 +13,7 @@ import Report from './pages/Report/Report';
 import Input1 from './pages/Input/Input';
 import Input2 from './pages/Input2/Input2';
 import Input3 from './pages/Input3/Input3';
+import Report2 from './pages/Report2/Report2'
 
 import history from './history';
 
@@ -33,6 +34,7 @@ function App() {
           <Route exact path ="/input1" component={Input1} />
           <Route exact path ="/input2" component={Input2} />
           <Route exact path ="/input3" component={Input3} />
+          <Route exact path ="/report2" component={Report2} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />

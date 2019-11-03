@@ -94,6 +94,15 @@ class Nav extends Component {
                 Input3
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={window.location.pathname === "/report2" ? "nav-link active" : "nav-link"}
+                to="/report2"
+              >
+                report2
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

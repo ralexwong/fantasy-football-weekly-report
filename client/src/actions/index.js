@@ -11,7 +11,11 @@ import {
     CLOSE_ONE,
     FETCH_GRAPHPPG,
     REFACTORED_DATA,
-    REMOVE_GRAPH_DATA
+    REMOVE_GRAPH_DATA,
+    SET_GRAPH_POINTS_TO_STATE,
+    SET_WAIVERS_TO_STATE,
+    LAST_PLACE_TO_STATE,
+    FIRST_PLACE_TO_STATE
 } from './types';
 import history from '../history';
 import axios from 'axios';
@@ -25,7 +29,7 @@ export const fetchLeagues = (username) => async dispatch => {
             username: username
         }
     })
-    const data = await response.data;
+    const data = response.data;
     console.log(data);
     if (data === "is not valid username") {
         await dispatch({ type: INVALID_USERNAME, payload: data });
@@ -129,4 +133,23 @@ export const refactorData = (data) => dispatch => {
 
 export const removeGraphData = () => dispatch => {
     dispatch({ type: REMOVE_GRAPH_DATA })
+}
+
+// push graph points to state ---------------------------------------
+
+export const setGraphPointsToState = (data) => dispatch => {
+    dispatch({ type: SET_GRAPH_POINTS_TO_STATE, payload: data})
+}
+
+// push waivers data to state -------------------------------------
+
+export const setWaiversToState = (data) => dispatch => {
+    dispatch({ type: SET_WAIVERS_TO_STATE, payload: data })
+}
+
+// push cards data to state ---------------------------------------
+
+export const setCardsToState = (first_place, last_place) => dispatch => {
+    dispatch({ type: LAST_PLACE_TO_STATE, payload: last_place })
+    dispatch({ type: FIRST_PLACE_TO_STATE, payload: first_place })
 }

@@ -46,7 +46,7 @@ class Input1 extends Component {
     return (
       <Container>
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-                <Field name="username" component={this.renderInput} label="Enter Title" />
+                <Field name="username" component={this.renderInput} label="Enter Username" />
                 <button className="ui button primary">Submit</button>
             </form>
       </Container>

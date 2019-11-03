@@ -10,7 +10,11 @@ import {
     CLOSE_ONE,
     FETCH_GRAPHPPG,
     REFACTORED_DATA,
-    REMOVE_GRAPH_DATA
+    REMOVE_GRAPH_DATA,
+    SET_GRAPH_POINTS_TO_STATE,
+    SET_WAIVERS_TO_STATE,
+    LAST_PLACE_TO_STATE,
+    FIRST_PLACE_TO_STATE
     
 } from '../actions/types';
 
@@ -76,7 +80,15 @@ export default (state = initialState, action) => {
         case REFACTORED_DATA:
             return { ...state, graphPPG: action.payload }
         case REMOVE_GRAPH_DATA:
-            return { ...state, graphPPG: null }
+            return { ...state, graphPPG: null, graphPoints: null }
+        case SET_GRAPH_POINTS_TO_STATE:
+            return { ...state, graphPoints: action.payload }
+        case SET_WAIVERS_TO_STATE:
+            return { ...state, waivers: action.payload }
+        case LAST_PLACE_TO_STATE:
+            return { ...state, last_place: action.payload }
+        case FIRST_PLACE_TO_STATE:
+            return { ...state, first_place: action.payload }
         default:
             return state;
     }
