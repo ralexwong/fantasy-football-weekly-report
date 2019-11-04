@@ -15,7 +15,9 @@ import {
     SET_GRAPH_POINTS_TO_STATE,
     SET_WAIVERS_TO_STATE,
     LAST_PLACE_TO_STATE,
-    FIRST_PLACE_TO_STATE
+    FIRST_PLACE_TO_STATE,
+    SET_RECAP_TO_STATE
+
 } from './types';
 import history from '../history';
 import axios from 'axios';
@@ -152,4 +154,10 @@ export const setWaiversToState = (data) => dispatch => {
 export const setCardsToState = (first_place, last_place) => dispatch => {
     dispatch({ type: LAST_PLACE_TO_STATE, payload: last_place })
     dispatch({ type: FIRST_PLACE_TO_STATE, payload: first_place })
+}
+
+// push recap data to state -----------------------------------
+
+export const setRecapToState = (data) => dispatch => {
+    dispatch({ type: SET_RECAP_TO_STATE, payload: data })
 }

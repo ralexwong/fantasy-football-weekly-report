@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { refactoredMatchups, closeOne, topScorer } from '../../actions';
+import './report2.css'
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
-import TeamNames from '../../components/Report2/TeamNames';
 import GraphPoints from '../../components/Report2/GraphPoints';
 import Waivers from '../../components/Report2/Waivers';
 import Cards from '../../components/Report2/Cards';
+import Recap from '../../components/Report2/Recap';
 
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
 
 
 class Report2 extends Component {
@@ -37,8 +37,8 @@ class Report2 extends Component {
           <Title />
           <DateRow />
           <Row style={rowStyle}>
-              <Col>
-              
+              <Col className = "recapCol">
+                <Recap />
               </Col>
               <Col>
                 <Cards />

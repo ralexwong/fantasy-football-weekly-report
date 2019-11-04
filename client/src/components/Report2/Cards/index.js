@@ -18,7 +18,7 @@ class Cards extends Component {
 
     refactorData = (roster, league_info) => {
         let first_place = {name: '', wins: 0, fpts: 0};
-        let last_place = {name: '', wins: 100, fpts: 1000};
+        let last_place = {name: '', wins: 100, fpts: 9999};
 
         for (let i = 0; i < roster.length; i++) {
             if (roster[i].settings.wins > first_place.wins) {
@@ -37,9 +37,11 @@ class Cards extends Component {
         for (let i = 0; i < league_info.length; i++) {
             if (league_info[i].user_id === first_place.name) {
                 first_place.name = league_info[i].display_name;
+                first_place.avatar = league_info[i].avatar;
             }
             if (league_info[i].user_id === last_place.name) {
                 last_place.name = league_info[i].display_name;
+                last_place.avatar = league_info[i].avatar;
             }          
         }
 
@@ -51,42 +53,43 @@ class Cards extends Component {
 
         return (
             <div id="mainCol">
-                <Col>
-                    <Row id="topCard">
-                        <Col>
-                            <Row>
-                                <p className="cardTitle">FIRST PLACE</p>
-                            </Row>
+            <Col>
+                <Row id="topCard">
+                    <Col>
+                        <Row>
+                            <p className="cardTitle">FIRST PLACE</p>
+                        </Row>
 
-                            <div className='outerDiv'>
-                                <div className='innerDiv'>
-                                    <img className="cardImage" />
-                                </div>
+                        <div className='outerDiv'>
+                            <div className='innerDiv'>
+                                <img src={`http://sleepercdn.com/avatars/${this.props.first_place.avatar}`} className="cardImage" />
                             </div>
-                            <div className='lowerDiv'>
-                                <p></p>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Row>
-                                <p className="cardTitle">LAST PLACE</p>
-                            </Row>
+                        </div>
+                        <div className='cardsLowerDiv'>
+                            <p>{this.props.first_place.name}</p>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Row>
+                            <p className="cardTitle">LAST PLACE</p>
+                        </Row>
 
-                            <div className='outerDiv'>
-                                <div className='innerDiv'>
-                                    <img  className="cardImage" />
-                                </div>
+                        <div className='outerDiv'>
+                            <div className='innerDiv'>
+                                <img src={`http://sleepercdn.com/avatars/${this.props.last_place.avatar}`} className="cardImage" />
                             </div>
-                            <div className='lowerDiv'>
-                                <p></p>
-                            </div>
-                        </Col>
-                    </Row>
-                </Col>
-            </div>
+                        </div>
+                        <div className='cardsLowerDiv'>
+                            <p>{this.props.last_place.name}</p>
+                        </div>
+                    </Col>
+                </Row>
+            </Col>
+        </div>
         )
+        
     }
 }
 

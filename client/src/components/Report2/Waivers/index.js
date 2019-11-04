@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { setWaiversToState } from '../../../actions';
+import Row from 'react-bootstrap/Row';
 
 
 import Table from 'react-bootstrap/Table'
@@ -38,28 +39,33 @@ class Waivers extends Component {
 
     render() {
         return (
-            <Table striped bordered >
-                <thead>
-                    <tr>
-                    <th>Team Name</th>
-                    <th>Order</th>
-                    <th>Budget</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.waivers ? 
-                    (
-                        this.props.waivers.map(player => (
-                            <tr key={player.waiverOrder}>
-                                <td>{player.name}</td>
-                                <td>{player.waiverOrder}</td>
-                                <td>{player.budget}</td>
-                            </tr>
-                        ))
-                    ) : 
-                    ('')}
-                </tbody>
-            </Table>
+            <Fragment>
+                <Row>
+                    <p className="cardTitle">WAIVER ORDER</p>
+                </Row>
+                <Table striped bordered >
+                    <thead>
+                        <tr>
+                        <th>Team Name</th>
+                        <th>Order</th>
+                        <th>Budget</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.waivers ? 
+                        (
+                            this.props.waivers.map(player => (
+                                <tr key={player.waiverOrder}>
+                                    <td>{player.name}</td>
+                                    <td>{player.waiverOrder}</td>
+                                    <td>{player.budget}</td>
+                                </tr>
+                            ))
+                        ) : 
+                        ('')}
+                    </tbody>
+                </Table>
+            </Fragment>
         )
     }
 }

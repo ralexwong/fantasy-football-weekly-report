@@ -14,7 +14,8 @@ import {
     SET_GRAPH_POINTS_TO_STATE,
     SET_WAIVERS_TO_STATE,
     LAST_PLACE_TO_STATE,
-    FIRST_PLACE_TO_STATE
+    FIRST_PLACE_TO_STATE,
+    SET_RECAP_TO_STATE
     
 } from '../actions/types';
 
@@ -44,13 +45,24 @@ const closeOne = {
     avatar: 'c31055dd8932445db1d1745e5ce89dc2'
 }
 
+const first_place = {
+    name: 'name',
+    avatar: 'c31055dd8932445db1d1745e5ce89dc2'
+}
+
+const last_place = {
+    name: 'name',
+    avatar: 'c31055dd8932445db1d1745e5ce89dc2'
+}
+
 const initialState = {
     nullUsername: null,
     leagues: null,
     matchups: matchups,
     topScorer: topScorer,
-    closeOne: closeOne
-
+    closeOne: closeOne,
+    first_place,
+    last_place
 }
 
 
@@ -89,6 +101,8 @@ export default (state = initialState, action) => {
             return { ...state, last_place: action.payload }
         case FIRST_PLACE_TO_STATE:
             return { ...state, first_place: action.payload }
+        case SET_RECAP_TO_STATE:
+            return { ...state, recap: action.payload }
         default:
             return state;
     }
