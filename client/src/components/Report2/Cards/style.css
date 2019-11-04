@@ -15,17 +15,17 @@
 }
 
 #mainCol {
-    padding: 0 0 0 20px;
+    padding: 0 0 0 40px;
     margin-top: 30px;
 }
 
 
-.innerDiv {
+.cardsInnerDiv {
     border: 3px solid black;
     margin: 2px;
 }
 
-.outerDiv {
+.cardsOuterDiv {
     border: 8px solid black;
 }
 
@@ -35,7 +35,7 @@
     z-index: 3;
     bottom: 7%;
     background: white;
-    width: 30%;
+    width: 50%;
     margin: auto;
     border: 2px solid black;
     font-size:20px;
@@ -43,7 +43,7 @@
 }
 
 
-.cardImage {
+.cardImage1 {
     display: block;
     width: 250px;
 }

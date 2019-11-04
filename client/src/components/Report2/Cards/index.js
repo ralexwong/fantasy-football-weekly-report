@@ -53,7 +53,6 @@ class Cards extends Component {
 
         return (
             <div id="mainCol">
-            <Col>
                 <Row id="topCard">
                     <Col>
                         <Row>
@@ -86,7 +85,6 @@ class Cards extends Component {
                         </div>
                     </Col>
                 </Row>
-            </Col>
         </div>
         )
         

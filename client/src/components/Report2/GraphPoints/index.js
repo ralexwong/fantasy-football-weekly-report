@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
 import { connect } from 'react-redux';
 import { fetchGraphPPG, setGraphPointsToState, removeGraphData } from '../../../actions';
@@ -49,7 +49,7 @@ class GraphPoints extends React.Component {
     return (
       <div style={{ 'margin-top': '30px' }}>
           <div id="graphTitle">
-            <p>Cumaltive PF and PA</p>
+            <p>Cumulative PF and PA</p>
           </div>
           <BarChart
             width={1200}

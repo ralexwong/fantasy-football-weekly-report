@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { fetchMatchupPoints, setWeekToState } from '../../actions';
 
 import Container from "react-bootstrap/Container";
+import './input3.css'
 
 class Input3 extends Component {
     componentDidMount() {
@@ -16,7 +17,7 @@ class Input3 extends Component {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
         return (
             <div className={className}>
-                <label>{label}</label>
+                <label>{label}: </label>
                 <input {...input} autoComplete="off" />
             </div>
         ); // {...input} === onChange={formProps.input.onChange}  value={formProps.input.value}
@@ -30,7 +31,12 @@ class Input3 extends Component {
 
   render() {
     return (
-      <Container>
+      <Container fluid id="input3Container">
+          <div>
+              <h1 style={{ 'font-size': 100 }}>
+                  Select a week! 
+              </h1>
+          </div>
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                 <Field name="week" component={this.renderInput} label="Enter Week" />
                 <button className="ui button primary">Submit</button>

@@ -92,7 +92,7 @@ class Recap extends Component {
               <th>L</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody borderless>
             {(this.props.recap ? 
               (
                 this.props.recap.map((row, i) => (

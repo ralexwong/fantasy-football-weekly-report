@@ -49,7 +49,7 @@ class Nav extends Component {
         </button>
         <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
           <ul className="navbar-nav">
-          <li className="nav-item">
+            <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/report" ? "nav-link active" : "nav-link"}
@@ -61,12 +61,21 @@ class Nav extends Component {
             <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
+                className={window.location.pathname === "/report2" ? "nav-link active" : "nav-link"}
+                to="/report2"
+              >
+                Report2
+              </Link>
+            </li>
+            {/* <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
                 className={window.location.pathname === "/payouts" ? "nav-link active" : "nav-link"}
                 to="/payouts"
               >
                 Payouts
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
@@ -92,15 +101,6 @@ class Nav extends Component {
                 to="/input3"
               >
                 Input3
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                onClick={this.toggleNav}
-                className={window.location.pathname === "/report2" ? "nav-link active" : "nav-link"}
-                to="/report2"
-              >
-                report2
               </Link>
             </li>
           </ul>

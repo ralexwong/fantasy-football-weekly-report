@@ -37,13 +37,11 @@ class Report2 extends Component {
           <Title />
           <DateRow />
           <Row style={rowStyle}>
-              <Col className = "recapCol">
-                <Recap />
-              </Col>
-              <Col>
-                <Cards />
-                <Waivers />
-              </Col>
+            <Col className = "recapCol">
+              <Recap />
+            </Col>
+            <Cards />
+            {/* <Waivers /> */}
           </Row>
           <Row>
               <GraphPoints />

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchRoster, setLeague_id, fetchGraphPPG } from '../../actions';
 
 import Container from "react-bootstrap/Container";
+import './Input2.css'
 
 class Input2 extends Component {
     componentDidMount() {
@@ -21,21 +22,28 @@ class Input2 extends Component {
     mapLeagues = (leagues) => {
         return leagues.map(league => {
             return (
-                <div id={league.league_id} key={league.league_id} onClick={(e) => this.onClick(e)} >
+                <li id={league.league_id} key={league.league_id} onClick={(e) => this.onClick(e)} >
                     {league.name}
-                </div>
+                </li>
             )
         })
     }
 
   render() {
     return (
-      <Container>
-          {this.props.leagues ? (
-            this.mapLeagues(this.props.leagues)
-          ) : (
-              <div>Leagues not found</div>
-          )}
+      <Container id="input2Container">
+          <div style={{ 'margin-bottom': '70px'}}>
+          <h1 style={{ 'font-size': 100 }}>
+                  Click on one league!
+              </h1>
+          </div>
+          <ul>
+            {this.props.leagues ? (
+                this.mapLeagues(this.props.leagues)
+            ) : (
+                <div>Leagues not found</div>
+            )}
+           </ul>
       </Container>
     )
   }

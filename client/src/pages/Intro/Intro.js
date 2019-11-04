@@ -15,18 +15,15 @@ class Index extends Component {
         <Row>
           <div className="block" id="main">
             <Container fluid>
-              <h1>
+              <h1 style={{ 'font-size': 100 }}>
                 Fantasy Football Weekly Reports
               </h1>
-              <h4>
-                Choose your platform, input your username, choose the week, and your weekly report will be ready!
-              </h4>
-              <Row>
-                <Col>
-                  <img src="./images/fantasy.jpg" alt =""></img>
+              <Row style={{ 'align-content': 'center' }}>
+                <Col id="imageDiv">
+                  <img className="introImages" src="./images/fantasy.jpg" alt =""></img>
                 </Col>
                 <Col>
-                  <img src="./images/fantasy2.jpg" alt=""></img>
+                  <img className="introImages" src="./images/fantasy2.jpg" alt=""></img>
                 </Col>
               </Row>
             </Container>
@@ -37,18 +34,11 @@ class Index extends Component {
         {/* ABOUT CARD START -----------------------> */}
         <Row>
           <div className="block" id="about">
-            <Container>
-              <Row>
-                <Col size="6">
-                  {/* <p className="aboutTitle">How it Works!</p> */}
-                  <h2>How it Works!</h2>
-                  <h4>
-                    Navigate onto the first input page and click on the platform you would like to see the report for. Input your username, 
-                    click on your league, choose the week, BLAM!! Weekly report.
-                  </h4>
-                </Col>
-              </Row>
-            </Container>
+            <h1 style={{ 'font-size': 100, 'margin-bottom': '50px' }}>How it Works!</h1>
+            <h4 style={{ 'font-size': 40 }}>
+              Navigate onto the first input page and click on the platform you would like to see the report for. Input your username, 
+              click on your league, choose the week, BLAM!! Weekly report. Click on Report2 for the second page after you have inputted all the fields.
+            </h4>
           </div>
         </Row>
         {/* ABOUT CARD START -----------------------> */}
@@ -56,11 +46,9 @@ class Index extends Component {
         {/* DEVS CARD START -----------------------> */}
         <Row>
           <div className="block" id="team">
-            <Row>
-              <Link to="/input">
-                <h1>Let's Get Started!</h1>
-              </Link>
-            </Row>
+            <Link to="/input1">
+              <h1 style={{ 'font-size': 100 }}>Let's Get Started!</h1>
+            </Link>
           </div>
         </Row>
         {/* DEVS CARD START -----------------------> */}
@@ -68,7 +56,6 @@ class Index extends Component {
         {/* DEVS CARD START -----------------------> */}
         <Row>
           <div className="block" id="policy">
-            <Container>
               <p id="policyTitle">Corporate Policy</p>
               <p id="policyText">
                 We are committed to complying with all U.S. regulations that
@@ -78,7 +65,6 @@ class Index extends Component {
                 services. Fantasy Football Weekly Report is not a regulated exchange under U.S.
                 securities laws.
               </p>
-            </Container>
           </div>
         </Row>
         <Row>

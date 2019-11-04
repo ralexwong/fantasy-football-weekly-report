@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { fetchLeagues } from '../../actions';
 
 import Container from "react-bootstrap/Container";
-
+import './input.css'
 
 class Input1 extends Component {
     componentDidMount() {
@@ -30,7 +30,7 @@ class Input1 extends Component {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
         return (
             <div className={className}>
-                <label>{label}</label>
+                <label>{label}: </label>
                 <input {...input} autoComplete="off" />
                 {this.renderError(meta)}
             </div>
@@ -44,7 +44,15 @@ class Input1 extends Component {
 
   render() {
     return (
-      <Container>
+      <Container fluid id="input1Container">
+          <div>
+              <h1 style={{ 'font-size': 100 }}>
+                  First enter your username here! 
+              </h1>
+              <h3>
+                (You can use my username if you want to test it out: <b>wongman</b>)
+              </h3>
+          </div>
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                 <Field name="username" component={this.renderInput} label="Enter Username" />
                 <button className="ui button primary">Submit</button>
