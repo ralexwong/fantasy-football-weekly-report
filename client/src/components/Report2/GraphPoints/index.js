@@ -52,7 +52,7 @@ class GraphPoints extends React.Component {
             <p>Cumulative PF and PA</p>
           </div>
           <BarChart
-            width={1200}
+            width={1300}
             height={700}
             data={data}
             margin={{

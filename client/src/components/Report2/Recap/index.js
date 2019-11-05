@@ -21,7 +21,7 @@ class Recap extends Component {
 
     for (let i = 0; i < roster.length; i++) {
       let settings = roster[i].settings;
-      let PPG = (parseInt(settings.fpts) / (parseInt(settings.wins) + parseInt(settings.losses)));
+      let PPG = parseFloat((parseInt(settings.fpts) / (parseInt(settings.wins) + parseInt(settings.losses))).toFixed(2));
       let PF = settings.fpts;
       let PA = settings.fpts_against;
       let wins = parseInt(settings.wins);
