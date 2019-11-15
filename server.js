@@ -30,7 +30,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.HEROKU_URI || "",
+  process.env.MONGODB_URI || "",
   {
     useCreateIndex: true,
     useNewUrlParser: true,
