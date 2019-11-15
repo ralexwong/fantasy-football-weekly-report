@@ -18,7 +18,8 @@ class Recap extends Component {
 
   refactorData = (roster, league_info) => {
     let combinedObjects = [];
-
+    console.log(roster);
+    
     for (let i = 0; i < roster.length; i++) {
       let settings = roster[i].settings;
       let PPG = parseFloat((parseInt(settings.fpts) / (parseInt(settings.wins) + parseInt(settings.losses))).toFixed(2));

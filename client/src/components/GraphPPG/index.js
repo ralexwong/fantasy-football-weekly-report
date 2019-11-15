@@ -23,7 +23,7 @@ class GraphPPG extends React.Component {
 
   refactorData = (roster, league_info) => {
     let combinedObjects = [];
-    console.log(roster);
+    
     for (let i = 0; i < roster.length; i++) {
       let settings = roster[i].settings;
       let PPG = (parseInt(settings.fpts) / (parseInt(settings.wins) + parseInt(settings.losses)))
@@ -37,7 +37,6 @@ class GraphPPG extends React.Component {
         }
       }
     }
-    console.log(combinedObjects);
     this.props.refactorData(combinedObjects)
   }
 

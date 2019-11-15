@@ -53,8 +53,6 @@ class Report extends Component {
     // sorts the points array by matchup_id
     points.sort(function (a, b) { return a.matchup_id - b.matchup_id })
 
-    console.log(points);
-
     // pushes the combined same matchup_id rosters together in the same object
     // and assigns each roster/points with a 1/2
     for (let i = 0; i < points.length; i += 2) {
@@ -71,12 +69,9 @@ class Report extends Component {
       combinedObjects.push(object);
     }
 
-    console.log(combinedObjects);
-
     // push the refactored matchups into state to be mapped out
     this.props.refactoredMatchups(combinedObjects);
 
-    console.log(points);
     this.topScorer(points);
 
     // requires the matchup array and cannot be called at the same time in a different component

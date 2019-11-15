@@ -19,17 +19,43 @@ class Cards extends Component {
     refactorData = (roster, league_info) => {
         let first_place = {name: '', wins: 0, fpts: 0};
         let last_place = {name: '', wins: 100, fpts: 9999};
+        console.log(roster);
 
         for (let i = 0; i < roster.length; i++) {
             if (roster[i].settings.wins > first_place.wins) {
+                first_place = {
+                    name: roster[i].owner_id, 
+                    wins: roster[i].settings.wins, 
+                    fpts: roster[i].settings.fpts
+                };
+            }
+
+            if (roster[i].settings.wins = first_place.wins) {
                 if (roster[i].settings.fpts > first_place.fpts) {
-                    first_place = {name: roster[i].owner_id, wins: roster[i].settings.wins, fpts: roster[i].settings.fpts};
+                    first_place = {
+                        name: roster[i].owner_id, 
+                        wins: roster[i].settings.wins, 
+                        fpts: roster[i].settings.fpts
+                    };
                 }
             }
 
-            if (roster[i].settings.wins < last_place.wins) {
-                if (roster[i].settings.fpts < last_place.fpts) {
-                    last_place = {name: roster[i].owner_id, wins: roster[i].settings.wins, fpts: roster[i].settings.fpts};
+            if (roster[i].settings.wins <= last_place.wins) {
+                if (roster[i].settings.wins < last_place.wins) {
+                    last_place = {
+                        name: roster[i].owner_id, 
+                        wins: roster[i].settings.wins, 
+                        fpts: roster[i].settings.fpts
+                    };
+                }
+                if (roster[i].settings.wins = last_place.wins) {
+                    if (roster[i].settings.fpts < last_place.fpts) {
+                        last_place = {
+                            name: roster[i].owner_id, 
+                            wins: roster[i].settings.wins, 
+                            fpts: roster[i].settings.fpts
+                        };
+                    }
                 }
             }
         }
