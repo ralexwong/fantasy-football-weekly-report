@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { } from '../../actions';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
 import './style.css';
 
 class Standouts extends Component {
@@ -35,7 +34,7 @@ class Standouts extends Component {
 
                             <div className='outerDiv'>
                                 <div className='innerDiv'>
-                                    <img src={topScorerUrl} className="cardImage" />
+                                    <img src={topScorerUrl} alt="poop" className="cardImage" />
                                 </div>
                             </div>
                             <div className='lowerDiv'>
@@ -51,7 +50,7 @@ class Standouts extends Component {
 
                             <div className='outerDiv'>
                                 <div className='innerDiv'>
-                                    <img src={closeOneUrl} className="cardImage" />
+                                    <img src={closeOneUrl} alt="poop" className="cardImage" />
                                 </div>
                             </div>
                             <div className='lowerDiv'>

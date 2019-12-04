@@ -3,7 +3,6 @@ import {
     INVALID_USERNAME,
     FETCH_ROSTER,
     SET_LEAGUE_ID,
-    FETCH_PAYOUT,
     FETCH_MATCHUPPOINTS,
     SET_WEEK_TO_STATE,
     REFACTORED_MATCHUPS,
@@ -88,9 +87,9 @@ export const setWeekToState = (week) => dispatch => {
 
 // Grabs the user's payouts for that league -----------------------------------------
 
-export const fetchPayout = () => async dispatch => {
-    const response = await axios.get(``)
-}
+// export const fetchPayout = () => async dispatch => {
+//     const response = await axios.get(``)
+// }
 
 // Push refactored array of matchups so it can be displayed in a pair fashion ---------
 

@@ -17,12 +17,21 @@ import Report2 from './pages/Report2/Report2'
 
 import history from './history';
 
+const style = {
+  margin: "0",
+  padding: "0",
+  boxSizing: "border-box",
+  fontFamily: "Lato, sans-serif",
+  fontWeight: "400",
+  fontSize: "16px",
+  lineHeight: "1.7"
+}
 
 
 function App() {
   return (
     <Router history={history}>
-      <div>
+      <div style={style}>
         <Nav />
         <Switch>
           <Route exact path="/" component={Intro} />

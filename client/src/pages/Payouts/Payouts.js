@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { fetchPayout } from '../../actions';
+// import { fetchPayout } from '../../actions';
 import Table from 'react-bootstrap/Table'
 
 class League extends Component {
@@ -77,7 +77,7 @@ const mapStateToProps = (state) => {
   return {  }
 }
 
-export default connect(mapStateToProps, { fetchPayout })(reduxForm({
+export default connect(mapStateToProps, {  })(reduxForm({
   form: 'payouts',
   validate
 })(League))

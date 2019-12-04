@@ -6,7 +6,6 @@ import './report2.css'
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
 import GraphPoints from '../../components/Report2/GraphPoints';
-import Waivers from '../../components/Report2/Waivers';
 import Cards from '../../components/Report2/Cards';
 import Recap from '../../components/Report2/Recap';
 

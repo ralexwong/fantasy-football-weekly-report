@@ -87,7 +87,7 @@ class Cards extends Component {
 
                         <div className='outerDiv'>
                             <div className='innerDiv'>
-                                <img src={`http://sleepercdn.com/avatars/${this.props.first_place.avatar}`} className="cardImage" />
+                                <img src={`http://sleepercdn.com/avatars/${this.props.first_place.avatar}`} alt="poop" className="cardImage" />
                             </div>
                         </div>
                         <div className='cardsLowerDiv'>
@@ -103,7 +103,7 @@ class Cards extends Component {
 
                         <div className='outerDiv'>
                             <div className='innerDiv'>
-                                <img src={`http://sleepercdn.com/avatars/${this.props.last_place.avatar}`} className="cardImage" />
+                                <img src={`http://sleepercdn.com/avatars/${this.props.last_place.avatar}`} alt="poop" className="cardImage" />
                             </div>
                         </div>
                         <div className='cardsLowerDiv'>
