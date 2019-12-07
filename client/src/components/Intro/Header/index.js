@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from "./style.module.scss";
+import "./style.scss"
 
 class Header extends Component {
     render() {
@@ -11,9 +12,11 @@ class Header extends Component {
 
                 <div className={styles.textBox}>
                     <h1 className={styles.headingPrimary}>
-                        <span className={styles.headingPrimaryMain}>Fantasy Football Weekly Reports</span>
-                        {/* <span className={styles.headingPrimarySub}>Its about proving that you are better than your friends</span> */}
+                        <span className={styles.headingPrimaryMain}>Fantasy Football</span>
+                        <span className={styles.headingPrimarySub}>Weekly Reports</span>
                     </h1>
+
+                    <a href="#" className="introPageBtn introPageBtn-white">Choose Your Platform!</a>
                 </div>
             </div>
         )

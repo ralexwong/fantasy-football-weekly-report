@@ -25,15 +25,10 @@
 .headingPrimary {
     color: white;
     text-transform: uppercase;
-}
+    margin-bottom: 60px;
 
-.headingPrimaryMain {
-    display: block;
-    font-size: 50px;
-    font-weight: 400;
-    letter-spacing: 5px;
+    backface-visibility: hidden;
 }
-
 
 .textBox {
     position: absolute;
@@ -41,12 +36,64 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    width: 100%;
 }
 
-// .headingPrimarySub {
-//     display: block;
-//     font-size: 2vw;
-//     font-weight: 700;
-//     letter-spacing: 6px;
+.headingPrimaryMain {
+    display: block;
+    font-size: 100px;
+    font-weight: 400;
+    letter-spacing: 5px;
 
-// }
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+
+    // animation-delay: 3s;
+    // animation-iteration-count: 3;
+    // animation-timing-function: ease-out;
+}
+
+.headingPrimarySub {
+    display: block;
+    font-size: 100px;
+    font-weight: 400;
+    letter-spacing: 5px;
+
+    animation-name: moveInRight;
+    animation-duration: 2s;
+
+    // animation-delay: 3s;
+}
+
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    // 80% {
+    //     transform: translateX(5px);
+    // }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    // 80% {
+    //     transform: translateX(-5px);
+    // }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
