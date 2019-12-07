@@ -1,0 +1,52 @@
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom,
+         rgba(122, 122, 122, 0.8),
+         rgba(34, 34, 34, 0.8)), 
+         url(../../../images/football.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+}
+
+.logoBox {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.headingPrimary {
+    color: white;
+    text-transform: uppercase;
+}
+
+.headingPrimaryMain {
+    display: block;
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: 5px;
+}
+
+
+.textBox {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+// .headingPrimarySub {
+//     display: block;
+//     font-size: 2vw;
+//     font-weight: 700;
+//     letter-spacing: 6px;
+
+// }
