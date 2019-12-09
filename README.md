@@ -27,12 +27,12 @@ The site will only be compatiatible with sleeper leagues for now. I want to have
 ## Suggestions/Feedback
 
 
-If you would like to suggest any improvements or have anything to say about the app please let me know through email at alexhwong@hotmail.com or https://www.linkedin.com/in/iamwong/
+If you would like to suggest any improvements or have anything to say about the app please let me know through email at alexhwong18@gmail.com or https://www.linkedin.com/in/iamwong/
 
 
 
 ## Support
 
 
-If you are having trouble using this site please let me know through linkedin https://www.linkedin.com/in/iamwong/ or shoot me an email at alexhwong@hotmail.com
+If you are having trouble using this site please let me know through linkedin https://www.linkedin.com/in/iamwong/ or shoot me an email at alexhwong18@gmail.com
 
