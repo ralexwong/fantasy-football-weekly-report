@@ -15,7 +15,7 @@ This app is aimed towards commissioners of fantasy football leagues who want to 
 ## Visuals
 
 
-![Image](./client/public/images/fantasy.jpg "fantasy")  ![Image](./client/public/images/fantasy2.jpg "fantasy2")
+![Image](./client/public/images/intro/fantasy.jpg "fantasy")  ![Image](./client/public/images/intro/fantasy2.jpg "fantasy2")
 
 
 ## Roadmap
