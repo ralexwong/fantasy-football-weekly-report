@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styles from "./style.module.scss";
-import "./style.scss"
 
 class Header extends Component {
     render() {
@@ -16,7 +15,7 @@ class Header extends Component {
                         <span className={styles.headingPrimarySub}>Weekly Reports</span>
                     </h1>
 
-                    <a href="#" className="introPageBtn introPageBtn-white">Choose Your Platform!</a>
+                    <a href="#" className={`${styles.btn} ${styles.btnWhite} ${styles.btnAnimated}`}>Choose Your Platform!</a>
                 </div>
             </div>
         )

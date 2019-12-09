@@ -1,9 +1,11 @@
+$headingFont: 5vw;
+
 .header {
-    height: 95vh;
+    height: 100vh;
     background-image: linear-gradient(
         to right bottom,
-         rgba(122, 122, 122, 0.8),
-         rgba(34, 34, 34, 0.8)), 
+         rgba(139, 199, 248, 0.8),
+         rgba(53, 73, 252, 0.8)), 
          url(../../../images/football.jpg);
     background-size: cover;
     background-position: top;
@@ -14,12 +16,12 @@
 
 .logoBox {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 3%;
+    left: 3%;
 }
 
 .logo {
-    height: 35px;
+    height: 4vw;
 }
 
 .headingPrimary {
@@ -41,7 +43,7 @@
 
 .headingPrimaryMain {
     display: block;
-    font-size: 100px;
+    font-size: $headingFont;
     font-weight: 400;
     letter-spacing: 5px;
 
@@ -55,16 +57,68 @@
 
 .headingPrimarySub {
     display: block;
-    font-size: 100px;
+    font-size: $headingFont;
     font-weight: 400;
     letter-spacing: 5px;
 
-    animation-name: moveInRight;
-    animation-duration: 2s;
+    animation: moveInRight 2s ease-out 1.5s;
+    animation-fill-mode: backwards;
 
     // animation-delay: 3s;
 }
 
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0, .2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0, .2);
+}
+
+.btnWhite {
+    background-color: white;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btnWhite::after {
+    background-color: white;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btnAnimated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+}
 
 @keyframes moveInLeft {
     0% {
@@ -91,6 +145,18 @@
     // 80% {
     //     transform: translateX(-5px);
     // }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
     100% {
         opacity: 1;
