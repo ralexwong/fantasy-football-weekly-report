@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Header from '../../components/Intro/Header'
-
-import styles from "./intro.module.scss";
+import Header from './Header'
 
 class Index extends Component {
   componentDidMount() {}

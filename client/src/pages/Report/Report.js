@@ -4,9 +4,9 @@ import { refactoredMatchups, closeOne, topScorer } from '../../actions';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
-import Scoreboard from "../../components/Scoreboard";
-import GraphPPG from "../../components/GraphPPG";
-import Standouts from '../../components/Standouts';
+import Scoreboard from "./Scoreboard";
+import GraphPPG from "./GraphPPG";
+import Standouts from './Standouts';
 
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
