@@ -16,7 +16,7 @@ class Header extends Component {
                         <span className={styles['headingPrimary--sub']}>Weekly Reports</span>
                     </h1>
 
-                    <Link to="#" className={`${styles.btn} ${styles['btn--white']} ${styles['btn--animated']}`}>Choose Your Platform!</Link>
+                    <Link to="#" className={`${styles.headingBtn} ${styles['headingBtn--white']} ${styles['headingBtn--animated']}`}>Choose Your Platform!</Link>
                 </div>
             </div>
         )

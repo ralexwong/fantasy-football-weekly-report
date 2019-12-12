@@ -1,13 +1,16 @@
 @import "../../base/base";
 @import "../../abstracts/variables";    
 @import '../../base/animations';
+@import '../../base/typography';
+@import '../../base/utilities';
+
 
 .header {
     height: 100vh;
     background-image: linear-gradient(
         to right bottom,
-         rgba($light-color, 0.8),
-         rgba($dark-color, 0.8)), 
+         rgba($light-blue, 0.8),
+         rgba($dark-blue, 0.8)), 
          url(../../../images/football.jpg);
     background-size: cover;
     background-position: top;
@@ -45,13 +48,10 @@
     backface-visibility: hidden;
 
     &--main {
-        display: block;
-        font-size: $headingFont;
-        font-weight: 400;
-        letter-spacing: .2rem;
+        @extend .headingPrimaryText;
     
-        animation-name: moveInLeft;
-        animation-duration: 2s;
+        // animation-name: moveInLeft;
+        // animation-duration: 2s;
     
         // animation-delay: 3s;
         // animation-iteration-count: 3;
@@ -59,71 +59,23 @@
     }
     
     &--sub {
-        display: block;
-        font-size: $headingFont;
-        font-weight: 400;
-        letter-spacing: .2rem;
+        @extend .headingPrimaryText;
     
-        animation: moveInRight 2s ease-out 1.5s;  //animation: animation-type duratation style delay
-        animation-fill-mode: backwards;
+        // animation: moveInRight 2s ease-out 1.5s;  //animation: animation-type duratation style delay
+        // animation-fill-mode: backwards;
     
         // animation-delay: 3s;
     }
 }
 
-.btn {
-    &:link,
-    &:visited {
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 1% 7%;
-        display: inline-block;
-        border-radius: 10rem;
-        transition: all .2s;
-        position: relative;
-        font-size: 1.6rem
-    }
-
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem rgba($black-color, .2);
-
-        &::after {
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0;
-        }
-    }
-
-    &:active {
-        transform: translateY(-1px);
-        box-shadow: 0 .5rem 1rem rgba($black-color, .2);
-    }
+.headingBtn {
+    @extend .btn;
 
     &--white {
-        background-color: $white-color;
-        color: $grey-color;
-
-        &::after {
-            background-color: $white-color;
-        }
-    }
-
-    &::after {
-        content: "";
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        border-radius: 10rem;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all .4s;
+        @extend .btn-white;
     }
 
     &--animated {
-        animation: moveInBottom .5s ease-out 3s;
-        animation-fill-mode: backwards;
+        @extend .btn-animated;
     }
-
 }

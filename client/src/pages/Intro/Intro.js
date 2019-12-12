@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from './Header'
+import About from './About'
 
 class Index extends Component {
   componentDidMount() {}
@@ -8,6 +9,7 @@ class Index extends Component {
     return (
       <div>
         <Header />
+        <About />
       </div>
     );
   }

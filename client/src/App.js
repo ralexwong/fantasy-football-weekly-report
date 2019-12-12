@@ -24,7 +24,8 @@ const style = {
   fontFamily: "Lato, sans-serif",
   fontWeight: "400",
   // fontSize: "16px",
-  lineHeight: "1.7"
+  lineHeight: "1.7",
+  color: "#777"
 }
 
 

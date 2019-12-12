@@ -1,0 +1,40 @@
+@import "../../abstracts/variables";    
+@import '../../base/animations';
+@import '../../base/utilities';
+@import '../../base/typography';
+
+.about {
+    background-color: $light-grey;
+    padding: 25rem 0;
+    margin-top: -15vh;
+
+}
+
+.aboutPrimary {
+    width: 100%;
+    text-align: center;
+    @extend .headingSecondaryText;    
+
+    // &:hover {
+    //     transform: skewY(2deg) skewX(15deg) scale(1.1);
+    //     text-shadow: .5rem 1rem 2rem rgba($black-color, .2);
+    
+    // }
+}
+
+.aboutTeritary {
+    @extend .headingTertiaryText;
+    margin-bottom: 1.5rem;
+}
+
+.aboutParagraph {
+    @extend .paragraph;
+}
+
+.aboutBtn {
+    @extend .btn-text;
+}
+
+.aboutRow {
+    margin: 0 auto;
+}
