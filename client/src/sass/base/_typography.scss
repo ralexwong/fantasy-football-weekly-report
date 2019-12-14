@@ -22,7 +22,7 @@
     transition: all .2s;
 
     &:hover {
-        transform: skewY(2deg) skewX(5deg) scale(1.1);
+        transform: skewY(1deg) skewX(5deg) scale(1.1);
         text-shadow: .5rem 1rem 2rem rgba($black-color, .2);
     
     }

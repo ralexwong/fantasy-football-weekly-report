@@ -9,10 +9,10 @@ import Col from 'react-bootstrap/Col';
 class About extends Component {
     render() {
         return (
-            <div className={styles.about}>
-                <h2 className={styles.aboutPrimary}>Exciting reports for cool people</h2>
+            <section className={styles.about}>
+                <h2 className={styles.aboutPrimary}>Exciting reports for exciting people</h2>
 
-                <Row className={styles.aboutRow}>
+                <Row>
                     <Col>
                         <h3 className={styles.aboutTeritary}>Spice up your league</h3>
                         <p className={styles.aboutParagraph}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -29,10 +29,14 @@ class About extends Component {
                     </Col>
 
                     <Col>
-
+                        <div classname={styles.aboutComposition}>
+                            <img src="./images/intro/payouts.jpg" alt="photo1" className={`${styles.aboutComposition__photo} ${styles['aboutComposition__photo--1']}`}></img>
+                            <img src="./images/intro/fantasy2.jpg" alt="photo2" className={`${styles.aboutComposition__photo} ${styles['aboutComposition__photo--2']}`}></img>
+                            <img src="./images/intro/fantasy.jpg" alt="photo3" className={`${styles.aboutComposition__photo} ${styles['aboutComposition__photo--3']}`}></img>
+                        </div>
                     </Col>
                 </Row>
-            </div>
+            </section>
         )
     }
 }
