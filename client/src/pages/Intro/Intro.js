@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Header from '../../components/Intro/Header'
-
-import styles from "./intro.module.scss";
+import Header from './Header'
+import About from './About'
+import Features from './Features'
 
 class Index extends Component {
   componentDidMount() {}
@@ -10,6 +10,8 @@ class Index extends Component {
     return (
       <div>
         <Header />
+        <About />
+        <Features />
       </div>
     );
   }

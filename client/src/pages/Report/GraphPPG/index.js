@@ -3,7 +3,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
 import { connect } from 'react-redux';
-import { fetchGraphPPG, refactorData, removeGraphData } from '../../actions';
+import { fetchGraphPPG, refactorData, removeGraphData } from '../../../actions';
 import './style.css'
 
 

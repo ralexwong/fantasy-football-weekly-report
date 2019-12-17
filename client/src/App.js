@@ -20,11 +20,12 @@ import history from './history';
 const style = {
   margin: "0",
   padding: "0",
-  boxSizing: "border-box",
+  boxSizing: "border-box inherit",
   fontFamily: "Lato, sans-serif",
   fontWeight: "400",
-  fontSize: "16px",
-  lineHeight: "1.7"
+  // fontSize: "16px",
+  lineHeight: "1.7",
+  color: "#777"
 }
 
 

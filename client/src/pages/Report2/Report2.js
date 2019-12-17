@@ -5,9 +5,9 @@ import './report2.css'
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
-import GraphPoints from '../../components/Report2/GraphPoints';
-import Cards from '../../components/Report2/Cards';
-import Recap from '../../components/Report2/Recap';
+import GraphPoints from './GraphPoints';
+import Cards from './Cards';
+import Recap from './Recap';
 
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
@@ -43,7 +43,7 @@ class Report2 extends Component {
             {/* <Waivers /> */}
           </Row>
           <Row>
-              <GraphPoints />
+            <GraphPoints />
           </Row>
         </Container>
       </div>
