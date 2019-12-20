@@ -3,6 +3,8 @@
 @import '../../base/animations';
 @import '../../base/typography';
 @import '../../base/utilities';
+@import '../../base/composition';
+
 
 .features {
     padding: 20rem 0;
@@ -12,6 +14,25 @@
          rgba($dark-blue, .8)), 
     url(../../../images/nat-4.jpg);
     background-size: cover;
+    margin-top: -8rem;
+
+    transform: skewY(-5deg);
+
+    & > * {
+        transform: skewY(5deg);
+
+    }
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.tertiary {
+    @extend .headingTertiaryText;
+    margin-bottom: $margin-bottom-small;
 }
 
 .box {
@@ -21,12 +42,18 @@
     text-align: center;
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba($black-color, .15);
+    transition: .2s all;
 
     &__icon {
-
+        font-size: 6rem;
+        margin-bottom: .5rem;
+        display: inline-block;
+        background-image: linear-gradient(to right, $light-blue, $dark-blue);
+        background-clip: text;
+        color: transparent;
     }
 
-    &__text {
-
+    &:hover {
+        transform: translateY(-1.5rem) scale(1.03);
     }
 }

@@ -22,7 +22,7 @@
     &__logoBox {
         position: absolute;
         top: 3%;
-        left: 3%;
+        left: 2%;
     }
 
     &__logo {
@@ -48,7 +48,7 @@
     backface-visibility: hidden;
 
     &--main {
-        @extend .headingPrimaryText;
+        @extend .headingText;
     
         // animation-name: moveInLeft;
         // animation-duration: 2s;
@@ -59,7 +59,7 @@
     }
     
     &--sub {
-        @extend .headingPrimaryText;
+        @extend .headingText;
     
         // animation: moveInRight 2s ease-out 1.5s;  //animation: animation-type duratation style delay
         // animation-fill-mode: backwards;

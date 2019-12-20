@@ -1,0 +1,11 @@
+@import "../../base/base";
+@import "../../abstracts/variables";    
+@import '../../base/animations';
+@import '../../base/typography';
+@import '../../base/utilities';
+@import '../../base/composition';
+
+
+.platformsPrimary {
+    @extend .headingPrimaryText;    
+}

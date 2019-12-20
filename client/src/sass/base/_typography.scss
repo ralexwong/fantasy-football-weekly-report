@@ -1,16 +1,14 @@
 @import "../abstracts/variables";    
 @import './animations';
 
-
-
-.headingPrimaryText {
+.headingText {
     display: block;
     font-size: $headingFont;
     font-weight: 400;
     letter-spacing: .2rem;
 }
 
-.headingSecondaryText {
+.headingPrimaryText {
     font-size: 3.5rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -20,6 +18,9 @@
     color: transparent;
     letter-spacing: 2px;
     transition: all .2s;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8rem;
 
     &:hover {
         transform: skewY(1deg) skewX(5deg) scale(1.1);
