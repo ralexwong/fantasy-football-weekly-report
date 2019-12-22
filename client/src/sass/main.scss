@@ -4,12 +4,16 @@
 @import 'abstracts/mixins';
 
 // base-----------------------------------
+@import 'base/animations';
+@import 'base/base';
+@import 'base/composition';
 @import 'base/typography';
 @import 'base/utilities';
 
 // components-----------------------------
-@import 'components/intro/header';
-@import 'components/intro/btn';
+
+@import 'components/intro/test';
+
 
 // pages---------------------------------
 @import 'pages/intro';

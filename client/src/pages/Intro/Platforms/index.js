@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import styles from "./../../../sass/components/intro/_platforms.module.scss";
 
 import Row from 'react-bootstrap/Row';
@@ -26,7 +27,11 @@ class Platforms extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className={`${styles.card__side} ${styles['card__side--back']} ${styles['card__side--back-1']}`}>back</div>
+                            <div className={`${styles.card__side} ${styles['card__side--back']} ${styles['card__side--back-1']}`}>
+                                <Link to="#" className={`${styles.platformBtn} ${styles['platformBtn--white']} ${styles['platformBtn--animated']}`}>
+                                    espn
+                                </Link>
+                            </div>
                         </div>
                     </Col>
 
@@ -36,9 +41,21 @@ class Platforms extends Component {
                                 <div className={`${styles.card__picture} ${styles['card__picture--2']}`}>
                                     &nbsp;
                                 </div>
-                                <div className={styles.card__details}></div>
+                                <div className={styles.card__details}>
+                                    <ul>
+                                        <li>3 day tour</li>
+                                        <li>up to 30 people</li>
+                                        <li>2 your guides</li>
+                                        <li>sleep in cozy hotels</li>
+                                        <li>difficulty: easy</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div className={`${styles.card__side} ${styles['card__side--back']} ${styles['card__side--back-2']}`}>back</div>
+                            <div className={`${styles.card__side} ${styles['card__side--back']} ${styles['card__side--back-2']}`}>
+                                <Link to="#" className={`${styles.platformBtn} ${styles['platformBtn--white']} ${styles['platformBtn--animated']}`}>
+                                    sleeper
+                                </Link>
+                            </div>
                         </div>
                     </Col>
 
@@ -48,9 +65,21 @@ class Platforms extends Component {
                                 <div className={`${styles.card__picture} ${styles['card__picture--3']}`}>
                                     &nbsp;
                                 </div>
-                                <div className={styles.card__details}></div>
+                                <div className={styles.card__details}>
+                                    <ul>
+                                        <li>3 day tour</li>
+                                        <li>up to 30 people</li>
+                                        <li>2 your guides</li>
+                                        <li>sleep in cozy hotels</li>
+                                        <li>difficulty: easy</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div className={`${styles.card__side} ${styles['card__side--back']} ${styles['card__side--back-3']}`}>back</div>
+                            <div className={`${styles.card__side} ${styles['card__side--back']} ${styles['card__side--back-3']}`}>
+                                <Link to="#" className={`${styles.platformBtn} ${styles['platformBtn--white']} ${styles['platformBtn--animated']}`}>
+                                    yahoo
+                                </Link>
+                            </div>
                         </div>
                     </Col>
                 </Row>
