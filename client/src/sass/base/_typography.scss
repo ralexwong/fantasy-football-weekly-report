@@ -8,7 +8,31 @@
     letter-spacing: .2rem;
 }
 
-.headingPrimaryText {
+.heading-primary {
+    color: $white-color;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+
+    backface-visibility: hidden;
+
+    &--main {
+        @extend .headingText;
+    
+        animation-name: moveInLeft;
+        animation-duration: 2s;
+    }
+    
+    &--sub {
+        @extend .headingText;
+    
+        animation: moveInRight 2s ease-out 1.5s;  //animation: animation-type duratation-style delay
+        animation-fill-mode: backwards;
+    
+        animation-delay: 2s;
+    }
+}
+
+.heading-secondary {
     font-size: 3.5rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -29,7 +53,7 @@
     }
 }
 
-.headingTertiaryText {
+.heading-tertiary {
     font-size: $default-font-size;
     font-weight: 700;
     text-transform: uppercase;

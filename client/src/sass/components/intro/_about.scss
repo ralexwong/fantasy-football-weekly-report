@@ -4,30 +4,7 @@
 @import '../../base/typography';
 @import '../../base/composition';
 
-.about {
-    background-color: $light-grey;
-    padding: 25rem 6rem 45rem 6rem;
-    margin-top: $margin-top;
-}
-
-.aboutPrimary {
-    @extend .headingPrimaryText;    
-}
-
-.aboutTeritary {
-    @extend .headingTertiaryText;
-    margin-bottom: $margin-bottom-small;
-}
-
-.aboutParagraph {
-    @extend .paragraph;
-}
-
-.aboutBtn {
-    @extend .btn-text;
-}
-
-.aboutComposition {
+.composition {
     position: relative;
 
     &__photo {

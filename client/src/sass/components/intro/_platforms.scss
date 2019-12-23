@@ -5,24 +5,6 @@
 @import '../../base/utilities';
 @import '../../base/composition';
 
-
-.platforms {
-    padding: 25rem 0 50rem 0;
-    background-color: $light-grey;
-    margin-top: -10rem;
-}
-
-.row {
-    display: flex;
-    justify-content: space-evenly;
-    margin-right: 0;
-    margin-left: 0;
-}
-
-.platformsPrimary {
-    @extend .headingPrimaryText;    
-}
-
 .card {
     perspective: 150rem;
     -moz-perspective: 150rem;
@@ -40,7 +22,7 @@
         backface-visibility: hidden;
         border-radius: 3px;
         box-shadow: 0 1.5rem 4rem rgba($black-color, .15);
-        overflow: hidden;
+        overflow: hidden;  
 
         &--front {
             background-color: $white-color;
@@ -125,10 +107,10 @@
 
 
     &--white {
-        @extend .btn-white;
+        @extend .btn--white;
     }
 
     &--animated {
-        @extend .btn-animated;
+        @extend .btn--animated;
     }
 }
