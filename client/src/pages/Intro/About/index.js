@@ -10,7 +10,7 @@ class About extends Component {
     render() {
         return (
             <section className='about'>
-                <h2 className='heading-secondary'>Exciting reports for exciting people</h2>
+                <h2 className='u-center-text u-margin-bottom-big heading-secondary'>Exciting reports for exciting people</h2>
 
                 <Row>
                     <Col>

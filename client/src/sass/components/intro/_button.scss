@@ -1,0 +1,108 @@
+@import "../../base/base";
+@import "../../abstracts/variables";    
+@import '../../base/animations';
+@import '../../base/typography';
+@import '../../base/utilities';
+
+
+.btn {
+    &,
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        text-align: center;
+        padding: 1% 7%;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+        font-size: $default-font-size;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        background-color: $white-color;
+        box-shadow: 0 1rem 2rem rgba($black-color, .2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($black-color, .2);
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &--white {
+        background-color: $white-color;
+        color: $grey-color;
+    
+        &::after {
+            background-color: $white-color;
+        }
+    }
+
+    &--blue {
+        background-color: $primary-color !important;
+        color: $white-color;
+    
+        &::after {
+            background-color: $primary-color;
+        }
+
+        &:hover {
+            background-color: $primary-color;
+            color: $white-color;
+        }
+    }
+    
+    &--animated {
+        // animation: moveInBottom .5s ease-out 3s;
+        animation-fill-mode: backwards;
+    }
+
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $primary-color;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $primary-color;
+        padding: 3px;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $primary-color;
+        color: $white-color;
+        box-shadow: 0 1rem 2rem rgba($black-color, .15);
+        transform: translateY(-2px);
+
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($black-color, .15);
+        transform: translateY(0);
+    }
+}
+
+
