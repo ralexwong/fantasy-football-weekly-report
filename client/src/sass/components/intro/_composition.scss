@@ -1,0 +1,46 @@
+@import "../../abstracts/variables";    
+@import '../../base/animations';
+@import '../../base/utilities';
+@import '../../base/typography';
+
+
+.composition {
+    position: relative;
+
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($black-color, .4);
+        border: 1px solid $black-color;
+        border-radius: 2px;
+        position: absolute;
+        z-index: 10;
+        transition: all .2s;
+        outline-offset: 2rem;
+
+        &--1 {
+            left: 0;
+            top: -2rem;
+        }
+
+        &--2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        &--3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1.5rem solid $primary-color;
+            transform: scale(1.05) translateY(5px);
+            box-shadow: 0 2.5rem 4 rem rgba($black-color, .5);
+            z-index: 20;
+        }
+    }
+
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+    }
+}

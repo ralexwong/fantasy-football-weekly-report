@@ -8,7 +8,7 @@ class Features extends Component {
     render() {
         return (
             <section className='features'>
-                <Row noGutters={true}>
+                <Row noGutters={true} className='rowSpace-evenly'>
                     <Col xs={11} sm={5} md={2}>
                         <div className='box'>
                             <i className='icon-basic-world box__icon'></i>

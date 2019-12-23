@@ -1,0 +1,27 @@
+@import "../../abstracts/variables";    
+@import '../../base/animations';
+@import '../../base/utilities';
+@import '../../base/typography';
+
+.box {
+    background-color: rgba($white-color, .8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($black-color, .15);
+    transition: .2s all;
+
+    &__icon {
+        font-size: 6rem;
+        margin-bottom: .5rem;
+        display: inline-block;
+        background-image: linear-gradient(to right, $light-blue, $dark-blue);
+        background-clip: text;
+        color: transparent;
+    }
+
+    &:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+    }
+}

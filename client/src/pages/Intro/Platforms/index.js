@@ -9,8 +9,8 @@ class Platforms extends Component {
     render() {
         return (
             <section className='platforms'>
-                <h2 className='heading-secondary'>Choose your platform</h2>
-                <Row noGutters={true}>
+                <h2 className='u-center-text u-margin-bottom-big heading-secondary'>Choose your platform</h2>
+                <Row noGutters={true} className='rowSpace-evenly'>
                     <Col xs={11} sm={5} md={3}>
                         <div className='card'>
                             <div className='card__side card__side--front card__side--front-1'>
@@ -84,9 +84,12 @@ class Platforms extends Component {
                     </Col>
                 </Row>
 
-                <Link to="#" className='platformBtn platformBtn--white platformBtn--animated'>
-                    yahoo
-                </Link>
+                <div className='u-center-text u-margin-top-huge'>
+                    <Link to="#" className='btn btn--blue btn--animated'>
+                        Let's Go!
+                    </Link>
+                </div>
+
             </section>
         )
     }

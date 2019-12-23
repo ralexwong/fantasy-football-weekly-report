@@ -43,13 +43,11 @@
     letter-spacing: 2px;
     transition: all .2s;
     width: 100%;
-    text-align: center;
     margin-bottom: 8rem;
 
     &:hover {
         transform: skewY(1deg) skewX(5deg) scale(1.1);
         text-shadow: .5rem 1rem 2rem rgba($black-color, .2);
-    
     }
 }
 
