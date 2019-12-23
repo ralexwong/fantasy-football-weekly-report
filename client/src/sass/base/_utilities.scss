@@ -1,9 +1,14 @@
 @import '../abstracts/variables';
+@import '../abstracts/functions';
+@import '../abstracts/mixins';
+@import './base';
+@import './composition';
 @import './typography';
 @import './animations';
 
 
 .btn {
+    &,
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -44,20 +49,20 @@
         transition: all .4s;
     }
 
-}
-
-.btn-white {
-    background-color: $white-color;
-    color: $grey-color;
-
-    &::after {
+    &--white {
         background-color: $white-color;
+        color: $grey-color;
+    
+        &::after {
+            background-color: $white-color;
+        }
     }
-}
+    
+    &--animated {
+        // animation: moveInBottom .5s ease-out 3s;
+        animation-fill-mode: backwards;
+    }
 
-.btn-animated {
-    animation: moveInBottom .5s ease-out 3s;
-    animation-fill-mode: backwards;
 }
 
 .btn-text {

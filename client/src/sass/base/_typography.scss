@@ -1,16 +1,38 @@
 @import "../abstracts/variables";    
 @import './animations';
 
-
-
-.headingPrimaryText {
+.headingText {
     display: block;
     font-size: $headingFont;
     font-weight: 400;
     letter-spacing: .2rem;
 }
 
-.headingSecondaryText {
+.heading-primary {
+    color: $white-color;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+
+    backface-visibility: hidden;
+
+    &--main {
+        @extend .headingText;
+    
+        animation-name: moveInLeft;
+        animation-duration: 2s;
+    }
+    
+    &--sub {
+        @extend .headingText;
+    
+        animation: moveInRight 2s ease-out 1.5s;  //animation: animation-type duratation-style delay
+        animation-fill-mode: backwards;
+    
+        animation-delay: 2s;
+    }
+}
+
+.heading-secondary {
     font-size: 3.5rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -20,6 +42,9 @@
     color: transparent;
     letter-spacing: 2px;
     transition: all .2s;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8rem;
 
     &:hover {
         transform: skewY(1deg) skewX(5deg) scale(1.1);
@@ -28,7 +53,7 @@
     }
 }
 
-.headingTertiaryText {
+.heading-tertiary {
     font-size: $default-font-size;
     font-weight: 700;
     text-transform: uppercase;

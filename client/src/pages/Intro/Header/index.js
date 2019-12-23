@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
-import styles from "./../../../sass/components/intro/_header.module.scss";
+import "../../../sass/main.scss";
 
 class Header extends Component {
     render() {
         return (
-            <div className={styles.header}>
-                <div className={styles.header__logoBox}>
-                    <img className={styles.header__logo} src="/images/intro/logo-white.png" alt="logo"></img>
+            <header className='header'>
+                <div className='header__logo-box'>
+                    <img className='header__logo' src="/images/intro/logo-white.png" alt="logo"></img>
                 </div>
 
-                <div className={styles.header__textBox}>
-                    <h1 className={styles.headingPrimary}>
-                        <span className={styles['headingPrimary--main']}>Fantasy Football</span>
-                        <span className={styles['headingPrimary--sub']}>Weekly Reports</span>
+                <div className='header__text-box'>
+                    <h1 className='heading-primary'>
+                        <span className='heading-primary--main'>Fantasy Football</span>
+                        <span className='heading-primary--sub'>Weekly Reports</span>
                     </h1>
 
-                    <Link to="#" className={`${styles.headingBtn} ${styles['headingBtn--white']} ${styles['headingBtn--animated']}`}>Choose Your Platform!</Link>
+                    <Link to="#" className='btn btn--white btn--animated'>Choose Your Platform!</Link>  
                 </div>
-            </div>
+            </header>
         )
     }
 }
