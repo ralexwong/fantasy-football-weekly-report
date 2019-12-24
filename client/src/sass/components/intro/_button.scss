@@ -105,4 +105,19 @@
     }
 }
 
+.platformBtn {
+    font-size: 3rem;
+    top: 70%;
+
+    @extend .btn;
+
+    &--white {
+        @extend .btn--white;
+    }
+
+    &--animated {
+        @extend .btn--animated;
+    }
+}
+
 
