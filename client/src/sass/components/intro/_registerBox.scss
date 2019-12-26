@@ -1,0 +1,26 @@
+@import "../../abstracts/variables";    
+@import '../../base/animations';
+@import '../../base/utilities';
+@import '../../base/typography';
+
+
+.registerBox {
+    background-image: linear-gradient(
+                            105deg,
+                            rgba($white-color, .9) 0%, 
+                            rgba($white-color, .9) 50%,
+                            transparent 50%
+                            ),
+                    url(../../../images/nat-10.jpg);
+    background-size: 100%;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($black-color, .15);
+
+    height: 50rem;
+    width: 120rem;
+
+    &__form {
+        width: 50%;
+        padding: 6rem;
+    }
+}

@@ -4,6 +4,7 @@ import About from './About'
 import Features from './Features'
 import Platforms from './Platforms'
 import Reviews from './Reviews'
+import Register from './Register'
 
 class Index extends Component {
   componentDidMount() {}
@@ -16,6 +17,7 @@ class Index extends Component {
         <Features />
         <Platforms />
         <Reviews />
+        <Register />
       </div>
     );
   }
