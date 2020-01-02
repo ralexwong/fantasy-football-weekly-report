@@ -5,6 +5,7 @@ import Features from './Features'
 import Platforms from './Platforms'
 import Reviews from './Reviews'
 import Register from './Register'
+import IntroNav from "./Nav";
 
 class Index extends Component {
   componentDidMount() {}
@@ -12,6 +13,7 @@ class Index extends Component {
   render() {
     return (
       <div>
+        <IntroNav />
         <Header />
         <About />
         <Features />

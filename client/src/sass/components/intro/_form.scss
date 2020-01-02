@@ -1,7 +1,9 @@
 @import "../../abstracts/variables";    
+@import "../../abstracts/mixins";    
 @import '../../base/animations';
 @import '../../base/utilities';
 @import '../../base/typography';
+
 
 .form {
     &__group:not(:last-child) {
@@ -86,13 +88,11 @@
             height: 1.3rem;
             width: 1.3rem;
             border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             background-color: $primary-color;
             opacity: 0;
             transition: all .2s;
+
+            @include center-element;
         }
     }
 
