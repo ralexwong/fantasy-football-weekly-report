@@ -54,7 +54,7 @@
     &__list {
         list-style: none;
         text-align: center;
-        width: 100%;
+        padding: 0;
 
         @include center-element;
     }
@@ -67,18 +67,21 @@
             font-size: 3rem;
             font-weight: 500;
             display: inline-block;
-            padding: 1rem 2rem;
             color: $white-color;
             text-decoration: none;
             text-transform: uppercase;
             background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $white-color 50%);
             background-size: 230%;
-            transition: all .4s;
+            transition: all .01s;
+            width: 0;
+            height: 0;
+            visibility: hidden;
         }
 
         span {
             margin-right: 1.5rem;
             display: inline-block;
+            visibility: hidden;
         }
 
         &:hover,
@@ -95,10 +98,22 @@
         transform: scale(80);
     }
 
-        &__checkbox:checked ~ &__nav {
+    &__checkbox:checked ~ &__nav {
         opacity: 1;
         width: 100%;
         height: 100vh;
+    }
+
+    &__checkbox:checked ~ &__nav &__list &__item &__link {
+        width: 100%;
+        height: 100%;
+        padding: 1rem 2rem;
+        visibility: visible;
+
+        span {
+            visibility: visible;
+        }
+
     }
 
 
