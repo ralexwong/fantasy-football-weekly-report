@@ -4,10 +4,28 @@ import { Link } from "react-router-dom";
 import "../../../sass/main.scss";
 
 class IntroNav extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          open:true
+        }
+    }
+
+    stopScroll = () => {
+        if(this.state.open){
+            document.body.style.overflow = 'hidden';
+            this.setState({ open: false })
+          } else {
+            document.body.style.overflow = 'unset';
+            this.setState({ open: true })
+        }
+    }
+
     render() {
         return (
             <div className='navigation'>
-                <input type='checkbox' className='navigation__checkbox' id='navi-toggle' />
+                <input onClick={() => this.stopScroll()} type='checkbox' className='navigation__checkbox' id='navi-toggle' />
 
                 <label for='navi-toggle' className='navigation__button'>
                     <span className='navigation__icon'>&nbsp;</span>

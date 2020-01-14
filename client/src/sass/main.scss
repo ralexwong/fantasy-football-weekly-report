@@ -10,6 +10,10 @@
 @import 'base/typography';
 @import 'base/utilities';
 
+// reusable------------------------------
+
+@import 'components/intro/popUp';
+
 // components-----------------------------
 @import 'components/intro/bg-video';
 @import 'components/intro/button';

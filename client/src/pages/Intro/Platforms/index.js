@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link } from "react-router-dom";
+
 import "../../../sass/main.scss";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 class Platforms extends Component {
+
+    
     render() {
         return (
             <section className='platforms'>
@@ -76,9 +79,9 @@ class Platforms extends Component {
                                 </div>
                             </div>
                             <div className='card__side card__side--back card__side--back-3'>
-                                <Link to="#" className='platformBtn platformBtn--white platformBtn--animated'>
+                                <div  className='platformBtn platformBtn--white platformBtn--animated'>
                                     yahoo
-                                </Link>
+                                </div>
                             </div>
                         </div>
                     </Col>
@@ -89,7 +92,6 @@ class Platforms extends Component {
                         Let's Go!
                     </Link>
                 </div>
-
             </section>
         )
     }
