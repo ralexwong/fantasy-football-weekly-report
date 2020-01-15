@@ -1,11 +1,13 @@
-@import "../abstracts/variables";    
-@import './animations';
-
 .headingText {
     display: block;
     font-size: $headingFont;
     font-weight: 400;
     letter-spacing: .2rem;
+
+    @include respond(phone) {
+        letter-spacing: .1rem;
+        font-size: 6.5rem
+    }
 }
 
 .heading-primary {
@@ -20,6 +22,8 @@
     
         animation-name: moveInLeft;
         animation-duration: 2s;
+
+       
     }
     
     &--sub {
@@ -43,6 +47,14 @@
     letter-spacing: 2px;
     transition: all .2s;
     width: 100%;
+
+    @include respond(tab-port) {
+        font-size: 3rem;
+    }
+
+    @include respond(phone) {
+        font-size: 2.5rem;
+    }
 
     &:hover {
         transform: skewY(1deg) skewX(5deg) scale(1.1);

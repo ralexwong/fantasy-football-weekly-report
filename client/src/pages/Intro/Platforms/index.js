@@ -14,7 +14,7 @@ class Platforms extends Component {
             <section className='platforms'>
                 <h2 className='u-center-text u-margin-bottom-big heading-secondary'>Choose your platform</h2>
                 <Row noGutters={true} className='rowSpace-evenly'>
-                    <Col xs={11} sm={5} md={3}>
+                    <Col xs={9} sm={5} md={3}>
                         <div className='card'>
                             <div className='card__side card__side--front card__side--front-1'>
                                 <div className='card__picture card__picture--1'>
@@ -38,7 +38,7 @@ class Platforms extends Component {
                         </div>
                     </Col>
 
-                    <Col xs={11} sm={5} md={3}>
+                    <Col xs={9} sm={5} md={3}>
                         <div className='card'>
                             <div className='card__side card__side--front card__side--front-2'>
                                 <div className='card__picture card__picture--2'>
@@ -62,7 +62,7 @@ class Platforms extends Component {
                         </div>
                     </Col>
 
-                    <Col xs={11} sm={5} md={3}>
+                    <Col xs={9} sm={5} md={3}>
                         <div className='card'>
                             <div className='card__side card__side--front card__side--front-3'>
                                 <div className='card__picture card__picture--3'>

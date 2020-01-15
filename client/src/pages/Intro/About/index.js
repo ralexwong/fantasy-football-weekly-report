@@ -13,7 +13,7 @@ class About extends Component {
                 <h2 className='u-center-text u-margin-bottom-big heading-secondary'>Exciting reports for exciting people</h2>
 
                 <Row>
-                    <Col>
+                    <Col xs={12} sm={6}>
                         <h3 className='heading-teritary'>Spice up your league</h3>
                         <p className='paragraph'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley 
@@ -28,7 +28,7 @@ class About extends Component {
                         <Link to="#" className='btn-text'>Learn more &rarr;</Link> 
                     </Col>
 
-                    <Col>
+                    <Col xs={12} sm={6}>
                         <div classname='composition'>
                             <img src="./images/intro/payouts.jpg" alt="photo1" className='composition__photo composition__photo--1'></img>
                             <img src="./images/intro/fantasy2.jpg" alt="photo2" className='composition__photo composition__photo--2'></img>

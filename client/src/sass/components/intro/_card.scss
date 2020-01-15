@@ -1,14 +1,12 @@
-@import "../../abstracts/variables";    
-@import '../../base/animations';
-@import '../../base/typography';
-@import '../../base/utilities';
-
-
 .card {
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
     height: 50rem;
+
+    @include respond(tab-port) {
+        margin-bottom: 3rem;
+    }
 
     &__side {
         font-size: 2rem;

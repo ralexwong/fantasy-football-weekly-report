@@ -8,8 +8,8 @@ class Features extends Component {
     render() {
         return (
             <section className='features'>
-                <Row noGutters={true} className='rowSpace-evenly'>
-                    <Col xs={11} sm={5} md={2}>
+                <Row  className='rowSpace-evenly'>
+                    <Col xs={9} sm={6} md={3}>
                         <div className='box'>
                             <i className='icon-basic-world box__icon'></i>
                             <h3 className='heading-tertiary'>Connect your league</h3>
@@ -19,17 +19,17 @@ class Features extends Component {
                             </p>
                         </div>
                     </Col>
-                    <Col xs={11} sm={5} md={2}>
+                    <Col xs={9} sm={6} md={3}>
                         <div className='box'>
                             <i className='icon-basic-picture-multiple box__icon'></i>
-                            <h3 className='heading-tertiary'>Generate a report</h3>
+                            <h3 className='heading-tertiary'>Generate a report now</h3>
                             <p className='box__text'>
                                 tur adipisicing elit. Aperiam, ipsum sapiente aspernatur.
                                 tur adipisicing elit. Aperiam, ipsum sapiente aspernatur.
                             </p>
                         </div>
                     </Col>
-                    <Col xs={11} sm={5} md={2}>
+                    <Col xs={9} sm={6} md={3}>
                         <div className='box'>
                             <i className='icon-basic-display box__icon'></i>
                             <h3 className='heading-tertiary'>Download the report</h3>
@@ -39,10 +39,10 @@ class Features extends Component {
                             </p>
                         </div>
                     </Col>
-                    <Col xs={11} sm={5} md={2}>
+                    <Col xs={9} sm={6} md={3}>
                         <div className='box'>
                             <i className='icon-basic-link box__icon'></i>
-                            <h3 className='heading-tertiary'>Rinse and repeat!</h3>
+                            <h3 className='heading-tertiary'>Rinse and repeat! now</h3>
                             <p className='box__text'>
                                 tur adipisicing elit. Aperiam, ipsum sapiente aspernatur.
                                 tur adipisicing elit. Aperiam, ipsum sapiente aspernatur.
