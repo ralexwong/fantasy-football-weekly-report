@@ -16,7 +16,7 @@ class Reviews extends Component {
                     </video>
                 <h2 className='u-center-text u-margin-bottom-big heading-secondary'>Check out these reviews</h2>
 
-                <Row noGutters={true} >
+                <Row noGutters={true} className="rowSpace-evenly">
                     <div className='review'>
                         <figure className='review__shape'>
                             <img className='review__img' src='./images/intro/nat-8.jpg' alt='review'></img>
@@ -32,8 +32,6 @@ class Reviews extends Component {
                                 Aperiam, ipsum sapiente aspernatur. tur adipisicing elit. Aperiam, ipsum sapiente aspernatur
                                 tur adipisicing elit. Aperiam, ipsum sapiente aspernatur. tur adipisicing elit. Aperiam, ipsum sapiente aspernatur
                                 tur adipisicing elit. Aperiam, ipsum sapiente aspernatur. tur adipisicing elit. Aperiam, ipsum sapiente aspernatur
-                                tur adipisicing elit. Aperiam, ipsum sapiente aspernatur. tur adipisicing elit. Aperiam, ipsum sapiente aspernatur
-
                             </p>
                         </div>
                     </div>
@@ -53,8 +51,6 @@ class Reviews extends Component {
                                 Aperiam, ipsum sapiente aspernatur. tur adipisicing elit. Aperiam, ipsum sapiente aspernatur
                                 tur adipisicing elit. Aperiam, ipsum sapiente aspernatur. tur adipisicing elit. Aperiam, ipsum sapiente aspernatur
                                 tur adipisicing elit. Aperiam, ipsum sapiente aspernatur. tur adipisicing elit. Aperiam, ipsum sapiente aspernatur
-                                tur adipisicing elit. Aperiam, ipsum sapiente aspernatur. tur adipisicing elit. Aperiam, ipsum sapiente aspernatur
-
                             </p>
                         </div>
                     </div>

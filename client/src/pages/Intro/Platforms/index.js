@@ -79,9 +79,9 @@ class Platforms extends Component {
                                 </div>
                             </div>
                             <div className='card__side card__side--back card__side--back-3'>
-                                <div  className='platformBtn platformBtn--white platformBtn--animated'>
+                                <Link to='#' className='platformBtn platformBtn--white platformBtn--animated'>
                                     yahoo
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </Col>

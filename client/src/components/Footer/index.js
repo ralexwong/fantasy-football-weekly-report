@@ -11,8 +11,10 @@ class Footer extends Component {
     return (
       <footer className='footer'>
         <div className='footer__logo-box'>
-          <img src='../../images/intro/logo-green-2x.png' alt='footer_photo' className='footer__logo'>
-          </img>
+          <picture className='footer__logo'>
+            <source srcSet='./images/intro/logo-green-small-1x.png 1x, ./images/intro/logo-green-small-2x.png 2x' media="(max-width: 35.9em)" />
+            <img srcSet='./images/intro/logo-green-1x.png 1x, ./images/intro/logo-green-2x.png 2x' alt='footer_photo' className='footer__logo' />
+          </picture>
         </div>
 
         <Row noGutters={true} className='rowSpace-evenly'>
@@ -30,7 +32,7 @@ class Footer extends Component {
 
           <Col xs='4'>
             <p className='footer__copyright'>
-              Built by Alexander Wong for personal use. Copyright &copy; by Alexander Wong. Credit to Jonas Schmedtmann for the template for the landing page. 
+              Built by Alexander Wong for personal use. Copyright &copy; by Alexander Wong. Credit to Jonas Schmedtmann for the template for the landing page.
             </p>
           </Col>
         </Row>

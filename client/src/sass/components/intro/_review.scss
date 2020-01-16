@@ -1,17 +1,32 @@
 .review {
     width: 65%;
-    margin: 0 auto;
     box-shadow: 0 3rem 6rem rgba($black-color, .1);
     background-color: rgba($white-color, .6);
     border-radius: 3px;
-    padding: 6rem;
+    padding: 5rem;
     padding-left: 9rem;
     font-size: $default-font-size;
 
     transform: skewX(-12deg);
 
+    @include respond(tab-port) {
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
     @include respond(phone) {
-        margin: 0 10rem;
+        padding: 3.5rem;
+        padding-left: 6rem;
+
+        transform: skew(0);
+
+        width: 75%;
+    }
+
+    @include respond(iphone) {
+        padding-left: 5.5rem;
+
+        width: 85%;
     }
 
     &__shape {
@@ -23,6 +38,18 @@
         transform: translateX(-3rem) skewX(12deg);
         position: relative;
         overflow: hidden;
+
+        @include respond(phone) {
+            transform: translateX(-3rem) skew(0);
+
+            width: 11rem;
+            height: 11rem;
+        }
+
+        @include respond(iphone) {
+            width: 10rem;
+            height: 10rem;
+        }
     }
 
     &__img {
@@ -34,6 +61,10 @@
 
     &__text {
         transform: skewX(12deg);
+
+        @include respond(phone) {
+            transform: translateX(0) skew(0);
+        }
     }
 
     &__caption {
