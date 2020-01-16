@@ -46,7 +46,7 @@
     color: transparent;
     letter-spacing: 2px;
     transition: all .2s;
-    width: 100%;
+    width: 80%;
 
     @include respond(tab-port) {
         font-size: 3rem;

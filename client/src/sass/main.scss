@@ -1,30 +1,23 @@
 // abstracts----------------------------
-@import 'abstracts/variables';
-@import 'abstracts/functions';
-@import 'abstracts/mixins';
+@import 'abstracts/all';
 
 // base-----------------------------------
-@import 'base/animations';
-@import 'base/base';
-@import 'base/composition';
-@import 'base/typography';
-@import 'base/utilities';
+@import 'base/all';
 
-// reusable------------------------------
-
+// common------------------------------
 @import 'components/intro/popUp';
 
 // components-----------------------------
-@import 'components/intro/bg-video';
-@import 'components/intro/button';
-@import 'components/intro/card';
-@import 'components/intro/composition';
-@import 'components/intro/feature-box';
-@import 'components/intro/form';
-@import 'components/intro/introNav';
-@import 'components/intro/registerBox';
-@import 'components/intro/review';
+@import 'components/all';
 
+// layout--------------------------------
+@import 'layout/all';
 
 // pages---------------------------------
 @import 'pages/intro';
+
+// themes--------------------------------
+@import 'themes/all';
+
+// vendors---------------------------------
+@import 'vendors/all';

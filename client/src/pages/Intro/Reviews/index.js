@@ -9,12 +9,14 @@ class Reviews extends Component {
     render() {
         return (
             <section className='reviews'>
-                    <video className='bg-video' autoplay muted loop>
-                        <source src='./images/intro/video.mp4' type='video/mp4' />
-                        <source src='./images/intro/video.webm' type='video/webm' />
-                        your browser is not supporterd
-                    </video>
-                <h2 className='u-center-text u-margin-bottom-big heading-secondary'>Check out these reviews</h2>
+                <video className='bg-video' autoplay muted loop>
+                    <source src='./images/intro/video.mp4' type='video/mp4' />
+                    <source src='./images/intro/video.webm' type='video/webm' />
+                    your browser is not supporterd
+                </video>
+                <div className='u-center-text u-margin-bottom-big'>
+                    <h2 className='heading-secondary'>Check out these reviews</h2>
+                </div>
 
                 <Row noGutters={true} className="rowSpace-evenly">
                     <div className='review'>

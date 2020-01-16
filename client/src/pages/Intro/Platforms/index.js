@@ -12,7 +12,9 @@ class Platforms extends Component {
     render() {
         return (
             <section className='platforms'>
-                <h2 className='u-center-text u-margin-bottom-big heading-secondary'>Choose your platform</h2>
+                <div className='u-center-text u-margin-bottom-big'>
+                    <h2 className='heading-secondary'>Choose your platform</h2>
+                </div>
                 <Row noGutters={true} className='rowSpace-evenly'>
                     <Col xs={9} sm={5} md={3}>
                         <div className='card'>
