@@ -21,7 +21,7 @@
         @extend .headingText;
     
         animation-name: moveInLeft;
-        animation-duration: 2s;
+        animation-duration: 1.5s;
 
        
     }
@@ -29,7 +29,7 @@
     &--sub {
         @extend .headingText;
     
-        animation: moveInRight 2s ease-out 1.5s;  //animation: animation-type duratation-style delay
+        animation: moveInRight 1.5s ease-out 1.5s;  //animation: animation-type duratation-style delay
         animation-fill-mode: backwards;
     
         animation-delay: 2s;
