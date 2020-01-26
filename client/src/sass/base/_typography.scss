@@ -19,11 +19,8 @@
 
     &--main {
         @extend .headingText;
-    
-        animation-name: moveInLeft;
-        animation-duration: 1.5s;
-
-       
+        animation: moveInLeft 1.5s ease-out .5s;
+        animation-fill-mode: backwards;
     }
     
     &--sub {
@@ -32,7 +29,6 @@
         animation: moveInRight 1.5s ease-out 1.5s;  //animation: animation-type duratation-style delay
         animation-fill-mode: backwards;
     
-        animation-delay: 2s;
     }
 }
 

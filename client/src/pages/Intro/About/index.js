@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
-import styles from "../../../sass/main.scss";
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -31,7 +29,7 @@ class About extends Component {
                     </Col>
 
                     <Col xs={12} sm={6}>
-                        <div classname='composition'>
+                        <div className='composition'>
                             <img src="./images/intro/payouts.jpg" alt="photo1" className='composition__photo composition__photo--1'></img>
                             <img src="./images/intro/fantasy2.jpg" alt="photo2" className='composition__photo composition__photo--2'></img>
                             <img src="./images/intro/fantasy.jpg" alt="photo3" className='composition__photo composition__photo--3'></img>

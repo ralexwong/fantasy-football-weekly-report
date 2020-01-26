@@ -30,7 +30,7 @@ class Cards extends Component {
                 };
             }
 
-            if (roster[i].settings.wins = first_place.wins) {
+            if (roster[i].settings.wins === first_place.wins) {
                 if (roster[i].settings.fpts > first_place.fpts) {
                     first_place = {
                         name: roster[i].owner_id, 
@@ -48,7 +48,7 @@ class Cards extends Component {
                         fpts: roster[i].settings.fpts
                     };
                 }
-                if (roster[i].settings.wins = last_place.wins) {
+                if (roster[i].settings.wins === last_place.wins) {
                     if (roster[i].settings.fpts < last_place.fpts) {
                         last_place = {
                             name: roster[i].owner_id, 

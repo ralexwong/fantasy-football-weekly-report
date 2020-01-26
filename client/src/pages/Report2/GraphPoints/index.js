@@ -45,9 +45,9 @@ class GraphPoints extends React.Component {
 
   render() {
 
-    const data = (this.props.graphPoints ? (this.props.graphPoints) : ('') )
+    const data = (this.props.graphPoints ? (this.props.graphPoints) : ([]) )
     return (
-      <div style={{ 'margin-top': '30px' }}>
+      <div style={{ 'marginTop': '30px' }}>
           <div id="graphTitle">
             <p>Cumulative PF and PA</p>
           </div>

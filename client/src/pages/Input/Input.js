@@ -18,7 +18,7 @@ class Input1 extends Component {
         if (touched && error) {
             return (
                 <div className="ui error message">
-                    <div className="header">{error}</div>
+                    <div >{error}</div>
                 </div>
             )
         }
@@ -46,7 +46,7 @@ class Input1 extends Component {
     return (
       <Container fluid id="input1Container">
           <div>
-              <h1 style={{ 'font-size': 100 }}>
+              <h1>
                   First enter your username here! 
               </h1>
               <h3>
@@ -55,7 +55,7 @@ class Input1 extends Component {
           </div>
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                 <Field name="username" component={this.renderInput} label="Enter Username" />
-                <button className="ui button primary">Submit</button>
+                <button className="platformBtn platformBtn--blue platformBtn--animated">Submit</button>
             </form>
       </Container>
     )

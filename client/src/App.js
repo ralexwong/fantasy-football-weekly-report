@@ -17,7 +17,6 @@ import Report2 from './pages/Report2/Report2'
 
 import history from './history';
 
-
 function App() {
   return (
     <Router history={history}>
@@ -25,15 +24,15 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Intro} />
-          <Route exact path="/report" component={Report} />
-          <Route exact path="/payouts" component={Payouts} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/intro" component={Intro} />
-          <Route exact path ="/input1" component={Input1} />
-          <Route exact path ="/input2" component={Input2} />
-          <Route exact path ="/input3" component={Input3} />
-          <Route exact path ="/report2" component={Report2} />
+          <Route exact path="/report" render={props => <Report {...props} />} />
+          <Route exact path="/payouts" render={props => <Payouts {...props} />} />
+          <Route exact path="/login" render={props => <Login {...props} />} />
+          <Route exact path="/signup" render={props => <Signup {...props} />} />
+          <Route exact path="/intro" render={props => <Intro {...props} />} />
+          <Route exact path ="/input1" render={props => <Input1 {...props} />} />
+          <Route exact path ="/input2" render={props => <Input2 {...props} />} />
+          <Route exact path ="/input3" render={props => <Input3 {...props} />} />
+          <Route exact path ="/report2" render={props => <Report2 {...props} />}  />
           <Route component={NoMatch} />
         </Switch>
         <Footer />
