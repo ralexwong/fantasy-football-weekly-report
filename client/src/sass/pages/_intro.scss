@@ -1,4 +1,4 @@
-.header {
+.introHeader {
     height: 80vh;
     background-image: linear-gradient(
         to right bottom,
@@ -7,7 +7,6 @@
          url(../../images/football.jpg);
     background-size: cover;
     background-position: top;
-    position: relative;
 
     @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
@@ -17,13 +16,14 @@
 
 
     &__logo-box {
-        position: absolute;
-        top: 3%;
-        left: 2%;
+        position: relative;
     }
 
     &__logo {
         height: 4vw;
+        position: absolute;
+        top: 5%;
+        left: 1%;
     }
 
     &__text-box {

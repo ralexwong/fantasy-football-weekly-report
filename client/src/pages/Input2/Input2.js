@@ -29,24 +29,24 @@ class Input2 extends Component {
         })
     }
 
-  render() {
-    return (
-      <Container id="input2Container">
-          <div style={{ 'margin-bottom': '70px'}}>
-          <h1 style={{ 'font-size': 100 }}>
-                  Click on one league!
-              </h1>
-          </div>
-          <ul>
-            {this.props.leagues ? (
-                this.mapLeagues(this.props.leagues)
-            ) : (
-                <div>Leagues not found</div>
-            )}
-           </ul>
-      </Container>
-    )
-  }
+    render() {
+        return (
+            <Container id="input2Container">
+                <div style={{ 'marginBottom': '70px' }}>
+                    <h1>
+                        Click on one league!
+                    </h1>
+                </div>
+                <ul>
+                    {this.props.leagues ? (
+                        this.mapLeagues(this.props.leagues)
+                    ) : (
+                            <div>Leagues not found</div>
+                        )}
+                </ul>
+            </Container>
+        )
+    }
 }
 
 const mapStateToProps = (state) => {

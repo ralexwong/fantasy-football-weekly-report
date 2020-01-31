@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
+
 class Nav extends Component {
   state = {
     open: false,
@@ -23,6 +24,9 @@ class Nav extends Component {
 
   componentDidMount() {
     window.addEventListener("resize", this.updateWidth);
+    console.log(window.location.href)
+    console.log(window.location.pathname)
+
   }
 
   componentWillUnmount() {

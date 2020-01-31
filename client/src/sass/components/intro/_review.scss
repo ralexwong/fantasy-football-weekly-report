@@ -1,5 +1,5 @@
 .review {
-    width: 65%;
+    width: 100%;
     box-shadow: 0 3rem 6rem rgba($black-color, .1);
     background-color: rgba($white-color, .6);
     border-radius: 3px;
@@ -17,15 +17,12 @@
     @include respond(phone) {
         padding: 3.5rem;
         padding-left: 6rem;
-
         transform: skew(0);
-
         width: 75%;
     }
 
     @include respond(iphone) {
         padding-left: 5.5rem;
-
         width: 85%;
     }
 
@@ -33,11 +30,18 @@
         width: 15rem;
         height: 15rem;
         float: left;
-        shape-outside: circle(50% at 50% 50%);
-        clip-path: circle(50% at 50% 50%);
         transform: translateX(-3rem) skewX(12deg);
         position: relative;
         overflow: hidden;
+        border-radius: 50%;
+
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);
+            border-radius: none;
+        }
 
         @include respond(phone) {
             transform: translateX(-3rem) skew(0);

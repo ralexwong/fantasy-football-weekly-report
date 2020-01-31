@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { } from '../../../actions';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import './style.css';
 
 class Standouts extends Component {
@@ -24,42 +25,31 @@ class Standouts extends Component {
         }
 
         return (
-            <div id="mainCol">
-                <Col>
-                    <Row id="topCard">
-                        <Col>
-                            <Row>
-                                <p className="cardTitle">TOP SCORER</p>
-                            </Row>
+            <Col xs={4} className="standouts">
+                <p className="standouts__title">TOP SCORER</p>
 
-                            <div className='outerDiv'>
-                                <div className='innerDiv'>
-                                    <img src={topScorerUrl} alt="poop" className="cardImage" />
-                                </div>
-                            </div>
-                            <div className='lowerDiv'>
-                                <p>{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Row>
-                                <p className="cardTitle">CLOSE ONE</p>
-                            </Row>
+                <div className='standouts__outerBox'>
+                    <div className='standouts__innerBox'>
+                        <img src={topScorerUrl} alt="poop" className="standouts__image" />
+                    </div>
+                </div>
+                <div className='standouts__numberBox'>
+                    <p>{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
+                </div>
 
-                            <div className='outerDiv'>
-                                <div className='innerDiv'>
-                                    <img src={closeOneUrl} alt="poop" className="cardImage" />
-                                </div>
-                            </div>
-                            <div className='lowerDiv'>
-                                <p>{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
-                            </div>
-                        </Col>
-                    </Row>
-                </Col>
-            </div>
+                <hr></hr>
+
+                <p className="standouts__title">CLOSE ONE</p>
+
+                <div className='standouts__outerBox'>
+                    <div className='standouts__innerBox'>
+                        <img src={closeOneUrl} alt="poop" className="standouts__image" />
+                    </div>
+                </div>
+                <div className='standouts__numberBox'>
+                    <p>{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
+                </div>
+            </Col>
         )
     }
 }

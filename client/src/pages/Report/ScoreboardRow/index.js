@@ -5,29 +5,23 @@ import Col from 'react-bootstrap/Col';
 
 function ScoreboardRow(props) {
     return (
-        <Row className="scoreboardRow">
-            <Col className="scoreboardScores col-2">
-                <div>
-                    <p className="points">{props.points1}</p>
+        <Row className="scoreboard__row">
+            <Col className="scoreboard__scores col-2">
+                <p>{props.points1}</p>
 
-                    <p className="points">{props.points2}</p>
-                </div>
+                <p>{props.points2}</p>
             </Col>
 
-            <Col className="scoreboardNames col-9">
-                <div>
-                    <p className="roster">{props.roster1}</p>
+            <Col className="scoreboard__names col-9">
+                <p>{props.roster1}</p>
 
-                    <p className="roster">{props.roster2}</p>
-                </div>
+                <p>{props.roster2}</p>
             </Col>
 
-            <Col className="scoreboardRecord col-1">
-                <div>
-                    <p className="record">{(parseFloat(props.points1) > parseFloat(props.points2)) ? "W" : "L"}</p>
+            <Col className="scoreboard__record col-1">
+                <p>{(parseFloat(props.points1) > parseFloat(props.points2)) ? "W" : "L"}</p>
 
-                    <p className="record">{(parseFloat(props.points2) > parseFloat(props.points1)) ? "W" : "L"}</p>
-                </div>
+                <p>{(parseFloat(props.points2) > parseFloat(props.points1)) ? "W" : "L"}</p>
             </Col>
         </Row>
     );

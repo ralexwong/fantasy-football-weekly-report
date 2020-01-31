@@ -33,7 +33,7 @@ class Input3 extends Component {
     return (
       <Container fluid id="input3Container">
           <div>
-              <h1 style={{ 'font-size': 100 }}>
+              <h1>
                   Select a week! 
               </h1>
           </div>

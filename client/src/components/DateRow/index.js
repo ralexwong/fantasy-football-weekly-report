@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import "./style.css";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -24,7 +23,7 @@ class DateRow extends React.Component {
 
     render() {
         return (
-            <Row id="dateRowDiv">
+            <Row className="dateRow">
                 <img src="" alt=""></img>
                 <Col>
                     {this.grabDate()}

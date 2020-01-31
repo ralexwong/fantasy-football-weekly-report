@@ -1,0 +1,61 @@
+.standouts {
+    max-width: 30%;
+    padding: 0 3rem;
+
+    &__title {
+        font-family: 'Vast Shadow', cursive;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    &__outerBox {
+        border: 8px solid black;
+    }
+
+    &__innerBox {
+        border: 3px solid black;
+        margin: 2px;
+    }
+
+    &__numberBox {
+        border: 8px solid black;
+        border-top: none;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    &__image {
+        width: 100%;
+    }
+}
+
+#topCard::after {
+    top: 50%;
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid black;
+    content: "";
+    margin: 20px 0;
+}
+
+.innerDiv {
+    border: 3px solid black;
+    margin: 2px;
+}
+
+.outerDiv {
+    border: 8px solid black;
+}
+
+.lowerDiv {
+    border: 8px solid black;
+    border-top: none;
+    text-align: center;
+    font-size:20px;
+    font-weight: 600;
+}
+
+.cardImage {
+    width: 100%;
+}

@@ -17,10 +17,19 @@ import Report2 from './pages/Report2/Report2'
 
 import history from './history';
 
+const style = {
+  margin: "0",
+  padding: "0",
+  boxSizing: "border-box inherit",
+  fontFamily: "Lato, sans-serif",
+  fontWeight: "400",
+  lineHeight: "1.7",
+}
+
 function App() {
   return (
     <Router history={history}>
-      <React.Fragment>
+      <div style={style}>
         <Nav />
         <Switch>
           <Route exact path="/" component={Intro} />
@@ -36,7 +45,7 @@ function App() {
           <Route component={NoMatch} />
         </Switch>
         <Footer />
-      </React.Fragment>
+      </div>
     </Router>
   );
 }

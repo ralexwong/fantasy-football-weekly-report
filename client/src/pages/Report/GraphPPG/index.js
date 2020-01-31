@@ -41,7 +41,7 @@ class GraphPPG extends React.Component {
   }
 
   render() {
-    const data = (this.props.data ? (this.props.data) : ( ''
+    const data = (this.props.data ? (this.props.data) : ( []
     //   [{
     //     name: 'Page A', wins: 4000, pv: 2400, amt: 2400,
     //   },
@@ -65,7 +65,7 @@ class GraphPPG extends React.Component {
     //   },
     ))
     return (
-      <div style={{ 'margin-top': '30px' }}>
+      <div style={{ 'marginTop': '30px' }}>
           <div id="graphTitle">
             <p>Wins and PPG</p>
           </div>

@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
-import "../../../sass/main.scss";
 
 class Header extends Component {
     render() {
         return (
-            <header className='header'>
-                <div className='header__logo-box'>
-                    <img className='header__logo' src="/images/intro/logo-white.png" alt="logo"></img>
+            <header className='introHeader'>
+                <div className='introHeader__logo-box'>
+                    <img className='introHeader__logo' src="/images/logo.png" alt="logo"></img>
                 </div>
 
-                <div className='header__text-box'>
+                <div className='introHeader__text-box'>
                     <h1 className='heading-primary'>
                         <span className='heading-primary--main'>Fantasy Football</span>
                         <span className='heading-primary--sub'>Weekly Reports</span>

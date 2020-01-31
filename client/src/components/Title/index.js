@@ -1,16 +1,16 @@
 import React from "react";
-import "./style.css";
+
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Title() {
     return (
-        <div className="row">
-            <div id="titleDiv">
-                <div>
-                    <p id="title">DIRTY TRIBUNE</p>
-                    <p id="caption">Fantasy football is about proving that you are better than your friends. </p>
-                </div>
-            </div>
-        </div>
+        <Row>
+            <Col classsName="reportHeader">
+                <p className="reportHeader__title">DIRTY TRIBUNE</p>
+                <p className="reportHeader__caption">Fantasy football is about proving that you are better than your friends. </p>
+            </Col>
+        </Row>
     )
 }
 

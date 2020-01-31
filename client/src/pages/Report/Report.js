@@ -113,30 +113,18 @@ class Report extends Component {
   }
 
   render() {
-
-    const divStyle = {
-      border: '2px solid black'
-    };
-
-    const rowStyle = {
-      padding: '0 50px 0 30px'
-    }
-
     return (
-      <div>
-        <Container style={divStyle} id="mainContainer">
-          <Title />
-          <DateRow />
-          <Row style={rowStyle}>
-            <Scoreboard />
-            <Standouts />
-          </Row>
-          <Row>
-            <GraphPPG />
-          </Row>
-        </Container>
-      </div>
-
+      <Container className="reportContainer">
+        <Title />
+        <DateRow />
+        <Row className="u-margin-top">
+          <Scoreboard />
+          <Standouts />
+        </Row>
+        {/* <Row>
+          <GraphPPG />
+        </Row> */}
+      </Container>
     );
   }
 

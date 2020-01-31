@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
-import "../../sass/main.scss";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,8 +11,8 @@ class Footer extends Component {
       <footer className='footer'>
         <div className='footer__logo-box'>
           <picture className='footer__logo'>
-            <source srcSet='./images/intro/logo-green-small-1x.png 1x, ./images/intro/logo-green-small-2x.png 2x' media="(max-width: 35.9em)" />
-            <img srcSet='./images/intro/logo-green-1x.png 1x, ./images/intro/logo-green-2x.png 2x' alt='footer_photo' className='footer__logo' />
+            <source srcSet='./images/default.png 1x, ./images/intro/default.png 2x' media="(max-width: 35.9em)" />
+            <img srcSet='./images/default.png 1x, ./images/default.png 2x' alt='footer_photo' className='footer__logo' />
           </picture>
         </div>
 

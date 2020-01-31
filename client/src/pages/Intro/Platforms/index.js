@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
-import "../../../sass/main.scss";
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
