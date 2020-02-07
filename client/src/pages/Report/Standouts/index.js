@@ -51,7 +51,7 @@ class Standouts extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="paragraph-sm">{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
+                            <p className="cards__name">{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
                         </div>
                     </Col>
                     <Col xs={6} className="cards">
@@ -63,7 +63,7 @@ class Standouts extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="paragraph-sm">{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
+                            <p className="cards__name">{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
                         </div>
                     </Col>
                 </React.Fragment>

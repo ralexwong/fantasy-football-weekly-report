@@ -102,7 +102,7 @@ class Cards extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="paragraph-sm">{this.props.first_place.name}</p>
+                            <p className="cards__name">{this.props.first_place.name}</p>
                         </div>
                     </Col>
 
@@ -115,7 +115,7 @@ class Cards extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="paragraph-sm">{this.props.last_place.name}</p>
+                            <p className="cards__name">{this.props.last_place.name}</p>
                         </div>
                     </Col>
                 </>
