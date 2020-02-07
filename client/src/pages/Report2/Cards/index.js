@@ -4,15 +4,31 @@ import { setCardsToState } from '../../../actions';
 import Col from 'react-bootstrap/Col';
 
 class Cards extends Component {
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            width: 0,
+            height: 0
+        }
+    }
+    
     componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener("resize", this.updateWindowDimensions);
         if (!this.props.roster) {
 
         } else {
             this.refactorData(this.props.roster, this.props.league_info)
         }
-
     }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    };
 
     refactorData = (roster, league_info) => {
         let first_place = { name: '', wins: 0, fpts: 0 };
@@ -74,35 +90,65 @@ class Cards extends Component {
 
 
     render() {
+        if (this.state.width < 575) {
+            return (
+                <>
+                    <Col xs={6} className="cards">
+                        <p className="reportTitle">FIRST PLACE</p>
 
-        return (
-            <Col xs={4} className="cards">
-                <p className="reportTitle">FIRST PLACE</p>
+                        <div className='cards__outerBox'>
+                            <div className='cards__innerBox'>
+                                <img src={`http://sleepercdn.com/avatars/${this.props.first_place.avatar}`} alt="poop" className="cards__image" />
+                            </div>
+                        </div>
+                        <div className='cards__lowerBox'>
+                            <p className="paragraph-sm">{this.props.first_place.name}</p>
+                        </div>
+                    </Col>
 
-                <div className='cards__outerBox'>
-                    <div className='cards__innerBox'>
-                        <img src={`http://sleepercdn.com/avatars/${this.props.first_place.avatar}`} alt="poop" className="cards__image" />
+                    <Col xs={6} className="cards">
+                        <p className="reportTitle">LAST PLACE</p>
+
+                        <div className='cards__outerBox'>
+                            <div className='cards__innerBox'>
+                                <img src={`http://sleepercdn.com/avatars/${this.props.last_place.avatar}`} alt="poop" className="cards__image" />
+                            </div>
+                        </div>
+                        <div className='cards__lowerBox'>
+                            <p className="paragraph-sm">{this.props.last_place.name}</p>
+                        </div>
+                    </Col>
+                </>
+            )
+        } else {
+            return (
+                <Col className="cards">
+                    <p className="reportTitle">FIRST PLACE</p>
+
+                    <div className='cards__outerBox'>
+                        <div className='cards__innerBox'>
+                            <img src={`http://sleepercdn.com/avatars/${this.props.first_place.avatar}`} alt="poop" className="cards__image" />
+                        </div>
                     </div>
-                </div>
-                <div className='cards__lowerBox'>
-                    <p>{this.props.first_place.name}</p>
-                </div>
-
-                <div className="hr"></div>
-
-                <p className="reportTitle">LAST PLACE</p>
-
-                <div className='cards__outerBox'>
-                    <div className='cards__innerBox'>
-                        <img src={`http://sleepercdn.com/avatars/${this.props.last_place.avatar}`} alt="poop" className="cards__image" />
+                    <div className='cards__lowerBox'>
+                        <p>{this.props.first_place.name}</p>
                     </div>
-                </div>
-                <div className='cards__lowerBox'>
-                    <p>{this.props.last_place.name}</p>
-                </div>
-            </Col>
-        )
 
+                    <div className="hr"></div>
+
+                    <p className="reportTitle">LAST PLACE</p>
+
+                    <div className='cards__outerBox'>
+                        <div className='cards__innerBox'>
+                            <img src={`http://sleepercdn.com/avatars/${this.props.last_place.avatar}`} alt="poop" className="cards__image" />
+                        </div>
+                    </div>
+                    <div className='cards__lowerBox'>
+                        <p>{this.props.last_place.name}</p>
+                    </div>
+                </Col>
+            )
+        }
     }
 }
 

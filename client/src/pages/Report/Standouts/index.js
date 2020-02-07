@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { } from '../../../actions';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import './style.css';
 
 class Standouts extends Component {
@@ -52,7 +51,7 @@ class Standouts extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p>{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
+                            <p className="paragraph-sm">{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
                         </div>
                     </Col>
                     <Col xs={6} className="cards">
@@ -64,14 +63,14 @@ class Standouts extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p>{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
+                            <p className="paragraph-sm">{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
                         </div>
                     </Col>
                 </React.Fragment>
             )
         } else {
             return (
-                <Col xs={12} className="cards">
+                <Col className="cards">
                     <p className="reportTitle">TOP SCORER</p>
 
                     <div className='cards__outerBox'>

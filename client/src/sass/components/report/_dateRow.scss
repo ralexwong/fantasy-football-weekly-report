@@ -5,6 +5,10 @@
     font-size: 2rem;
 
     @include respond(phone) {
-        font-size: 1.9rem;
+        font-size: 1.75rem;
+    }
+
+    @include respond(iphone) {
+        font-size: 1.4rem;
     }
 }

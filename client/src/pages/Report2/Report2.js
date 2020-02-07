@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { refactoredMatchups, closeOne, topScorer } from '../../actions';
-import './report2.css'
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
+import MiddleRow from './middleRow';
 import GraphPoints from './GraphPoints';
-import Cards from './Cards';
-import Recap from './Recap';
 
 import Container from "react-bootstrap/Container";
-import Row from 'react-bootstrap/Row';
-
 
 class Report2 extends Component {
 
@@ -24,10 +20,7 @@ class Report2 extends Component {
       <Container className="reportContainer">
         <Title />
         <DateRow />
-        <Row className="u-margin-top">
-          <Recap />
-          <Cards />
-        </Row>
+        <MiddleRow />
         <GraphPoints />
       </Container>
     );

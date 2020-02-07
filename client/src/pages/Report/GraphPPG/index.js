@@ -42,68 +42,43 @@ class GraphPPG extends React.Component {
   }
 
   render() {
-
-    console.log(this.props.data)
     const options = {
-      animationEnabled: true,	
-      title:{
-        text: "Points For and Points Against"
-      },
-      axisY : {
-        title: "Point Total",
-        includeZero: false
-      },
-      toolTip: {
-        shared: true
+      animationEnabled: true,
+      exportEnabled: true,
+      theme: "light2", //"light1", "dark1", "dark2"
+      title: {
+        text: "Simple Column Chart with Index Labels"
       },
       data: [{
-        type: "spline",
-        name: "2016",
-        showInLegend: true,
+        type: "column", //change type to bar, line, area, pie, etc
+        //indexLabel: "{y}", //Shows y value on all Data Points
+        indexLabelFontColor: "#5A5757",
+        indexLabelPlacement: "outside",
         dataPoints: [
-          { y: 155, label: "Jan" },
-          { y: 150, label: "Feb" },
-          { y: 152, label: "Mar" },
-          { y: 148, label: "Apr" },
-          { y: 142, label: "May" },
-          { y: 150, label: "Jun" },
-          { y: 146, label: "Jul" },
-          { y: 149, label: "Aug" },
-          { y: 153, label: "Sept" },
-          { y: 158, label: "Oct" },
-          { y: 154, label: "Nov" },
-          { y: 150, label: "Dec" }
-        ]
-      },
-      {
-        type: "spline",
-        name: "2017",
-        showInLegend: true,
-        dataPoints: [
-          { y: 172, label: "Jan" },
-          { y: 173, label: "Feb" },
-          { y: 175, label: "Mar" },
-          { y: 172, label: "Apr" },
-          { y: 162, label: "May" },
-          { y: 165, label: "Jun" },
-          { y: 172, label: "Jul" },
-          { y: 168, label: "Aug" },
-          { y: 175, label: "Sept" },
-          { y: 170, label: "Oct" },
-          { y: 165, label: "Nov" },
-          { y: 169, label: "Dec" }
+          { x: 10, y: 71 },
+          { x: 20, y: 55 },
+          { x: 30, y: 50 },
+          { x: 40, y: 65 },
+          { x: 50, y: 71 },
+          { x: 60, y: 68 },
+          { x: 70, y: 38 },
+          { x: 80, y: 92, indexLabel: "Highest" },
+          { x: 90, y: 54 },
+          { x: 100, y: 60 },
+          { x: 110, y: 21 },
+          { x: 120, y: 49 },
+          { x: 130, y: 36 }
         ]
       }]
-  }
+    }
 
     return (
-      <Row style={{ 'marginTop': '30px' }}>
-        <Col>
-          <CanvasJSChart options = {options}
-              /* onRef = {ref => this.chart = ref} */
-          />
-        </Col>
-      </Row>
+      <div>
+        <CanvasJSChart options={options}
+        /* onRef={ref => this.chart = ref} */
+        />
+        {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+      </div>
     );
   }
 }

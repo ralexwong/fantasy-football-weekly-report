@@ -7,15 +7,19 @@
         font-size: 1.75rem;
     }
 
+    @include respond(iphone) {
+        font-size: 1.5rem;
+    }
+
     &__header {
         font-size: 8rem;
 
         @include respond(phone) {
-            font-size: 5.5rem;
+            font-size: 5rem;
         }
 
         @include respond(iphone) {
-            font-size: 3.5rem;
+            font-size: 3.75rem;
         }
     }
 
