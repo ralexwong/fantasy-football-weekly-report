@@ -13,7 +13,7 @@ class Platforms extends Component {
                 <div className='u-center-text u-margin-bottom-big'>
                     <h2 className='heading-secondary'>Choose your platform</h2>
                 </div>
-                <Row noGutters={true} className='rowSpace-evenly'>
+                <Row noGutters={true} className='u-space-evenly'>
                     <Col xs={9} sm={5} md={3}>
                         <div className='card'>
                             <div className='card__side card__side--front card__side--front-1'>

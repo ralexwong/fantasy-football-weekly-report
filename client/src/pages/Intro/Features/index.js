@@ -10,7 +10,7 @@ class Features extends Component {
         return (
             <section className='features'>
                 <Container>
-                    <Row className='rowSpace-evenly'>
+                    <Row className='u-space-evenly'>
                         <Col xs={9} sm={6} md={3}>
                             <div className='box'>
                                 <i className='icon-basic-world box__icon'></i>

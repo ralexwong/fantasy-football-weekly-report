@@ -4,6 +4,9 @@
     bottom:0;
     width: 100%;
 
+    @include respond(phone) {
+        font-size: 1.2rem;
+    }
 
     &__logo-box {
         text-align: center;
@@ -12,6 +15,10 @@
     &__logo {
         width: 50rem;
         height: auto;
+
+        @include respond(phone) {
+            width: 35rem;
+        }
     }
 
     &__navigation {

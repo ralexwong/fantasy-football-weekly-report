@@ -3,19 +3,14 @@
     font-size: 2.5rem;
     text-align: center;
     padding: 0 3rem;
-    
 
-    &__title {
-        font-family: 'Vast Shadow', cursive;
-        font-size: 4rem;
-        text-align: center;
-        margin: 0 auto;
+    @include respond(phone) {
+        font-size: 2rem;
     }
 
     &__week {
         background: rgb(0, 0, 107);
         color:white;
-        font-size: 2.5rem;
         width: 100%;
         text-align:center;
     }
@@ -23,11 +18,20 @@
     &__row {
         border: 2px solid black;
         margin-top: 5rem;
+
+        @include respond(phone) {
+            margin-top: 2.5rem;
+            font-size: 1.75rem;
+        }
     }
 
     &__scores {
         color:white;
         background:black;
+
+        @include respond(phone) {
+            padding: 0;
+        }
     }
 
     &__names {
@@ -35,10 +39,18 @@
         background:rgb(221, 221, 221);
         border-right: 2px solid black;
         text-align: left;
+
+        @include respond(phone) {
+            padding: 0 1rem;
+        }
     }
 
     &__record {
         color:black;
         background:rgb(221, 221, 221);
+
+        @include respond(phone) {
+            padding: 0;
+        }
     }
 }

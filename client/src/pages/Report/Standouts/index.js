@@ -1,56 +1,103 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { } from '../../../actions';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import './style.css';
 
 class Standouts extends Component {
-
-    componentDidMount() {
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            width: 0,
+            height: 0
+        }
     }
 
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener("resize", this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    };
 
     render() {
         let topScorerUrl = "";
+        console.log(this.props.topScorer)
         if (this.props.topScorer) {
-            topScorerUrl = `http://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
+            topScorerUrl = `https://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
         };
 
         let closeOneUrl = "";
         if (this.props.closeOne) {
-            closeOneUrl = `http://sleepercdn.com/avatars/${this.props.closeOne.avatar}`
+            closeOneUrl = `https://sleepercdn.com/avatars/${this.props.closeOne.avatar}`
         }
 
-        return (
-            <Col xs={4} className="standouts">
-                <p className="standouts__title">TOP SCORER</p>
 
-                <div className='standouts__outerBox'>
-                    <div className='standouts__innerBox'>
-                        <img src={topScorerUrl} alt="poop" className="standouts__image" />
+        if (this.state.width < 575) {
+            return (
+                <React.Fragment>
+                    <Col xs={6} className="cards">
+                        <p className="reportTitle">TOP SCORER</p>
+
+                        <div className='cards__outerBox'>
+                            <div className='cards__innerBox'>
+                                <img src={topScorerUrl} alt="poop" className="cards__image" />
+                            </div>
+                        </div>
+                        <div className='cards__lowerBox'>
+                            <p>{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
+                        </div>
+                    </Col>
+                    <Col xs={6} className="cards">
+                        <p className="reportTitle">CLOSE ONE</p>
+
+                        <div className='cards__outerBox'>
+                            <div className='cards__innerBox'>
+                                <img src={closeOneUrl} alt="poop" className="cards__image" />
+                            </div>
+                        </div>
+                        <div className='cards__lowerBox'>
+                            <p>{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
+                        </div>
+                    </Col>
+                </React.Fragment>
+            )
+        } else {
+            return (
+                <Col xs={12} className="cards">
+                    <p className="reportTitle">TOP SCORER</p>
+
+                    <div className='cards__outerBox'>
+                        <div className='cards__innerBox'>
+                            <img src={topScorerUrl} alt="poop" className="cards__image" />
+                        </div>
                     </div>
-                </div>
-                <div className='standouts__numberBox'>
-                    <p>{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
-                </div>
-
-                <hr></hr>
-
-                <p className="standouts__title">CLOSE ONE</p>
-
-                <div className='standouts__outerBox'>
-                    <div className='standouts__innerBox'>
-                        <img src={closeOneUrl} alt="poop" className="standouts__image" />
+                    <div className='cards__lowerBox'>
+                        <p>{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
                     </div>
-                </div>
-                <div className='standouts__numberBox'>
-                    <p>{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
-                </div>
-            </Col>
-        )
+
+                    <div className="hr"></div>
+
+                    <p className="reportTitle">CLOSE ONE</p>
+
+                    <div className='cards__outerBox'>
+                        <div className='cards__innerBox'>
+                            <img src={closeOneUrl} alt="poop" className="cards__image" />
+                        </div>
+                    </div>
+                    <div className='cards__lowerBox'>
+                        <p>{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
+                    </div>
+                </Col>
+            )
+        }
     }
 }
 

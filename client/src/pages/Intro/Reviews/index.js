@@ -18,7 +18,7 @@ class Reviews extends Component {
                 </div>
 
                 <Container>
-                    <Row noGutters={true} className="rowSpace-evenly">
+                    <Row noGutters={true} className="u-space-evenly">
                         <div className='review'>
                             <figure className='review__shape'>
                                 <img className='review__img' src='./images/intro/nat-8.jpg' alt='review'></img>

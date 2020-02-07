@@ -1,12 +1,15 @@
 import React from 'react';
-import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend
-} from 'recharts';
+import CanvasJSReact from '../../../canvasjs.react';
+
 import { connect } from 'react-redux';
 import { fetchGraphPPG, setGraphPointsToState, removeGraphData } from '../../../actions';
 import './style.css'
 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
+const CanvasJS = CanvasJSReact.CanvasJS;
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class GraphPoints extends React.Component {
   componentDidMount() {
@@ -45,30 +48,67 @@ class GraphPoints extends React.Component {
 
   render() {
 
-    const data = (this.props.graphPoints ? (this.props.graphPoints) : ([]) )
+    console.log(this.props.data)
+    const options = {
+      animationEnabled: true,	
+      title:{
+        text: "Points For and Points Against"
+      },
+      axisY : {
+        title: "Point Total",
+        includeZero: false
+      },
+      toolTip: {
+        shared: true
+      },
+      data: [{
+        type: "spline",
+        name: "2016",
+        showInLegend: true,
+        dataPoints: [
+          { y: 155, label: "Jan" },
+          { y: 150, label: "Feb" },
+          { y: 152, label: "Mar" },
+          { y: 148, label: "Apr" },
+          { y: 142, label: "May" },
+          { y: 150, label: "Jun" },
+          { y: 146, label: "Jul" },
+          { y: 149, label: "Aug" },
+          { y: 153, label: "Sept" },
+          { y: 158, label: "Oct" },
+          { y: 154, label: "Nov" },
+          { y: 150, label: "Dec" }
+        ]
+      },
+      {
+        type: "spline",
+        name: "2017",
+        showInLegend: true,
+        dataPoints: [
+          { y: 172, label: "Jan" },
+          { y: 173, label: "Feb" },
+          { y: 175, label: "Mar" },
+          { y: 172, label: "Apr" },
+          { y: 162, label: "May" },
+          { y: 165, label: "Jun" },
+          { y: 172, label: "Jul" },
+          { y: 168, label: "Aug" },
+          { y: 175, label: "Sept" },
+          { y: 170, label: "Oct" },
+          { y: 165, label: "Nov" },
+          { y: 169, label: "Dec" }
+        ]
+      }]
+  }
+
     return (
-      <div style={{ 'marginTop': '30px' }}>
-          <div id="graphTitle">
-            <p>Cumulative PF and PA</p>
-          </div>
-          <BarChart
-            width={1200}
-            height={700}
-            data={data}
-            margin={{
-              top: 20, right: 70, left: 20
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis yAxisId="left" orientation="left" stroke="rgb(0, 0, 107)" />
-            <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
-            <Tooltip />
-            <Legend width={100} wrapperStyle={{ top: 20, right: 130, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '20px' }} />
-            <Bar yAxisId="left" dataKey="PF" fill="rgb(0, 0, 107)" />
-            <Bar yAxisId="right" dataKey="PA" fill="#82ca9d" />
-          </BarChart>
-        </div>
+      <Row style={{ 'marginTop': '30px' }}>
+        <Col>
+          <CanvasJSChart options = {options}
+              /* onRef = {ref => this.chart = ref} */
+          />
+        </Col>
+      </Row>
     );
   }
 }

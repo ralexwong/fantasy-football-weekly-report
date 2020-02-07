@@ -10,7 +10,14 @@
     }
 }
 
-.u-margin-top { margin-top: 4rem !important; }
+.u-margin-top { 
+    margin-top: 4rem !important; 
+
+    @include respond(phone) {
+        margin-top: 2rem !important;
+    }
+
+}
 .u-margin-top-big { margin-top: 8rem !important; }
 .u-margin-top-huge { 
     margin-top: 10rem !important; 
@@ -20,6 +27,6 @@
     }
 }
 
-.rowSpace-evenly {
-    justify-content: space-evenly;
-}
+.u-space-evenly { justify-content: space-evenly; }
+.no-padding { padding: 0; }
+.u-justify-content-center { justify-content: center !important; }

@@ -24,9 +24,8 @@ class DateRow extends React.Component {
     render() {
         return (
             <Row className="dateRow">
-                <img src="" alt=""></img>
                 <Col>
-                    {this.grabDate()}
+                    <p>{this.grabDate()}</p>
                 </Col>
                 <Col>
                     <p style={{float: 'right'}}>Season 1 | Week {this.props.week}</p>

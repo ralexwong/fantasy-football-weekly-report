@@ -11,7 +11,6 @@ import Recap from './Recap';
 
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 
 class Report2 extends Component {
@@ -21,33 +20,16 @@ class Report2 extends Component {
   }
 
   render() {
-
-    const divStyle = {
-      border: '2px solid black'
-    };
-
-    const rowStyle = {
-      padding: '0 50px 0 30px'
-    }
-
     return (
-      <div>
-        <Container style={divStyle} id="mainContainer">
-          <Title />
-          <DateRow />
-          <Row style={rowStyle}>
-            <Col className = "recapCol">
-              <Recap />
-            </Col>
-            <Cards />
-            {/* <Waivers /> */}
-          </Row>
-          <Row>
-            <GraphPoints />
-          </Row>
-        </Container>
-      </div>
-
+      <Container className="reportContainer">
+        <Title />
+        <DateRow />
+        <Row className="u-margin-top">
+          <Recap />
+          <Cards />
+        </Row>
+        <GraphPoints />
+      </Container>
     );
   }
 

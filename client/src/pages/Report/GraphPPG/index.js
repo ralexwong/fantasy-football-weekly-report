@@ -1,12 +1,13 @@
 import React from 'react';
-import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend
-} from 'recharts';
+import CanvasJSReact from '../../../canvasjs.react';
 import { connect } from 'react-redux';
 import { fetchGraphPPG, refactorData, removeGraphData } from '../../../actions';
-import './style.css'
 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
+const CanvasJS = CanvasJSReact.CanvasJS;
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class GraphPPG extends React.Component {
   componentDidMount() {
@@ -23,7 +24,7 @@ class GraphPPG extends React.Component {
 
   refactorData = (roster, league_info) => {
     let combinedObjects = [];
-    
+
     for (let i = 0; i < roster.length; i++) {
       let settings = roster[i].settings;
       let PPG = (parseInt(settings.fpts) / (parseInt(settings.wins) + parseInt(settings.losses)))
@@ -41,58 +42,74 @@ class GraphPPG extends React.Component {
   }
 
   render() {
-    const data = (this.props.data ? (this.props.data) : ( []
-    //   [{
-    //     name: 'Page A', wins: 4000, pv: 2400, amt: 2400,
-    //   },
-    //   {
-    //     name: 'Page B', wins: 3000, pv: 1398, amt: 2210,
-    //   },
-    //   {
-    //     name: 'Page C', wins: 2000, pv: 9800, amt: 2290,
-    //   },
-    //   {
-    //     name: 'Page D', wins: 2780, pv: 3908, amt: 2000,
-    //   },
-    //   {
-    //     name: 'Page E', wins: 1890, pv: 4800, amt: 2181,
-    //   },
-    //   {
-    //     name: 'Page F', wins: 2390, pv: 3800, amt: 2500,
-    //   },
-    //   {
-    //     name: 'Page G', wins: 3490, pv: 4300, amt: 2100,
-    //   },
-    ))
+
+    console.log(this.props.data)
+    const options = {
+      animationEnabled: true,	
+      title:{
+        text: "Points For and Points Against"
+      },
+      axisY : {
+        title: "Point Total",
+        includeZero: false
+      },
+      toolTip: {
+        shared: true
+      },
+      data: [{
+        type: "spline",
+        name: "2016",
+        showInLegend: true,
+        dataPoints: [
+          { y: 155, label: "Jan" },
+          { y: 150, label: "Feb" },
+          { y: 152, label: "Mar" },
+          { y: 148, label: "Apr" },
+          { y: 142, label: "May" },
+          { y: 150, label: "Jun" },
+          { y: 146, label: "Jul" },
+          { y: 149, label: "Aug" },
+          { y: 153, label: "Sept" },
+          { y: 158, label: "Oct" },
+          { y: 154, label: "Nov" },
+          { y: 150, label: "Dec" }
+        ]
+      },
+      {
+        type: "spline",
+        name: "2017",
+        showInLegend: true,
+        dataPoints: [
+          { y: 172, label: "Jan" },
+          { y: 173, label: "Feb" },
+          { y: 175, label: "Mar" },
+          { y: 172, label: "Apr" },
+          { y: 162, label: "May" },
+          { y: 165, label: "Jun" },
+          { y: 172, label: "Jul" },
+          { y: 168, label: "Aug" },
+          { y: 175, label: "Sept" },
+          { y: 170, label: "Oct" },
+          { y: 165, label: "Nov" },
+          { y: 169, label: "Dec" }
+        ]
+      }]
+  }
+
     return (
-      <div style={{ 'marginTop': '30px' }}>
-          <div id="graphTitle">
-            <p>Wins and PPG</p>
-          </div>
-          <BarChart
-            width={1200}
-            height={700}
-            data={data}
-            margin={{
-              top: 20, right: 70, left: 20
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis yAxisId="left" orientation="left" stroke="rgb(0, 0, 107)" />
-            <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
-            <Tooltip />
-            <Legend width={100} wrapperStyle={{ top: 20, right: 130, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '20px' }} />
-            <Bar yAxisId="left" dataKey="PPG" fill="rgb(0, 0, 107)" />
-            <Bar yAxisId="right" dataKey="wins" fill="#82ca9d" />
-          </BarChart>
-        </div>
+      <Row style={{ 'marginTop': '30px' }}>
+        <Col>
+          <CanvasJSChart options = {options}
+              /* onRef = {ref => this.chart = ref} */
+          />
+        </Col>
+      </Row>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return { 
+  return {
     league_id: state.sleeper.league_id,
     roster: state.sleeper.roster,
     league_info: state.sleeper.league_info,

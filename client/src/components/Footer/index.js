@@ -11,12 +11,12 @@ class Footer extends Component {
       <footer className='footer'>
         <div className='footer__logo-box'>
           <picture className='footer__logo'>
-            <source srcSet='./images/default.png 1x, ./images/intro/default.png 2x' media="(max-width: 35.9em)" />
+            <source  srcSet='./images/default.png 1x, ./images/default.png 2x' media="(max-width: 35.9em)" />
             <img srcSet='./images/default.png 1x, ./images/default.png 2x' alt='footer_photo' className='footer__logo' />
           </picture>
         </div>
 
-        <Row noGutters={true} className='rowSpace-evenly'>
+        <Row noGutters={true} className='u-space-evenly'>
           <Col xs='4'>
             <div className='footer__navigation'>
               <ul className='footer__list'>

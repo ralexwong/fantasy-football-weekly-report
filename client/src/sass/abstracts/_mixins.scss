@@ -5,6 +5,19 @@
     transform: translate(-50%, -50%);
 }
 
+
+@mixin border-lg {
+    border: 8px solid $black-color;
+}
+
+@mixin border-md {
+    border: 3px solid $black-color;
+}
+
+@mixin border-sm {
+    border: 1px solid $black-color;
+}
+
 // MEDIA QUERY MANAGER
 /*
 

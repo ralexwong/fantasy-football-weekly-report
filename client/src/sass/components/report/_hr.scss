@@ -1,0 +1,11 @@
+.hr {
+    border: 1px solid black;
+    height: 1px;
+    width: 100%;
+
+    margin: 4rem 0 3rem 0;
+
+    @include respond(phone) {
+        margin: 3rem 0 2rem 0;
+    }
+}

@@ -4,6 +4,7 @@ import { refactoredMatchups, closeOne, topScorer } from '../../actions';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
+import MiddleRow from './middleRow';
 import Scoreboard from "./Scoreboard";
 import GraphPPG from "./GraphPPG";
 import Standouts from './Standouts';
@@ -117,13 +118,8 @@ class Report extends Component {
       <Container className="reportContainer">
         <Title />
         <DateRow />
-        <Row className="u-margin-top">
-          <Scoreboard />
-          <Standouts />
-        </Row>
-        {/* <Row>
-          <GraphPPG />
-        </Row> */}
+        <MiddleRow />
+        <GraphPPG />
       </Container>
     );
   }

@@ -7,7 +7,7 @@ class Register extends Component {
     render() {
         return (
             <section className='register'>
-                <Row className='rowSpace-evenly' noGutters={true}>
+                <Row className='u-space-evenly' noGutters={true}>
                     <div className='registerBox'>
                         <div className='registerBox__form'>
                             <form className='form' action='#'>

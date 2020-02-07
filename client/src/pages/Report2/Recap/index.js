@@ -1,9 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setRecapToState } from '../../../actions';
-import Row from 'react-bootstrap/Row';
-import './style.css'
-
+import Col from 'react-bootstrap/Col';
 
 import Table from 'react-bootstrap/Table'
 
@@ -74,14 +72,12 @@ class Recap extends Component {
 
   render() {
     return (
-      <Fragment>
-        <Row>
-          <p className="cardTitle">NUMBERS RECAP</p>
-        </Row>
+      <Col className="recap">
+        <p className="reportTitle">NUMBERS RECAP</p>
         <Table bordered >
           <thead>
             <tr>
-              <th id="recapWeek" colSpan="7">Week {this.props.week}</th>
+              <th className="recap__week" colSpan="7">Week {this.props.week}</th>
             </tr>
             <tr>
               <th>Team</th>
@@ -112,7 +108,7 @@ class Recap extends Component {
               (<tr></tr>))}
           </tbody>
         </Table>
-      </Fragment>
+      </Col>
     )
   }
 }

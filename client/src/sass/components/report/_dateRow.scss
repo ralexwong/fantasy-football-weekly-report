@@ -2,5 +2,9 @@
     border-top:2px solid black;
     border-bottom: 4px solid black;
     margin: 0px auto;
-    font-size: 20px;
+    font-size: 2rem;
+
+    @include respond(phone) {
+        font-size: 1.9rem;
+    }
 }
