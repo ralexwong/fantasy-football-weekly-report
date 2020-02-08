@@ -43,7 +43,7 @@ class Standouts extends Component {
             return (
                 <React.Fragment>
                     <Col xs={6} className="cards">
-                        <p className="reportTitle">TOP SCORER</p>
+            <p className="reportTitle">{this.state.width}</p>
 
                         <div className='cards__outerBox'>
                             <div className='cards__innerBox'>
