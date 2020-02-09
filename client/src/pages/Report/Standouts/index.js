@@ -28,7 +28,6 @@ class Standouts extends Component {
 
     render() {
         let topScorerUrl = "";
-        console.log(this.props.topScorer)
         if (this.props.topScorer) {
             topScorerUrl = `https://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
         };
@@ -43,7 +42,7 @@ class Standouts extends Component {
             return (
                 <React.Fragment>
                     <Col xs={6} className="cards">
-            <p className="reportTitle">{this.state.width}</p>
+                        <p className="reportTitle">TOP SCORER</p>
 
                         <div className='cards__outerBox'>
                             <div className='cards__innerBox'>

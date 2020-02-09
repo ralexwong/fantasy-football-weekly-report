@@ -73,7 +73,7 @@ export const fetchMatchupPoints = (week, league_id) => async dispatch => {
     })
 
     const data = response.data;
-    // console.log(data);
+    console.log(data);
 
     dispatch({ type: FETCH_MATCHUPPOINTS, payload: data });
     history.push('/report');

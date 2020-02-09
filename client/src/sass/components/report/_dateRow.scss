@@ -8,6 +8,10 @@
         font-size: 1.75rem;
     }
 
+    @include respond(galaxy) {
+        font-size: 1.6rem;
+    }
+
     @include respond(iphone) {
         font-size: 1.3rem;
     }

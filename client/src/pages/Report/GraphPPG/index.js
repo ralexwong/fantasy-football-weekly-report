@@ -25,29 +25,16 @@ class GraphPPG extends React.Component {
   refactorData = (roster, league_info) => {
     let combinedObjects = [];
 
-    for (let i = 0; i < roster.length; i++) {
-      let settings = roster[i].settings;
-      let PPG = (parseInt(settings.fpts) / (parseInt(settings.wins) + parseInt(settings.losses)))
-      combinedObjects.push({ name: roster[i].owner_id, wins: settings.wins, PPG: PPG })
-    }
-
-    for (let i = 0; i < league_info.length; i++) {
-      for (let j = 0; j < roster.length; j++) {
-        if (league_info[i].user_id === combinedObjects[j].name) {
-          combinedObjects[j].name = league_info[i].display_name;
-        }
-      }
-    }
+    
     this.props.refactorData(combinedObjects)
   }
 
   render() {
     const options = {
       animationEnabled: true,
-      exportEnabled: true,
       theme: "light2", //"light1", "dark1", "dark2"
       title: {
-        text: "Simple Column Chart with Index Labels"
+        text: "Points for the Week",
       },
       data: [{
         type: "column", //change type to bar, line, area, pie, etc
@@ -73,12 +60,13 @@ class GraphPPG extends React.Component {
     }
 
     return (
-      <div>
-        <CanvasJSChart options={options}
-        /* onRef={ref => this.chart = ref} */
-        />
-        {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-      </div>
+      <Row>
+        <Col className="pointsGraph">
+          <CanvasJSChart options={options}
+          onRef={ref => this.chart = ref}
+          />
+        </Col>
+      </Row>
     );
   }
 }

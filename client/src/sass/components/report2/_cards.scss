@@ -63,6 +63,10 @@
             font-size: 1.75rem;
         }
 
+        @include respond(galaxy) {
+            font-size: 1.5rem;
+        }
+
         @include respond(iphone) {
             font-size: 1.2rem;
         }
