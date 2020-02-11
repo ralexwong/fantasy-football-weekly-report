@@ -92,7 +92,7 @@ export default (state = initialState, action) => {
         case REFACTORED_DATA:
             return { ...state, graphPPG: action.payload }
         case REMOVE_GRAPH_DATA:
-            return { ...state, graphPPG: null, graphPoints: null }
+            return { ...state, graphPoints: null }
         case SET_GRAPH_POINTS_TO_STATE:
             return { ...state, graphPoints: action.payload }
         case SET_WAIVERS_TO_STATE:

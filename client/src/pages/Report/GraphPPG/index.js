@@ -1,61 +1,65 @@
 import React from 'react';
 import CanvasJSReact from '../../../canvasjs.react';
 import { connect } from 'react-redux';
-import { fetchGraphPPG, refactorData, removeGraphData } from '../../../actions';
+import { refactorData, removeGraphData, setGraphPointsToState } from '../../../actions';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class GraphPPG extends React.Component {
   componentDidMount() {
-    if (!this.props.roster) {
+    if (!this.props.matchups) {
 
     } else {
-      this.refactorData(this.props.roster, this.props.league_info)
+      this.refactorData(this.props.matchups)
     }
+    console.log(this.props)
   }
 
   componentWillUnmount() {
-    this.props.removeGraphData()
+    // this.props.removeGraphData()
   }
 
-  refactorData = (roster, league_info) => {
-    let combinedObjects = [];
+  refactorData = (matchups) => {
+    let arr = [];
 
-    
-    this.props.refactorData(combinedObjects)
+    console.log(matchups);
+    for (let i = 0; i < matchups.length; i++) {
+      if (parseFloat(matchups[i].points1) > parseFloat(matchups[i].points2)) {
+        arr.push({ label: matchups[i].roster1, y: parseFloat(matchups[i].points1), color: "#00006b" });
+        arr.push({ label: matchups[i].roster2, y: parseFloat(matchups[i].points2), color: "#b61e1e" });
+      } else {
+        arr.push({ label: matchups[i].roster1, y: parseFloat(matchups[i].points1), color: "#b61e1e" });
+        arr.push({ label: matchups[i].roster2, y: parseFloat(matchups[i].points2), color: "#00006b" });
+      }
+    }
+
+    console.log(arr);
+
+    this.props.setGraphPointsToState(arr);
   }
 
   render() {
+    console.log(this.props.graphPoints)
     const options = {
       animationEnabled: true,
       theme: "light2", //"light1", "dark1", "dark2"
       title: {
         text: "Points for the Week",
       },
+
+      axisX: {
+        labelFontSize: 8,
+        labelAngle: -30
+      },
       data: [{
         type: "column", //change type to bar, line, area, pie, etc
         //indexLabel: "{y}", //Shows y value on all Data Points
-        indexLabelFontColor: "#5A5757",
+        indexLabelFontColor: "black",
         indexLabelPlacement: "outside",
-        dataPoints: [
-          { x: 10, y: 71 },
-          { x: 20, y: 55 },
-          { x: 30, y: 50 },
-          { x: 40, y: 65 },
-          { x: 50, y: 71 },
-          { x: 60, y: 68 },
-          { x: 70, y: 38 },
-          { x: 80, y: 92, indexLabel: "Highest" },
-          { x: 90, y: 54 },
-          { x: 100, y: 60 },
-          { x: 110, y: 21 },
-          { x: 120, y: 49 },
-          { x: 130, y: 36 }
-        ]
+        dataPoints: this.props.graphPoints
       }]
     }
 
@@ -63,7 +67,7 @@ class GraphPPG extends React.Component {
       <Row>
         <Col className="pointsGraph">
           <CanvasJSChart options={options}
-          onRef={ref => this.chart = ref}
+          // onRef={ref => this.chart = ref}
           />
         </Col>
       </Row>
@@ -73,14 +77,12 @@ class GraphPPG extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    league_id: state.sleeper.league_id,
-    roster: state.sleeper.roster,
-    league_info: state.sleeper.league_info,
-    data: state.sleeper.graphPPG
+    matchups: state.sleeper.matchups,
+    graphPoints: state.sleeper.graphPoints
   }
 }
 
-export default connect(mapStateToProps, { fetchGraphPPG, refactorData, removeGraphData })(GraphPPG)
+export default connect(mapStateToProps, { refactorData, removeGraphData, setGraphPointsToState })(GraphPPG)
 
 
 

@@ -1,22 +1,19 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { refactoredMatchups, closeOne, topScorer } from '../../actions';
+import { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPointsToState } from '../../actions';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
 import MiddleRow from './middleRow';
-import Scoreboard from "./Scoreboard";
 import GraphPPG from "./GraphPPG";
-import Standouts from './Standouts';
 
 import Container from "react-bootstrap/Container";
-import Row from 'react-bootstrap/Row';
 
 
 class Report extends Component {
 
   componentDidMount() {
-    console.log(this.props);
+    console.log("CDM in report " + this.props);
 
     // check if the the info from the other pages has been placed into state
     // will maybe look to having some local storage applications here so the user 
@@ -70,6 +67,25 @@ class Report extends Component {
 
     // push the refactored matchups into state to be mapped out
     this.props.refactoredMatchups(combinedObjects);
+
+    let arr = [];
+
+    console.log(combinedObjects);
+    for (let i = 0; i < combinedObjects.length; i++) {
+      if (parseFloat(combinedObjects[i].points1) > parseFloat(combinedObjects[i].points2)) {
+        arr.push({ label: combinedObjects[i].roster1, y: parseFloat(combinedObjects[i].points1), color: "#00006b" });
+        arr.push({ label: combinedObjects[i].roster2, y: parseFloat(combinedObjects[i].points2), color: "#b61e1e" });
+      } else {
+        arr.push({ label: combinedObjects[i].roster1, y: parseFloat(combinedObjects[i].points1), color: "#b61e1e" });
+        arr.push({ label: combinedObjects[i].roster2, y: parseFloat(combinedObjects[i].points2), color: "#00006b" });
+      }
+    }
+
+    arr.sort(function (a, b) { return b.y - a.y})
+
+    console.log("in refactorState report CDM " + arr);
+
+    this.props.setGraphPointsToState(arr);
 
     this.topScorer(points);
 
@@ -131,9 +147,10 @@ const mapStateToProps = (state) => {
     league_info: state.sleeper.league_info,
     points: state.sleeper.points,
     league_id: state.sleeper.league_id,
-    matchups: state.sleeper.matchups
+    matchups: state.sleeper.matchups,
+    graphPoints: state.sleeper.graphPoints
   }
 }
 
-export default connect(mapStateToProps, { refactoredMatchups, closeOne, topScorer })(Report);
+export default connect(mapStateToProps, { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPointsToState })(Report);
 

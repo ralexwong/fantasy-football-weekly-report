@@ -8,7 +8,6 @@ import './style.css'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class GraphPoints extends React.Component {

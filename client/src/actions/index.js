@@ -94,6 +94,7 @@ export const setWeekToState = (week) => dispatch => {
 // Push refactored array of matchups so it can be displayed in a pair fashion ---------
 
 export const refactoredMatchups = (matchupArray) => dispatch => {
+    console.log(matchupArray);
     dispatch({ type: REFACTORED_MATCHUPS, payload: matchupArray })
 }
 
@@ -127,6 +128,7 @@ export const fetchGraphPPG = (league_id) => async dispatch => {
 // Push refactored data for graphPPG ------------------------------------
 
 export const refactorData = (data) => dispatch => {
+    console.log(data);
     dispatch({ type: REFACTORED_DATA, payload: data})
 }
 
@@ -139,6 +141,7 @@ export const removeGraphData = () => dispatch => {
 // push graph points to state ---------------------------------------
 
 export const setGraphPointsToState = (data) => dispatch => {
+    console.log(data);
     dispatch({ type: SET_GRAPH_POINTS_TO_STATE, payload: data})
 }
 

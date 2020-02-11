@@ -24,9 +24,6 @@ class Nav extends Component {
 
   componentDidMount() {
     window.addEventListener("resize", this.updateWidth);
-    console.log(window.location.href)
-    console.log(window.location.pathname)
-
   }
 
   componentWillUnmount() {
