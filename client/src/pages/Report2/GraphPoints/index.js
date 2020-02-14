@@ -3,10 +3,9 @@ import CanvasJSReact from '../../../canvasjs.react';
 
 import { connect } from 'react-redux';
 import { fetchGraphPPG, setGraphPointsToState, removeGraphData } from '../../../actions';
-import './style.css'
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col } from "reactstrap"
+
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 

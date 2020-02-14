@@ -1,9 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import { Container, Row, Col } from "reactstrap"
 import ScoreboardRow from '../ScoreboardRow';
 
 class Scoreboard extends React.Component {

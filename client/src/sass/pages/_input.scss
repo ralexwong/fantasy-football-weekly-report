@@ -1,0 +1,17 @@
+.sleeperInput {
+    height: 800px;
+    background-image: linear-gradient(
+        to right bottom,
+         rgba($light-blue, 0.8),
+         rgba($dark-blue, 0.8));
+         
+         
+    &__jumbotron {
+        
+    }
+}
+
+.test {
+    display: flex;
+    justify-content: center;
+}

@@ -26,23 +26,6 @@
         }
     }
 
-    &__numberBox {
-        text-align: center;
-        position: relative;
-        z-index: 3;
-        bottom: 3.5%;
-        background: white;
-        // width: 50%;
-        margin: auto;
-        border: 2px solid black;
-        font-size: 2rem;
-        font-weight: 600;
-
-        @include respond(phone) {
-            font-size: 1.5rem;
-        }
-    }
-
     &__lowerBox {
         @include border-lg;
         border-top: none;

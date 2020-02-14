@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Standouts from '../Standouts';
 import Scoreboard from '../Scoreboard';
 
-import Row from 'react-bootstrap/Row';
+import { Row } from "reactstrap"
+
 
 class MiddleRow extends Component {
     constructor(props) {

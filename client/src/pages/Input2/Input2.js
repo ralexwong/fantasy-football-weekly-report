@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { fetchRoster, setLeague_id, fetchGraphPPG } from '../../actions';
 
-import Container from "react-bootstrap/Container";
-import './Input2.css'
+import { Container, Row, Col } from "reactstrap"
 
 class Input2 extends Component {
     componentDidMount() {
@@ -31,20 +30,26 @@ class Input2 extends Component {
 
     render() {
         return (
-            <Container id="input2Container">
-                <div style={{ 'marginBottom': '70px' }}>
-                    <h1>
-                        Click on one league!
-                    </h1>
-                </div>
-                <ul>
-                    {this.props.leagues ? (
-                        this.mapLeagues(this.props.leagues)
-                    ) : (
-                            <div>Leagues not found</div>
-                        )}
-                </ul>
-            </Container>
+            <div className="sleeperInput">
+                <Container >
+                    <Row>
+                        <Col>
+                            <div>
+                                <h1>
+                                    Click on one league!
+                                </h1>
+                            </div>
+                            <ul>
+                                {this.props.leagues ? (
+                                    this.mapLeagues(this.props.leagues)
+                                ) : (
+                                        <div>Leagues not found</div>
+                                    )}
+                            </ul>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         )
     }
 }

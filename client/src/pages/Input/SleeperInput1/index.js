@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { fetchLeagues } from '../../actions';
 
-import '../Input';
-import '../Input2';
-import '../Input3';
-
-import { Container, Row, Col, Jumbotron } from "reactstrap"
-
-class Input1 extends Component {
+class SleeperInput1 extends Component {
     componentDidMount() {
 
     }
@@ -46,18 +40,19 @@ class Input1 extends Component {
 
     render() {
         return (
-            <div className="sleeperInput">
-                <Container>
-                    <Row>
-                        <Col className="test">
-                            <Jumbotron className="sleeperInput__jumbotron">
-                                <SleeperInput1 />
-                                <SleeperInput2 />
-                                <SleeperInput3 />
-                            </Jumbotron>
-                        </Col>
-                    </Row>
-                </Container>
+            <div>
+                <div>
+                    <h1>
+                        First enter your username here!
+                                </h1>
+                    <h3>
+                        (You can use my username if you want to test it out: <b>wongman</b>)
+                                </h3>
+                </div>
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
+                    <Field name="username" component={this.renderInput} label="Enter Username" />
+                    <button className="platformBtn platformBtn--blue platformBtn--animated">Submit</button>
+                </form>
             </div>
         )
     }
@@ -80,4 +75,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, { fetchLeagues })(reduxForm({
     form: 'user',
     validate
-})(Input1))
+})(SleeperInput1))

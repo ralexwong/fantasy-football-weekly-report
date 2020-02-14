@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { } from '../../../actions';
-import Col from 'react-bootstrap/Col';
-import './style.css';
+import { Col } from "reactstrap"
+
 
 class Standouts extends Component {
     constructor(props) {

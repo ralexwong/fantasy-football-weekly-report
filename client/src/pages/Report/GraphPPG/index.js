@@ -3,8 +3,8 @@ import CanvasJSReact from '../../../canvasjs.react';
 import { connect } from 'react-redux';
 import { refactorData, removeGraphData, setGraphPointsToState } from '../../../actions';
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col } from "reactstrap"
+
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -51,7 +51,7 @@ class GraphPPG extends React.Component {
       },
 
       axisX: {
-        labelFontSize: 8,
+        labelFontSize: 12,
         labelAngle: -30
       },
       data: [{

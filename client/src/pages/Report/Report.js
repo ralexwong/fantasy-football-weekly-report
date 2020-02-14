@@ -7,7 +7,8 @@ import DateRow from "../../components/DateRow";
 import MiddleRow from './middleRow';
 import GraphPPG from "./GraphPPG";
 
-import Container from "react-bootstrap/Container";
+import { Container } from "reactstrap"
+
 
 
 class Report extends Component {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setRecapToState } from '../../../actions';
-import Col from 'react-bootstrap/Col';
+import { Col } from "reactstrap"
+
 
 import Table from 'react-bootstrap/Table'
 

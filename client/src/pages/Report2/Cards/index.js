@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setCardsToState } from '../../../actions';
-import Col from 'react-bootstrap/Col';
+import { Col } from "reactstrap"
+
 
 class Cards extends Component {
     constructor(props) {

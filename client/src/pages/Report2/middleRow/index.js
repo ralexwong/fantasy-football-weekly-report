@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Cards from '../Cards';
 import Recap from '../Recap';
 
-import Row from 'react-bootstrap/Row';
+import { Row } from "reactstrap"
+
 
 
 class MiddleRow extends Component {

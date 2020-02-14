@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { setWaiversToState } from '../../../actions';
-import Row from 'react-bootstrap/Row';
+import { Row } from "reactstrap"
+
 
 
 import Table from 'react-bootstrap/Table'
