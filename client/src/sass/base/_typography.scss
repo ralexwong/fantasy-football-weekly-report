@@ -76,3 +76,17 @@
 .paragraph-sm {
     font-size: $small-font-size;
 }
+
+.bold {
+    font-weight: bold;
+}
+
+a {
+    color: inherit;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: inherit;
+    }
+}

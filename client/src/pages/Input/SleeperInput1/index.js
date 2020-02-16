@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { fetchLeagues } from '../../actions';
+import { fetchLeagues } from '../../../actions';
+
+import { Jumbotron } from 'reactstrap';
 
 class SleeperInput1 extends Component {
     componentDidMount() {
@@ -26,8 +28,7 @@ class SleeperInput1 extends Component {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
         return (
             <div className={className}>
-                <label>{label}: </label>
-                <input {...input} autoComplete="off" />
+                <input {...input} autoComplete="off" placeholder="Username" />
                 {this.renderError(meta)}
             </div>
         ); // {...input} === onChange={formProps.input.onChange}  value={formProps.input.value}
@@ -40,20 +41,20 @@ class SleeperInput1 extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <h1>
+            <Jumbotron className="sleeperInput__jumbotron">
+                <div className="sleeperInput__helpertext">
+                    <p className="bold">
                         First enter your username here!
-                                </h1>
-                    <h3>
+                    </p>
+                    <p>
                         (You can use my username if you want to test it out: <b>wongman</b>)
-                                </h3>
+                    </p>
                 </div>
-                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="sleeperForm">
                     <Field name="username" component={this.renderInput} label="Enter Username" />
-                    <button className="platformBtn platformBtn--blue platformBtn--animated">Submit</button>
+                    <button className="btn btn--blue">Submit</button>
                 </form>
-            </div>
+            </Jumbotron>
         )
     }
 }

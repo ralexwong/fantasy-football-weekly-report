@@ -20,10 +20,7 @@ class Footer extends Component {
           <Col xs='4'>
             <div className='footer__navigation'>
               <ul className='footer__list'>
-                <li className='footer__item'><Link to='#' className='footer__link'>Company</Link></li>
-                <li className='footer__item'><Link to='#' className='footer__link'>Contact Us</Link></li>
-                <li className='footer__item'><Link to='#' className='footer__link'>Careers</Link></li>
-                <li className='footer__item'><Link to='#' className='footer__link'>Privacy Policy</Link></li>
+                <li className='footer__item'><Link to='#' className='footer__link'>Contact Me</Link></li>
                 <li className='footer__item'><Link to='#' className='footer__link'>Terms</Link></li>
               </ul>
             </div>

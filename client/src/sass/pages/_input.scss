@@ -1,17 +1,37 @@
-.sleeperInput {
-    height: 800px;
+.sleeperBackground {
+    min-height: 800px;
     background-image: linear-gradient(
         to right bottom,
          rgba($light-blue, 0.8),
          rgba($dark-blue, 0.8));
-         
-         
+}
+
+.sleeperInput {
+    text-align: center;
+
     &__jumbotron {
-        
+        max-width: 65rem;
+        margin: 2rem auto;
+    }
+
+    &__helpertext {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    &__list {
+        margin-top: 1rem;
+        background-color: inherit;
+        border: none;
+        padding: 1rem 2rem;
+
+        &--active {
+            box-shadow: 0 .1rem 1rem rgba($black-color, .5);
+        }
     }
 }
 
-.test {
-    display: flex;
-    justify-content: center;
+.field {
+    font-size: 2rem;
+    margin-bottom: 2rem;
 }

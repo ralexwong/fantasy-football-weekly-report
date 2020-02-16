@@ -24,7 +24,7 @@ class Features extends Component {
                         <Col xs={9} sm={6} md={3}>
                             <div className='box'>
                                 <i className='icon-basic-picture-multiple box__icon'></i>
-                                <h3 className='heading-tertiary'>Generate a report now</h3>
+                                <h3 className='heading-tertiary'>Generate a report</h3>
                                 <p className='box__text'>
                                     tur adipisicing elit. Aperiam, ipsum sapiente aspernatur.
                                     tur adipisicing elit. Aperiam, ipsum sapiente aspernatur.

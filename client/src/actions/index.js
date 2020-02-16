@@ -37,7 +37,6 @@ export const fetchLeagues = (username) => async dispatch => {
         return;
     }
     dispatch({ type: FETCH_LEAGUES, payload: data });
-    history.push('/input2');
 }
 
 // Grabs the league's roster -------------------------------------------------
@@ -53,7 +52,6 @@ export const fetchRoster = (league_id) => async dispatch => {
     console.log(data);
 
     dispatch({ type: FETCH_ROSTER, payload: data }) 
-    history.push('/input3');
 }
 
 // Set league_id in state just in case ---------------------------------------------

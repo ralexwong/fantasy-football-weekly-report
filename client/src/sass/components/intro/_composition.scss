@@ -41,8 +41,4 @@
     &:hover &__photo:not(:hover) {
         transform: scale(.95);
     }
-
-    @include respond(phone) {
-        width: 50%;
-    }
 }
