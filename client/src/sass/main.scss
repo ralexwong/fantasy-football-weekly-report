@@ -4,14 +4,11 @@
 // base-----------------------------------
 @import 'base/all';
 
-// components-----------------------------
-@import 'components/all';
+// components------------------------------
+@import '../components/all';
 
-// layout--------------------------------
-@import 'layout/all';
-
-// pages---------------------------------
-@import 'pages/all';
+// pages--------------------------------
+@import '../pages/all';
 
 // themes--------------------------------
 @import 'themes/all';

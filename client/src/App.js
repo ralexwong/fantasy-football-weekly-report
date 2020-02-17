@@ -36,7 +36,7 @@ function App() {
           <Route exact path="/login" render={props => <Login {...props} />} />
           <Route exact path="/signup" render={props => <Signup {...props} />} />
           <Route exact path="/intro" render={props => <Intro {...props} />} />
-          <Route exact path ="/input" render={props => <Input {...props} />} />
+          <Route exact path ="/sleeperInput" render={props => <Input {...props} />} />
           <Route exact path ="/report2" render={props => <Report2 {...props} />}  />
           <Route component={NoMatch} />
         </Switch>
