@@ -7,7 +7,6 @@ import { Jumbotron } from 'reactstrap';
 
 class SleeperInput1 extends Component {
     componentDidMount() {
-
     }
 
     // deconstructs {meta} object and uses meta.error && meta.touched
@@ -36,26 +35,26 @@ class SleeperInput1 extends Component {
 
     onSubmit = (formValues) => {
         console.log(formValues.username);
-        this.props.fetchLeagues(formValues.username)
+        this.props.fetchLeagues(formValues.username);
     }
 
     render() {
-        return (
-            <Jumbotron className="sleeperInput__jumbotron">
-                <div className="sleeperInput__helpertext">
-                    <p className="bold">
-                        First enter your username here!
-                    </p>
-                    <p>
-                        (You can use my username if you want to test it out: <b>wongman</b>)
-                    </p>
-                </div>
-                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="sleeperForm">
-                    <Field name="username" component={this.renderInput} label="Enter Username" />
-                    <button className="btn btn--blue">Submit</button>
-                </form>
-            </Jumbotron>
-        )
+            return (
+                <Jumbotron className="sleeperInput__jumbotron">
+                    <div className="sleeperInput__helpertext">
+                        <p className="bold">
+                            First enter your username here!
+                        </p>
+                        <p>
+                            (You can use my username if you want to test it out: <b>wongman</b>)
+                        </p>
+                    </div>
+                    <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="sleeperForm">
+                        <Field name="username" component={this.renderInput} label="Enter Username" />
+                        <button className="btn btn--blue">Submit</button>
+                    </form>
+                </Jumbotron>
+            )
     }
 }
 
@@ -70,7 +69,10 @@ const validate = formValues => {
 }
 
 const mapStateToProps = (state) => {
-    return { nullUsername: state.nullUsername }
+    return { 
+        nullUsername: state.sleeper.nullUsername,
+        username: state.sleeper.username
+     }
 }
 
 export default connect(mapStateToProps, { fetchLeagues })(reduxForm({

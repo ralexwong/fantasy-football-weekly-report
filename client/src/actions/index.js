@@ -1,5 +1,6 @@
 import {
     FETCH_LEAGUES,
+    SET_USERNAME,
     INVALID_USERNAME,
     FETCH_ROSTER,
     SET_LEAGUE_ID,
@@ -37,6 +38,10 @@ export const fetchLeagues = (username) => async dispatch => {
         return;
     }
     dispatch({ type: FETCH_LEAGUES, payload: data });
+}
+
+export const setUsername = (username) => async dispatch => {
+    dispatch({ type: SET_USERNAME, payload: username })
 }
 
 // Grabs the league's roster -------------------------------------------------

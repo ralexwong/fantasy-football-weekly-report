@@ -9,7 +9,7 @@ class Platforms extends Component {
     
     render() {
         return (
-            <section className='platforms'>
+            <section id="platforms" className='platforms'>
                 <div className='u-center-text u-margin-bottom-big'>
                     <h2 className='heading-secondary'>Choose your platform</h2>
                 </div>
