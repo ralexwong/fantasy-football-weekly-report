@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCardsToState } from '../../../actions';
+import { setCardsToState } from '../../../actions/Sleeper';
 import { Col } from "reactstrap"
 
 

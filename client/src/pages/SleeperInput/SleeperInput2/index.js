@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { fetchRoster, setLeague_id, fetchGraphPPG } from '../../../actions';
+import { fetchRoster, setLeague_id, fetchGraphPPG } from '../../../actions/Sleeper';
 
 import { Jumbotron } from 'reactstrap';
 

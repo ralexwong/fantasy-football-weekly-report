@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { refactoredMatchups, closeOne, topScorer } from '../../actions';
+import { refactoredMatchups, closeOne, topScorer } from '../../actions/Sleeper';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";

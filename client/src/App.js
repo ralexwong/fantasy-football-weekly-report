@@ -10,8 +10,9 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Intro from './pages/Intro/Intro';
 import Report from './pages/Report/Report';
-import Input from './pages/Input/Input';
-import Report2 from './pages/Report2/Report2'
+import SleeperInput from './pages/SleeperInput/SleeperInput';
+import EspnInput from './pages/EspnInput/EspnInput';
+import Report2 from './pages/Report2/Report2';
 
 import history from './history';
 
@@ -32,12 +33,12 @@ function App() {
         <Switch>
           <Route exact path="/" component={Intro} />
           <Route exact path="/report" render={props => <Report {...props} />} />
+          <Route exact path ="/report2" render={props => <Report2 {...props} />}  />
           <Route exact path="/payouts" render={props => <Payouts {...props} />} />
           <Route exact path="/login" render={props => <Login {...props} />} />
           <Route exact path="/signup" render={props => <Signup {...props} />} />
-          <Route exact path="/intro" render={props => <Intro {...props} />} />
-          <Route exact path ="/sleeperInput" render={props => <Input {...props} />} />
-          <Route exact path ="/report2" render={props => <Report2 {...props} />}  />
+          <Route exact path ="/sleeperInput" render={props => <SleeperInput {...props} />} />
+          <Route exact path="/espnInput" render={props => <EspnInput {...props} />} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />

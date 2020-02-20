@@ -29,7 +29,11 @@ const Navagation = (props) => {
           </NavItem>
 
           <NavItem>
-            <Link to="sleeperInput">Sleeper</Link>
+            <Link to="/sleeperInput">Sleeper</Link>
+          </NavItem>
+
+          <NavItem>
+            <Link to="/espnInput">Espn</Link>
           </NavItem>
         </Nav>
       </Collapse>

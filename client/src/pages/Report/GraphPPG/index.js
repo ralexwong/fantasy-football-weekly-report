@@ -1,7 +1,7 @@
 import React from 'react';
 import CanvasJSReact from '../../../canvasjs.react';
 import { connect } from 'react-redux';
-import { refactorData, removeGraphData, setGraphPointsToState } from '../../../actions';
+import { refactorData, removeGraphData, setGraphPointsToState } from '../../../actions/Sleeper';
 
 import { Row, Col } from "reactstrap"
 

@@ -6,7 +6,7 @@ import SleeperInput3 from './SleeperInput3';
 
 import { Container, Row, Col } from "reactstrap"
 
-class Input extends Component {
+class SleeperInput extends Component {
     componentDidMount() {
 
     }
@@ -28,4 +28,4 @@ class Input extends Component {
     }
 }
 
-export default Input;
+export default SleeperInput;

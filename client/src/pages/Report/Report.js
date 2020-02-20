@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPointsToState } from '../../actions';
+import { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPointsToState } from '../../actions/Sleeper';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
@@ -8,7 +8,6 @@ import MiddleRow from './middleRow';
 import GraphPPG from "./GraphPPG";
 
 import { Container } from "reactstrap"
-
 
 
 class Report extends Component {
@@ -154,4 +153,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPointsToState })(Report);
-

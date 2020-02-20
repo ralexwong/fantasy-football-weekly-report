@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { fetchMatchupPoints, setWeekToState } from '../../../actions';
+import { fetchMatchupPoints, setWeekToState } from '../../../actions/Sleeper';
 
 import { Jumbotron } from 'reactstrap';
 
@@ -38,7 +38,7 @@ class Input3 extends Component {
                 </div>
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                     <Field name="week" component={this.renderInput} />
-                    <button className="btn btn--blue">Submit</button>
+                    <button type="button" className="btn btn--blue">Submit</button>
                 </form>
             </Jumbotron>
         )

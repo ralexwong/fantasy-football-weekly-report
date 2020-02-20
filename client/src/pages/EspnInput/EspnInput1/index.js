@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { fetchLeagues } from '../../../actions';
+import { fetchEspn } from '../../../actions/Espn';
 
 import { Jumbotron } from 'reactstrap';
 
-class SleeperInput1 extends Component {
+class EspnInput1 extends Component {
     componentDidMount() {
     }
 
@@ -27,34 +27,31 @@ class SleeperInput1 extends Component {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
         return (
             <div className={className}>
-                <input {...input} autoComplete="off" placeholder="Username" />
+                <input {...input} autoComplete="off" placeholder="ID" />
                 {this.renderError(meta)}
             </div>
         ); // {...input} === onChange={formProps.input.onChange}  value={formProps.input.value}
     }
 
     onSubmit = (formValues) => {
-        console.log(formValues.username);
-        this.props.fetchLeagues(formValues.username);
+        console.log(formValues.id);
+        this.props.fetchEspn(formValues.id)
     }
 
     render() {
-            return (
-                <Jumbotron className="sleeperInput__jumbotron">
-                    <div className="sleeperInput__helpertext">
-                        <p className="bold">
-                            First enter your username here!
-                        </p>
-                        <p>
-                            (You can use my username if you want to test it out: <b>wongman</b>)
-                        </p>
-                    </div>
-                    <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="sleeperForm">
-                        <Field name="username" component={this.renderInput} label="Enter Username" />
-                        <button className="btn btn--blue">Submit</button>
-                    </form>
-                </Jumbotron>
-            )
+        return (
+            <Jumbotron>
+                <div className="sleeperInput__helpertext">
+                    <p className="bold">
+                        Please enter your ESPN league ID
+                    </p>
+                </div>
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="espnForm">
+                    <Field name="id" component={this.renderInput} label="Enter ID" />
+                    <button type="button" className="btn btn--blue">Submit</button>
+                </form>
+            </Jumbotron>
+        )
     }
 }
 
@@ -69,13 +66,12 @@ const validate = formValues => {
 }
 
 const mapStateToProps = (state) => {
-    return { 
-        nullUsername: state.sleeper.nullUsername,
-        username: state.sleeper.username
-     }
+    return {
+
+    }
 }
 
-export default connect(mapStateToProps, { fetchLeagues })(reduxForm({
-    form: 'user',
+export default connect(mapStateToProps, { fetchEspn })(reduxForm({
+    form: 'espnUser',
     validate
-})(SleeperInput1))
+})(EspnInput1))
