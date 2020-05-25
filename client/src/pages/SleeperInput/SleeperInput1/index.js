@@ -7,6 +7,7 @@ import { Jumbotron } from 'reactstrap';
 
 class SleeperInput1 extends Component {
     componentDidMount() {
+
     }
 
     // deconstructs {meta} object and uses meta.error && meta.touched
@@ -35,7 +36,7 @@ class SleeperInput1 extends Component {
 
     onSubmit = (formValues) => {
         console.log(formValues.username);
-        this.props.fetchLeagues(formValues.username);
+        this.props.fetchLeagues(formValues.username)
     }
 
     render() {
@@ -69,10 +70,7 @@ const validate = formValues => {
 }
 
 const mapStateToProps = (state) => {
-    return { 
-        nullUsername: state.sleeper.nullUsername,
-        username: state.sleeper.username
-     }
+    return { nullUsername: state.nullUsername }
 }
 
 export default connect(mapStateToProps, { fetchLeagues })(reduxForm({

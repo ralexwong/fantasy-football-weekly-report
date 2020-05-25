@@ -1,6 +1,5 @@
 import {
     FETCH_LEAGUES,
-    SET_USERNAME,
     INVALID_USERNAME,
     FETCH_ROSTER,
     SET_LEAGUE_ID,
@@ -58,7 +57,6 @@ const last_place = {
 
 const initialState = {
     nullUsername: null,
-    username: "",
     leagues: null,
     matchups: matchups,
     topScorer: topScorer,
@@ -73,8 +71,6 @@ export default (state = initialState, action) => {
         case FETCH_LEAGUES:
             // reassign nullUsername: null to clear the state again in case they entered the wrong username before
             return { ...state, nullUsername: null, leagues: action.payload }
-        case SET_USERNAME:
-            return { ...state, username: action.payload }
         case INVALID_USERNAME:
             return { ...state, nullUsername: action.payload }
         case FETCH_ROSTER:
