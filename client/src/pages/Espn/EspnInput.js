@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 
-import EspnInput1 from './EspnInput1';
+import Espn1 from './Espn1';
 
 import { Container, Row, Col } from "reactstrap"
 
-class EspnInput extends Component {
-    componentDidMount() {
-
-    }
-
+class Espn extends Component {
     render() {
         return (
             <div className="espnBackground">
                 <Container>
                     <Row>
-                        <Col className="espnInput">
-                            <EspnInput1 />
+                        <Col className="espn">
+                            <Espn1 />
                         </Col>
                     </Row>
                 </Container>
@@ -24,4 +20,4 @@ class EspnInput extends Component {
     }
 }
 
-export default EspnInput;
+export default Espn;

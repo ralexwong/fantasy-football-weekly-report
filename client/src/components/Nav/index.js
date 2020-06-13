@@ -21,19 +21,19 @@ const Navagation = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <Link className="" to="/report">Weekly Report</Link>
+              <Link className="" to="/weeklyReport">Weekly Report</Link>
             </NavItem>
 
             <NavItem>
-              <Link to="/report2">Overall Report</Link>
+              <Link to="/overallReport">Overall Report</Link>
             </NavItem>
 
           <NavItem>
-            <Link to="/sleeperInput">Sleeper</Link>
+            <Link to="/sleeper">Sleeper</Link>
           </NavItem>
 
           <NavItem>
-            <Link to="/espnInput">Espn</Link>
+            <Link to="/espn">Espn</Link>
           </NavItem>
         </Nav>
       </Collapse>

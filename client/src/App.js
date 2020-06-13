@@ -10,7 +10,7 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Intro from './pages/Intro/Intro';
 import Report from './pages/Report/Report';
-import SleeperInput from './pages/SleeperInput/SleeperInput';
+import Sleeper from './pages/Sleeper/Sleeper';
 import EspnInput from './pages/EspnInput/EspnInput';
 import Report2 from './pages/Report2/Report2';
 
@@ -37,7 +37,7 @@ function App() {
           <Route exact path="/payouts" render={props => <Payouts {...props} />} />
           <Route exact path="/login" render={props => <Login {...props} />} />
           <Route exact path="/signup" render={props => <Signup {...props} />} />
-          <Route exact path ="/sleeperInput" render={props => <SleeperInput {...props} />} />
+          <Route exact path ="/Sleeper" render={props => <Sleeper {...props} />} />
           <Route exact path="/espnInput" render={props => <EspnInput {...props} />} />
           <Route component={NoMatch} />
         </Switch>

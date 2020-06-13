@@ -6,7 +6,7 @@ import Sleeper3 from './Sleeper3';
 
 import { Container, Row, Col } from "reactstrap"
 
-class SleeperInput extends Component {
+class Sleeper extends Component {
     render() {
         return (
             <div className="sleeperBackground">
@@ -24,4 +24,4 @@ class SleeperInput extends Component {
     }
 }
 
-export default SleeperInput;
+export default Sleeper;
