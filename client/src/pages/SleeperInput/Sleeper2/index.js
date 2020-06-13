@@ -4,7 +4,7 @@ import { fetchRoster, setLeague_id, fetchGraphPPG } from '../../../actions/Sleep
 
 import { Jumbotron } from 'reactstrap';
 
-class SleeperInput2 extends Component {
+class Sleeper2 extends Component {
     state = {
         active: ''
     }
@@ -31,7 +31,7 @@ class SleeperInput2 extends Component {
     mapLeagues = (leagues) => {
         return leagues.map(league => {
             return (
-                <p className={`sleeperInput__list ${this.state.active === league.league_id ? `sleeperInput__list--active` : ``}`} id={league.league_id} key={league.league_id} onClick={(e) => this.onClick(e)} >
+                <p className={`sleeper__list ${this.state.active === league.league_id ? `sleeper__list--active` : ``}`} id={league.league_id} key={league.league_id} onClick={(e) => this.onClick(e)} >
                     {league.name}
                 </p>
             )
@@ -40,8 +40,8 @@ class SleeperInput2 extends Component {
 
     render() {
         return (
-            <Jumbotron className="sleeperInput__jumbotron">
-                <div className="sleeperInput__helpertext">
+            <Jumbotron className="sleeper__jumbotron">
+                <div className="sleeper__helpertext">
                     <p className="bold">
                         Click on one league!
                     </p>
@@ -61,4 +61,4 @@ const mapStateToProps = (state) => {
     return { leagues: state.sleeper.leagues }
 }
 
-export default connect(mapStateToProps, { fetchRoster, setLeague_id, fetchGraphPPG })(SleeperInput2)
+export default connect(mapStateToProps, { fetchRoster, setLeague_id, fetchGraphPPG })(Sleeper2)

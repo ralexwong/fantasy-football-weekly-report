@@ -6,7 +6,7 @@
          rgba($dark-blue, 0.8));
 }
 
-.sleeperInput {
+.sleeper {
     text-align: center;
 
     &__jumbotron {
@@ -29,9 +29,11 @@
             box-shadow: 0 .1rem 1rem rgba($black-color, .5);
         }
     }
-}
 
-.field {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    &__input {
+        display: block;
+        font-size: 2rem;
+        margin: auto;
+        margin-bottom: 2rem;
+    }
 }
