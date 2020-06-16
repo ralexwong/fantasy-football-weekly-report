@@ -15,6 +15,7 @@ import Espn from './pages/Espn/Espn';
 import Report2 from './pages/Report2/Report2';
 
 import history from './history';
+import Example from './pages/Report/Example'
 
 const style = {
   margin: "0",
@@ -32,7 +33,7 @@ function App() {
         <Navagation />
         <Switch>
           <Route exact path="/" component={Intro} />
-          <Route exact path="/report" render={props => <Report {...props} />} />
+          <Route exact path="/report" render={props => <Example {...props} />} />
           <Route exact path ="/report2" render={props => <Report2 {...props} />}  />
           <Route exact path="/payouts" render={props => <Payouts {...props} />} />
           <Route exact path="/login" render={props => <Login {...props} />} />

@@ -4,28 +4,35 @@ import Report from "../Report/Report"
 import Sleeper from '../Sleeper/Sleeper1'
 
 class ComponentToPrint extends React.Component {
-    render() {
-      return (
+  render() {
+    return (
       <>
         <Report />
       </>)
-    }
-   }
+  }
+}
 
 export default class Example extends Component {
-    constructor(props) {
-        super(props);
-        this.componentRef = React.createRef();
-      }
+  constructor(props) {
+    super(props);
+    this.componentRef = React.createRef();
+  }
 
-    render() {
-        return (
-            <>
-                <ComponentToPrint ref={this.componentRef} />
-                <button onClick={() => exportComponentAsJPEG(this.componentRef)}>
-           Export As PDF
+  render() {
+    return (
+      <>
+        <ComponentToPrint ref={this.componentRef} />
+        <button onClick={() => exportComponentAsJPEG(this.componentRef)}>
+          Export As JPEG
        </button>
-            </>
-        )
-    }
+        <button onClick={() => exportComponentAsPDF(this.componentRef)}>
+          Export As PDF
+       </button>
+        <button onClick={() => exportComponentAsPNG(this.componentRef)}>
+          Export As PNG
+       </button>
+
+      </>
+    )
+  }
 }
