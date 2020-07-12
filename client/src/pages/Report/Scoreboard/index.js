@@ -31,7 +31,7 @@ class Scoreboard extends React.Component {
         if (this.state.width < 575) {
             return (
                 <React.Fragment>
-                    <Col className="scoreboard">
+                    <Col style={{border: "none"}} className="scoreboard">
                         <Container>
                             <Row>
                                 <Col>

@@ -30,6 +30,7 @@ class Standouts extends Component {
         let topScorerUrl = "";
         if (this.props.topScorer) {
             topScorerUrl = `https://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
+            console.log(topScorerUrl)
         };
 
         let closeOneUrl = "";

@@ -4,7 +4,7 @@ import { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPointsTo
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
-import MiddleRow from './middleRow';
+import MiddleRow from './MiddleRow';
 import GraphPPG from "./GraphPPG";
 
 import { Container } from "reactstrap"
