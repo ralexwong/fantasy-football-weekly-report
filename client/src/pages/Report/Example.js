@@ -22,16 +22,11 @@ export default class Example extends Component {
     return (
       <>
         <ComponentToPrint ref={this.componentRef} />
-        <button onClick={() => exportComponentAsJPEG(this.componentRef)}>
-          Export As JPEG
-       </button>
-        <button onClick={() => exportComponentAsPDF(this.componentRef)}>
-          Export As PDF
-       </button>
-        <button onClick={() => exportComponentAsPNG(this.componentRef)}>
-          Export As PNG
-       </button>
-
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <button className="btn btn--blue" onClick={() => exportComponentAsPNG(this.componentRef)}>
+            Click here for your report to be converted to an image!
+        </button>
+        </div>
       </>
     )
   }

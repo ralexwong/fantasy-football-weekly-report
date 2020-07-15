@@ -42,7 +42,6 @@ function App() {
           <Route exact path="/espn" render={props => <Espn {...props} />} />
           <Route component={NoMatch} />
         </Switch>
-        <Footer />
       </div>
     </Router>
   );

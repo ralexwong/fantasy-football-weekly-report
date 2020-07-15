@@ -15,7 +15,7 @@ const Navagation = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-      <Navbar className="nav" color="light" light expand="md">
+      <Navbar className="nav"  expand="md">
         <NavbarBrand className="nav__homeText" href="/">FFWR</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
