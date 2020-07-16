@@ -28,6 +28,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.16.3",
+    "html2canvas": "^1.0.0-rc.5",
     "if-env": "^1.0.4",
     "lodash": "^4.17.15",
     "mongoose": "^5.8.9",

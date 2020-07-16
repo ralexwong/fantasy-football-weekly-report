@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { exportComponentAsPNG } from "react-component-export-image";
-import Report from "./Report"
+import Report2 from "./Report2"
 
 class ComponentToPrint extends React.Component {
   render() {
     return (
       <>
-        <Report />
+        <Report2 />
       </>)
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setCardsToState } from '../../../actions/Sleeper';
 import { Col } from "reactstrap"
+import { last } from 'lodash';
 
 
 class Cards extends Component {
@@ -91,6 +92,17 @@ class Cards extends Component {
 
 
     render() {
+        console.log(this.props)
+        let first_place = ""
+        if (this.props.first_place) {
+            first_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${this.props.first_place.avatar}`
+            console.log(first_place)
+        }
+        let last_place = ""
+        if (this.props.last_place) {
+            last_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${this.props.last_place.avatar}`
+            console.log(last_place)
+        }
         if (this.state.width < 575) {
             return (
                 <>
@@ -99,7 +111,12 @@ class Cards extends Component {
 
                         <div className='cards__outerBox'>
                             <div className='cards__innerBox'>
-                                <img src={`http://sleepercdn.com/avatars/${this.props.first_place.avatar}`} alt="poop" className="cards__image" />
+                                <img 
+                                    crossOrigin="anonymous"
+                                    referrerPolicy="origin" 
+                                    src={first_place} 
+                                    alt="poop" 
+                                    className="cards__image" />
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
@@ -112,7 +129,12 @@ class Cards extends Component {
 
                         <div className='cards__outerBox'>
                             <div className='cards__innerBox'>
-                                <img src={`http://sleepercdn.com/avatars/${this.props.last_place.avatar}`} alt="poop" className="cards__image" />
+                                <img 
+                                    crossOrigin="anonymous"
+                                    referrerPolicy="origin" 
+                                    src={last_place} 
+                                    alt="poop" 
+                                    className="cards__image" />
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
@@ -128,7 +150,12 @@ class Cards extends Component {
 
                     <div className='cards__outerBox'>
                         <div className='cards__innerBox'>
-                            <img src={`http://sleepercdn.com/avatars/${this.props.first_place.avatar}`} alt="poop" className="cards__image" />
+                            <img 
+                                crossOrigin="anonymous"
+                                referrerPolicy="origin" 
+                                src={first_place} 
+                                alt="poop" 
+                                className="cards__image" />
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
@@ -141,7 +168,12 @@ class Cards extends Component {
 
                     <div className='cards__outerBox'>
                         <div className='cards__innerBox'>
-                            <img src={`http://sleepercdn.com/avatars/${this.props.last_place.avatar}`} alt="poop" className="cards__image" />
+                            <img 
+                                crossOrigin="anonymous"
+                                referrerPolicy="origin" 
+                                src={last_place} 
+                                alt="poop" 
+                                className="cards__image" />
                         </div>
                     </div>
                     <div className='cards__lowerBox'>

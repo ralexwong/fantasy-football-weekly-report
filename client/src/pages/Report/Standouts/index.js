@@ -29,13 +29,13 @@ class Standouts extends Component {
     render() {
         let topScorerUrl = "";
         if (this.props.topScorer) {
-            topScorerUrl = `https://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
-            console.log(topScorerUrl)
+            topScorerUrl = `https://whispering-woodland-11588.herokuapp.com/https://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
+            console.log("report2", topScorerUrl)
         };
 
         let closeOneUrl = "";
         if (this.props.closeOne) {
-            closeOneUrl = `https://sleepercdn.com/avatars/${this.props.closeOne.avatar}`
+            closeOneUrl = `https://whispering-woodland-11588.herokuapp.com/https://sleepercdn.com/avatars/${this.props.closeOne.avatar}`
         }
 
 
@@ -47,7 +47,12 @@ class Standouts extends Component {
 
                         <div className='cards__outerBox'>
                             <div className='cards__innerBox'>
-                                <img src={topScorerUrl} alt="poop" className="cards__image" />
+                                <img 
+                                    crossOrigin="anonymous"
+                                    referrerPolicy="origin" 
+                                    src={topScorerUrl} 
+                                    alt="poop" 
+                                    className="cards__image" />
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
@@ -59,7 +64,12 @@ class Standouts extends Component {
 
                         <div className='cards__outerBox'>
                             <div className='cards__innerBox'>
-                                <img src={closeOneUrl} alt="poop" className="cards__image" />
+                                <img 
+                                    crossOrigin="anonymous"
+                                    referrerPolicy="origin" 
+                                    src={closeOneUrl} 
+                                    alt="poop" 
+                                    className="cards__image" />
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
@@ -75,7 +85,12 @@ class Standouts extends Component {
 
                     <div className='cards__outerBox'>
                         <div className='cards__innerBox'>
-                            <img src={topScorerUrl} alt="poop" className="cards__image" />
+                            <img 
+                                crossOrigin="anonymous"
+                                referrerPolicy="origin" 
+                                src={topScorerUrl} 
+                                alt="poop" 
+                                className="cards__image" />
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
@@ -88,7 +103,12 @@ class Standouts extends Component {
 
                     <div className='cards__outerBox'>
                         <div className='cards__innerBox'>
-                            <img src={closeOneUrl} alt="poop" className="cards__image" />
+                            <img 
+                                crossOrigin="anonymous"
+                                referrerPolicy="origin" 
+                                src={closeOneUrl} 
+                                alt="poop" 
+                                className="cards__image" />
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
