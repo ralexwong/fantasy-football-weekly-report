@@ -51,7 +51,7 @@ class GraphPPG extends React.Component {
       },
 
       axisX: {
-        labelFontSize: 12,
+        labelFontSize: 7,
         labelAngle: -30
       },
       data: [{
