@@ -1,6 +1,7 @@
 .reportContainer {
     border: 3px solid black;
     margin: 3rem auto;
+    background: white;
 
     @include respond(phone) {
         
