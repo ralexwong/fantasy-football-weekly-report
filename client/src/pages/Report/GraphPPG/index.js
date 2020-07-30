@@ -52,7 +52,8 @@ class GraphPPG extends React.Component {
 
       axisX: {
         labelFontSize: 7,
-        labelAngle: -30
+        labelAngle: -30,
+        margin: 30
       },
       data: [{
         type: "column", //change type to bar, line, area, pie, etc
