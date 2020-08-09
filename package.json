@@ -31,7 +31,7 @@
     "express": "^4.16.3",
     "html2canvas": "^1.0.0-rc.5",
     "if-env": "^1.0.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mongoose": "^5.8.9",
     "node-sass": "^4.13.1",
     "passport": "^0.4.0",
