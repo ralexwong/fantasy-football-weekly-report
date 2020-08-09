@@ -16,10 +16,10 @@ const Navagation = (props) => {
 
   return (
       <Navbar className="nav"  expand="md">
-        <NavbarBrand className="nav__homeText" href="/">FFWR</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+        <NavbarBrand className="mr-auto nav__homeText" href="/">FFWR</NavbarBrand>
+        <NavbarToggler onClick={toggle} className="mr-2" />
+        <Collapse isOpen={!isOpen} navbar>
+          <Nav navbar>
             <NavItem>
               <Link className="" to="/report">Weekly Report</Link>
             </NavItem>

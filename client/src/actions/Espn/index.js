@@ -14,8 +14,8 @@ export const fetchEspn = id => async dispatch => {
             id: id
         }
     })
-    const data = response.data;
-    console.log(data);
+    // const data = response.data;
+    console.log(response.data)
 
-    dispatch({ type: FETCH_ESPN, payload: data });
+    // dispatch({ type: FETCH_ESPN, payload: data });
 }

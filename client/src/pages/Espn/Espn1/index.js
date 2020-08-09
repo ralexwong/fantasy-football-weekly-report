@@ -11,6 +11,7 @@ class Espn1 extends Component {
             input: ""
         }
     }
+    
 
     handleChange = (e) => {
         this.setState({ input: e.target.value });
@@ -32,7 +33,7 @@ class Espn1 extends Component {
                 </div>
                 <form onSubmit={this.onSubmit} className="espnForm">
                     <input
-                        className="espn__input"
+                        className="sleeper__input"
                         onChange={this.handleChange}
                         autoComplete="off"
                         placeholder="ID" />

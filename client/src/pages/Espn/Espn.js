@@ -10,7 +10,7 @@ class Espn extends Component {
             <div className="espnBackground">
                 <Container>
                     <Row>
-                        <Col className="espn">
+                        <Col className="sleeper">
                             <Espn1 />
                         </Col>
                     </Row>

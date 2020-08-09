@@ -20,7 +20,7 @@ import Example2 from './pages/Report2/Example2'
 
 const style = {
   margin: "0",
-  padding: "0",
+  padding: "2rem",
   boxSizing: "border-box inherit",
   fontFamily: "Lato, sans-serif",
   fontWeight: "400",
