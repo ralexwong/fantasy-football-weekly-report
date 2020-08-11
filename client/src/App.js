@@ -2,7 +2,6 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
 import Navagation from './components/Nav'
-import Footer from './components/Footer'
 
 import Payouts from "./pages/Payouts/Payouts";
 import NoMatch from "./pages/NoMatch";

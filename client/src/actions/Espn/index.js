@@ -1,6 +1,7 @@
 import {
     FETCH_ESPN,
-    SET_ESPN_WEEK
+    SET_ESPN_WEEK,
+    ESPN_SCHEDULE
 } from '../types';
 
 import history from '../../history';
@@ -19,7 +20,7 @@ export const fetchEspn = id => async dispatch => {
     const teams = data.teams
 
     // teams info object for overall report page
-    let teamsInfo = [];
+    const teamsInfo = [];
     for (let i = 0; i < data.teams.length; i++) {
         let name = teams.location + teams.nickname;
         teamsInfo.push({ 
@@ -32,11 +33,11 @@ export const fetchEspn = id => async dispatch => {
             wins: teams.record.overall.wins})
     }
 
-    
-    
+    const schedule = data.schedule;
 
 
-    // dispatch({ type: FETCH_ESPN, payload: data });
+    dispatch({ type: FETCH_ESPN, payload: teamsInfo });
+    dispatch({ type: ESPN_SCHEDULE, payload: schedule })
 }
 
 export const setEspnWeek = week => async dispatch => {

@@ -23,3 +23,4 @@ export const SET_RECAP_TO_STATE = 'SET_RECAP_TO_STATE';
 // ESPN
 export const FETCH_ESPN = 'FETCH_ESPN';
 export const SET_ESPN_WEEK = 'SET_ESPN_WEEK';
+export const ESPN_SCHEDULE ='ESPN_SCHEDULE';
