@@ -30,7 +30,6 @@ class Standouts extends Component {
         let topScorerUrl = "";
         if (this.props.topScorer) {
             topScorerUrl = `https://whispering-woodland-11588.herokuapp.com/https://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
-            console.log("report2", topScorerUrl)
         };
 
         let closeOneUrl = "";

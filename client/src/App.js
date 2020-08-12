@@ -40,6 +40,10 @@ function App() {
           <Route exact path="/signup" render={props => <Signup {...props} />} />
           <Route exact path ="/sleeper" render={props => <Sleeper {...props} />} />
           <Route exact path="/espn" render={props => <Espn {...props} />} />
+
+          <Route exact path="/weekly-report=:report" render={props => <Example {...props} />} />
+
+
           <Route component={NoMatch} />
         </Switch>
       </div>

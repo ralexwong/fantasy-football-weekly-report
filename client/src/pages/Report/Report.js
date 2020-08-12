@@ -13,7 +13,9 @@ import { Container } from "reactstrap"
 class Report extends Component {
 
   componentDidMount() {
-    console.log("CDM in report " + this.props);
+    console.log(this.props)
+    const queryString = window.location.href;
+    console.log(queryString);
 
     // check if the the info from the other pages has been placed into state
     // will maybe look to having some local storage applications here so the user 

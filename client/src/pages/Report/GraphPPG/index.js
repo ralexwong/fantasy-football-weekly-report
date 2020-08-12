@@ -42,7 +42,6 @@ class GraphPPG extends React.Component {
   }
 
   render() {
-    console.log(this.props.graphPoints)
     const options = {
       animationEnabled: true,
       theme: "light2", //"light1", "dark1", "dark2"

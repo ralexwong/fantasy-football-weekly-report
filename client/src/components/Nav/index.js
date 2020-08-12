@@ -33,7 +33,7 @@ const Navagation = (props) => {
           </NavItem>
 
           <NavItem>
-            <Link to="/espn">Espn</Link>
+            <Link to="/weekly-report=espn">Espn</Link>
           </NavItem>
         </Nav>
       </Collapse>
