@@ -72,6 +72,7 @@ class Recap extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <Col className="recap">
         <p className="reportTitle">NUMBERS RECAP</p>
@@ -91,9 +92,9 @@ class Recap extends Component {
             </tr>
           </thead>
           <tbody borderless="true">
-            {(this.props.recap ? 
+            {(this.props.espnRecap ? 
               (
-                this.props.recap.map((row, i) => (
+                this.props.espnRecap.map((row, i) => (
                   <tr key={row.team}>
                     <td>{row.name}</td>
                     <td>{(i+1)}</td>
@@ -119,7 +120,9 @@ const mapStateToProps = (state) => {
     league_info: state.sleeper.league_info,
     roster: state.sleeper.roster,
     week: state.sleeper.week,
-    recap: state.sleeper.recap
+    recap: state.sleeper.recap,
+
+    espnRecap: state.espn.recap
   }
 }
 

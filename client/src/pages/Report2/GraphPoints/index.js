@@ -39,7 +39,6 @@ class GraphPoints extends React.Component {
     for (let i = 0; i < roster.length; i++) {
       let settings = roster[i].settings;
       let PF = settings.fpts;
-      let PA = settings.fpts_against;
       combinedObjects.push({ label: roster[i].owner_id, y: PF })
     }
 

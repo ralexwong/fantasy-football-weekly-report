@@ -1,7 +1,8 @@
 import {
     FETCH_ESPN,
     SET_ESPN_WEEK,
-    ESPN_SCHEDULE
+    ESPN_SCHEDULE,
+    ESPN_RECAP
 } from '../actions/types';
 
 const initialState = {
@@ -17,6 +18,8 @@ export default (state = initialState, action) => {
             return { ...state, espnWeek: action.payload }
         case ESPN_SCHEDULE:
             return { ...state, espnSchedule: action.payload }
+        case ESPN_RECAP:
+            return { ...state, recap: action.payload }
         default:
             return state;
     }
