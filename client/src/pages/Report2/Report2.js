@@ -4,7 +4,7 @@ import { refactoredMatchups, closeOne, topScorer } from '../../actions/Sleeper';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
-import MiddleRow from './middleRow';
+import MiddleRow from './MiddleRow';
 import GraphPoints from './GraphPoints';
 
 import { Container } from "reactstrap"
