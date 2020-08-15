@@ -96,7 +96,7 @@ class Recap extends Component {
               (
                 this.props.espnRecap.map((row, i) => (
                   <tr key={row.team}>
-                    <td>{row.name}</td>
+                    <td>{row.abbrev}</td>
                     <td>{(i+1)}</td>
                     <td className={row.PPGcolor}>{row.PPG}</td>
                     <td className={row.PFcolor}>{row.PF}</td>
@@ -108,6 +108,23 @@ class Recap extends Component {
               ) 
               : 
               (<tr></tr>))}
+
+            {/* {(this.props.recap ? 
+              (
+                this.props.recap.map((row, i) => (
+                  <tr key={row.team}>
+                    <td>{row.name}</td>
+                    <td>{(i+1)}</td>
+                    <td className={row.PPGcolor}>{row.PPG}</td>
+                    <td className={row.PFcolor}>{row.PF}</td>
+                    <td className={row.PAcolor}>{row.PA}</td>
+                    <td>{row.wins}</td>
+                    <td>{row.losses}</td>
+                  </tr>
+                ))
+              ) 
+              : 
+              (<tr></tr>))} */}
           </tbody>
         </Table>
       </Col>

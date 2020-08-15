@@ -2,7 +2,9 @@ import {
     FETCH_ESPN,
     SET_ESPN_WEEK,
     ESPN_SCHEDULE,
-    ESPN_RECAP
+    ESPN_RECAP,
+    ESPN_FIRST_PLACE,
+    ESPN_LAST_PLACE
 } from '../actions/types';
 
 const initialState = {
@@ -20,6 +22,10 @@ export default (state = initialState, action) => {
             return { ...state, espnSchedule: action.payload }
         case ESPN_RECAP:
             return { ...state, recap: action.payload }
+        case ESPN_FIRST_PLACE:
+            return { ...state, first_place: action.payload }
+        case ESPN_LAST_PLACE:
+            return { ...state, last_place: action.payload }
         default:
             return state;
     }

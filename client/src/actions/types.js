@@ -25,3 +25,5 @@ export const FETCH_ESPN = 'FETCH_ESPN';
 export const SET_ESPN_WEEK = 'SET_ESPN_WEEK';
 export const ESPN_SCHEDULE ='ESPN_SCHEDULE';
 export const ESPN_RECAP = 'ESPN_RECAP';
+export const ESPN_FIRST_PLACE = 'ESPN_FIRST_PLACE';
+export const ESPN_LAST_PLACE = 'ESPN_LAST_PLACE';

@@ -188,7 +188,10 @@ const mapStateToProps = (state) => {
         roster: state.sleeper.roster,
         league_info: state.sleeper.league_info,
         first_place: state.sleeper.first_place,
-        last_place: state.sleeper.last_place
+        last_place: state.sleeper.last_place,
+
+        espn_first_place: state.espn.first_place,
+        espn_last_place: state.espn.last_place
     }
 }
 

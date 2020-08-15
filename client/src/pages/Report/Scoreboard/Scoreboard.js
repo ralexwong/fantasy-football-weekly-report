@@ -28,6 +28,7 @@ class Scoreboard extends React.Component {
 
 
     render() {
+        console.log(this.props.matchups)
         if (this.state.width < 575) {
             return (
                 <React.Fragment>
@@ -72,7 +73,7 @@ class Scoreboard extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col className="scoreboard__week">
+                            <Col className="sc`oreboard__week">
                                 <p>Week {this.props.week}</p>
                             </Col>
                         </Row>
