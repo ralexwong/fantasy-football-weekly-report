@@ -6,35 +6,57 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem
+  Dropdown, DropdownItem, DropdownToggle, DropdownMenu
 } from 'reactstrap';
 
 const Navagation = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const dropdown = () => setDropdownOpen(!dropdownOpen);
+
 
   return (
-      <Navbar className="nav"  expand="md">
-        <NavbarBrand className="mr-auto nav__homeText" href="/">FFWR</NavbarBrand>
-        <NavbarToggler onClick={toggle} className="mr-2" />
-        <Collapse isOpen={!isOpen} navbar>
-          <Nav navbar>
-            <NavItem>
-              <Link className="" to="/report">Weekly Report</Link>
-            </NavItem>
+    <Navbar className="nav" expand="md">
+      <NavbarBrand className="mr-auto nav__homeText" href="/">FFWR</NavbarBrand>
+      <NavbarToggler onClick={toggle} className="mr-2" />
+      <Collapse isOpen={!isOpen} navbar>
+        <Nav navbar>
 
-            <NavItem>
-              <Link to="/report2">Overall Report</Link>
-            </NavItem>
+          <Dropdown nav isOpen={dropdownOpen} toggle={dropdown}>
+            <DropdownToggle nav caret>
+              Sleeper
+              </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>
+                <Link to="/sleeper">Sleeper</Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link className="" to="/weekly-report-sleeper">Weekly Report</Link>
+              </DropdownItem>
+              <DropdownItem> 
+                <Link to="/overall-report-sleeper">Overall Report</Link>
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
 
-          <NavItem>
-            <Link to="/sleeper">Sleeper</Link>
-          </NavItem>
-
-          <NavItem>
-            <Link to="/weekly-report=espn">Espn</Link>
-          </NavItem>
+          <Dropdown nav isOpen={dropdownOpen} toggle={dropdown}>
+            <DropdownToggle nav caret>
+              Espn
+              </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>
+                <Link to="/espn">Input</Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link to="/weekly-report-espn">Espn</Link>
+              </DropdownItem>
+              <DropdownItem>            
+                <Link to="/overall-report-espn">Overall Report</Link>
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </Nav>
       </Collapse>
     </Navbar>

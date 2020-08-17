@@ -182,7 +182,6 @@ class Cards extends Component {
         }
     }
 }
-
 const mapStateToProps = (state) => {
     return {
         roster: state.sleeper.roster,

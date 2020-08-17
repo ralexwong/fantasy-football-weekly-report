@@ -4,13 +4,13 @@ import {
     ESPN_SCHEDULE,
     ESPN_RECAP,
     ESPN_FIRST_PLACE,
-    ESPN_LAST_PLACE
+    ESPN_LAST_PLACE,
 } from '../types';
 
 // import history from '../../history';
 import axios from 'axios';
 
-// grab the espn league info
+// grab the espn league info -------------------------------------
 export const fetchEspn = id => async dispatch => {
     console.log(id)
 
@@ -110,7 +110,7 @@ export const fetchEspn = id => async dispatch => {
 
 }
 
+// setting the espn week --------------------------------------------------------
 export const setEspnWeek = week => async dispatch => {
-
     dispatch({ type: SET_ESPN_WEEK, payload: week })
 }

@@ -73,7 +73,7 @@ class Scoreboard extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col className="sc`oreboard__week">
+                            <Col className="scoreboard__week">
                                 <p>Week {this.props.week}</p>
                             </Col>
                         </Row>

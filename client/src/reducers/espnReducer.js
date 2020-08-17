@@ -4,7 +4,7 @@ import {
     ESPN_SCHEDULE,
     ESPN_RECAP,
     ESPN_FIRST_PLACE,
-    ESPN_LAST_PLACE
+    ESPN_LAST_PLACE,
 } from '../actions/types';
 
 const initialState = {

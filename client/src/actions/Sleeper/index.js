@@ -15,8 +15,7 @@ import {
     SET_WAIVERS_TO_STATE,
     LAST_PLACE_TO_STATE,
     FIRST_PLACE_TO_STATE,
-    SET_RECAP_TO_STATE
-
+    SET_RECAP_TO_STATE,
 } from '../types';
 import history from '../../history';
 import axios from 'axios';

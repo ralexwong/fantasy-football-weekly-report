@@ -33,16 +33,16 @@ function App() {
         <Navagation />
         <Switch>
           <Route exact path="/" component={Intro} />
-          <Route exact path="/report" render={props => <Example {...props} />} />
-          <Route exact path ="/report2" render={props => <Example2 {...props} />}  />
+          <Route exact path="/weekly-report-sleeper" render={props => <Example {...props} />} />
+          <Route exact path ="/overall-report-sleeper" render={props => <Example2 {...props} />}  />
           <Route exact path="/payouts" render={props => <Payouts {...props} />} />
           <Route exact path="/login" render={props => <Login {...props} />} />
           <Route exact path="/signup" render={props => <Signup {...props} />} />
           <Route exact path ="/sleeper" render={props => <Sleeper {...props} />} />
           <Route exact path="/espn" render={props => <Espn {...props} />} />
 
-          <Route exact path="/weekly-report=:report" render={props => <Example {...props} />} />
-
+          <Route exact path="/weekly-report-espn" render={props => <Example {...props} />} />
+          <Route exact path ="/overall-report-espn" render={props => <Example2 {...props} />}  />
 
           <Route component={NoMatch} />
         </Switch>
