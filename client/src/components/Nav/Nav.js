@@ -6,16 +6,12 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  Dropdown, DropdownItem, DropdownToggle, DropdownMenu
 } from 'reactstrap';
 
 const Navagation = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-  const dropdown = () => setDropdownOpen(!dropdownOpen);
-
 
   return (
     <Navbar className="nav" expand="md">
@@ -23,40 +19,14 @@ const Navagation = (props) => {
       <NavbarToggler onClick={toggle} className="mr-2" />
       <Collapse isOpen={!isOpen} navbar>
         <Nav navbar>
+          <Link to="/sleeper">Sleeper Input</Link>
+          <Link to="/weekly-report-sleeper">Sleeper Weekly Report</Link>
+          <Link to="/overall-report-sleeper">Sleeper Overall Report</Link>
 
-          <Dropdown nav isOpen={dropdownOpen} toggle={dropdown}>
-            <DropdownToggle nav caret>
-              Sleeper
-              </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem>
-                <Link to="/sleeper">Sleeper</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link className="" to="/weekly-report-sleeper">Weekly Report</Link>
-              </DropdownItem>
-              <DropdownItem> 
-                <Link to="/overall-report-sleeper">Overall Report</Link>
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <Link to="/espn">Espn Input</Link>
+          <Link to="/weekly-report-espn">Espn Weekly Report</Link>
+          <Link to="/overall-report-espn">Espn Overall Report</Link>
 
-          <Dropdown nav isOpen={dropdownOpen} toggle={dropdown}>
-            <DropdownToggle nav caret>
-              Espn
-              </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem>
-                <Link to="/espn">Input</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to="/weekly-report-espn">Espn</Link>
-              </DropdownItem>
-              <DropdownItem>            
-                <Link to="/overall-report-espn">Overall Report</Link>
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
         </Nav>
       </Collapse>
     </Navbar>

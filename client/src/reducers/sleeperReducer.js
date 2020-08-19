@@ -16,7 +16,7 @@ import {
     LAST_PLACE_TO_STATE,
     FIRST_PLACE_TO_STATE,
     SET_RECAP_TO_STATE,
-
+    SET_SLEEPER_REPORT
     
 } from '../actions/types';
 
@@ -104,6 +104,8 @@ export default (state = initialState, action) => {
             return { ...state, first_place: action.payload }
         case SET_RECAP_TO_STATE:
             return { ...state, recap: action.payload }
+        case SET_SLEEPER_REPORT:
+            return {...state, sleeperReport: action.payload }
         default:
             return state;
     }

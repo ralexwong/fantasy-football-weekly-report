@@ -5,9 +5,10 @@ import {
     ESPN_RECAP,
     ESPN_FIRST_PLACE,
     ESPN_LAST_PLACE,
+    SET_ESPN_REPORT,
+    SET_SLEEPER_REPORT
 } from '../types';
 
-// import history from '../../history';
 import axios from 'axios';
 
 // grab the espn league info -------------------------------------
@@ -29,6 +30,9 @@ export const fetchEspn = id => async dispatch => {
     const teamsInfo = [];
     for (let i = 0; i < teams.length; i++) {
         let name = teams[i].location + " " + teams[i].nickname;
+        if (name.length > 8) {
+            name = name.substring(0,9);
+        }
         teamsInfo.push({ 
             abbrev: teams[i].abbrev, 
             id: teams[i].id, 
@@ -40,6 +44,8 @@ export const fetchEspn = id => async dispatch => {
             losses: teams[i].record.overall.losses,
         })
     }
+
+    console.log(teamsInfo)
 
     // create the recap object
     let recapInfo = []
@@ -113,4 +119,14 @@ export const fetchEspn = id => async dispatch => {
 // setting the espn week --------------------------------------------------------
 export const setEspnWeek = week => async dispatch => {
     dispatch({ type: SET_ESPN_WEEK, payload: week })
+}
+
+// creating the espn report --------------------------------------------
+export const createEspnWeeklyReport = () => async dispatch => {
+    dispatch({ type: SET_ESPN_REPORT, payload: true })
+    dispatch({ type: SET_SLEEPER_REPORT, payload: false })
+}
+export const createEspnOverallReport = () => async dispatch => {
+    dispatch ({ type: SET_ESPN_REPORT, payload: true })
+    dispatch ({ type: SET_SLEEPER_REPORT, payload: false })
 }

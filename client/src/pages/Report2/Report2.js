@@ -11,11 +11,6 @@ import { Container } from "reactstrap"
 
 
 class Report2 extends Component {
-
-  componentDidMount() {
-
-  }
-
   render() {
     return (
       <Container className="reportContainer">

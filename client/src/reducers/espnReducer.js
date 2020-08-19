@@ -5,6 +5,7 @@ import {
     ESPN_RECAP,
     ESPN_FIRST_PLACE,
     ESPN_LAST_PLACE,
+    SET_ESPN_REPORT,
 } from '../actions/types';
 
 const initialState = {
@@ -26,6 +27,8 @@ export default (state = initialState, action) => {
             return { ...state, first_place: action.payload }
         case ESPN_LAST_PLACE:
             return { ...state, last_place: action.payload }
+        case SET_ESPN_REPORT:
+            return { ...state, espnReport: action.payload }
         default:
             return state;
     }

@@ -92,15 +92,26 @@ class Cards extends Component {
     render() {
         console.log(this.props)
         let first_place = ""
-        if (this.props.first_place) {
-            first_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${this.props.first_place.avatar}`
-            console.log(first_place)
+        let first_place_name = "";
+        if (this.props.espn_first_place && this.props.espnReport) {
+            first_place = `https://whispering-woodland-11588.herokuapp.com/${this.props.espn_first_place.logo}`;
+            first_place_name = this.props.espn_first_place.name
+        } else if (this.props.first_place) {
+            first_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${this.props.first_place.avatar}`;
+            first_place_name = this.props.last_place.name
         }
+
         let last_place = ""
-        if (this.props.last_place) {
-            last_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${this.props.last_place.avatar}`
-            console.log(last_place)
+        let last_place_name = "";
+        if (this.props.espn_last_place && this.props.espnReport) {
+            last_place = `https://whispering-woodland-11588.herokuapp.com/${this.props.espn_last_place.logo}`
+            last_place_name = this.props.espn_last_place.name;
+        } else if (this.props.last_place) {
+            last_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${this.props.last_place.avatar}`;
+            last_place_name = this.props.last_place.name;
         }
+
+        
         if (this.state.width < 575) {
             return (
                 <>
@@ -118,7 +129,7 @@ class Cards extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="cards__name">{this.props.first_place.name}</p>
+                            <p className="cards__name">{first_place_name}</p>
                         </div>
                     </Col>
 
@@ -136,7 +147,7 @@ class Cards extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="cards__name">{this.props.last_place.name}</p>
+                            <p className="cards__name">{last_place_name}</p>
                         </div>
                     </Col>
                 </>
@@ -157,7 +168,7 @@ class Cards extends Component {
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p>{this.props.first_place.name}</p>
+                        <p>{first_place_name}</p>
                     </div>
 
                     <div className="hr"></div>
@@ -175,7 +186,7 @@ class Cards extends Component {
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p>{this.props.last_place.name}</p>
+                        <p>{last_place_name}</p>
                     </div>
                 </Col>
             )
@@ -184,11 +195,13 @@ class Cards extends Component {
 }
 const mapStateToProps = (state) => {
     return {
+        sleeperReport: state.sleeper.sleeperReport,
         roster: state.sleeper.roster,
         league_info: state.sleeper.league_info,
         first_place: state.sleeper.first_place,
         last_place: state.sleeper.last_place,
 
+        espnReport: state.espn.espnReport,
         espn_first_place: state.espn.first_place,
         espn_last_place: state.espn.last_place
     }

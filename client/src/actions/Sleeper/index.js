@@ -16,8 +16,9 @@ import {
     LAST_PLACE_TO_STATE,
     FIRST_PLACE_TO_STATE,
     SET_RECAP_TO_STATE,
+    SET_SLEEPER_REPORT,
+    SET_ESPN_REPORT
 } from '../types';
-import history from '../../history';
 import axios from 'axios';
 
 
@@ -73,7 +74,6 @@ export const fetchMatchupPoints = (week, league_id) => async dispatch => {
     console.log(data);
 
     dispatch({ type: FETCH_MATCHUPPOINTS, payload: data });
-    history.push('/report');
 }
 
 // Setting week into state for the report page -------------------------------------
@@ -159,4 +159,15 @@ export const setCardsToState = (first_place, last_place) => dispatch => {
 
 export const setRecapToState = (data) => dispatch => {
     dispatch({ type: SET_RECAP_TO_STATE, payload: data })
+}
+
+// create sleeper report --------------------------------------
+
+export const createSleeperOverallReport = () => dispatch => {
+    dispatch({ type: SET_SLEEPER_REPORT, payload: true })
+    dispatch({ type: SET_ESPN_REPORT, payload: false })
+}
+export const createSleeperWeeklyReport = () => dispatch => {
+    dispatch({ type: SET_SLEEPER_REPORT, payload: true })
+    dispatch({ type: SET_ESPN_REPORT, payload: false })
 }
