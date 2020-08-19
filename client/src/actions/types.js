@@ -29,3 +29,4 @@ export const ESPN_RECAP = 'ESPN_RECAP';
 export const ESPN_FIRST_PLACE = 'ESPN_FIRST_PLACE';
 export const ESPN_LAST_PLACE = 'ESPN_LAST_PLACE';
 export const SET_ESPN_REPORT = 'SET_ESPN_REPORT';
+export const ESPN_GRAPH_POINTS = 'ESPN_GRAPH_POINTS';

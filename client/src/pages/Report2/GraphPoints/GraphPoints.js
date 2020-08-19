@@ -57,17 +57,22 @@ class GraphPoints extends React.Component {
 
 
   render() {
-
     console.log(this.props)
-    let data = this.props.graphPoints ? this.props.graphPoints : [
-      { y:  1500, label: "Facebook" },
-      { y:  1400, label: "YouTube" },
-      { y:  1340, label: "Instagram" },
-      { y:  1310, label: "Qzone" },
-      { y:  1300, label: "Weibo" },
-      { y:  1298, label: "Twitter" },
-      { y:  1290, label: "Reddit" }
-    ]
+
+    let data = [];
+    if (this.props.espnReport && this.props.espnGraphPoints) {
+      data = this.props.espnGraphPoints
+    } else {
+      data = this.props.graphPoints ? this.props.graphPoints : [
+        { y:  1500, label: "Facebook" },
+        { y:  1400, label: "YouTube" },
+        { y:  1340, label: "Instagram" },
+        { y:  1310, label: "Qzone" },
+        { y:  1300, label: "Weibo" },
+        { y:  1298, label: "Twitter" },
+        { y:  1290, label: "Reddit" }
+      ]
+    }
     const options = {
 			animationEnabled: true,
 			theme: "light2",
@@ -89,7 +94,7 @@ class GraphPoints extends React.Component {
 
     return (
       <Row>
-        <Col classname="pointsGraph">
+        <Col className="pointsGraph">
           <CanvasJSChart options = {options}
               /* onRef = {ref => this.chart = ref} */
           />
@@ -105,7 +110,10 @@ const mapStateToProps = (state) => {
     roster: state.sleeper.roster,
     league_info: state.sleeper.league_info,
     data: state.sleeper.graphPPG,
-    graphPoints: state.sleeper.graphPoints
+    graphPoints: state.sleeper.graphPoints,
+
+    espnReport: state.espn.espnReport,
+    espnGraphPoints: state.espn.graphPoints,
   }
 }
 

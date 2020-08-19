@@ -20,12 +20,12 @@ const Navagation = (props) => {
       <Collapse isOpen={!isOpen} navbar>
         <Nav navbar>
           <Link to="/sleeper">Sleeper Input</Link>
-          <Link to="/weekly-report-sleeper">Sleeper Weekly Report</Link>
-          <Link to="/overall-report-sleeper">Sleeper Overall Report</Link>
+          <Link to="/weekly-report-sleeper">Sleeper Weekly </Link>
+          <Link to="/overall-report-sleeper">Sleeper Overall </Link>
 
           <Link to="/espn">Espn Input</Link>
-          <Link to="/weekly-report-espn">Espn Weekly Report</Link>
-          <Link to="/overall-report-espn">Espn Overall Report</Link>
+          <Link to="/weekly-report-espn">Espn Weekly </Link>
+          <Link to="/overall-report-espn">Espn Overall </Link>
 
         </Nav>
       </Collapse>

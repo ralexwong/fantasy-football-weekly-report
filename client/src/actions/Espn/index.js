@@ -6,7 +6,8 @@ import {
     ESPN_FIRST_PLACE,
     ESPN_LAST_PLACE,
     SET_ESPN_REPORT,
-    SET_SLEEPER_REPORT
+    SET_SLEEPER_REPORT,
+    ESPN_GRAPH_POINTS
 } from '../types';
 
 import axios from 'axios';
@@ -46,6 +47,15 @@ export const fetchEspn = id => async dispatch => {
     }
 
     console.log(teamsInfo)
+
+    // create the graphPoints object
+    let graphPointsInfo = []
+    for (let i = 0; i < teamsInfo.length; i++) {
+        graphPointsInfo.push({
+            label: teamsInfo[i].name,
+            y: teamsInfo[i].totalPoints
+        })
+    }
 
     // create the recap object
     let recapInfo = []
@@ -113,6 +123,7 @@ export const fetchEspn = id => async dispatch => {
     dispatch({ type: ESPN_RECAP, payload: recapInfo });
     dispatch({ type: ESPN_FIRST_PLACE, payload: first_place })
     dispatch({ type: ESPN_LAST_PLACE, payload: last_place })
+    dispatch({ type: ESPN_GRAPH_POINTS, payload: graphPointsInfo })
 
 }
 
