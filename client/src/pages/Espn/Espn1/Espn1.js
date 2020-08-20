@@ -20,7 +20,7 @@ class Espn1 extends Component {
     onSubmit = (e) => {
         e.preventDefault()
         console.log(this.state.input);
-        this.props.setEspnWeek(this.state.input)
+        this.props.setEspnWeek(this.state.input, this.props.espn, this.props.espnSchedule)
     }
 
     render() {
@@ -46,7 +46,8 @@ class Espn1 extends Component {
 
 const mapStateToProps = (state) => {
     return {
-
+        espn: state.espn.espn,
+        espnSchedule: state.espn.espnSchedule,
     }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import CanvasJSReact from '../../../canvasjs.react';
 import { connect } from 'react-redux';
-import { refactorData, removeGraphData, setGraphPointsToState } from '../../../actions/Sleeper';
+import { refactorData, setGraphPointsToState } from '../../../actions/Sleeper';
 
 import { Row, Col } from "reactstrap"
 
@@ -59,7 +59,7 @@ class GraphPPG extends React.Component {
         //indexLabel: "{y}", //Shows y value on all Data Points
         indexLabelFontColor: "black",
         indexLabelPlacement: "outside",
-        dataPoints: this.props.graphPoints
+        dataPoints: this.props.sleeperGraphPoints
       }]
     }
 
@@ -78,11 +78,11 @@ class GraphPPG extends React.Component {
 const mapStateToProps = (state) => {
   return {
     matchups: state.sleeper.matchups,
-    graphPoints: state.sleeper.graphPoints
+    graphPoints: state.sleeper.sleeperGraphPoints
   }
 }
 
-export default connect(mapStateToProps, { refactorData, removeGraphData, setGraphPointsToState })(GraphPPG)
+export default connect(mapStateToProps, { refactorData, setGraphPointsToState })(GraphPPG)
 
 
 

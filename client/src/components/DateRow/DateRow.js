@@ -22,13 +22,20 @@ class DateRow extends React.Component {
 
 
     render() {
+
+        let week = "";
+        if (this.props.espnReport) {
+            week = this.props.espnWeek
+        } else if (this.props.sleeperReport) {
+            week = this.props.sleeperWeek;
+        }
         return (
             <Row className="dateRow">
                 <Col>
                     <p>{this.grabDate()}</p>
                 </Col>
                 <Col>
-                    <p style={{float: 'right'}}>Season 1 | Week {this.props.week}</p>
+                    <p style={{float: 'right'}}>Season 1 | Week {week}</p>
                 </Col>
             </Row>
         );
@@ -36,7 +43,13 @@ class DateRow extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { week: state.sleeper.week }
+    return { 
+        sleeperReport: state.sleeper.sleeperReport,
+        sleeperWeek: state.sleeper.sleeperWeek,
+        
+        espnReport: state.espn.espnReport,
+        espnWeek: state.espn.espnWeek
+    }
 }
 
 export default connect(mapStateToProps)(DateRow);

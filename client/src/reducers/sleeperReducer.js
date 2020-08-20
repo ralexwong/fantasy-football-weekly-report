@@ -10,7 +10,6 @@ import {
     CLOSE_ONE,
     FETCH_GRAPHPPG,
     REFACTORED_DATA,
-    REMOVE_GRAPH_DATA,
     SET_GRAPH_POINTS_TO_STATE,
     SET_WAIVERS_TO_STATE,
     LAST_PLACE_TO_STATE,
@@ -81,7 +80,7 @@ export default (state = initialState, action) => {
         case FETCH_MATCHUPPOINTS:
             return { ...state, points: action.payload }
         case SET_WEEK_TO_STATE:
-            return { ...state, week: action.payload }
+            return { ...state, sleeperWeek: action.payload }
         case REFACTORED_MATCHUPS:
             return { ...state, matchups: action.payload }
         case TOP_SCORER:
@@ -92,10 +91,8 @@ export default (state = initialState, action) => {
             return { ...state, roster: action.payload }
         case REFACTORED_DATA:
             return { ...state, graphPPG: action.payload }
-        case REMOVE_GRAPH_DATA:
-            return { ...state, graphPoints: null }
         case SET_GRAPH_POINTS_TO_STATE:
-            return { ...state, graphPoints: action.payload }
+            return { ...state, sleeperGraphPoints: action.payload }
         case SET_WAIVERS_TO_STATE:
             return { ...state, waivers: action.payload }
         case LAST_PLACE_TO_STATE:
@@ -103,7 +100,7 @@ export default (state = initialState, action) => {
         case FIRST_PLACE_TO_STATE:
             return { ...state, first_place: action.payload }
         case SET_RECAP_TO_STATE:
-            return { ...state, recap: action.payload }
+            return { ...state, sleeperRecap: action.payload }
         case SET_SLEEPER_REPORT:
             return {...state, sleeperReport: action.payload }
         default:

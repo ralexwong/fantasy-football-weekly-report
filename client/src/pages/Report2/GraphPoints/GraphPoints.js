@@ -60,10 +60,12 @@ class GraphPoints extends React.Component {
     console.log(this.props)
 
     let data = [];
-    if (this.props.espnReport && this.props.espnGraphPoints) {
+    if (this.props.espnReport) {
       data = this.props.espnGraphPoints
+    } else if (this.props.sleeperReport) {
+      data = this.props.sleeperGraphPoints  
     } else {
-      data = this.props.graphPoints ? this.props.graphPoints : [
+      data = [
         { y:  1500, label: "Facebook" },
         { y:  1400, label: "YouTube" },
         { y:  1340, label: "Instagram" },
@@ -106,14 +108,14 @@ class GraphPoints extends React.Component {
 
 const mapStateToProps = (state) => {
   return { 
+    sleeperReport: state.sleeper.sleeperReport,
     league_id: state.sleeper.league_id,
     roster: state.sleeper.roster,
     league_info: state.sleeper.league_info,
-    data: state.sleeper.graphPPG,
-    graphPoints: state.sleeper.graphPoints,
+    sleeperGraphPoints: state.sleeper.sleeperGraphPoints,
 
     espnReport: state.espn.espnReport,
-    espnGraphPoints: state.espn.graphPoints,
+    espnGraphPoints: state.espn.espnGraphPoints,
   }
 }
 

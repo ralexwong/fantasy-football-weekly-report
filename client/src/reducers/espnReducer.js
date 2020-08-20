@@ -30,8 +30,8 @@ export default (state = initialState, action) => {
             return { ...state, last_place: action.payload }
         case SET_ESPN_REPORT:
             return { ...state, espnReport: action.payload }
-        case ESPN_GRAPH_POINTS:
-            return { ...state, graphPoints: action.payload }
+        case ESPN_GRAPH_POINTS: 
+            return { ...state, espnGraphPoints: action.payload }
         default:
             return state;
     }

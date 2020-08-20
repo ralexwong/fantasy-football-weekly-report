@@ -103,7 +103,7 @@ const mapStateToProps = (state) => {
     return {
         league_info: state.sleeper.league_info,
         points: state.sleeper.points,
-        week: state.sleeper.week,
+        week: state.sleeper.sleeperWeek,
         matchups: state.sleeper.matchups
     }
 }

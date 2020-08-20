@@ -128,7 +128,16 @@ export const fetchEspn = id => async dispatch => {
 }
 
 // setting the espn week --------------------------------------------------------
-export const setEspnWeek = week => async dispatch => {
+export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
+
+    let matchupWeek = [];
+
+    for (let i = 0; i < espnSchedule.length; i++) {
+        
+    }
+
+
+
     dispatch({ type: SET_ESPN_WEEK, payload: week })
 }
 

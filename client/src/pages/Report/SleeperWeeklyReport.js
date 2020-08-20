@@ -14,7 +14,7 @@ class ComponentToPrint extends React.Component {
   }
 }
 
-class Example extends Component {
+class SleeperWeeklyReport extends Component {
   constructor(props) {
     super(props);
     this.componentRef = React.createRef();
@@ -40,4 +40,4 @@ class Example extends Component {
   }
 }
 
-export default connect(null, { createEspnWeeklyReport, createSleeperWeeklyReport })(Example);
+export default connect(null, { createEspnWeeklyReport, createSleeperWeeklyReport })(SleeperWeeklyReport);

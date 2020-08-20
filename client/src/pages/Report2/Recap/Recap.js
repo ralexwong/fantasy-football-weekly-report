@@ -43,7 +43,7 @@ class Recap extends Component {
           combinedObjects[j].name = league_info[i].display_name;
 
           let shortenTeamName = combinedObjects[j].name.toUpperCase().substring(0,4)
-          combinedObjects[j].name = shortenTeamName;
+          combinedObjects[j].abbrev = shortenTeamName;
         }
       }
     }
@@ -73,13 +73,27 @@ class Recap extends Component {
 
   render() {
     console.log(this.props)
+    let week = "";
+    if (this.props.espnReport) {
+        week = this.props.espnWeek
+    } else if (this.props.sleeperReport) {
+        week = this.props.sleeperWeek;
+    }
+
+    let recap = [];
+    if (this.props.espnReport) {
+      recap = this.props.espnRecap
+    } else if (this.props.sleeperReport) {
+      recap = this.props.sleeperRecap
+    }
+
     return (
       <Col className="recap">
         <p className="reportTitle">NUMBERS RECAP</p>
         <Table bordered >
           <thead>
             <tr>
-              <th className="recap__week" colSpan="7">Week {this.props.week}</th>
+              <th className="recap__week" colSpan="7">Week {week}</th>
             </tr>
             <tr>
               <th>Team</th>
@@ -92,9 +106,9 @@ class Recap extends Component {
             </tr>
           </thead>
           <tbody borderless="true">
-            {(this.props.espnRecap ? 
+            {(recap ? 
               (
-                this.props.espnRecap.map((row, i) => (
+                recap.map((row, i) => (
                   <tr key={row.team}>
                     <td>{row.abbrev}</td>
                     <td>{(i+1)}</td>
@@ -134,12 +148,15 @@ class Recap extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    sleeperReport: state.sleeper.sleeperReport,
     league_info: state.sleeper.league_info,
     roster: state.sleeper.roster,
-    week: state.sleeper.week,
-    recap: state.sleeper.recap,
+    week: state.sleeper.sleeperWeek,
+    sleeperRecap: state.sleeper.sleeperRecap,
 
-    espnRecap: state.espn.recap
+    espnReport: state.espn.espnReport,
+    espnRecap: state.espn.recap,
+    espnWeek: state.espn.espnWeek,
   }
 }
 
