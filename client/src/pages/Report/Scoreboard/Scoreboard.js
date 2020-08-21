@@ -29,6 +29,21 @@ class Scoreboard extends React.Component {
 
     render() {
         console.log(this.props.matchups)
+
+        let matchups = [];
+        if (this.props.espnReport) {
+            matchups = this.props.espnMatchups
+        } else if (this.props.sleeperReport) {
+            matchups = this.props.sleeperMatchups
+        }
+
+        let week = "";
+        if (this.props.espnReport) {
+            week = this.props.espnWeek
+        } else if (this.props.sleeperReport) {
+            week = this.props.sleeperWeek;
+        }
+
         if (this.state.width < 575) {
             return (
                 <React.Fragment>
@@ -41,24 +56,23 @@ class Scoreboard extends React.Component {
                             </Row>
                             <Row>
                                 <Col className="scoreboard__week">
-                                    <p>Week {this.props.week}</p>
+                                    <p>Week {week}</p>
                                 </Col>
                             </Row>
 
-                            {!this.props.matchups ?
-                                (<div></div>)
-                                :
-                                (this.props.matchups.map(matchup => (
+                            {matchups ?
+                                (matchups.map(matchup => (
                                     <ScoreboardRow
-                                        key={matchup.matchup_id}
-                                        matchup_id={matchup.matchup_id}
+                                        key={matchup.points1}
                                         points1={matchup.points1}
                                         points2={matchup.points2}
                                         roster1={matchup.roster1}
                                         roster2={matchup.roster2}
                                     />
                                 ))
-                                )}
+                                ) :
+                                (<div></div>)
+                            }
                         </Container>
                     </Col>
                 </React.Fragment>
@@ -74,24 +88,23 @@ class Scoreboard extends React.Component {
                         </Row>
                         <Row>
                             <Col className="scoreboard__week">
-                                <p>Week {this.props.week}</p>
+                                <p>Week {week}</p>
                             </Col>
                         </Row>
 
-                        {!this.props.matchups ?
-                            (<div></div>)
-                            :
-                            (this.props.matchups.map(matchup => (
+                        {matchups ?
+                            (matchups.map(matchup => (
                                 <ScoreboardRow
-                                    key={matchup.matchup_id}
-                                    matchup_id={matchup.matchup_id}
+                                    key={matchup.points1}
                                     points1={matchup.points1}
                                     points2={matchup.points2}
                                     roster1={matchup.roster1}
                                     roster2={matchup.roster2}
                                 />
                             ))
-                            )}
+                            ) :
+                            (<div></div>)
+                        }
                     </Container>
                 </Col>
             );
@@ -101,10 +114,15 @@ class Scoreboard extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        sleeperReport: state.sleeper.sleeperReport,
         league_info: state.sleeper.league_info,
         points: state.sleeper.points,
-        week: state.sleeper.sleeperWeek,
-        matchups: state.sleeper.matchups
+        sleeperWeek: state.sleeper.sleeperWeek,
+        sleeperMatchups: state.sleeper.sleeperMatchups,
+
+        espnReport: state.espn.espnReport,
+        espnMatchups: state.espn.espnMatchups,
+        espnWeek: state.espn.espnWeek
     }
 }
 

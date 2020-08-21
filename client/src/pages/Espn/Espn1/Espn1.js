@@ -20,7 +20,11 @@ class Espn1 extends Component {
     onSubmit = (e) => {
         e.preventDefault()
         console.log(this.state.input);
-        this.props.setEspnWeek(this.state.input, this.props.espn, this.props.espnSchedule)
+        this.props.setEspnWeek(
+            parseInt(this.state.input), 
+            this.props.espn, 
+            this.props.espnSchedule
+        )
     }
 
     render() {

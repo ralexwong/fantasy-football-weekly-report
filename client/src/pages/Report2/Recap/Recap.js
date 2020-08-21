@@ -122,23 +122,6 @@ class Recap extends Component {
               ) 
               : 
               (<tr></tr>))}
-
-            {/* {(this.props.recap ? 
-              (
-                this.props.recap.map((row, i) => (
-                  <tr key={row.team}>
-                    <td>{row.name}</td>
-                    <td>{(i+1)}</td>
-                    <td className={row.PPGcolor}>{row.PPG}</td>
-                    <td className={row.PFcolor}>{row.PF}</td>
-                    <td className={row.PAcolor}>{row.PA}</td>
-                    <td>{row.wins}</td>
-                    <td>{row.losses}</td>
-                  </tr>
-                ))
-              ) 
-              : 
-              (<tr></tr>))} */}
           </tbody>
         </Table>
       </Col>
@@ -155,7 +138,7 @@ const mapStateToProps = (state) => {
     sleeperRecap: state.sleeper.sleeperRecap,
 
     espnReport: state.espn.espnReport,
-    espnRecap: state.espn.recap,
+    espnRecap: state.espn.espnRecap,
     espnWeek: state.espn.espnWeek,
   }
 }

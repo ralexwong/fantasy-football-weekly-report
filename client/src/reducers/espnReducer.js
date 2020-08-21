@@ -7,6 +7,9 @@ import {
     ESPN_LAST_PLACE,
     SET_ESPN_REPORT,
     ESPN_GRAPH_POINTS,
+    SET_ESPN_MATCHUPS,
+    SET_ESPN_CLOSE_ONE,
+    SET_ESPN_TOP_SCORER
 } from '../actions/types';
 
 const initialState = {
@@ -23,7 +26,7 @@ export default (state = initialState, action) => {
         case ESPN_SCHEDULE:
             return { ...state, espnSchedule: action.payload }
         case ESPN_RECAP:
-            return { ...state, recap: action.payload }
+            return { ...state, espnRecap: action.payload }
         case ESPN_FIRST_PLACE:
             return { ...state, first_place: action.payload }
         case ESPN_LAST_PLACE:
@@ -32,6 +35,12 @@ export default (state = initialState, action) => {
             return { ...state, espnReport: action.payload }
         case ESPN_GRAPH_POINTS: 
             return { ...state, espnGraphPoints: action.payload }
+        case SET_ESPN_MATCHUPS:
+            return { ...state, espnMatchups: action.payload }
+        case SET_ESPN_CLOSE_ONE:
+            return { ...state, espnCloseOne: action.payload }
+        case SET_ESPN_TOP_SCORER:
+            return { ...state, espnTopScorer: action.payload }
         default:
             return state;
     }

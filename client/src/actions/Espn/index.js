@@ -7,7 +7,10 @@ import {
     ESPN_LAST_PLACE,
     SET_ESPN_REPORT,
     SET_SLEEPER_REPORT,
-    ESPN_GRAPH_POINTS
+    ESPN_GRAPH_POINTS,
+    SET_ESPN_MATCHUPS,
+    SET_ESPN_CLOSE_ONE,
+    SET_ESPN_TOP_SCORER
 } from '../types';
 
 import axios from 'axios';
@@ -130,14 +133,76 @@ export const fetchEspn = id => async dispatch => {
 // setting the espn week --------------------------------------------------------
 export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
 
-    let matchupWeek = [];
+    let topScorer = {
+        name: "bob",
+        score: 0,
+        logo: ""
+    }
+    let closeOne = {
+        name: "bob",
+        difference: Infinity,
+        logo: ""
+    }
+    let matchups = [];
+    let length = espn.length / 2
+    for (let i = (week - 1) * length; i < espnSchedule.length; i++) {
+        if (espnSchedule[i].matchupPeriodId !== week) {
+            break
+        }
 
-    for (let i = 0; i < espnSchedule.length; i++) {
-        
+        for (let j = 0; j < espn.length; j++) {
+            if (espn[j].id === espnSchedule[i].away.teamId) {
+                espnSchedule[i].away.teamId = espn[j].name;
+                espnSchedule[i].away.logo = espn[j].logo;
+            }
+            if (espn[j].id === espnSchedule[i].home.teamId) {
+                espnSchedule[i].home.teamId = espn[j].name;
+                espnSchedule[i].home.logo = espn[j].logo;
+            }
+        }
+
+        matchups.push({
+            roster1: espnSchedule[i].away.teamId,
+            points1: espnSchedule[i].away.totalPoints,
+            logo1: espnSchedule[i].away.logo,
+
+            roster2: espnSchedule[i].home.teamId,
+            points2: espnSchedule[i].home.totalPoints,
+            logo2: espnSchedule[i].home.logo
+        })
     }
 
+    for (let k = 0; k < matchups.length; k++) {
+        if (matchups[k].points1 > topScorer.score) {
+            topScorer.score = matchups[k].points1;
+            topScorer.name = matchups[k].roster1;
+            topScorer.logo = matchups[k].logo1;
+        }
 
+        if (matchups[k].points2 > topScorer.score) {
+            topScorer.score = matchups[k].points2;
+            topScorer.name = matchups[k].roster2;
+            topScorer.logo = matchups[k].logo2;
+        }
 
+        if (Math.abs(parseFloat(matchups[k].points1) - parseFloat(matchups[k].points2)) < closeOne.difference) {
+            closeOne.difference = Math.abs(parseFloat(matchups[k].points1) - parseFloat(matchups[k].points2)).toFixed(2);
+            if (parseFloat(matchups[k].points1) > parseFloat(matchups[k].points2)) {
+              closeOne.name = matchups[k].roster1;
+              closeOne.logo = matchups[k].logo1
+            } else {
+              closeOne.name = matchups[k].roster2;
+              closeOne.logo = matchups[k].logo2;
+            }
+        }
+    }
+
+    console.log(matchups)
+    console.log(closeOne)
+    console.log(topScorer)
+    dispatch({ type: SET_ESPN_CLOSE_ONE, payload: closeOne })
+    dispatch({ type: SET_ESPN_TOP_SCORER, payload: topScorer })
+    dispatch({ type: SET_ESPN_MATCHUPS, payload: matchups })
     dispatch({ type: SET_ESPN_WEEK, payload: week })
 }
 

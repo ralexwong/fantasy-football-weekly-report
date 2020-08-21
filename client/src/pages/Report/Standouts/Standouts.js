@@ -27,16 +27,26 @@ class Standouts extends Component {
     };
 
     render() {
-        let topScorerUrl = "";
-        if (this.props.topScorer) {
-            topScorerUrl = `https://whispering-woodland-11588.herokuapp.com/https://sleepercdn.com/avatars/${this.props.topScorer.avatar}`
-        };
-
-        let closeOneUrl = "";
-        if (this.props.closeOne) {
-            closeOneUrl = `https://whispering-woodland-11588.herokuapp.com/https://sleepercdn.com/avatars/${this.props.closeOne.avatar}`
+        let topScorer = {
+            name: "",
+            score: 0,
+            logo: ""
+        }
+        let closeOne = {
+            name: "",
+            difference: 0,
+            logo: ""
         }
 
+        if (this.props.espnReport && this.props.espnTopScorer) {
+            topScorer = this.props.espnTopScorer;
+            closeOne = this.props.espnCloseOne;
+        } else if (this.props.sleeperReport && this.props.sleeperTopScorer) {
+            topScorer = this.props.sleeperTopScorer;
+            closeOne = this.props.sleeperCloseOne;
+        }
+
+        console.log(this.props)
 
         if (this.state.width < 575) {
             return (
@@ -49,13 +59,13 @@ class Standouts extends Component {
                                 <img 
                                     crossOrigin="anonymous"
                                     referrerPolicy="origin" 
-                                    src={topScorerUrl} 
+                                    src={`https://whispering-woodland-11588.herokuapp.com/${topScorer.logo}`} 
                                     alt="poop" 
                                     className="cards__image" />
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="cards__name">{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
+                            <p className="cards__name">{topScorer.name}: {topScorer.score}</p>
                         </div>
                     </Col>
                     <Col xs={6} className="cards">
@@ -66,13 +76,13 @@ class Standouts extends Component {
                                 <img 
                                     crossOrigin="anonymous"
                                     referrerPolicy="origin" 
-                                    src={closeOneUrl} 
+                                    src={`https://whispering-woodland-11588.herokuapp.com/${closeOne.logo}`} 
                                     alt="poop" 
                                     className="cards__image" />
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="cards__name">{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
+                            <p className="cards__name">{closeOne.name}: +{closeOne.difference}</p>
                         </div>
                     </Col>
                 </React.Fragment>
@@ -87,13 +97,13 @@ class Standouts extends Component {
                             <img 
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin" 
-                                src={topScorerUrl} 
+                                src={`https://whispering-woodland-11588.herokuapp.com/${topScorer.logo}`} 
                                 alt="poop" 
                                 className="cards__image" />
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p>{this.props.topScorer.name}: {this.props.topScorer.highscore}</p>
+                        <p>{topScorer.name}: {topScorer.score}</p>
                     </div>
 
                     <div className="hr"></div>
@@ -105,13 +115,13 @@ class Standouts extends Component {
                             <img 
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin" 
-                                src={closeOneUrl} 
+                                src={`https://whispering-woodland-11588.herokuapp.com/${closeOne.logo}`} 
                                 alt="poop" 
                                 className="cards__image" />
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p>{this.props.closeOne.name}: +{this.props.closeOne.difference}</p>
+                        <p>{closeOne.name}: +{closeOne.difference}</p>
                     </div>
                 </Col>
             )
@@ -121,10 +131,15 @@ class Standouts extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        sleeperReport: state.sleeper.sleeperReport,
         points: state.sleeper.points,
         matchups: state.sleeper.matchups,
-        topScorer: state.sleeper.topScorer,
-        closeOne: state.sleeper.closeOne
+        sleeperTopScorer: state.sleeper.sleeperTopScorer,
+        sleeperCloseOne: state.sleeper.sleeperCloseOne,
+
+        espnReport: state.espn.espnReport,
+        espnTopScorer: state.espn.espnTopScorer,
+        espnCloseOne: state.espn.espnCloseOne
     }
 }
 

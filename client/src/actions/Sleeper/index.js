@@ -97,15 +97,23 @@ export const refactoredMatchups = (matchupArray) => dispatch => {
 
 // Push top scorer into state ------------------------------------------------------
 
-export const topScorer = (name, highscore, avatar) => dispatch => {
-    const topScorer = { name, highscore, avatar }
+export const topScorer = (name, score, logo) => dispatch => {
+    const topScorer = { 
+        name, 
+        score, 
+        logo: `https://sleepercdn.com/avatars/${logo}`
+    }
     dispatch({ type: TOP_SCORER, payload: topScorer });
 }
 
 // Push close matchup score and winner into state --------------------------------
 
-export const closeOne = (name, difference, avatar) => async dispatch => {
-    const closeOne = { name, difference, avatar };
+export const closeOne = (name, difference, logo) => async dispatch => {
+    const closeOne = { 
+        name, 
+        difference, 
+        logo: `https://sleepercdn.com/avatars/${logo}`
+    };
     dispatch({ type: CLOSE_ONE, payload: closeOne })
 }
 

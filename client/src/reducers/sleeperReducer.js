@@ -82,15 +82,15 @@ export default (state = initialState, action) => {
         case SET_WEEK_TO_STATE:
             return { ...state, sleeperWeek: action.payload }
         case REFACTORED_MATCHUPS:
-            return { ...state, matchups: action.payload }
+            return { ...state, sleeperMatchups: action.payload }
         case TOP_SCORER:
-            return { ...state, topScorer: action.payload }
+            return { ...state, sleeperTopScorer: action.payload }
         case CLOSE_ONE:
-            return { ...state, closeOne: action.payload }
+            return { ...state, sleeperCloseOne: action.payload }
         case FETCH_GRAPHPPG:
             return { ...state, roster: action.payload }
         case REFACTORED_DATA:
-            return { ...state, graphPPG: action.payload }
+            return { ...state, sleeperGraphPPG: action.payload }
         case SET_GRAPH_POINTS_TO_STATE:
             return { ...state, sleeperGraphPoints: action.payload }
         case SET_WAIVERS_TO_STATE:
