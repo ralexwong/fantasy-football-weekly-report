@@ -10,7 +10,8 @@ import {
     ESPN_GRAPH_POINTS,
     SET_ESPN_MATCHUPS,
     SET_ESPN_CLOSE_ONE,
-    SET_ESPN_TOP_SCORER
+    SET_ESPN_TOP_SCORER,
+    SET_ESPN_GRAPH_PPG
 } from '../types';
 
 import axios from 'axios';
@@ -144,6 +145,7 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
         logo: ""
     }
     let matchups = [];
+    let graphPPG = [];
     let length = espn.length / 2
     for (let i = (week - 1) * length; i < espnSchedule.length; i++) {
         if (espnSchedule[i].matchupPeriodId !== week) {
@@ -171,6 +173,23 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
             logo2: espnSchedule[i].home.logo
         })
     }
+
+    for (let i = 0; i < matchups.length; i++) {
+        let points1 = parseFloat(matchups[i].points1);
+        let points2 = parseFloat(matchups[i].points2);
+
+        if (points1 > points2) {
+          graphPPG.push({ label: matchups[i].roster1, y: points1, color: "#00006b" });
+          graphPPG.push({ label: matchups[i].roster2, y: points2, color: "#b61e1e" });
+        } else {
+          graphPPG.push({ label: matchups[i].roster1, y: points1, color: "#b61e1e" });
+          graphPPG.push({ label: matchups[i].roster2, y: points2, color: "#00006b" });
+        }
+    }
+
+    // sorts the graphPPG by points
+    graphPPG.sort(function (a, b) { return a.y - b.y })
+
 
     for (let k = 0; k < matchups.length; k++) {
         if (matchups[k].points1 > topScorer.score) {
@@ -200,6 +219,7 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
     console.log(matchups)
     console.log(closeOne)
     console.log(topScorer)
+    dispatch({ type: SET_ESPN_GRAPH_PPG, payload: graphPPG })
     dispatch({ type: SET_ESPN_CLOSE_ONE, payload: closeOne })
     dispatch({ type: SET_ESPN_TOP_SCORER, payload: topScorer })
     dispatch({ type: SET_ESPN_MATCHUPS, payload: matchups })

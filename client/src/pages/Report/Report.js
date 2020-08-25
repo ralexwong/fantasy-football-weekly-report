@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPointsToState } from '../../actions/Sleeper';
+import { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPPG } from '../../actions/Sleeper';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
@@ -85,7 +85,7 @@ class Report extends Component {
 
     console.log("in refactorState report CDM " + arr);
 
-    this.props.setGraphPointsToState(arr);
+    this.props.setGraphPPG(arr);
 
     this.topScorer(points);
 
@@ -152,4 +152,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPointsToState })(Report);
+export default connect(mapStateToProps, { refactoredMatchups, closeOne, topScorer, refactorData, setGraphPPG })(Report);

@@ -2,7 +2,7 @@ import React from 'react';
 import CanvasJSReact from '../../../canvasjs.react';
 
 import { connect } from 'react-redux';
-import { fetchGraphPPG, setGraphPointsToState, removeGraphData } from '../../../actions/Sleeper';
+import { fetchGraphPPG, setGraphPointsToState, } from '../../../actions/Sleeper';
 
 import { Row, Col } from "reactstrap"
 
@@ -18,10 +18,6 @@ class GraphPoints extends React.Component {
     } else {
       this.refactorData(this.props.roster, this.props.league_info)
     }
-  }
-
-  componentWillUnmount() {
-    this.props.removeGraphData()
   }
 
   addSymbols(e){
@@ -119,7 +115,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchGraphPPG, setGraphPointsToState, removeGraphData })(GraphPoints)
+export default connect(mapStateToProps, { fetchGraphPPG, setGraphPointsToState, })(GraphPoints)
 
 
 

@@ -10,14 +10,14 @@ import {
     CLOSE_ONE,
     FETCH_GRAPHPPG,
     REFACTORED_DATA,
-    REMOVE_GRAPH_DATA,
     SET_GRAPH_POINTS_TO_STATE,
     SET_WAIVERS_TO_STATE,
     LAST_PLACE_TO_STATE,
     FIRST_PLACE_TO_STATE,
     SET_RECAP_TO_STATE,
     SET_SLEEPER_REPORT,
-    SET_ESPN_REPORT
+    SET_ESPN_REPORT,
+    SET_SLEEPER_GRAPH_PPG
 } from '../types';
 import axios from 'axios';
 
@@ -137,10 +137,10 @@ export const refactorData = (data) => dispatch => {
     dispatch({ type: REFACTORED_DATA, payload: data})
 }
 
-// remove graph data cause the names won't reassign -----------------------
+// push graphPPG to state -------------------------------------
 
-export const removeGraphData = () => dispatch => {
-    dispatch({ type: REMOVE_GRAPH_DATA })
+export const setGraphPPG = data => dispatch => {
+    dispatch({ type: SET_SLEEPER_GRAPH_PPG, payload: data })
 }
 
 // push graph points to state ---------------------------------------

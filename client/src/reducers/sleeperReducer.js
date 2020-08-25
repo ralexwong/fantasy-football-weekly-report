@@ -15,8 +15,9 @@ import {
     LAST_PLACE_TO_STATE,
     FIRST_PLACE_TO_STATE,
     SET_RECAP_TO_STATE,
-    SET_SLEEPER_REPORT
-    
+    SET_SLEEPER_REPORT,
+    SET_SLEEPER_GRAPH_PPG,
+
 } from '../actions/types';
 
 const matchups = []
@@ -89,6 +90,8 @@ export default (state = initialState, action) => {
             return { ...state, sleeperCloseOne: action.payload }
         case FETCH_GRAPHPPG:
             return { ...state, roster: action.payload }
+        case SET_SLEEPER_GRAPH_PPG:
+            return { ...state, sleeperGraphPPG: action.payload }
         case REFACTORED_DATA:
             return { ...state, sleeperGraphPPG: action.payload }
         case SET_GRAPH_POINTS_TO_STATE:

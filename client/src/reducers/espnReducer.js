@@ -9,7 +9,8 @@ import {
     ESPN_GRAPH_POINTS,
     SET_ESPN_MATCHUPS,
     SET_ESPN_CLOSE_ONE,
-    SET_ESPN_TOP_SCORER
+    SET_ESPN_TOP_SCORER,
+    SET_ESPN_GRAPH_PPG
 } from '../actions/types';
 
 const initialState = {
@@ -41,6 +42,8 @@ export default (state = initialState, action) => {
             return { ...state, espnCloseOne: action.payload }
         case SET_ESPN_TOP_SCORER:
             return { ...state, espnTopScorer: action.payload }
+        case SET_ESPN_GRAPH_PPG:
+            return { ...state, espnGraphPPG: action.payload }
         default:
             return state;
     }
