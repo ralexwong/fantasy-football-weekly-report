@@ -4,7 +4,7 @@ import Recap from '../Recap';
 
 import { Row } from "reactstrap"
 
-class MiddleRow extends Component {
+class MiddleRow extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
