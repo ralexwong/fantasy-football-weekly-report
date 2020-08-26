@@ -4,7 +4,7 @@ import { refactoredMatchups, closeOne, topScorer } from '../../actions/Sleeper';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
-// import MiddleRow from './MiddleRow';
+import MiddleRow from './MiddleRow';
 import GraphPoints from './GraphPoints';
 
 import { Container } from "reactstrap"
@@ -16,7 +16,7 @@ class Report2 extends Component {
       <Container className="reportContainer">
         <Title />
         <DateRow />
-        {/* <MiddleRow /> */}
+        <MiddleRow />
         <GraphPoints />
       </Container>
     );
