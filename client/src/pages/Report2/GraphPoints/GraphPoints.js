@@ -95,7 +95,7 @@ class GraphPoints extends React.Component {
 
     return (
       <Row>
-        <Col className="pointsGraph">
+        <Col className="pointsGraph test">
           <CanvasJSChart options = {options}
               /* onRef = {ref => this.chart = ref} */
           />
