@@ -61,6 +61,9 @@ export const fetchEspn = id => async dispatch => {
         })
     }
 
+    // sorts the graphPointsInfo by points
+    graphPointsInfo.sort(function (a, b) { return a.y - b.y })
+
     // create the recap object
     let recapInfo = []
     for (let i = 0; i < teamsInfo.length; i++) {
