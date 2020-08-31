@@ -87,45 +87,88 @@ class Recap extends Component {
       recap = this.props.sleeperRecap
     }
 
-    return (
-      <Col className="recap">
-        <p className="reportTitle">NUMBERS RECAP</p>
-        <Table bordered >
-          <thead>
-            <tr>
-              <th className="recap__week" colSpan="7">Week {week}</th>
-            </tr>
-            <tr>
-              <th>Team</th>
-              <th>Rank</th>
-              <th>PF/G</th>
-              <th>PF</th>
-              <th>PA</th>
-              <th>W</th>
-              <th>L</th>
-            </tr>
-          </thead>
-          <tbody borderless="true">
-            {(recap ? 
-              (
-                recap.map((row, i) => (
-                  <tr key={row.team}>
-                    <td>{row.abbrev}</td>
-                    <td>{(i+1)}</td>
-                    <td className={row.PPGcolor}>{row.PPG}</td>
-                    <td className={row.PFcolor}>{row.PF}</td>
-                    <td className={row.PAcolor}>{row.PA}</td>
-                    <td>{row.wins}</td>
-                    <td>{row.losses}</td>
-                  </tr>
-                ))
-              ) 
-              : 
-              (<tr></tr>))}
-          </tbody>
-        </Table>
-      </Col>
-    )
+    if (this.props.border) {
+      return (
+        <Col className="recap" style={{ border: "none" }}>
+          <p className="reportTitle">NUMBERS RECAP</p>
+          <Table bordered >
+            <thead>
+              <tr>
+                <th className="recap__week" colSpan="7">Week {week}</th>
+              </tr>
+              <tr>
+                <th>Team</th>
+                <th>Rank</th>
+                <th>PF/G</th>
+                <th>PF</th>
+                <th>PA</th>
+                <th>W</th>
+                <th>L</th>
+              </tr>
+            </thead>
+            <tbody borderless="true">
+              {(recap ? 
+                (
+                  recap.map((row, i) => (
+                    <tr key={i}>
+                      <td>{row.abbrev}</td>
+                      <td>{(i+1)}</td>
+                      <td className={row.PPGcolor}>{row.PPG}</td>
+                      <td className={row.PFcolor}>{row.PF}</td>
+                      <td className={row.PAcolor}>{row.PA}</td>
+                      <td>{row.wins}</td>
+                      <td>{row.losses}</td>
+                    </tr>
+                  ))
+                ) 
+                : 
+                (<tr></tr>))}
+            </tbody>
+          </Table>
+        </Col>
+      )
+    }
+    else {
+      return (
+        <Col className="recap">
+          <p className="reportTitle">NUMBERS RECAP</p>
+          <Table bordered >
+            <thead>
+              <tr>
+                <th className="recap__week" colSpan="7">Week {week}</th>
+              </tr>
+              <tr>
+                <th>Team</th>
+                <th>Rank</th>
+                <th>PF/G</th>
+                <th>PF</th>
+                <th>PA</th>
+                <th>W</th>
+                <th>L</th>
+              </tr>
+            </thead>
+            <tbody borderless="true">
+              {(recap ? 
+                (
+                  recap.map((row, i) => (
+                    <tr key={i}>
+                      <td>{row.abbrev}</td>
+                      <td>{(i+1)}</td>
+                      <td className={row.PPGcolor}>{row.PPG}</td>
+                      <td className={row.PFcolor}>{row.PF}</td>
+                      <td className={row.PAcolor}>{row.PA}</td>
+                      <td>{row.wins}</td>
+                      <td>{row.losses}</td>
+                    </tr>
+                  ))
+                ) 
+                : 
+                (<tr></tr>))}
+            </tbody>
+          </Table>
+        </Col>
+      )
+    }
   }
 }
 

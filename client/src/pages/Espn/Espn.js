@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 
 import Espn1 from './Espn2';
 import Espn2 from './Espn1';
+
+import TitleInput from '../../components/TitleInput';
+import CaptionInput from '../../components/CaptionInput';
+
 import GenerateReportButton from '../../components/GenerateReportButton';
 
 import { Container, Row, Col } from "reactstrap"
@@ -13,12 +17,9 @@ class Espn extends Component {
         super(props);
         if (this.props.location.pathname === "/espn") {
             this.props.createEspnOverallReport()
-        } else if (this.props.location.pathname === "/sleeper") {
-            this.props.createSleeperOverallReport()
         }
-
-        console.log(this.props)
     }
+
     render() {
         return (
             <div className="espnBackground">
@@ -27,6 +28,8 @@ class Espn extends Component {
                         <Col className="sleeper">
                             <Espn1 />
                             <Espn2 />
+                            <TitleInput platform={'espn'} />
+                            <CaptionInput platform={'espn'} />
                             <GenerateReportButton reportPage={'weekly-report-espn'} />
                         </Col>
                     </Row>

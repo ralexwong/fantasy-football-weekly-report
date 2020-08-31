@@ -17,6 +17,8 @@ import {
     SET_RECAP_TO_STATE,
     SET_SLEEPER_REPORT,
     SET_SLEEPER_GRAPH_PPG,
+    SET_SLEEPER_CAPTION,
+    SET_SLEEPER_TITLE
 
 } from '../actions/types';
 
@@ -106,6 +108,10 @@ export default (state = initialState, action) => {
             return { ...state, sleeperRecap: action.payload }
         case SET_SLEEPER_REPORT:
             return {...state, sleeperReport: action.payload }
+        case SET_SLEEPER_TITLE:
+            return { ...state, sleeperTitle: action.payload }
+        case SET_SLEEPER_CAPTION:
+            return { ...state, sleeperCaption: action.payload }
         default:
             return state;
     }

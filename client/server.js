@@ -30,7 +30,8 @@ if (process.env.NODE_ENV === "production") {
 
 // Connect to the Mongo DB
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://user:password123@ds011298.mlab.com:11298/heroku_fmwkxmbt",
+    process.env.MONGODB_URI || "mongodb+srv://username:8nHp2uJDgGSYPxCT@cluster0.fkj9s.mongodb.net/<dbname>?retryWrites=true&w=majority", 
+    // 8nHp2uJDgGSYPxCT
     {
       useCreateIndex: true,
       useNewUrlParser: true

@@ -6,6 +6,10 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
 
 const Navagation = (props) => {
@@ -14,19 +18,46 @@ const Navagation = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Navbar className="nav" expand="md">
-      <NavbarBrand className="mr-auto nav__homeText" href="/">FFWR</NavbarBrand>
-      <NavbarToggler onClick={toggle} className="mr-2" />
-      <Collapse isOpen={!isOpen} navbar>
-        <Nav navbar>
-          <Link to="/sleeper">Sleeper Input</Link>
-          <Link to="/weekly-report-sleeper">Sleeper Weekly </Link>
-          <Link to="/overall-report-sleeper">Sleeper Overall </Link>
+    <Navbar color="light" light expand="md">
+      <NavbarBrand href="/">FFWR</NavbarBrand>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="mr-auto" navbar>
+          <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle nav caret>
+              Sleeper
+            </DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem>
+                <Link to="/weekly-report-sleeper">Sleeper Weekly </Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link to="/overall-report-sleeper">Sleeper Overall </Link>
+              </DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>
+                <Link to="/sleeper">Sleeper Input</Link>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
 
-          <Link to="/espn">Espn Input</Link>
-          <Link to="/weekly-report-espn">Espn Weekly </Link>
-          <Link to="/overall-report-espn">Espn Overall </Link>
-
+          <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle nav caret>
+              Espn
+            </DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem>
+                <Link to="/weekly-report-espn">Espn Weekly </Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link to="/overall-report-espn">Espn Overall </Link>
+              </DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>
+                <Link to="/espn">Espn Input</Link>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
         </Nav>
       </Collapse>
     </Navbar>

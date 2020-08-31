@@ -67,7 +67,7 @@ class GraphPPG extends React.Component {
 
     if (this.props.espnReport && this.props.espnGraphPPG) {
       graphPPG = this.props.espnGraphPPG
-    } else if (this.props.sleeperGraphPPG && this.props.sleeperGraphPPG) {
+    } else if (this.props.sleeperReport && this.props.sleeperGraphPPG) {
       graphPPG = this.props.sleeperGraphPPG
     } 
 

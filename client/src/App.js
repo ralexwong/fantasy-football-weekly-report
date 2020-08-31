@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
-import Navagation from './components/Nav'
+import Intronav from './components/Nav'
 
 import Payouts from "./pages/Payouts/Payouts";
 import NoMatch from "./pages/NoMatch";
@@ -32,7 +32,7 @@ function App() {
   return (
     <Router history={history}>
       <div style={style}>
-        <Navagation />
+        <Intronav />
         <Switch>
           <Route exact path="/" component={Intro} />
           <Route exact path="/weekly-report-sleeper" render={props => <SleeperWeeklyReport {...props} />} />

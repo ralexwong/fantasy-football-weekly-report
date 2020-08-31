@@ -17,7 +17,9 @@ import {
     SET_RECAP_TO_STATE,
     SET_SLEEPER_REPORT,
     SET_ESPN_REPORT,
-    SET_SLEEPER_GRAPH_PPG
+    SET_SLEEPER_GRAPH_PPG,
+    SET_SLEEPER_TITLE,
+    SET_SLEEPER_CAPTION,
 } from '../types';
 import axios from 'axios';
 
@@ -178,4 +180,14 @@ export const createSleeperOverallReport = () => dispatch => {
 export const createSleeperWeeklyReport = () => dispatch => {
     dispatch({ type: SET_SLEEPER_REPORT, payload: true })
     dispatch({ type: SET_ESPN_REPORT, payload: false })
+}
+
+// set sleeper title -----------------------------------------
+export const setSleeperTitle = data => async dispatch => {
+    dispatch({ type: SET_SLEEPER_TITLE, payload: data })
+}
+
+// set sleeper caption ------------------------------------------
+export const setSleeperCaption = data => async dispatch => {
+    dispatch({ type: SET_SLEEPER_CAPTION, payload: data })
 }

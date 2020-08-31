@@ -96,7 +96,7 @@ class Cards extends Component {
         if (this.props.espn_first_place && this.props.espnReport) {
             first_place = `https://whispering-woodland-11588.herokuapp.com/${this.props.espn_first_place.logo}`;
             first_place_name = this.props.espn_first_place.name
-        } else if (this.props.first_place) {
+        } else if (this.props.first_place && this.props.sleeperReport) {
             first_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${this.props.first_place.avatar}`;
             first_place_name = this.props.last_place.name
         }
@@ -106,7 +106,7 @@ class Cards extends Component {
         if (this.props.espn_last_place && this.props.espnReport) {
             last_place = `https://whispering-woodland-11588.herokuapp.com/${this.props.espn_last_place.logo}`
             last_place_name = this.props.espn_last_place.name;
-        } else if (this.props.last_place) {
+        } else if (this.props.last_place && this.props.sleeperReport) {
             last_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${this.props.last_place.avatar}`;
             last_place_name = this.props.last_place.name;
         }

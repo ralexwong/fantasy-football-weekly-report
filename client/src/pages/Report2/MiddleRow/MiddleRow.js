@@ -34,7 +34,7 @@ class MiddleRow extends React.Component {
                         <Cards />
                     </Row>
                     <Row className="u-margin-top">
-                        <Recap />
+                        <Recap border={"none"} />
                     </Row>
                 </>
             )

@@ -11,8 +11,10 @@ import {
     SET_ESPN_MATCHUPS,
     SET_ESPN_CLOSE_ONE,
     SET_ESPN_TOP_SCORER,
-    SET_ESPN_GRAPH_PPG
-} from '../types';
+    SET_ESPN_GRAPH_PPG,
+    SET_ESPN_TITLE,
+    SET_ESPN_CAPTION,
+} from '../types'
 
 import axios from 'axios';
 
@@ -62,7 +64,7 @@ export const fetchEspn = id => async dispatch => {
     }
 
     // sorts the graphPointsInfo by points
-    graphPointsInfo.sort(function (a, b) { return a.y - b.y })
+    graphPointsInfo.sort(function (a, b) { return b.y - a.y })
 
     // create the recap object
     let recapInfo = []
@@ -191,7 +193,7 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
     }
 
     // sorts the graphPPG by points
-    graphPPG.sort(function (a, b) { return a.y - b.y })
+    graphPPG.sort(function (a, b) { return b.y - a.y })
 
 
     for (let k = 0; k < matchups.length; k++) {
@@ -237,4 +239,13 @@ export const createEspnWeeklyReport = () => async dispatch => {
 export const createEspnOverallReport = () => async dispatch => {
     dispatch ({ type: SET_ESPN_REPORT, payload: true })
     dispatch ({ type: SET_SLEEPER_REPORT, payload: false })
+}
+
+// setting the espn title ----------------------------------------------
+export const setEspnTitle = (data) => async dispatch => {
+    dispatch ({ type: SET_ESPN_TITLE, payload: data })
+}
+
+export const setEspnCaption = data => async dispatch => {
+    dispatch({ type: SET_ESPN_CAPTION, payload: data })
 }

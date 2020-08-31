@@ -47,7 +47,7 @@ class GraphPoints extends React.Component {
     }
 
     // sorts the combinedObjects by points
-    combinedObjects.sort(function (a, b) { return a.y - b.y })
+    combinedObjects.sort(function (a, b) { return b.y - a.y })
     
     console.log(combinedObjects)
 

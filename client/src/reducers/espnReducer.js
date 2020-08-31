@@ -10,7 +10,9 @@ import {
     SET_ESPN_MATCHUPS,
     SET_ESPN_CLOSE_ONE,
     SET_ESPN_TOP_SCORER,
-    SET_ESPN_GRAPH_PPG
+    SET_ESPN_GRAPH_PPG,
+    SET_ESPN_TITLE,
+    SET_ESPN_CAPTION,
 } from '../actions/types';
 
 const initialState = {
@@ -44,6 +46,10 @@ export default (state = initialState, action) => {
             return { ...state, espnTopScorer: action.payload }
         case SET_ESPN_GRAPH_PPG:
             return { ...state, espnGraphPPG: action.payload }
+        case SET_ESPN_TITLE:
+            return { ...state, espnTitle: action.payload }
+        case SET_ESPN_CAPTION:
+            return { ...state, espnCaption: action.payload }
         default:
             return state;
     }
