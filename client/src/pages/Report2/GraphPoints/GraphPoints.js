@@ -2,7 +2,7 @@ import React from 'react';
 import CanvasJSReact from '../../../canvasjs.react';
 
 import { connect } from 'react-redux';
-import { fetchGraphPPG, setGraphPointsToState, } from '../../../actions/Sleeper';
+import { setGraphPointsToState, } from '../../../actions/Sleeper';
 
 import { Row, Col } from "reactstrap"
 
@@ -118,7 +118,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchGraphPPG, setGraphPointsToState, })(GraphPoints)
+export default connect(mapStateToProps, { setGraphPointsToState, })(GraphPoints)
 
 
 

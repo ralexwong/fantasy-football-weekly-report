@@ -13,6 +13,8 @@ import {
     SET_ESPN_GRAPH_PPG,
     SET_ESPN_TITLE,
     SET_ESPN_CAPTION,
+    SET_ESPN_SEASON,
+    SET_ESPN_YEAR
 } from '../actions/types';
 
 const initialState = {
@@ -50,6 +52,10 @@ export default (state = initialState, action) => {
             return { ...state, espnTitle: action.payload }
         case SET_ESPN_CAPTION:
             return { ...state, espnCaption: action.payload }
+        case SET_ESPN_SEASON:
+            return { ...state, espnSeason: action.payload }
+        case SET_ESPN_YEAR:
+            return { ...state, espnYear: action.payload }
         default:
             return state;
     }

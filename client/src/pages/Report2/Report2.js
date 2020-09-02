@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { refactoredMatchups, closeOne, topScorer } from '../../actions/Sleeper';
 
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
@@ -26,11 +25,8 @@ class Report2 extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    league_info: state.sleeper.league_info,
-    points: state.sleeper.points,
-    league_id: state.sleeper.league_id,
-    matchups: state.sleeper.matchups
+
   }
 }
 
-export default connect(mapStateToProps, { refactoredMatchups, closeOne, topScorer })(Report2);
+export default connect(mapStateToProps, { })(Report2);

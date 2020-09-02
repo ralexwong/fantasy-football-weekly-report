@@ -18,7 +18,9 @@ import {
     SET_SLEEPER_REPORT,
     SET_SLEEPER_GRAPH_PPG,
     SET_SLEEPER_CAPTION,
-    SET_SLEEPER_TITLE
+    SET_SLEEPER_TITLE,
+    SET_SLEEPER_SEASON,
+    SET_SLEEPER_YEAR,
 
 } from '../actions/types';
 
@@ -77,7 +79,7 @@ export default (state = initialState, action) => {
         case INVALID_USERNAME:
             return { ...state, nullUsername: action.payload }
         case FETCH_ROSTER:
-            return { ...state, league_info: action.payload.league_info }
+            return { ...state, league_info: action.payload }
         case SET_LEAGUE_ID:
             return { ...state, league_id: action.payload }
         case FETCH_MATCHUPPOINTS:
@@ -112,6 +114,10 @@ export default (state = initialState, action) => {
             return { ...state, sleeperTitle: action.payload }
         case SET_SLEEPER_CAPTION:
             return { ...state, sleeperCaption: action.payload }
+        case SET_SLEEPER_SEASON:
+            return { ...state, sleeperSeason: action.payload }
+        case SET_SLEEPER_YEAR:
+            return { ...state, sleeperYear: action.payload }
         default:
             return state;
     }

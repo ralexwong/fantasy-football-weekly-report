@@ -28,10 +28,10 @@ class Sleeper1 extends Component {
                 <div className="sleeper__helpertext">
                     <p className="bold">
                         First enter your username here!
-                        </p>
+                    </p>
                     <p>
                         (You can use my username if you want to test it out: <b>wongman</b>)
-                        </p>
+                    </p>
                 </div>
                 <form onSubmit={this.onSubmit} className="sleeperForm">
                         <input

@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { createEspnOverallReport } from '../../actions/Espn';
 import { connect } from 'react-redux';
 
+import YearInput from '../../components/YearInput';
 import Espn1 from './Espn2';
 import Espn2 from './Espn1';
 
+import SeasonInput from '../../components/SeasonInput';
 import TitleInput from '../../components/TitleInput';
 import CaptionInput from '../../components/CaptionInput';
 
@@ -26,8 +28,11 @@ class Espn extends Component {
                 <Container>
                     <Row>
                         <Col className="sleeper">
+                            <YearInput platform={'espn'} />
                             <Espn1 />
                             <Espn2 />
+
+                            <SeasonInput platform={'espn'} />
                             <TitleInput platform={'espn'} />
                             <CaptionInput platform={'espn'} />
                             <GenerateReportButton reportPage={'weekly-report-espn'} />

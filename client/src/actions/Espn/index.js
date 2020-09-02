@@ -14,6 +14,8 @@ import {
     SET_ESPN_GRAPH_PPG,
     SET_ESPN_TITLE,
     SET_ESPN_CAPTION,
+    SET_ESPN_SEASON,
+    SET_ESPN_YEAR,
 } from '../types'
 
 import axios from 'axios';
@@ -246,6 +248,17 @@ export const setEspnTitle = (data) => async dispatch => {
     dispatch ({ type: SET_ESPN_TITLE, payload: data })
 }
 
+// setting the espn caption ---------------------------------------------
 export const setEspnCaption = data => async dispatch => {
     dispatch({ type: SET_ESPN_CAPTION, payload: data })
+}
+
+// setting the espn season --------------------------------------------------
+export const setEspnSeason = data => async dispatch => {
+    dispatch({ type: SET_ESPN_SEASON, payload: data })
+}
+
+// setting the espn year -----------------------------------------------
+export const setEspnYear = data => async dispatch => {
+    dispatch({ type: SET_ESPN_YEAR, payload: data })
 }

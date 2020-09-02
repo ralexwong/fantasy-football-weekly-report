@@ -19,7 +19,7 @@ const Navagation = (props) => {
 
   return (
     <Navbar color="light" light expand="md">
-      <NavbarBrand href="/">FFWR</NavbarBrand>
+      <Link to="/">FFWR</Link>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>

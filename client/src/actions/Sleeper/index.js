@@ -20,6 +20,8 @@ import {
     SET_SLEEPER_GRAPH_PPG,
     SET_SLEEPER_TITLE,
     SET_SLEEPER_CAPTION,
+    SET_SLEEPER_SEASON,
+    SET_SLEEPER_YEAR
 } from '../types';
 import axios from 'axios';
 
@@ -49,7 +51,7 @@ export const fetchRoster = (league_id) => async dispatch => {
             league_id: league_id
         }
     })
-    const data = response.data
+    const data = response.data.league_info
 
     console.log(data);
 
@@ -74,6 +76,110 @@ export const fetchMatchupPoints = (week, league_id) => async dispatch => {
 
     const data = response.data;
     console.log(data);
+
+//       // refactor the two arrays into an array with rosters with the same matchup_id to be paired in the same object
+//   refactorState = (league_info, points) => {
+//     let combinedObjects = [];
+
+//     // splices out a roster if they do not have a matchup this week
+//     for (let i = 0; i < league_info.length; i++) {
+//       if (league_info[i].roster_id === null) {
+//         league_info.splice(i, 1);
+//       }
+//     }
+
+//     // replaces the roster_id with display_name
+//     for (let i = 0; i < league_info.length; i++) {
+//       for (let j = 0; j < league_info.length; j++) {
+//         if (league_info[i].roster_id === points[j].roster_id) {
+//           points[j].roster_id = league_info[i].display_name;
+//           points[j].avatar = league_info[i].avatar;
+//         }
+//       }
+//     }
+
+//     // sorts the points array by matchup_id
+//     points.sort(function (a, b) { return a.matchup_id - b.matchup_id })
+
+//     // pushes the combined same matchup_id rosters together in the same object
+//     // and assigns each roster/points with a 1/2
+//     for (let i = 0; i < points.length; i += 2) {
+//       let object = {};
+//       object.roster1 = points[i].roster_id;
+//       object.points1 = points[i].points;
+//       object.avatar1 = points[i].avatar;
+
+//       object.roster2 = points[i + 1].roster_id;
+//       object.points2 = points[i + 1].points;
+//       object.matchup_id = points[i].matchup_id;
+//       object.avatar2 = points[i + 1].avatar;
+
+//       combinedObjects.push(object);
+//     }
+
+//     // push the refactored matchups into state to be mapped out
+//     this.props.refactoredMatchups(combinedObjects);
+
+//     let arr = [];
+
+//     console.log(combinedObjects);
+//     for (let i = 0; i < combinedObjects.length; i++) {
+//       if (parseFloat(combinedObjects[i].points1) > parseFloat(combinedObjects[i].points2)) {
+//         arr.push({ label: combinedObjects[i].roster1, y: parseFloat(combinedObjects[i].points1), color: "#00006b" });
+//         arr.push({ label: combinedObjects[i].roster2, y: parseFloat(combinedObjects[i].points2), color: "#b61e1e" });
+//       } else {
+//         arr.push({ label: combinedObjects[i].roster1, y: parseFloat(combinedObjects[i].points1), color: "#b61e1e" });
+//         arr.push({ label: combinedObjects[i].roster2, y: parseFloat(combinedObjects[i].points2), color: "#00006b" });
+//       }
+//     }
+
+//     arr.sort(function (a, b) { return b.y - a.y})
+
+//     console.log("in refactorState report CDM " + arr);
+
+//     this.props.setGraphPPG(arr);
+
+//     this.topScorer(points);
+
+//     // requires the matchup array and cannot be called at the same time in a different component
+//     this.closeOne(combinedObjects);
+//   }
+
+//   closeOne = (matchups) => {
+//     let name = "";
+//     let difference = 9999;
+//     let avatar = "";
+//     for (let i = 0; i < matchups.length; i++) {
+//       if (Math.abs(parseFloat(matchups[i].points1) - parseFloat(matchups[i].points2)) < difference) {
+//         difference = Math.abs(parseFloat(matchups[i].points1) - parseFloat(matchups[i].points2));
+//         if (parseFloat(matchups[i].points1) > parseFloat(matchups[i].points2)) {
+//           name = matchups[i].roster1;
+//           avatar = matchups[i].avatar1
+//         } else {
+//           name = matchups[i].roster2;
+//           avatar = matchups[i].avatar2
+//         }
+//       }
+//     }
+
+//     const fixedDiffernce = parseFloat(difference).toFixed(2)
+
+//     this.props.closeOne(name, fixedDiffernce, avatar);
+//   }
+
+//   topScorer = (points) => {
+//     let name = "";
+//     let highscore = 0.00;
+//     let avatar = ""
+//     for (let i = 0; i < points.length; i++) {
+//       if (parseFloat(points[i].points) > highscore) {
+//         highscore = parseFloat(points[i].points);
+//         name = points[i].roster_id;
+//         avatar = points[i].avatar;
+//       }
+//     }
+//     this.props.topScorer(name, highscore, avatar);
+//   }
 
     dispatch({ type: FETCH_MATCHUPPOINTS, payload: data });
 }
@@ -190,4 +296,14 @@ export const setSleeperTitle = data => async dispatch => {
 // set sleeper caption ------------------------------------------
 export const setSleeperCaption = data => async dispatch => {
     dispatch({ type: SET_SLEEPER_CAPTION, payload: data })
+}
+
+// set sleeper season -----------------------------------------------
+export const setSleeperSeason = data => async dispatch => {
+    dispatch({ type: SET_SLEEPER_SEASON, payload: data })
+}
+
+// set sleeper year -------------------------------------------
+export const setSleeperYear = data => async dispatch => {
+    dispatch({ type: SET_SLEEPER_YEAR, payload: data })
 }

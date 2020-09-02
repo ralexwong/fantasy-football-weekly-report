@@ -8,9 +8,10 @@ import Report from "./Report"
 class ComponentToPrint extends React.Component {
   render() {
     return (
-      <>
+      <div style={{ padding: "1rem" }}>
         <Report />
-      </>)
+      </div>
+    )
   }
 }
 
