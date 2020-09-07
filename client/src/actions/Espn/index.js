@@ -127,15 +127,12 @@ export const fetchEspn = id => async dispatch => {
         logo: recapInfo[recapInfo.length - 1].logo
     }
 
-
-
     dispatch({ type: FETCH_ESPN, payload: teamsInfo });
     dispatch({ type: ESPN_SCHEDULE, payload: schedule });
     dispatch({ type: ESPN_RECAP, payload: recapInfo });
     dispatch({ type: ESPN_FIRST_PLACE, payload: first_place })
     dispatch({ type: ESPN_LAST_PLACE, payload: last_place })
     dispatch({ type: ESPN_GRAPH_POINTS, payload: graphPointsInfo })
-
 }
 
 // setting the espn week --------------------------------------------------------

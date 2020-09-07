@@ -6,20 +6,10 @@ import { setGraphPointsToState, } from '../../../actions/Sleeper';
 
 import { Row, Col } from "reactstrap"
 
-
 const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class GraphPoints extends React.Component {
-  
-  componentDidMount() {
-    if (!this.props.roster) {
-
-    } else {
-      this.refactorData(this.props.roster, this.props.league_info)
-    }
-  }
-
   addSymbols(e){
 		var suffixes = ["", "K", "M", "B"];
 		var order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
@@ -29,39 +19,13 @@ class GraphPoints extends React.Component {
 		return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
 	}
 
-  refactorData = (roster, league_info) => {
-    let combinedObjects = []
-    
-    for (let i = 0; i < roster.length; i++) {
-      let settings = roster[i].settings;
-      let PF = settings.fpts;
-      combinedObjects.push({ label: roster[i].owner_id, y: PF })
-    }
-
-    for (let i = 0; i < league_info.length; i++) {
-      for (let j = 0; j < roster.length; j++) {
-        if (league_info[i].user_id === combinedObjects[j].label) {
-          combinedObjects[j].label = league_info[i].display_name;
-        }
-      }
-    }
-
-    // sorts the combinedObjects by points
-    combinedObjects.sort(function (a, b) { return b.y - a.y })
-    
-    console.log(combinedObjects)
-
-    this.props.setGraphPointsToState(combinedObjects)
-  }
-
-
   render() {
     console.log(this.props)
 
     let data = [];
-    if (this.props.espnReport) {
+    if (this.props.espnReport && this.props.espnGraphPoints) {
       data = this.props.espnGraphPoints
-    } else if (this.props.sleeperReport) {
+    } else if (this.props.sleeperReport && this.props.sleeperGraphPoints) {
       data = this.props.sleeperGraphPoints  
     } else {
       data = [
@@ -108,9 +72,6 @@ class GraphPoints extends React.Component {
 const mapStateToProps = (state) => {
   return { 
     sleeperReport: state.sleeper.sleeperReport,
-    league_id: state.sleeper.league_id,
-    roster: state.sleeper.roster,
-    league_info: state.sleeper.league_info,
     sleeperGraphPoints: state.sleeper.sleeperGraphPoints,
 
     espnReport: state.espn.espnReport,

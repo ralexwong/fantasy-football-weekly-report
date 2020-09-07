@@ -33,9 +33,9 @@ export default (state = initialState, action) => {
         case ESPN_RECAP:
             return { ...state, espnRecap: action.payload }
         case ESPN_FIRST_PLACE:
-            return { ...state, first_place: action.payload }
+            return { ...state, espn_first_place: action.payload }
         case ESPN_LAST_PLACE:
-            return { ...state, last_place: action.payload }
+            return { ...state, espn_last_place: action.payload }
         case SET_ESPN_REPORT:
             return { ...state, espnReport: action.payload }
         case ESPN_GRAPH_POINTS: 

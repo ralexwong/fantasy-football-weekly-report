@@ -21,7 +21,12 @@ import {
     SET_SLEEPER_TITLE,
     SET_SLEEPER_CAPTION,
     SET_SLEEPER_SEASON,
-    SET_SLEEPER_YEAR
+    SET_SLEEPER_YEAR,
+    SLEEPER_RECAP,
+    SLEEPER_FIRST_PLACE,
+    SLEEPER_LAST_PLACE,
+    SLEEPER_GRAPH_POINTS,
+
 } from '../types';
 import axios from 'axios';
 
@@ -52,8 +57,109 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
         }
     })
     const data = response.data
+    const teamsInfo = []
 
     console.log(data);
+
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].display_name.length > 8) {
+            data[i].display_name = data[i].display_name.substring(0,9);
+        }
+        // grab the necessary data
+        let shortenTeamName = data[i].display_name.toUpperCase().substring(0,4);
+        teamsInfo.push({
+            abbrev: shortenTeamName,
+            id: data[i].owner_id,
+            name: data[i].display_name,
+            logo: data[i].avatar,
+            totalPoints: data[i].settings.fpts,
+            pointsAgainst: data[i].settings.fpts_against,
+            wins: data[i].settings.wins,
+            losses: data[i].settings.losses,
+
+            roster_id: data[i].roster_id,
+        })
+    }
+
+    console.log(teamsInfo);
+
+    // create the graphPoints object
+    let graphPointsInfo = []
+    for (let i = 0; i < teamsInfo.length; i++) {
+        graphPointsInfo.push({
+            label: teamsInfo[i].name,
+            y: teamsInfo[i].totalPoints
+        })
+    }
+
+    console.log(graphPointsInfo)
+
+    // sorts the graphPointsInfo by points
+    graphPointsInfo.sort(function (a, b) { return b.y - a.y })
+
+    // create the recap object
+    let recapInfo = []
+    for (let i = 0; i < teamsInfo.length; i++) {
+        let abbrev = teamsInfo[i].abbrev;
+        let PPG = parseFloat((teamsInfo[i].totalPoints / ((teamsInfo[i].wins) + (teamsInfo[i].losses))).toFixed(2));
+        let PF = Math.round(teamsInfo[i].totalPoints);
+        let PA = Math.round(teamsInfo[i].pointsAgainst);
+        let wins = teamsInfo[i].wins;
+        let losses = teamsInfo[i].losses;
+
+        let name = teamsInfo[i].name
+        let logo = teamsInfo[i].logo;
+
+        recapInfo.push({ 
+            abbrev: abbrev,
+            PPG: PPG,
+            PF: PF,
+            PA: PA,
+            wins: wins,
+            losses: losses,
+
+            name: name,
+            logo: logo,
+        })
+    }
+
+    // set the colors for the table
+    // sorting the league by PPG
+    recapInfo.sort((a, b) => (a.PPG < b.PPG) ? 1 : -1);
+    for (let i = 0; i < recapInfo.length; i++) {
+        recapInfo[i].PPGcolor = `color${(i + 1)}`;
+    }
+
+    // sorting the league by PF
+    recapInfo.sort((a, b) => (a.PF < b.PF) ? 1 : -1);
+    for (let i = 0; i < recapInfo.length; i++) {
+        recapInfo[i].PFcolor = `color${(i + 1)}`;
+    }
+
+    // sorting the league by PA
+    recapInfo.sort((a, b) => (a.PA > b.PA) ? 1 : -1);
+    for (let i = 0; i < recapInfo.length; i++) {
+        recapInfo[i].PAcolor = `color${(i + 1)}`;
+    }
+
+    // sorting the league by wins. If the wins are equal, sort by PF
+    recapInfo.sort((a, b) => (a.wins < b.wins) ? 1 : (a.wins === b.wins) ? ((a.PF < b.PF) ? 1 : -1) : -1)
+
+    console.log(recapInfo)
+    // set the first and last place
+    let first_place = {
+        name: recapInfo[0].name,
+        logo: recapInfo[0].logo
+    }
+    let last_place = {
+        name: recapInfo[recapInfo.length - 1].name,
+        logo: recapInfo[recapInfo.length - 1].logo
+    }
+
+    dispatch({ type: SLEEPER_RECAP, payload: recapInfo });
+    dispatch({ type: SLEEPER_FIRST_PLACE, payload: first_place })
+    dispatch({ type: SLEEPER_LAST_PLACE, payload: last_place })
+    dispatch({ type: SLEEPER_GRAPH_POINTS, payload: graphPointsInfo })
 
     dispatch({ type: FETCH_LEAGUE_INFO, payload: data }) 
 }

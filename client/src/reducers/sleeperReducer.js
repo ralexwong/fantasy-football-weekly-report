@@ -21,7 +21,11 @@ import {
     SET_SLEEPER_TITLE,
     SET_SLEEPER_SEASON,
     SET_SLEEPER_YEAR,
-
+    SLEEPER_RECAP,
+    SLEEPER_FIRST_PLACE,
+    SLEEPER_LAST_PLACE,
+    SLEEPER_GRAPH_POINTS,
+    
 } from '../actions/types';
 
 const matchups = []
@@ -118,6 +122,14 @@ export default (state = initialState, action) => {
             return { ...state, sleeperSeason: action.payload }
         case SET_SLEEPER_YEAR:
             return { ...state, sleeperYear: action.payload }
+        case SLEEPER_RECAP:
+            return { ...state, sleeperRecap: action.payload }
+        case SLEEPER_FIRST_PLACE:
+            return { ...state, sleeper_first_place: action.payload }
+        case SLEEPER_LAST_PLACE: 
+            return { ...state, sleeper_last_place: action.payload }
+        case SLEEPER_GRAPH_POINTS:
+            return { ...state, sleeperGraphPoints: action.payload }
         default:
             return state;
     }
