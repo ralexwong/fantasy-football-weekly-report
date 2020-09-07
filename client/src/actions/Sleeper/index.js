@@ -1,14 +1,14 @@
 import {
     FETCH_LEAGUES,
     INVALID_USERNAME,
-    FETCH_ROSTER,
+    FETCH_LEAGUE_INFO,
     SET_LEAGUE_ID,
     FETCH_MATCHUPPOINTS,
     SET_WEEK_TO_STATE,
     REFACTORED_MATCHUPS,
     TOP_SCORER,
     CLOSE_ONE,
-    FETCH_GRAPHPPG,
+    FETCH_ROSTERS,
     REFACTORED_DATA,
     SET_GRAPH_POINTS_TO_STATE,
     SET_WAIVERS_TO_STATE,
@@ -43,19 +43,19 @@ export const fetchLeagues = (username) => async dispatch => {
     dispatch({ type: FETCH_LEAGUES, payload: data });
 }
 
-// Grabs the league's roster -------------------------------------------------
+// Grabs the leagues -------------------------------------------------
 
-export const fetchRoster = (league_id) => async dispatch => {
-    const response = await axios.get(`api/sleeper/fetchRoster`, {
+export const fetchLeagueInfo = (league_id) => async dispatch => {
+    const response = await axios.get(`api/sleeper/fetchLeagueInfo`, {
         params: {
             league_id: league_id
         }
     })
-    const data = response.data.league_info
+    const data = response.data
 
     console.log(data);
 
-    dispatch({ type: FETCH_ROSTER, payload: data }) 
+    dispatch({ type: FETCH_LEAGUE_INFO, payload: data }) 
 }
 
 // Set league_id in state just in case ---------------------------------------------
@@ -225,17 +225,18 @@ export const closeOne = (name, difference, logo) => async dispatch => {
     dispatch({ type: CLOSE_ONE, payload: closeOne })
 }
 
-// Fetch the data for graphPPG -------------------------------------------------------
+// Fetch the rosters -------------------------------------------------------
 
-export const fetchGraphPPG = (league_id) => async dispatch => {
-    const response = await axios.get(`api/sleeper/fetchGraphPPG`, {
+export const fetchRosters = (league_id) => async dispatch => {
+    const response = await axios.get(`api/sleeper/fetchRosters`, {
         params: {
             league_id: league_id
         }
     })
     const data = response.data;
+    console.log(data)
 
-    dispatch({ type: FETCH_GRAPHPPG, payload: data });
+    dispatch({ type: FETCH_ROSTERS, payload: data });
 }
 
 // Push refactored data for graphPPG ------------------------------------

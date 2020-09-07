@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { exportComponentAsPNG } from "react-component-export-image";
 import { createEspnOverallReport } from '../../actions/Espn';
-import { createSleeperOverallReport } from '../../actions/Sleeper';
 import Report2 from "./Report2"
 import { connect } from 'react-redux';
 
 class ComponentToPrint extends React.Component {
   render() {
     return (
-      <>
+      <div style={{ padding: "1rem" }}>
         <Report2 />
-      </>)
+      </div>
+      )
   }
 }
 
@@ -21,9 +21,8 @@ class EspnOverallReport extends Component {
 
     if (this.props.location.pathname === "/overall-report-espn") {
       this.props.createEspnOverallReport()
-    } else if (this.props.location.pathname === "/overall-report-sleeper") {
-      this.props.createSleeperOverallReport()
     }
+
   }
   
   render() {
@@ -40,4 +39,4 @@ class EspnOverallReport extends Component {
   }
 }
 
-export default connect(null, { createEspnOverallReport, createSleeperOverallReport })(EspnOverallReport)
+export default connect(null, { createEspnOverallReport })(EspnOverallReport)

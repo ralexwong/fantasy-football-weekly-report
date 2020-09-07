@@ -29,4 +29,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { })(Report2);
+export default connect(mapStateToProps)(Report2);

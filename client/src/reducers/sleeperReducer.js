@@ -1,14 +1,14 @@
 import {
     FETCH_LEAGUES,
     INVALID_USERNAME,
-    FETCH_ROSTER,
+    FETCH_LEAGUE_INFO,
     SET_LEAGUE_ID,
     FETCH_MATCHUPPOINTS,
     SET_WEEK_TO_STATE,
     REFACTORED_MATCHUPS,
     TOP_SCORER,
     CLOSE_ONE,
-    FETCH_GRAPHPPG,
+    FETCH_ROSTERS,
     REFACTORED_DATA,
     SET_GRAPH_POINTS_TO_STATE,
     SET_WAIVERS_TO_STATE,
@@ -78,7 +78,7 @@ export default (state = initialState, action) => {
             return { ...state, nullUsername: null, leagues: action.payload }
         case INVALID_USERNAME:
             return { ...state, nullUsername: action.payload }
-        case FETCH_ROSTER:
+        case FETCH_LEAGUE_INFO:
             return { ...state, league_info: action.payload }
         case SET_LEAGUE_ID:
             return { ...state, league_id: action.payload }
@@ -92,7 +92,7 @@ export default (state = initialState, action) => {
             return { ...state, sleeperTopScorer: action.payload }
         case CLOSE_ONE:
             return { ...state, sleeperCloseOne: action.payload }
-        case FETCH_GRAPHPPG:
+        case FETCH_ROSTERS:
             return { ...state, roster: action.payload }
         case SET_SLEEPER_GRAPH_PPG:
             return { ...state, sleeperGraphPPG: action.payload }

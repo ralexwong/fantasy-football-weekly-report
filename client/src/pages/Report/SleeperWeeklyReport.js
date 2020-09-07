@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { exportComponentAsPNG } from "react-component-export-image";
-import { createEspnWeeklyReport } from '../../actions/Espn';
 import { createSleeperWeeklyReport } from '../../actions/Sleeper';
 import Report from "./Report"
 
@@ -20,9 +19,7 @@ class SleeperWeeklyReport extends Component {
     super(props);
     this.componentRef = React.createRef();
 
-    if (this.props.location.pathname === "/weekly-report-espn") {
-      this.props.createEspnWeeklyReport()
-    } else if (this.props.location.pathname === "/weekly-report-sleeper") {
+    if (this.props.location.pathname === "/weekly-report-sleeper") {
       this.props.createSleeperWeeklyReport()
     }
   }
@@ -41,4 +38,4 @@ class SleeperWeeklyReport extends Component {
   }
 }
 
-export default connect(null, { createEspnWeeklyReport, createSleeperWeeklyReport })(SleeperWeeklyReport);
+export default connect(null, { createSleeperWeeklyReport })(SleeperWeeklyReport);
