@@ -25,6 +25,10 @@ import {
     SLEEPER_FIRST_PLACE,
     SLEEPER_LAST_PLACE,
     SLEEPER_GRAPH_POINTS,
+    SET_SLEEPER_CLOSE_ONE,
+    SET_SLEEPER_TOP_SCORER,
+    SET_SLEEPER_WEEK,
+    SET_SLEEPER_MATCHUPS
     
 } from '../actions/types';
 
@@ -88,14 +92,8 @@ export default (state = initialState, action) => {
             return { ...state, league_id: action.payload }
         case FETCH_MATCHUPPOINTS:
             return { ...state, points: action.payload }
-        case SET_WEEK_TO_STATE:
-            return { ...state, sleeperWeek: action.payload }
         case REFACTORED_MATCHUPS:
             return { ...state, sleeperMatchups: action.payload }
-        case TOP_SCORER:
-            return { ...state, sleeperTopScorer: action.payload }
-        case CLOSE_ONE:
-            return { ...state, sleeperCloseOne: action.payload }
         case FETCH_ROSTERS:
             return { ...state, roster: action.payload }
         case SET_SLEEPER_GRAPH_PPG:
@@ -130,6 +128,15 @@ export default (state = initialState, action) => {
             return { ...state, sleeper_last_place: action.payload }
         case SLEEPER_GRAPH_POINTS:
             return { ...state, sleeperGraphPoints: action.payload }
+        case SET_SLEEPER_CLOSE_ONE:
+            return { ...state, sleeperCloseOne: action.payload }
+        case SET_SLEEPER_TOP_SCORER:
+            return { ...state, sleeperTopScorer: action.payload }
+        case SET_SLEEPER_WEEK:
+            return { ...state, sleeperWeek: action.payload }
+        case SET_SLEEPER_MATCHUPS:
+            return { ...state, sleeperMatchups: action.payload } 
+
         default:
             return state;
     }

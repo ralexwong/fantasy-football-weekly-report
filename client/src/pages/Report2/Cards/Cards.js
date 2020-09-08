@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCardsToState } from '../../../actions/Sleeper';
 import { Col } from "reactstrap"
 
 class Cards extends Component {
@@ -141,4 +140,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { setCardsToState })(Cards);
+export default connect(mapStateToProps)(Cards);

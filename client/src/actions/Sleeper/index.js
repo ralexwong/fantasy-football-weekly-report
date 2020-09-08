@@ -4,10 +4,6 @@ import {
     FETCH_LEAGUE_INFO,
     SET_LEAGUE_ID,
     FETCH_MATCHUPPOINTS,
-    SET_WEEK_TO_STATE,
-    REFACTORED_MATCHUPS,
-    TOP_SCORER,
-    CLOSE_ONE,
     FETCH_ROSTERS,
     REFACTORED_DATA,
     SET_GRAPH_POINTS_TO_STATE,
@@ -26,6 +22,10 @@ import {
     SLEEPER_FIRST_PLACE,
     SLEEPER_LAST_PLACE,
     SLEEPER_GRAPH_POINTS,
+    SET_SLEEPER_CLOSE_ONE,
+    SET_SLEEPER_TOP_SCORER,
+    SET_SLEEPER_WEEK,
+    SET_SLEEPER_MATCHUPS
 
 } from '../types';
 import axios from 'axios';
@@ -59,7 +59,7 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
     const data = response.data
     const teamsInfo = []
 
-    console.log(data);
+    // console.log(data);
 
     for (let i = 0; i < data.length; i++) {
         if (data[i].display_name.length > 8) {
@@ -81,7 +81,7 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
         })
     }
 
-    console.log(teamsInfo);
+    // console.log(teamsInfo);
 
     // create the graphPoints object
     let graphPointsInfo = []
@@ -92,7 +92,7 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
         })
     }
 
-    console.log(graphPointsInfo)
+    // console.log(graphPointsInfo)
 
     // sorts the graphPointsInfo by points
     graphPointsInfo.sort(function (a, b) { return b.y - a.y })
@@ -145,7 +145,6 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
     // sorting the league by wins. If the wins are equal, sort by PF
     recapInfo.sort((a, b) => (a.wins < b.wins) ? 1 : (a.wins === b.wins) ? ((a.PF < b.PF) ? 1 : -1) : -1)
 
-    console.log(recapInfo)
     // set the first and last place
     let first_place = {
         name: recapInfo[0].name,
@@ -172,7 +171,7 @@ export const setLeague_id = (league_id) => dispatch => {
 
 // Grabs the points for that week --------------------------------------------------
 
-export const fetchMatchupPoints = (week, league_id) => async dispatch => {
+export const fetchMatchupPoints = (week, league_id, league_info) => async dispatch => {
     const response = await axios.get(`api/sleeper/fetchMatchupPoints`, {
         params: {
             week: week,
@@ -181,119 +180,106 @@ export const fetchMatchupPoints = (week, league_id) => async dispatch => {
     })
 
     const data = response.data;
-    console.log(data);
+    // console.log(data);
 
-//       // refactor the two arrays into an array with rosters with the same matchup_id to be paired in the same object
-//   refactorState = (league_info, points) => {
-//     let combinedObjects = [];
+    const topScorer = {
+        name: "bob",
+        score: 0,
+        logo: ""
+    }
+    const closeOne = {
+        name: "bob",
+        difference: Infinity,
+        logo: ""
+    }
+    const matchups = [];
+    const graphPPG = [];
 
-//     // splices out a roster if they do not have a matchup this week
-//     for (let i = 0; i < league_info.length; i++) {
-//       if (league_info[i].roster_id === null) {
-//         league_info.splice(i, 1);
-//       }
-//     }
+    // console.log(league_info)
 
-//     // replaces the roster_id with display_name
-//     for (let i = 0; i < league_info.length; i++) {
-//       for (let j = 0; j < league_info.length; j++) {
-//         if (league_info[i].roster_id === points[j].roster_id) {
-//           points[j].roster_id = league_info[i].display_name;
-//           points[j].avatar = league_info[i].avatar;
-//         }
-//       }
-//     }
+    // sort data array for matchups
+    data.sort(function(a, b) { return a.matchup_id - b.matchup_id });
 
-//     // sorts the points array by matchup_id
-//     points.sort(function (a, b) { return a.matchup_id - b.matchup_id })
+    // loop through to set logos in data
+    for (let j = 0; j < data.length; j++) {
+        for (let p = 0; p < league_info.length; p++) {
+            if (data[j].roster_id === league_info[p].roster_id) {
+                data[j].logo = league_info[p].avatar;
+                data[j].name = league_info[p].display_name;
+                break;
+            }
+        }
+    }
 
-//     // pushes the combined same matchup_id rosters together in the same object
-//     // and assigns each roster/points with a 1/2
-//     for (let i = 0; i < points.length; i += 2) {
-//       let object = {};
-//       object.roster1 = points[i].roster_id;
-//       object.points1 = points[i].points;
-//       object.avatar1 = points[i].avatar;
+    // console.log(data)
+    
+    // pushes the combined same matchup_id rosters together in the same object
+    // and assigns each roster/points with a 1/2
+    for (let i = 0; i < data.length; i += 2) {
+        matchups.push({
+            roster1: data[i].name,
+            points1: data[i].points,
+            logo1: data[i].logo,
+    
+            roster2: data[i + 1].name,
+            points2: data[i + 1].points,
+            logo2: data[i + 1].logo,
+        })
+    }
 
-//       object.roster2 = points[i + 1].roster_id;
-//       object.points2 = points[i + 1].points;
-//       object.matchup_id = points[i].matchup_id;
-//       object.avatar2 = points[i + 1].avatar;
+    // console.log(matchups)
 
-//       combinedObjects.push(object);
-//     }
+    for (let i = 0; i < matchups.length; i++) {
+        let points1 = parseFloat(matchups[i].points1);
+        let points2 = parseFloat(matchups[i].points2);
 
-//     // push the refactored matchups into state to be mapped out
-//     this.props.refactoredMatchups(combinedObjects);
+        if (points1 > points2) {
+          graphPPG.push({ label: matchups[i].roster1, y: points1, color: "#00006b" });
+          graphPPG.push({ label: matchups[i].roster2, y: points2, color: "#b61e1e" });
+        } else {
+          graphPPG.push({ label: matchups[i].roster1, y: points1, color: "#b61e1e" });
+          graphPPG.push({ label: matchups[i].roster2, y: points2, color: "#00006b" });
+        }
+    }
 
-//     let arr = [];
+    // sorts the graphPPG by points
+    graphPPG.sort(function (a, b) { return b.y - a.y })
 
-//     console.log(combinedObjects);
-//     for (let i = 0; i < combinedObjects.length; i++) {
-//       if (parseFloat(combinedObjects[i].points1) > parseFloat(combinedObjects[i].points2)) {
-//         arr.push({ label: combinedObjects[i].roster1, y: parseFloat(combinedObjects[i].points1), color: "#00006b" });
-//         arr.push({ label: combinedObjects[i].roster2, y: parseFloat(combinedObjects[i].points2), color: "#b61e1e" });
-//       } else {
-//         arr.push({ label: combinedObjects[i].roster1, y: parseFloat(combinedObjects[i].points1), color: "#b61e1e" });
-//         arr.push({ label: combinedObjects[i].roster2, y: parseFloat(combinedObjects[i].points2), color: "#00006b" });
-//       }
-//     }
+    for (let k = 0; k < matchups.length; k++) {
+        if (matchups[k].points1 > topScorer.score) {
+            topScorer.score = matchups[k].points1;
+            topScorer.name = matchups[k].roster1;
+            topScorer.logo = matchups[k].logo1;
+        }
 
-//     arr.sort(function (a, b) { return b.y - a.y})
+        if (matchups[k].points2 > topScorer.score) {
+            topScorer.score = matchups[k].points2;
+            topScorer.name = matchups[k].roster2;
+            topScorer.logo = matchups[k].logo2;
+        }
 
-//     console.log("in refactorState report CDM " + arr);
+        if (Math.abs(parseFloat(matchups[k].points1) - parseFloat(matchups[k].points2)) < closeOne.difference) {
+            closeOne.difference = Math.abs(parseFloat(matchups[k].points1) - parseFloat(matchups[k].points2)).toFixed(2);
+            if (parseFloat(matchups[k].points1) > parseFloat(matchups[k].points2)) {
+              closeOne.name = matchups[k].roster1;
+              closeOne.logo = matchups[k].logo1
+            } else {
+              closeOne.name = matchups[k].roster2;
+              closeOne.logo = matchups[k].logo2;
+            }
+        }
+    }
 
-//     this.props.setGraphPPG(arr);
+    topScorer.logo = `https://sleepercdn.com/avatars/${topScorer.logo}`;
+    closeOne.logo = `https://sleepercdn.com/avatars/${closeOne.logo}`;
 
-//     this.topScorer(points);
-
-//     // requires the matchup array and cannot be called at the same time in a different component
-//     this.closeOne(combinedObjects);
-//   }
-
-//   closeOne = (matchups) => {
-//     let name = "";
-//     let difference = 9999;
-//     let avatar = "";
-//     for (let i = 0; i < matchups.length; i++) {
-//       if (Math.abs(parseFloat(matchups[i].points1) - parseFloat(matchups[i].points2)) < difference) {
-//         difference = Math.abs(parseFloat(matchups[i].points1) - parseFloat(matchups[i].points2));
-//         if (parseFloat(matchups[i].points1) > parseFloat(matchups[i].points2)) {
-//           name = matchups[i].roster1;
-//           avatar = matchups[i].avatar1
-//         } else {
-//           name = matchups[i].roster2;
-//           avatar = matchups[i].avatar2
-//         }
-//       }
-//     }
-
-//     const fixedDiffernce = parseFloat(difference).toFixed(2)
-
-//     this.props.closeOne(name, fixedDiffernce, avatar);
-//   }
-
-//   topScorer = (points) => {
-//     let name = "";
-//     let highscore = 0.00;
-//     let avatar = ""
-//     for (let i = 0; i < points.length; i++) {
-//       if (parseFloat(points[i].points) > highscore) {
-//         highscore = parseFloat(points[i].points);
-//         name = points[i].roster_id;
-//         avatar = points[i].avatar;
-//       }
-//     }
-//     this.props.topScorer(name, highscore, avatar);
-//   }
+    dispatch({ type: SET_SLEEPER_GRAPH_PPG, payload: graphPPG })
+    dispatch({ type: SET_SLEEPER_CLOSE_ONE, payload: closeOne })
+    dispatch({ type: SET_SLEEPER_TOP_SCORER, payload: topScorer })
+    dispatch({ type: SET_SLEEPER_WEEK, payload: week })
 
     dispatch({ type: FETCH_MATCHUPPOINTS, payload: data });
-}
-
-// Setting week into state for the report page -------------------------------------
-
-export const setWeekToState = (week) => dispatch => {
-    dispatch({ type: SET_WEEK_TO_STATE, payload: week})
+    dispatch({ type: SET_SLEEPER_MATCHUPS, payload: matchups });
 }
 
 // Grabs the user's payouts for that league -----------------------------------------
@@ -301,62 +287,6 @@ export const setWeekToState = (week) => dispatch => {
 // export const fetchPayout = () => async dispatch => {
 //     const response = await axios.get(``)
 // }
-
-// Push refactored array of matchups so it can be displayed in a pair fashion ---------
-
-export const refactoredMatchups = (matchupArray) => dispatch => {
-    console.log(matchupArray);
-    dispatch({ type: REFACTORED_MATCHUPS, payload: matchupArray })
-}
-
-// Push top scorer into state ------------------------------------------------------
-
-export const topScorer = (name, score, logo) => dispatch => {
-    const topScorer = { 
-        name, 
-        score, 
-        logo: `https://sleepercdn.com/avatars/${logo}`
-    }
-    dispatch({ type: TOP_SCORER, payload: topScorer });
-}
-
-// Push close matchup score and winner into state --------------------------------
-
-export const closeOne = (name, difference, logo) => async dispatch => {
-    const closeOne = { 
-        name, 
-        difference, 
-        logo: `https://sleepercdn.com/avatars/${logo}`
-    };
-    dispatch({ type: CLOSE_ONE, payload: closeOne })
-}
-
-// Fetch the rosters -------------------------------------------------------
-
-export const fetchRosters = (league_id) => async dispatch => {
-    const response = await axios.get(`api/sleeper/fetchRosters`, {
-        params: {
-            league_id: league_id
-        }
-    })
-    const data = response.data;
-    console.log(data)
-
-    dispatch({ type: FETCH_ROSTERS, payload: data });
-}
-
-// Push refactored data for graphPPG ------------------------------------
-
-export const refactorData = (data) => dispatch => {
-    console.log(data);
-    dispatch({ type: REFACTORED_DATA, payload: data})
-}
-
-// push graphPPG to state -------------------------------------
-
-export const setGraphPPG = data => dispatch => {
-    dispatch({ type: SET_SLEEPER_GRAPH_PPG, payload: data })
-}
 
 // push graph points to state ---------------------------------------
 
@@ -369,19 +299,6 @@ export const setGraphPointsToState = (data) => dispatch => {
 
 export const setWaiversToState = (data) => dispatch => {
     dispatch({ type: SET_WAIVERS_TO_STATE, payload: data })
-}
-
-// push cards data to state ---------------------------------------
-
-export const setCardsToState = (first_place, last_place) => dispatch => {
-    dispatch({ type: LAST_PLACE_TO_STATE, payload: last_place })
-    dispatch({ type: FIRST_PLACE_TO_STATE, payload: first_place })
-}
-
-// push recap data to state -----------------------------------
-
-export const setRecapToState = (data) => dispatch => {
-    dispatch({ type: SET_RECAP_TO_STATE, payload: data })
 }
 
 // create sleeper report --------------------------------------

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { fetchMatchupPoints, setWeekToState } from '../../../actions/Sleeper';
+import { fetchMatchupPoints } from '../../../actions/Sleeper';
 
 import { Jumbotron } from 'reactstrap';
 
@@ -20,8 +20,7 @@ class Sleeper3 extends Component {
     onSubmit = (e) => {
         e.preventDefault()
         console.log(this.state.week);
-        this.props.fetchMatchupPoints(this.state.week, this.props.league_id);
-        this.props.setWeekToState(this.state.week)
+        this.props.fetchMatchupPoints(this.state.week, this.props.league_id, this.props.league_info);
     }
 
     render() {
@@ -46,7 +45,10 @@ class Sleeper3 extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { league_id: state.sleeper.league_id }
+    return { 
+        league_id: state.sleeper.league_id,
+        league_info: state.sleeper.league_info
+    }
 }
 
-export default connect(mapStateToProps, { fetchMatchupPoints, setWeekToState })((Sleeper3))
+export default connect(mapStateToProps, { fetchMatchupPoints })((Sleeper3))

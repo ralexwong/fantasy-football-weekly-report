@@ -33,7 +33,7 @@ export const fetchEspn = id => async dispatch => {
     const teams = data.teams
     const schedule = data.schedule;
 
-    console.log(data)
+    // console.log(data)
 
     // teams info object for overall report page
     const teamsInfo = [];
@@ -54,7 +54,7 @@ export const fetchEspn = id => async dispatch => {
         })
     }
 
-    console.log(teamsInfo)
+    // console.log(teamsInfo)
 
     // create the graphPoints object
     let graphPointsInfo = []
@@ -116,7 +116,7 @@ export const fetchEspn = id => async dispatch => {
     // sorting the league by wins. If the wins are equal, sort by PF
     recapInfo.sort((a, b) => (a.wins < b.wins) ? 1 : (a.wins === b.wins) ? ((a.PF < b.PF) ? 1 : -1) : -1)
 
-    console.log(recapInfo)
+    // console.log(recapInfo)
     // set the first and last place
     let first_place = {
         name: recapInfo[0].name,
@@ -220,9 +220,6 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
         }
     }
 
-    console.log(matchups)
-    console.log(closeOne)
-    console.log(topScorer)
     dispatch({ type: SET_ESPN_GRAPH_PPG, payload: graphPPG })
     dispatch({ type: SET_ESPN_CLOSE_ONE, payload: closeOne })
     dispatch({ type: SET_ESPN_TOP_SCORER, payload: topScorer })

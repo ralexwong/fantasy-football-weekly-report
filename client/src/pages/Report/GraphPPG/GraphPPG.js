@@ -1,10 +1,8 @@
 import React from 'react';
 import CanvasJSReact from '../../../canvasjs.react';
 import { connect } from 'react-redux';
-import { refactorData, setGraphPPG } from '../../../actions/Sleeper';
 
 import { Row, Col } from "reactstrap"
-
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -18,13 +16,6 @@ class GraphPPG extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.matchups) {
-
-    } else {
-      this.refactorData(this.props.matchups)
-    }
-    console.log(this.props)
-
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
   }
@@ -37,24 +28,7 @@ class GraphPPG extends React.Component {
       this.setState({ width: window.innerWidth, height: window.innerHeight });
   };
 
-  refactorData = (matchups) => {
-    let arr = [];
-
-    for (let i = 0; i < matchups.length; i++) {
-      if (parseFloat(matchups[i].points1) > parseFloat(matchups[i].points2)) {
-        arr.push({ label: matchups[i].roster1, y: parseFloat(matchups[i].points1), color: "#00006b" });
-        arr.push({ label: matchups[i].roster2, y: parseFloat(matchups[i].points2), color: "#b61e1e" });
-      } else {
-        arr.push({ label: matchups[i].roster1, y: parseFloat(matchups[i].points1), color: "#b61e1e" });
-        arr.push({ label: matchups[i].roster2, y: parseFloat(matchups[i].points2), color: "#00006b" });
-      }
-    }
-    console.log(arr)
-    this.props.setGraphPPG(arr);
-  }
-
   render() {
-
     let font_size = ""
     if (this.state.width < 575) {
       font_size = 7
@@ -62,7 +36,6 @@ class GraphPPG extends React.Component {
       font_size = 12
     }
 
-    console.log(this.props)
     let graphPPG = []
 
     if (this.props.espnReport && this.props.espnGraphPPG) {
@@ -71,7 +44,6 @@ class GraphPPG extends React.Component {
       graphPPG = this.props.sleeperGraphPPG
     } 
 
-    console.log(graphPPG)
     const options = {
       animationEnabled: true,
       theme: "light2", //"light1", "dark1", "dark2"
@@ -108,7 +80,6 @@ class GraphPPG extends React.Component {
 const mapStateToProps = (state) => {
   return {
     sleeperReport: state.sleeper.sleeperReport,
-    matchups: state.sleeper.matchups,
     sleeperGraphPPG: state.sleeper.sleeperGraphPPG,
 
     espnReport: state.espn.espnReport,
@@ -116,7 +87,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { refactorData, setGraphPPG })(GraphPPG)
+export default connect(mapStateToProps)(GraphPPG)
 
 
 

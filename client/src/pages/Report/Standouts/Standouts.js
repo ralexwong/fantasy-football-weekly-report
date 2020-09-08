@@ -132,8 +132,6 @@ class Standouts extends Component {
 const mapStateToProps = (state) => {
     return {
         sleeperReport: state.sleeper.sleeperReport,
-        points: state.sleeper.points,
-        matchups: state.sleeper.matchups,
         sleeperTopScorer: state.sleeper.sleeperTopScorer,
         sleeperCloseOne: state.sleeper.sleeperCloseOne,
 

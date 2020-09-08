@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { fetchRosters, setLeague_id, fetchLeagueInfo } from '../../../actions/Sleeper';
+import { setLeague_id, fetchLeagueInfo } from '../../../actions/Sleeper';
 
 import { Jumbotron } from 'reactstrap';
 
@@ -25,7 +25,6 @@ class Sleeper2 extends Component {
         localStorage.setItem("league", league);
         this.props.setLeague_id(league);
         this.props.fetchLeagueInfo(league);
-        this.props.fetchRosters(league);
     }
 
     mapLeagues = (leagues) => {
@@ -61,4 +60,4 @@ const mapStateToProps = (state) => {
     return { leagues: state.sleeper.leagues }
 }
 
-export default connect(mapStateToProps, { fetchRosters, setLeague_id, fetchLeagueInfo })(Sleeper2)
+export default connect(mapStateToProps, { setLeague_id, fetchLeagueInfo })(Sleeper2)

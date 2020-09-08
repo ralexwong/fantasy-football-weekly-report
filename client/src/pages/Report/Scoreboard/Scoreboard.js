@@ -115,8 +115,6 @@ class Scoreboard extends React.Component {
 const mapStateToProps = (state) => {
     return {
         sleeperReport: state.sleeper.sleeperReport,
-        league_info: state.sleeper.league_info,
-        points: state.sleeper.points,
         sleeperWeek: state.sleeper.sleeperWeek,
         sleeperMatchups: state.sleeper.sleeperMatchups,
 

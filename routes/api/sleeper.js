@@ -94,19 +94,6 @@ router.get(`/fetchMatchupPoints`, async (req, res, next) => {
   }
 })
 
-router.get(`/fetchRosters`, async (req, res, next) => {
-  try {
-    const league_id = req.query.league_id;
-    const response = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/rosters`);
-    const data = response.data;
-
-    res.json(data)
-
-  } catch(e) {
-    next(e)
-  }
-})
-
 module.exports = router;
 
 
