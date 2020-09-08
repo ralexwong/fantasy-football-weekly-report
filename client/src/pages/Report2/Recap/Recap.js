@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setRecapToState } from '../../../actions/Sleeper';
 import { Col } from "reactstrap"
 
 import Table from 'react-bootstrap/Table'

@@ -4,10 +4,6 @@ import {
     FETCH_LEAGUE_INFO,
     SET_LEAGUE_ID,
     FETCH_MATCHUPPOINTS,
-    SET_WEEK_TO_STATE,
-    REFACTORED_MATCHUPS,
-    TOP_SCORER,
-    CLOSE_ONE,
     FETCH_ROSTERS,
     REFACTORED_DATA,
     SET_GRAPH_POINTS_TO_STATE,
@@ -92,8 +88,6 @@ export default (state = initialState, action) => {
             return { ...state, league_id: action.payload }
         case FETCH_MATCHUPPOINTS:
             return { ...state, points: action.payload }
-        case REFACTORED_MATCHUPS:
-            return { ...state, sleeperMatchups: action.payload }
         case FETCH_ROSTERS:
             return { ...state, roster: action.payload }
         case SET_SLEEPER_GRAPH_PPG:

@@ -65,7 +65,11 @@ class Standouts extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="cards__name">{topScorer.name}: {topScorer.score}</p>
+                            <p className="cards__name">
+                                {topScorer.name}: 
+                                <br />
+                                {topScorer.score}
+                            </p>
                         </div>
                     </Col>
                     <Col xs={6} className="cards">
@@ -82,7 +86,11 @@ class Standouts extends Component {
                             </div>
                         </div>
                         <div className='cards__lowerBox'>
-                            <p className="cards__name">{closeOne.name}: +{closeOne.difference}</p>
+                            <p className="cards__name">
+                                {closeOne.name}:
+                                <br></br>
+                                +{closeOne.difference}
+                            </p>
                         </div>
                     </Col>
                 </React.Fragment>
@@ -103,7 +111,11 @@ class Standouts extends Component {
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p>{topScorer.name}: {topScorer.score}</p>
+                        <p>
+                            {topScorer.name}: 
+                            <br />
+                            {topScorer.score}
+                        </p>
                     </div>
 
                     <div className="hr"></div>
@@ -121,7 +133,11 @@ class Standouts extends Component {
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p>{closeOne.name}: +{closeOne.difference}</p>
+                        <p>
+                            {closeOne.name}:
+                            <br></br>
+                            +{closeOne.difference}
+                        </p>
                     </div>
                 </Col>
             )
