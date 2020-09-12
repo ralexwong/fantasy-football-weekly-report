@@ -37,7 +37,7 @@
 
 .about {
     background-color: $light-grey;
-    padding: 25rem 5rem 55rem 5rem;
+    padding: 30rem 5rem 0 5rem;
     margin-top: -12rem;
 
     @include respond(tab-port) {
@@ -77,7 +77,7 @@
 }
 
 .platforms {
-    padding: 23rem 0 5rem 0;
+    padding: 30rem 0;
     background-color: $light-grey;
     margin-top: -10rem;
 }

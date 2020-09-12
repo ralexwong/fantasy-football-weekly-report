@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import Header from './Header'
 import About from './About'
-import Features from './Features'
 import Platforms from './Platforms'
-import Reviews from './Reviews'
-import Register from './Register'
-// import IntroNav from "./Nav";
 
 import Footer from '../../components/Footer'
 
 const style = {
-  color: "#777"
+  color: "#777",
 }
 
 class Index extends Component {
-  componentDidMount() {}
+
+  constructor(props) {
+    super(props) 
+    this.myRef = React.createRef()
+  }
 
   render() {
+    const scrollToSection = (ref) => window.scrollTo(0, ref.current.offsetTop);
+    const el2 = this.myRef;
+
     return (
       <div style={style} >
-        {/* <IntroNav /> */}
-        <Header />
+        <Header click={()=> scrollToSection(el2)} />
         <About />
-        <Features />
-        <Platforms />
-        <Reviews />
-        <Register />
+        <Platforms reference={el2} />
         <Footer />
       </div>
     );

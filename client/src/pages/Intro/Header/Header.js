@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
 
 class Header extends Component {
     render() {
@@ -15,7 +14,7 @@ class Header extends Component {
                         <span className='heading-primary--sub'>Weekly Reports</span>
                     </h1>
 
-                    <Link to="#" className='btn btn--white btn--animated'>Choose Your Platform!</Link>  
+                    <button onClick={this.props.click} className='btn btn--white btn--animated'>Choose Your Platform!</button>  
                 </div>
             </header>
         )
