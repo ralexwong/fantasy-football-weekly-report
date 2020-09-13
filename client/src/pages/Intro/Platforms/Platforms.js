@@ -14,7 +14,7 @@ class Platforms extends Component {
                 <Row noGutters={true} className='u-space-evenly'>
                     <Col xs={9} sm={5} md={3}>
                         <Link to="/espn">
-                            <div className='box'>
+                            <div className='box box--working'>
                                 <img className='box__image box__image--espn' src={`./images/intro/espn.png`} alt='poop' />
                             </div>
                         </Link>
@@ -22,7 +22,7 @@ class Platforms extends Component {
 
                     <Col xs={9} sm={5} md={3}>
                         <Link to="/sleeper">
-                            <div className='box'>
+                            <div className='box box--working'>
                                 <img className='box__image' src={`./images/intro/sleeper.png`} alt='poop' />
                             </div>
                         </Link>
@@ -31,7 +31,7 @@ class Platforms extends Component {
                     <Col xs={9} sm={5} md={3}>
                         <div className='box' >
                             <img className='box__image' src={`./images/intro/yahoo.jpg`} alt='poop' />
-                            <div className="box__disclaimer heading-tertiary">
+                            <div className="box__disclaimer">
                                 <p className='u-margin-auto'>COMING SOON</p>
                             </div>
                         </div>

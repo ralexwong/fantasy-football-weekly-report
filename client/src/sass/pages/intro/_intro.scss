@@ -37,7 +37,7 @@
 
 .about {
     background-color: $light-grey;
-    padding: 30rem 5rem 0 5rem;
+    padding: 30rem 5rem 65rem 5rem;
     margin-top: -12rem;
 
     @include respond(tab-port) {
@@ -67,7 +67,7 @@
 
     transform: skewY(-4deg);
 
-    @include respond(iphone) {
+    @include respond(phone) {
         padding: 15rem 0;
     }
 
@@ -77,9 +77,13 @@
 }
 
 .platforms {
-    padding: 30rem 0;
+    padding: 0 0 10rem 0;
     background-color: $light-grey;
     margin-top: -10rem;
+
+    @include respond(phone) {
+        padding: 0 0 10rem 0;
+    }
 }
 
 .reviews {

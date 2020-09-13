@@ -4,6 +4,8 @@
     bottom:0;
     width: 100%;
     padding: 5rem 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 
     @include respond(phone) {
         font-size: 1.2rem;

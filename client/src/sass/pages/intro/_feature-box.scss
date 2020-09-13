@@ -7,7 +7,11 @@
     transition: .2s all;
     position: relative;
 
-    height: 26rem;
+    height: 35rem;
+
+    &--working:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+    }
 
     &__icon {
         font-size: 6rem;
@@ -17,10 +21,6 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-    }
-
-    &:hover {
-        transform: translateY(-1.5rem) scale(1.03);
     }
 
     &__image {
@@ -47,9 +47,15 @@
         border-radius: 15px;
         background: #808080cb;
         color: white;
+
+        font-size: 3rem;
+        font-weight: 700;
+        text-transform: uppercase;
     }
 
-    @include respond(tab-port) {
+    @include respond(iphone) {
         margin-bottom: 3rem;
+
+        height: 26rem;
     }
 }
