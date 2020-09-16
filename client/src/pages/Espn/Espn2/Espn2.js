@@ -20,7 +20,7 @@ class Espn2 extends Component {
     onSubmit = (e) => {
         e.preventDefault()
         console.log(this.state.input);
-        this.props.fetchEspn(this.state.input)
+        this.props.fetchEspn(this.state.input, this.props.espnYear)
     }
 
     render() {
@@ -28,7 +28,7 @@ class Espn2 extends Component {
             <Jumbotron>
                 <div className="sleeperInput__helpertext">
                     <p className="bold">
-                        Please enter your ESPN league ID
+                        Please enter your ESPN league ID 2205891
                     </p>
                 </div>
                 <form onSubmit={this.onSubmit} className="espnForm">
@@ -46,7 +46,7 @@ class Espn2 extends Component {
 
 const mapStateToProps = (state) => {
     return {
-
+        espnYear: state.espn.espnYear,
     }
 }
 

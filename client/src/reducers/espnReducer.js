@@ -18,7 +18,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    
+    espnYear: 2020,
 }
 
 

@@ -10,8 +10,9 @@ router.use(bodyParser.json());
 router.get(`/fetchEspn`, async (req, res, next) => {
     try {
         const id = req.query.id;
+        const year = req.query.year;
         console.log(id)
-        const response = await axios.get(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/2019/segments/0/leagues/2205891?view=mStandings&view=mTeam`);
+        const response = await axios.get(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/${year}/segments/0/leagues/2205891?view=mStandings&view=mTeam`);
         const data = response.data;
 
         res.json(data);

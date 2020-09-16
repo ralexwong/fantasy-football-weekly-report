@@ -19,7 +19,7 @@ class Sleeper1 extends Component {
     onSubmit = (e) => {
         e.preventDefault()
         console.log(this.state.input)
-        this.props.fetchLeagues(this.state.input)
+        this.props.fetchLeagues(this.state.input, this.props.sleeperYear)
     }
 
     render() {
@@ -48,7 +48,10 @@ class Sleeper1 extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { nullUsername: state.nullUsername }
+    return { 
+        nullUsername: state.nullUsername,
+        sleeperYear: state.sleeper.sleeperYear,
+     }
 }
 
 export default connect(mapStateToProps, { fetchLeagues })((Sleeper1))

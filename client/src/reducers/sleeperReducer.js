@@ -71,7 +71,8 @@ const initialState = {
     topScorer: topScorer,
     closeOne: closeOne,
     first_place,
-    last_place
+    last_place,
+    sleeperYear: 2020,
 }
 
 

@@ -28,10 +28,11 @@ import axios from 'axios';
 
 // Grabs the user's leagues -----------------------------------------------
 
-export const fetchLeagues = (username) => async dispatch => {
+export const fetchLeagues = (username, year) => async dispatch => {
     const response = await axios.get(`api/sleeper/fetchLeagues`, {
         params: {
-            username: username
+            username: username,
+            year: year
         }
     })
     const data = response.data;

@@ -26,10 +26,12 @@ router.get(`/fetchLeagues`, async (req, res, next) => {
       console.log(`${username}'s user_id: ${data.user_id}`);
 
       // grab the leagues for this user
+      const year = req.query.year;
       const user_id = data.user_id;
-      const leagues = await axios.get(`https://api.sleeper.app/v1/user/${user_id}/leagues/nfl/2019`);
+      const leagues = await axios.get(`https://api.sleeper.app/v1/user/${user_id}/leagues/nfl/${year}`);
       const league_data = leagues.data;
   
+      console.log(year)
       res.json(league_data);
     }
   } catch(e) {

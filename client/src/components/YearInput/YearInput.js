@@ -9,7 +9,7 @@ class YearInput extends Component {
     constructor() {
         super()
         this.state = {
-            input: ""
+            input: 2020
         }
     }
     
@@ -43,7 +43,7 @@ class YearInput extends Component {
                         onChange={this.handleChange}
                         autoComplete="off"
                         placeholder="Year" 
-                        value="2020"
+                        value={this.state.input}
                         />
                     <button onClick={this.onSubmit} type="button" className="btn btn--blue">Submit</button>
                 </form>

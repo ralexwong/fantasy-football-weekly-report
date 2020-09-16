@@ -6,13 +6,7 @@ const PORT = process.env.PORT || 3001;
 const cors = require('cors');
 const passport = require('./passport');
 
-const BodyParser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient;
-const ObjectId = require("mongodb").ObjectID;
-
-
 require('dotenv').config()
-
 
 // Configure body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));

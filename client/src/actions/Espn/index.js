@@ -21,12 +21,13 @@ import {
 import axios from 'axios';
 
 // grab the espn league info -------------------------------------
-export const fetchEspn = id => async dispatch => {
+export const fetchEspn = (id, year) => async dispatch => {
     console.log(id)
 
     const response = await axios.get(`api/espn/fetchEspn`, {
         params : {
-            id: id
+            id: id,
+            year: year
         }
     })
     const data = response.data;
