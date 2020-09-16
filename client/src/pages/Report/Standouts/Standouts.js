@@ -59,6 +59,7 @@ class Standouts extends Component {
                                 <img 
                                     crossOrigin="anonymous"
                                     referrerPolicy="origin" 
+                                    onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
                                     src={`https://whispering-woodland-11588.herokuapp.com/${topScorer.logo}`} 
                                     alt="poop" 
                                     className="cards__image" />
@@ -80,6 +81,7 @@ class Standouts extends Component {
                                 <img 
                                     crossOrigin="anonymous"
                                     referrerPolicy="origin" 
+                                    onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
                                     src={`https://whispering-woodland-11588.herokuapp.com/${closeOne.logo}`} 
                                     alt="poop" 
                                     className="cards__image" />
@@ -105,6 +107,7 @@ class Standouts extends Component {
                             <img 
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin" 
+                                onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
                                 src={`https://whispering-woodland-11588.herokuapp.com/${topScorer.logo}`} 
                                 alt="poop" 
                                 className="cards__image" />
@@ -127,6 +130,7 @@ class Standouts extends Component {
                             <img 
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin" 
+                                onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
                                 src={`https://whispering-woodland-11588.herokuapp.com/${closeOne.logo}`} 
                                 alt="poop" 
                                 className="cards__image" />

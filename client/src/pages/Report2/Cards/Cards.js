@@ -58,6 +58,7 @@ class Cards extends Component {
                                 <img 
                                     crossOrigin="anonymous"
                                     referrerPolicy="origin" 
+                                    onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
                                     src={first_place} 
                                     alt="poop" 
                                     className="cards__image" />
@@ -76,6 +77,7 @@ class Cards extends Component {
                                 <img 
                                     crossOrigin="anonymous"
                                     referrerPolicy="origin" 
+                                    onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
                                     src={last_place} 
                                     alt="poop" 
                                     className="cards__image" />
@@ -97,6 +99,7 @@ class Cards extends Component {
                             <img 
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin" 
+                                onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
                                 src={first_place} 
                                 alt="poop" 
                                 className="cards__image" />
@@ -115,6 +118,7 @@ class Cards extends Component {
                             <img 
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin" 
+                                onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
                                 src={last_place} 
                                 alt="poop" 
                                 className="cards__image" />
