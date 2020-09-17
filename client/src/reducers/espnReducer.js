@@ -16,9 +16,28 @@ import {
     SET_ESPN_SEASON,
     SET_ESPN_YEAR
 } from '../actions/types';
+import recap from './recap';
+
+const matchups = []
+
+for (let i = 0; i < 5; i++) {
+    matchups.push({
+        points1: 100,
+        roster1: 'name',
+        avatar1: "5d740f8ff48897b2f3f02fa137a414ec",
+        roster2: 'default',
+        points2: 200,
+        matchup_id: i,
+        avatar2: "d00bfacf3314ae01d78ebd6130b7d74c"
+    })
+}
 
 const initialState = {
+    nullUsername: null,
+    leagues: null,
+    espnMatchups: matchups,
     espnYear: 2020,
+    espnRecap: recap
 }
 
 

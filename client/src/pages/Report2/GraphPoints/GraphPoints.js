@@ -29,13 +29,13 @@ class GraphPoints extends React.Component {
       data = this.props.sleeperGraphPoints  
     } else {
       data = [
-        { y:  1500, label: "Facebook" },
-        { y:  1400, label: "YouTube" },
-        { y:  1340, label: "Instagram" },
-        { y:  1310, label: "Qzone" },
-        { y:  1300, label: "Weibo" },
-        { y:  1298, label: "Twitter" },
-        { y:  1290, label: "Reddit" }
+        { y:  1500, label: "User1" },
+        { y:  1400, label: "User2" },
+        { y:  1340, label: "User3" },
+        { y:  1310, label: "User4" },
+        { y:  1300, label: "User5" },
+        { y:  1298, label: "User6" },
+        { y:  1290, label: "User7" }
       ]
     }
     const options = {

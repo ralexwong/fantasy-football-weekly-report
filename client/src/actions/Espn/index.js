@@ -34,7 +34,7 @@ export const fetchEspn = (id, year) => async dispatch => {
     const teams = data.teams
     const schedule = data.schedule;
 
-    // console.log(data)
+    console.log(data)
 
     // teams info object for overall report page
     const teamsInfo = [];
@@ -139,6 +139,7 @@ export const fetchEspn = (id, year) => async dispatch => {
 // setting the espn week --------------------------------------------------------
 export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
 
+    console.log(espn)
     let topScorer = {
         name: "bob",
         score: 0,

@@ -27,6 +27,7 @@ import {
     SET_SLEEPER_MATCHUPS
     
 } from '../actions/types';
+import recap from './recap';
 
 const matchups = []
 
@@ -42,37 +43,11 @@ for (let i = 0; i < 5; i++) {
     })
 }
 
-const topScorer = {
-    name:"default",
-    highscore: 100,
-    avatar:"c31055dd8932445db1d1745e5ce89dc2"
-}
-
-const closeOne = {
-    name: 'name',
-    difference: 100,
-    avatar: 'c31055dd8932445db1d1745e5ce89dc2'
-}
-
-const first_place = {
-    name: 'name',
-    avatar: 'c31055dd8932445db1d1745e5ce89dc2'
-}
-
-const last_place = {
-    name: 'name',
-    avatar: 'c31055dd8932445db1d1745e5ce89dc2'
-}
-
 const initialState = {
     nullUsername: null,
-    leagues: null,
-    matchups: matchups,
-    topScorer: topScorer,
-    closeOne: closeOne,
-    first_place,
-    last_place,
+    sleeperMatchups: matchups,
     sleeperYear: 2020,
+    sleeperRecap: recap,
 }
 
 

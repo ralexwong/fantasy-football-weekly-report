@@ -151,6 +151,8 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
         logo: recapInfo[recapInfo.length - 1].logo
     }
 
+    console.log(recapInfo)
+
     dispatch({ type: SLEEPER_RECAP, payload: recapInfo });
     dispatch({ type: SLEEPER_FIRST_PLACE, payload: first_place })
     dispatch({ type: SLEEPER_LAST_PLACE, payload: last_place })
