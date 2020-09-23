@@ -1,8 +1,6 @@
 import React from 'react';
 
-import SeasonInput from '../../components/SeasonInput';
-import TitleInput from '../../components/TitleInput';
-import CaptionInput from '../../components/CaptionInput';
+import OptionalInput from './OptionalInput';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -11,22 +9,30 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { Jumbotron } from 'reactstrap';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: '2.5rem',
     fontWeight: theme.typography.fontWeightRegular,
   },
+  accordianDetails: {
+    display: 'block',
+    
+  }
 }));
 
-export default function OptionalInputs() {
+export default function OptionalInputs(props) {
   const classes = useStyles();
 
   return (
     <>
-    <p>Optional Inputs</p>
+    <Jumbotron className="sleeper__jumbotron">
+    <p className="heading-tertiary">Optional Inputs</p>
+
     <div className={classes.root}>
       <Accordion>
         <AccordionSummary
@@ -38,9 +44,9 @@ export default function OptionalInputs() {
             Season
             </Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className={classes.accordianDetails}>
           <Typography>
-            <SeasonInput platform={'sleeper'} />
+            <OptionalInput input={'season'} platform={props.platform} />
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -54,8 +60,7 @@ export default function OptionalInputs() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <TitleInput platform={'sleeper'} />
-
+            <OptionalInput input={'title'} platform={props.platform} />
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -69,11 +74,12 @@ export default function OptionalInputs() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <CaptionInput platform={'sleeper'} />
+            <OptionalInput input={'caption'} platform={props.platform} />
           </Typography>
         </AccordionDetails>
       </Accordion>
     </div>
+    </Jumbotron>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { setEspnSeason } from '../../actions/Espn';
-import { setSleeperSeason } from '../../actions/Sleeper';
+import { setEspnSeason, setEspnTitle, setEspnCaption } from '../../actions/Espn';
+import { setSleeperSeason, setSleeperTitle, setSleeperCaption } from '../../actions/Sleeper';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from "@material-ui/core/styles";
@@ -9,14 +9,14 @@ import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      '& > *': {
+      '& .MuiTextField-root': {
         margin: theme.spacing(1),
         width: '25ch',
       },
     },
-}));
+  }));
 
-class SeasonInput extends Component {
+class OptionalInput extends Component {
     constructor() {
         super()
         this.state = {
@@ -33,9 +33,21 @@ class SeasonInput extends Component {
         console.log(this.state.input);
     
         if (this.props.platform === 'sleeper') {
-            this.props.setSleeperSeason(this.state.input);
+            if (this.props.input === 'season') {
+                this.props.setSleeperSeason(this.state.input);
+            } else if (this.props.input === 'caption') {
+                this.props.setSleeperCaption(this.state.input)
+            } else if (this.props.input === 'title') {
+                this.props.setSleeperTitle(this.state.input)
+            }
         } else if (this.props.platform === 'espn') {
-            this.props.setEspnSeason(this.state.input);
+            if (this.props.input === 'season') {
+                this.props.setEspnSeason(this.state.input);
+            } else if (this.props.input === 'caption') {
+                this.props.setEspnCaption(this.state.input)
+            } else if (this.props.input === 'title') {
+                this.props.setEspnTitle(this.state.input)
+            }
         }
     }
 
@@ -47,7 +59,7 @@ class SeasonInput extends Component {
                 <form onSubmit={this.onSubmit} className={classes.root} noValidate autoComplete="off">
                     <TextField
                      id="outlined-basic" 
-                     label="Season" 
+                     label={this.props.input}
                      variant="outlined" 
                      onChange={this.handleChange}
                      autoComplete="off"
@@ -61,10 +73,12 @@ class SeasonInput extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-
-    }
-}
-
-export default connect(mapStateToProps, { setEspnSeason, setSleeperSeason })(withStyles(useStyles)(SeasonInput))
+export default connect(null, { 
+    setEspnSeason, 
+    setSleeperSeason,
+    setEspnTitle, 
+    setEspnCaption,
+    setSleeperTitle, 
+    setSleeperCaption
+ })
+ (withStyles(useStyles)(OptionalInput))

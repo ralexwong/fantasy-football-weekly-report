@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const GenerateReportButton = (props) => {
     return (
-        <button>
+        <button className="btn btn--white">
             <Link to={props.reportPage}>Report Page</Link>
         </button>
     )

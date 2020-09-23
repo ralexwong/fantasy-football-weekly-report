@@ -31,7 +31,7 @@ class YearInput extends Component {
 
     render() {
         return (
-            <Jumbotron>
+            <Jumbotron className='sleeper__jumbotron'>
                 <div className="sleeper__helpertext">
                     <p className="bold">
                         The year will default to the current season's year

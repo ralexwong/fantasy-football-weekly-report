@@ -70,6 +70,20 @@
             color: $white-color;
         }
     }
+
+    &--espn {
+        background: $dark-green;
+        color: $white-color !important;
+    
+        &::after {
+            background-color: $dark-green;
+        }
+
+        &:hover {
+            background-color: $dark-green;
+            color: $white-color;
+        }
+    }
     
     &--animated {
         animation: moveInBottom .5s ease-out 3s;
@@ -101,21 +115,6 @@
     &:active {
         box-shadow: 0 .5rem 1rem rgba($black-color, .15);
         transform: translateY(0);
-    }
-}
-
-.platformBtn {
-    font-size: 3rem;
-    top: 70%;
-
-    @extend .btn;
-
-    &--white {
-        @extend .btn--white;
-    }
-
-    &--animated {
-        @extend .btn--animated;
     }
 }
 

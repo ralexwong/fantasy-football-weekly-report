@@ -29,7 +29,7 @@ class Espn1 extends Component {
 
     render() {
         return (
-            <Jumbotron>
+            <Jumbotron className="sleeper__jumbotron">
                 <div className="sleeperInput__helpertext">
                     <p className="bold">
                         Please enter the week
@@ -41,7 +41,7 @@ class Espn1 extends Component {
                         onChange={this.handleChange}
                         autoComplete="off"
                         placeholder="week" />
-                    <button onClick={this.onSubmit} type="button" className="btn btn--blue">Submit</button>
+                    <button onClick={this.onSubmit} type="button" className="btn btn--espn">Submit</button>
                 </form>
             </Jumbotron>
         )

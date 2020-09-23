@@ -1,9 +1,16 @@
-.sleeperBackground {
-    min-height: 800px;
-    background-image: linear-gradient(
-        to right bottom,
-         rgba($light-blue, 0.8),
-         rgba($dark-blue, 0.8));
+.inputBackground {
+    min-height: 1000px;
+
+    &--sleeper {
+        background-image: linear-gradient(
+            to right bottom,
+             rgba($light-blue, 0.8),
+             rgba($dark-blue, 0.8));
+    }
+
+    &--espn {
+        background: linear-gradient(to right, $light-green, $dark-green)
+    }
 }
 
 .sleeper {

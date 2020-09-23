@@ -6,9 +6,8 @@ import YearInput from '../../components/YearInput';
 import Espn1 from './Espn2';
 import Espn2 from './Espn1';
 
-import SeasonInput from '../../components/SeasonInput';
-import TitleInput from '../../components/TitleInput';
-import CaptionInput from '../../components/CaptionInput';
+import OptionalInputs from '../../components/OptionalInputs';
+import OptionalInput from '../../components/OptionalInput';
 
 import GenerateReportButton from '../../components/GenerateReportButton';
 
@@ -24,17 +23,15 @@ class Espn extends Component {
 
     render() {
         return (
-            <div className="espnBackground">
+            <div className="inputBackground inputBackground--espn">
                 <Container>
                     <Row>
                         <Col className="sleeper">
-                            <YearInput platform={'espn'} />
+                            {/* <YearInput platform={'espn'} /> */}
                             <Espn1 />
                             <Espn2 />
 
-                            <SeasonInput platform={'espn'} />
-                            <TitleInput platform={'espn'} />
-                            <CaptionInput platform={'espn'} />
+                            <OptionalInputs platform={'espn'} />
                             <GenerateReportButton reportPage={'weekly-report-espn'} />
                         </Col>
                     </Row>
