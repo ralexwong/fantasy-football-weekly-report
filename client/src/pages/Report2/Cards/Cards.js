@@ -25,7 +25,6 @@ class Cards extends Component {
     }
 
     render() {
-        console.log(this.props)
         let first_place = ""
         let first_place_name = "";
         if (this.props.espn_first_place && this.props.espnReport) {

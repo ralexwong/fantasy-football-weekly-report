@@ -84,11 +84,11 @@ export default function EspnGuide() {
         <div className='espnGuide'>
             <Jumbotron className="jumbotron sleeper__jumbotron">
                     <Col xs={12}>
-                        <h3 className='heading-teritary'><u><b>Step 1</b></u></h3>
-                        <p className='paragraph'>Log on to the espn website. (ID cannot be viewed on the app)</p>
+                        <h3 className='steps'><u><b>Step 1</b></u></h3>
+                        <p className='paragraph-lg'>Log on to the espn website. (ID cannot be viewed on the app)</p>
 
-                        <h3 className='heading-teritary'><u><b>Step 2</b></u></h3>
-                        <p className='paragraph'>Copy or remember the highlighted number for your league. This is your league ID.</p>
+                        <h3 className='steps'><u><b>Step 2</b></u></h3>
+                        <p className='paragraph-lg'>Copy or remember the highlighted number for your league. This is your league ID.</p>
                     </Col>
 
                     <Col xs={12}>
@@ -97,8 +97,8 @@ export default function EspnGuide() {
             </Jumbotron>
             <Jumbotron className="jumbotron sleeper__jumbotron">
                     <Col xs={12}>
-                        <h3 className='heading-teritary'><u><b>Step 3</b></u></h3>
-                        <p className='paragraph'>Go to your league settings and make the league viewable to public. (Can only be done by the league commissioner)</p>
+                        <h3 className='steps'><u><b>Step 3</b></u></h3>
+                        <p className='paragraph-lg'>Go to your league settings and make the league viewable to public. (Can only be done by the league commissioner)</p>
                     </Col>
 
                     <Col xs={12}>

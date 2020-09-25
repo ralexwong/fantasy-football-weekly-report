@@ -28,8 +28,6 @@ class Scoreboard extends React.Component {
 
 
     render() {
-        console.log(this.props.matchups)
-
         let matchups = [];
         if (this.props.espnReport) {
             matchups = this.props.espnMatchups

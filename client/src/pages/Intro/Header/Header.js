@@ -14,7 +14,7 @@ class Header extends Component {
                         <span className='heading-primary--sub'>Weekly Reports</span>
                     </h1>
 
-                    <button style={{ height: '7rem' }} onClick={this.props.click} className='btn btn--white btn--animated'>Choose Your Platform!</button>  
+                    <button style={{ height: '7rem', fontSize: '2rem' }} onClick={this.props.click} className='btn btn--white btn--animated'>Choose Your Platform!</button>  
                 </div>
             </header>
         )

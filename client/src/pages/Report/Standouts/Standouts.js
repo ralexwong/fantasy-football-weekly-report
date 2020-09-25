@@ -46,8 +46,6 @@ class Standouts extends Component {
             closeOne = this.props.sleeperCloseOne;
         }
 
-        console.log(this.props)
-
         if (this.state.width < 575) {
             return (
                 <React.Fragment>

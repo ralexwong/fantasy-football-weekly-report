@@ -29,51 +29,71 @@ import axios from 'axios';
 // Grabs the user's leagues -----------------------------------------------
 
 export const fetchLeagues = (username, year) => async dispatch => {
-    const response = await axios.get(`api/sleeper/fetchLeagues`, {
-        params: {
-            username: username,
-            year: year
-        }
-    })
-    const data = response.data;
-    console.log(data);
-    if (data === "is not valid username") {
-        await dispatch({ type: INVALID_USERNAME, payload: data });
+    let league_data = [];
+    
+    // grab the users username_id
+    const resUser = await axios.get(`https://api.sleeper.app/v1/user/${username}`);
+    const data = resUser.data;
+
+    // if they pass through a username that isn't valid
+    if (data === null) {
+        console.log("is not valid username");
+    } else {
+        console.log(`${username}'s user_id: ${data.user_id}`);
+
+        // grab the leagues for this user
+        const user_id = data.user_id;
+        const leagues = await axios.get(`https://api.sleeper.app/v1/user/${user_id}/leagues/nfl/${year}`);
+        league_data = leagues.data;
+    }
+
+    if (league_data === "is not valid username") {
+        await dispatch({ type: INVALID_USERNAME, payload: league_data });
         return;
     }
-    dispatch({ type: FETCH_LEAGUES, payload: data });
+    dispatch({ type: FETCH_LEAGUES, payload: league_data });
 }
 
 // Grabs the leagues -------------------------------------------------
 
 export const fetchLeagueInfo = (league_id) => async dispatch => {
-    const response = await axios.get(`api/sleeper/fetchLeagueInfo`, {
-        params: {
-            league_id: league_id
+    const resUsers = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/users`);
+    const users = resUsers.data;
+    
+    // call API to assign the correct roster_id to each roster
+    const linkRosterId = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/rosters`);
+    const rosters = linkRosterId.data;
+
+    for (let i = 0; i < users.length; i++) {
+      for (let j = 0; j < rosters.length; j++) {
+        if (users[i].user_id === rosters[j].owner_id) {
+          rosters[j].display_name = users[i].display_name;
+          rosters[j].avatar = users[i].avatar;
         }
-    })
-    const data = response.data
+      }
+    }
+
     const teamsInfo = []
 
-    // console.log(data);
+    // console.log(rosters);
 
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].display_name.length > 8) {
-            data[i].display_name = data[i].display_name.substring(0,9);
+    for (let i = 0; i < rosters.length; i++) {
+        if (rosters[i].display_name.length > 8) {
+            rosters[i].display_name = rosters[i].display_name.substring(0,9);
         }
-        // grab the necessary data
-        let shortenTeamName = data[i].display_name.toUpperCase().substring(0,4);
+        // grab the necessary rosters
+        let shortenTeamName = rosters[i].display_name.toUpperCase().substring(0,4);
         teamsInfo.push({
             abbrev: shortenTeamName,
-            id: data[i].owner_id,
-            name: data[i].display_name,
-            logo: data[i].avatar,
-            totalPoints: data[i].settings.fpts,
-            pointsAgainst: data[i].settings.fpts_against,
-            wins: data[i].settings.wins,
-            losses: data[i].settings.losses,
+            id: rosters[i].owner_id,
+            name: rosters[i].display_name,
+            logo: rosters[i].avatar,
+            totalPoints: rosters[i].settings.fpts,
+            pointsAgainst: rosters[i].settings.fpts_against,
+            wins: rosters[i].settings.wins,
+            losses: rosters[i].settings.losses,
 
-            roster_id: data[i].roster_id,
+            roster_id: rosters[i].roster_id,
         })
     }
 
@@ -158,7 +178,7 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
     dispatch({ type: SLEEPER_LAST_PLACE, payload: last_place })
     dispatch({ type: SLEEPER_GRAPH_POINTS, payload: graphPointsInfo })
 
-    dispatch({ type: FETCH_LEAGUE_INFO, payload: data }) 
+    dispatch({ type: FETCH_LEAGUE_INFO, payload: rosters }) 
 }
 
 // Set league_id in state just in case ---------------------------------------------
@@ -170,15 +190,18 @@ export const setLeague_id = (league_id) => dispatch => {
 // Grabs the points for that week --------------------------------------------------
 
 export const fetchMatchupPoints = (week, league_id, league_info) => async dispatch => {
-    const response = await axios.get(`api/sleeper/fetchMatchupPoints`, {
-        params: {
-            week: week,
-            league_id: league_id
-        }
-    })
-
+    const response = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/matchups/${week}`);
     const data = response.data;
-    // console.log(data);
+
+    // push relevant data into array and send to client side to be pushed into state
+    const array = [];
+    for (let i = 0; i < data.length; i++) {
+      array.push({
+        roster_id: data[i].roster_id,
+        points: parseFloat(data[i].points).toFixed(2),
+        matchup_id: data[i].matchup_id
+      })
+    }
 
     const topScorer = {
         name: "bob",
@@ -196,32 +219,32 @@ export const fetchMatchupPoints = (week, league_id, league_info) => async dispat
     // console.log(league_info)
 
     // sort data array for matchups
-    data.sort(function(a, b) { return a.matchup_id - b.matchup_id });
+    array.sort(function(a, b) { return a.matchup_id - b.matchup_id });
 
-    // loop through to set logos in data
-    for (let j = 0; j < data.length; j++) {
+    // loop through to set logos in array
+    for (let j = 0; j < array.length; j++) {
         for (let p = 0; p < league_info.length; p++) {
-            if (data[j].roster_id === league_info[p].roster_id) {
-                data[j].logo = league_info[p].avatar;
-                data[j].name = league_info[p].display_name;
+            if (array[j].roster_id === league_info[p].roster_id) {
+                array[j].logo = league_info[p].avatar;
+                array[j].name = league_info[p].display_name;
                 break;
             }
         }
     }
 
-    // console.log(data)
+    // console.log(array)
     
     // pushes the combined same matchup_id rosters together in the same object
     // and assigns each roster/points with a 1/2
-    for (let i = 0; i < data.length; i += 2) {
+    for (let i = 0; i < array.length; i += 2) {
         matchups.push({
-            roster1: data[i].name,
-            points1: data[i].points,
-            logo1: data[i].logo,
+            roster1: array[i].name,
+            points1: array[i].points,
+            logo1: array[i].logo,
     
-            roster2: data[i + 1].name,
-            points2: data[i + 1].points,
-            logo2: data[i + 1].logo,
+            roster2: array[i + 1].name,
+            points2: array[i + 1].points,
+            logo2: array[i + 1].logo,
         })
     }
 

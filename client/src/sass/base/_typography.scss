@@ -76,6 +76,14 @@ p {
     font-size: $small-font-size;
 }
 
+.paragraph-lg {
+    font-size: 2.2rem;
+
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+}
+
 .bold {
     font-weight: bold;
 }
@@ -88,4 +96,8 @@ a {
         text-decoration: none;
         color: inherit;
     }
+}
+
+.steps {
+    font-size: 2.5rem;
 }
