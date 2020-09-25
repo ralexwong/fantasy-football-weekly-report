@@ -30,7 +30,7 @@ class EspnWeeklyReport extends Component {
       <>
         <ComponentToPrint ref={this.componentRef} />
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <button className="btn btn--blue" onClick={() => exportComponentAsPNG(this.componentRef)}>
+          <button className="btn btn--sleeper" onClick={() => exportComponentAsPNG(this.componentRef)}>
             Click here for your report to be converted to an image!
         </button>
         </div>

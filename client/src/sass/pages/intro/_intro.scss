@@ -79,7 +79,6 @@
 .platforms {
     padding: 0 0 10rem 0;
     background-color: $light-grey;
-    margin-top: -10rem;
 
     @include respond(phone) {
         padding: 0 0 10rem 0;

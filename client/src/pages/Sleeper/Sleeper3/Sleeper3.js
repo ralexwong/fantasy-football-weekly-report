@@ -36,8 +36,10 @@ class Sleeper3 extends Component {
                         className="sleeper__input"
                         onChange={this.handleChange}
                         autoComplete="off"
-                        placeholder="Week" />
-                    <button onClick={this.onSubmit} type="button" className="btn btn--blue">Submit</button>
+                        placeholder="Week"
+                        type="number"
+                    />
+                    <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
                 </form>
             </Jumbotron>
         )

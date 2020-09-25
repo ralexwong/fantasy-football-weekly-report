@@ -18,7 +18,7 @@ const Navagation = (props) => {
 
   return (
     <Navbar color="light" light expand="md">
-      <Link to="/">FFWR</Link>
+      <Link style={{ marginRight: '5rem' }} to="/">FFWR</Link>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
@@ -28,14 +28,14 @@ const Navagation = (props) => {
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
-                <Link to="/weekly-report-sleeper">Sleeper Weekly </Link>
+                <Link to="/weekly-report-sleeper">Weekly Report</Link>
               </DropdownItem>
               <DropdownItem>
-                <Link to="/overall-report-sleeper">Sleeper Overall </Link>
+                <Link to="/overall-report-sleeper">Overall Report</Link>
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem>
-                <Link to="/sleeper">Sleeper Input</Link>
+                <Link to="/sleeper">Input</Link>
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
@@ -46,14 +46,14 @@ const Navagation = (props) => {
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
-                <Link to="/weekly-report-espn">Espn Weekly </Link>
+                <Link to="/weekly-report-espn">Weekly Report</Link>
               </DropdownItem>
               <DropdownItem>
-                <Link to="/overall-report-espn">Espn Overall </Link>
+                <Link to="/overall-report-espn">Overall Report</Link>
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem>
-                <Link to="/espn">Espn Input</Link>
+                <Link to="/espn">Input</Link>
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>

@@ -46,7 +46,7 @@ export default function OptionalInputs(props) {
         </AccordionSummary>
         <AccordionDetails className={classes.accordianDetails}>
           <Typography>
-            <OptionalInput input={'season'} platform={props.platform} />
+            <OptionalInput input={'Season'} platform={props.platform} />
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -58,9 +58,9 @@ export default function OptionalInputs(props) {
         >
           <Typography className={classes.heading}>Title</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className={classes.accordianDetails}>
           <Typography>
-            <OptionalInput input={'title'} platform={props.platform} />
+            <OptionalInput input={'Title'} platform={props.platform} />
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -72,9 +72,9 @@ export default function OptionalInputs(props) {
         >
           <Typography className={classes.heading}>Caption</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className={classes.accordianDetails}>
           <Typography>
-            <OptionalInput input={'caption'} platform={props.platform} />
+            <OptionalInput input={'Caption'} platform={props.platform} />
           </Typography>
         </AccordionDetails>
       </Accordion>

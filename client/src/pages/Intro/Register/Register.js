@@ -41,7 +41,7 @@ class Register extends Component {
 
                                 </div>
 
-                                <Link to="/" className='btn btn--blue btn--animated'>Continue &rarr;</Link> 
+                                <Link to="/" className='btn btn--sleeper btn--animated'>Continue &rarr;</Link> 
 
                             </form>
                         </div>

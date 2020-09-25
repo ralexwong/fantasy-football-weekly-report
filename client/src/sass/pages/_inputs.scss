@@ -24,6 +24,7 @@
     &__helpertext {
         font-size: 2rem;
         margin-bottom: 2rem;
+        font-weight: bold;
     }
 
     &__list {
@@ -43,4 +44,15 @@
         margin: auto;
         margin-bottom: 2rem;
     }
+}
+
+
+.espnGuide {
+    &__image {
+        width: 100%;
+        margin: 5rem 0;
+        box-shadow: 0 1.5rem 4rem rgba($black-color, .4);
+        border-radius: 1rem;
+    }
+
 }

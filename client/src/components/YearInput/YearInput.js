@@ -44,8 +44,9 @@ class YearInput extends Component {
                         autoComplete="off"
                         placeholder="Year" 
                         value={this.state.input}
+                        type="number"
                         />
-                    <button onClick={this.onSubmit} type="button" className="btn btn--blue">Submit</button>
+                    <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
                 </form>
             </Jumbotron>
         )

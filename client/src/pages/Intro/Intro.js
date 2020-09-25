@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import Header from './Header'
-import About from './About'
-import Platforms from './Platforms'
-
+import Header from './Header';
+import About from './About';
+import Platforms from './Platforms';
 import Footer from '../../components/Footer'
 
 const style = {

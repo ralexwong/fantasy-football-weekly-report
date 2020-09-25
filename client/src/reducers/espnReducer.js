@@ -14,7 +14,7 @@ import {
     SET_ESPN_TITLE,
     SET_ESPN_CAPTION,
     SET_ESPN_SEASON,
-    SET_ESPN_YEAR
+    SET_ESPN_YEAR,
 } from '../actions/types';
 import recap from './recap';
 

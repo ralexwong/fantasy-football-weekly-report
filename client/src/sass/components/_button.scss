@@ -7,7 +7,7 @@
         text-align: center;
         padding: 1% 7%;
         display: inline-block;
-        border-radius: 10rem;
+        border-radius: 1rem;
         transition: all .2s;
         position: relative;
         font-size: $default-font-size;
@@ -57,7 +57,7 @@
         }
     }
 
-    &--blue {
+    &--sleeper {
         background-color: $primary-color !important;
         color: $white-color !important;
     
@@ -96,16 +96,16 @@
     &:link,
     &:visited {
         font-size: $default-font-size;
-        color: $primary-color;
+        color: $white-color;
         display: inline-block;
         text-decoration: none;
-        border-bottom: 1px solid $primary-color;
+        border-bottom: 1px solid;
         padding: 3px;
         transition: all .2s;
     }
 
     &:hover {
-        background-color: $primary-color;
+        background-color: $white-color;
         color: $white-color;
         box-shadow: 0 1rem 2rem rgba($black-color, .15);
         transform: translateY(-2px);

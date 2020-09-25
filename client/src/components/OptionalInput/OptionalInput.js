@@ -3,19 +3,6 @@ import { connect } from 'react-redux';
 import { setEspnSeason, setEspnTitle, setEspnCaption } from '../../actions/Espn';
 import { setSleeperSeason, setSleeperTitle, setSleeperCaption } from '../../actions/Sleeper';
 
-import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from "@material-ui/core/styles";
-import TextField from '@material-ui/core/TextField';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
-    },
-  }));
-
 class OptionalInput extends Component {
     constructor() {
         super()
@@ -25,7 +12,14 @@ class OptionalInput extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({ input: e.target.value });
+        let regex = /^[A-Za-z0-9 ]+$/;
+
+        let isValid = regex.test(e.target.value);
+        if (!isValid) {
+
+        } else {
+            this.setState({ input: e.target.value });
+        }
     }
     
     onSubmit = (e) => {
@@ -33,19 +27,19 @@ class OptionalInput extends Component {
         console.log(this.state.input);
     
         if (this.props.platform === 'sleeper') {
-            if (this.props.input === 'season') {
+            if (this.props.input === 'Season') {
                 this.props.setSleeperSeason(this.state.input);
-            } else if (this.props.input === 'caption') {
+            } else if (this.props.input === 'Caption') {
                 this.props.setSleeperCaption(this.state.input)
-            } else if (this.props.input === 'title') {
+            } else if (this.props.input === 'Title') {
                 this.props.setSleeperTitle(this.state.input)
             }
         } else if (this.props.platform === 'espn') {
-            if (this.props.input === 'season') {
+            if (this.props.input === 'Season') {
                 this.props.setEspnSeason(this.state.input);
-            } else if (this.props.input === 'caption') {
+            } else if (this.props.input === 'Caption') {
                 this.props.setEspnCaption(this.state.input)
-            } else if (this.props.input === 'title') {
+            } else if (this.props.input === 'Title') {
                 this.props.setEspnTitle(this.state.input)
             }
         }
@@ -53,21 +47,18 @@ class OptionalInput extends Component {
 
 
     render() {
-        const { classes } = this.props;
         return (
             <>
-                <form onSubmit={this.onSubmit} className={classes.root} noValidate autoComplete="off">
-                    <TextField
-                     id="outlined-basic" 
-                     label={this.props.input}
-                     variant="outlined" 
-                     onChange={this.handleChange}
-                     autoComplete="off"
-                     placeholder="1"
-    
+                <form onSubmit={this.onSubmit} className="espnForm">
+                    <input
+                        className="sleeper__input"
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        placeholder={this.props.input} 
+                        value={this.state.input}
                     />
                 </form>
-                <button onClick={this.onSubmit} type="button" className="btn btn--blue">Submit</button>
+                <button onClick={this.onSubmit} type="button" className={this.props.platform === 'sleeper' ? "btn btn--sleeper" : "btn btn--espn"}>Submit</button>
             </>
         )
     }
@@ -80,5 +71,4 @@ export default connect(null, {
     setEspnCaption,
     setSleeperTitle, 
     setSleeperCaption
- })
- (withStyles(useStyles)(OptionalInput))
+ })(OptionalInput)

@@ -13,7 +13,14 @@ class Sleeper1 extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({ input: e.target.value });
+        let regex = /^[A-Za-z0-9 ]+$/;
+
+        let isValid = regex.test(e.target.value);
+        if (!isValid) {
+
+        } else {
+            this.setState({ input: e.target.value });
+        }
     }
 
     onSubmit = (e) => {
@@ -39,8 +46,9 @@ class Sleeper1 extends Component {
                             onChange={this.handleChange}
                             value={this.state.input}
                             autoComplete="off"
-                            placeholder="Username" />
-                    <button onClick={this.onSubmit} type="button" className="btn btn--blue">Submit</button>
+                            placeholder="Username" 
+                        />
+                    <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
                 </form>
             </Jumbotron>
         )

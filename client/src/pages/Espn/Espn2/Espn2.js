@@ -26,17 +26,19 @@ class Espn2 extends Component {
     render() {
         return (
             <Jumbotron className="sleeper__jumbotron">
-                <div className="sleeper__helpertext">
-                    <p className="bold">
-                        Please enter your ESPN league ID 2205891
-                    </p>
-                </div>
+                <p className="sleeper__helpertext">
+                    Please enter your ESPN league ID
+                    <br />
+                    (You can use my espn league if you want to try it out: <b>20294539</b>)
+                </p>
                 <form onSubmit={this.onSubmit} className="espnForm">
                     <input
                         className="sleeper__input"
                         onChange={this.handleChange}
                         autoComplete="off"
-                        placeholder="ID" />
+                        placeholder="ID" 
+                        type="number"
+                    />
                     <button onClick={this.onSubmit} type="button" className="btn btn--espn">Submit</button>
                 </form>
             </Jumbotron>
