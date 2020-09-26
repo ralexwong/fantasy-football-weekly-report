@@ -17,7 +17,7 @@ const Navagation = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Navbar color="light" light expand="md">
+    <Navbar className="navbar" color="light" light expand="md">
       <Link style={{ marginRight: '5rem' }} to="/">FFWR</Link>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
@@ -28,14 +28,14 @@ const Navagation = (props) => {
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
-                <Link to="/weekly-report-sleeper">Weekly Report</Link>
+                <Link to="/weekly-report-sleeper"><div className="dropdown-link">Weekly Report</div></Link>
               </DropdownItem>
               <DropdownItem>
-                <Link to="/overall-report-sleeper">Overall Report</Link>
+                <Link to="/overall-report-sleeper"><div className="dropdown-link">Overall Report</div></Link>
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem>
-                <Link to="/sleeper">Input</Link>
+                <Link to="/sleeper"><div className="dropdown-link">Input</div></Link>
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
@@ -46,14 +46,14 @@ const Navagation = (props) => {
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
-                <Link to="/weekly-report-espn">Weekly Report</Link>
+                <Link to="/weekly-report-espn"><div className="dropdown-link">Weekly Report</div></Link>
               </DropdownItem>
               <DropdownItem>
-                <Link to="/overall-report-espn">Overall Report</Link>
+                <Link to="/overall-report-espn"><div className="dropdown-link">Overall Report</div></Link>
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem>
-                <Link to="/espn">Input</Link>
+                <Link to="/espn"><div className="dropdown-link">Input</div></Link>
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>

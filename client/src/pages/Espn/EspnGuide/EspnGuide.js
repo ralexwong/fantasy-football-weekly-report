@@ -76,8 +76,7 @@
 // }));
 
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { Row, Col, Jumbotron } from "reactstrap"
+import { Col, Jumbotron } from "reactstrap"
 
 export default function EspnGuide() {
     return (

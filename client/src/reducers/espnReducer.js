@@ -16,7 +16,9 @@ import {
     SET_ESPN_SEASON,
     SET_ESPN_YEAR,
 } from '../actions/types';
+
 import recap from './recap';
+import points from './points';
 
 const matchups = []
 
@@ -37,7 +39,8 @@ const initialState = {
     leagues: null,
     espnMatchups: matchups,
     espnYear: 2020,
-    espnRecap: recap
+    espnRecap: recap,
+    points: points
 }
 
 

@@ -27,6 +27,8 @@ import {
     SET_SLEEPER_MATCHUPS
     
 } from '../actions/types';
+
+import points from './points';
 import recap from './recap';
 
 const matchups = []
@@ -48,6 +50,7 @@ const initialState = {
     sleeperMatchups: matchups,
     sleeperYear: 2020,
     sleeperRecap: recap,
+    sleeperGraphPPG: points
 }
 
 

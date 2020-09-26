@@ -4,7 +4,7 @@
     text-align: center;
 
     @include respond(phone) {
-        font-size: 1.75rem;
+        font-size: 1.7rem;
     }
 
     @include respond(galaxy) {

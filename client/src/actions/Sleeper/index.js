@@ -79,12 +79,12 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
 
     for (let i = 0; i < rosters.length; i++) {
         if (rosters[i].display_name.length > 8) {
-            rosters[i].display_name = rosters[i].display_name.substring(0,9);
+            rosters[i].display_name = rosters[i].display_name.substring(0,11);
         }
         // grab the necessary rosters
-        let shortenTeamName = rosters[i].display_name.toUpperCase().substring(0,4);
+        let abbrev = rosters[i].display_name.toUpperCase().substring(0,4);
         teamsInfo.push({
-            abbrev: shortenTeamName,
+            abbrev: abbrev,
             id: rosters[i].owner_id,
             name: rosters[i].display_name,
             logo: rosters[i].avatar,

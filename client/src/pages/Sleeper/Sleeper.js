@@ -1,6 +1,6 @@
 import React from "react";
 
-import YearInput from '../../components/YearInput';
+// import YearInput from '../../components/YearInput';
 import Sleeper1 from './Sleeper1';
 import Sleeper2 from './Sleeper2';
 import Sleeper3 from './Sleeper3';

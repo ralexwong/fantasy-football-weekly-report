@@ -13,20 +13,21 @@ class Sleeper1 extends Component {
     }
 
     handleChange = (e) => {
-        let regex = /^[A-Za-z0-9 ]+$/;
-
-        let isValid = regex.test(e.target.value);
-        if (!isValid) {
-
-        } else {
-            this.setState({ input: e.target.value });
-        }
+        this.setState({ input: e.target.value });
     }
 
     onSubmit = (e) => {
         e.preventDefault()
         console.log(this.state.input)
-        this.props.fetchLeagues(this.state.input, this.props.sleeperYear)
+        let regex = /^[A-Za-z0-9 ]+$/;
+
+        let isValid = regex.test(this.state.input);
+        if (!isValid) {
+            alert('Invalid characters')
+        } else {
+            this.props.fetchLeagues(this.state.input, this.props.sleeperYear)
+        }
+
     }
 
     render() {
@@ -42,6 +43,7 @@ class Sleeper1 extends Component {
                 </div>
                 <form onSubmit={this.onSubmit} className="sleeperForm">
                         <input
+                            required
                             className="sleeper__input"
                             onChange={this.handleChange}
                             value={this.state.input}

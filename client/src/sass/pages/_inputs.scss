@@ -1,5 +1,7 @@
 .inputBackground {
     min-height: 1000px;
+    border-bottom-left-radius: $border-radius-app;
+    border-bottom-right-radius: $border-radius-app;
 
     &--sleeper {
         background-image: linear-gradient(

@@ -24,5 +24,24 @@
 
 .navbar {
     font-size: 3rem;
+
+    border-top-right-radius: $border-radius-app;
+    border-top-left-radius: $border-radius-app;
 }
 
+.dropdown-menu.show {
+    animation: growDown 300ms ease-in-out forwards;
+    transform-origin: top center;
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.1)
+    }
+    100% {
+        transform: scaleY(1)
+    }
+}

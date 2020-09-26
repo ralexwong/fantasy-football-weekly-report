@@ -33,6 +33,7 @@ class Espn1 extends Component {
                 </p>
                 <form onSubmit={this.onSubmit} className="espnForm">
                     <input
+                        required
                         className="sleeper__input"
                         onChange={this.handleChange}
                         autoComplete="off"

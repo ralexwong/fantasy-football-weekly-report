@@ -61,7 +61,7 @@ class Scoreboard extends React.Component {
                             {matchups ?
                                 (matchups.map(matchup => (
                                     <ScoreboardRow
-                                        key={matchup.points1}
+                                        key={matchup.id}
                                         points1={matchup.points1}
                                         points2={matchup.points2}
                                         roster1={matchup.roster1}
@@ -93,7 +93,7 @@ class Scoreboard extends React.Component {
                         {matchups ?
                             (matchups.map(matchup => (
                                 <ScoreboardRow
-                                    key={matchup.points1}
+                                    key={matchup.id}
                                     points1={matchup.points1}
                                     points2={matchup.points2}
                                     roster1={matchup.roster1}

@@ -33,6 +33,7 @@ class Sleeper3 extends Component {
                 </div>
                 <form onSubmit={this.onSubmit} className="ui form error">
                     <input
+                        required
                         className="sleeper__input"
                         onChange={this.handleChange}
                         autoComplete="off"

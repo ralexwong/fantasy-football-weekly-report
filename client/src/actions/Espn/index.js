@@ -24,12 +24,8 @@ import axios from 'axios';
 export const fetchEspn = (id, year) => async dispatch => {
     console.log(id)
 
-    const response = await axios.get(`api/espn/fetchEspn`, {
-        params : {
-            id: id,
-            year: year
-        }
-    })
+    const response = await axios.get(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/${year}/segments/0/leagues/${id}?view=mStandings&view=mTeam`);
+
     const data = response.data;
     const teams = data.teams
     const schedule = data.schedule;
@@ -40,13 +36,13 @@ export const fetchEspn = (id, year) => async dispatch => {
     const teamsInfo = [];
     for (let i = 0; i < teams.length; i++) {
         let name = teams[i].location + " " + teams[i].nickname;
-        if (name.length > 8) {
-            name = name.substring(0,9);
-        }
+        name = name.substring(0,20)
+        let shorterName = name.substring(0,10);
         teamsInfo.push({ 
             abbrev: teams[i].abbrev, 
             id: teams[i].id, 
-            name: name, 
+            name: name,
+            shorterName: shorterName, 
             logo: teams[i].logo, 
             totalPoints: teams[i].points, 
             pointsAgainst: teams[i].record.overall.pointsAgainst, 
@@ -55,13 +51,13 @@ export const fetchEspn = (id, year) => async dispatch => {
         })
     }
 
-    // console.log(teamsInfo)
+    console.log(teamsInfo)
 
     // create the graphPoints object
     let graphPointsInfo = []
     for (let i = 0; i < teamsInfo.length; i++) {
         graphPointsInfo.push({
-            label: teamsInfo[i].name,
+            label: teamsInfo[i].shorterName,
             y: teamsInfo[i].totalPoints
         })
     }
@@ -120,11 +116,11 @@ export const fetchEspn = (id, year) => async dispatch => {
     // console.log(recapInfo)
     // set the first and last place
     let first_place = {
-        name: recapInfo[0].name,
+        name: recapInfo[0].shorterName,
         logo: recapInfo[0].logo
     }
     let last_place = {
-        name: recapInfo[recapInfo.length - 1].name,
+        name: recapInfo[recapInfo.length - 1].shorterName,
         logo: recapInfo[recapInfo.length - 1].logo
     }
 
@@ -139,7 +135,9 @@ export const fetchEspn = (id, year) => async dispatch => {
 // setting the espn week --------------------------------------------------------
 export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
 
-    console.log(espn)
+    console.log(espn);
+    console.log(espnSchedule);
+
     let topScorer = {
         name: "bob",
         score: 0,
@@ -162,10 +160,12 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
             if (espn[j].id === espnSchedule[i].away.teamId) {
                 espnSchedule[i].away.teamId = espn[j].name;
                 espnSchedule[i].away.logo = espn[j].logo;
+                espnSchedule[i].away.shorterName = espn[j].shorterName;
             }
             if (espn[j].id === espnSchedule[i].home.teamId) {
                 espnSchedule[i].home.teamId = espn[j].name;
                 espnSchedule[i].home.logo = espn[j].logo;
+                espnSchedule[i].home.shorterName = espn[j].shorterName;
             }
         }
 
@@ -173,10 +173,12 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
             roster1: espnSchedule[i].away.teamId,
             points1: espnSchedule[i].away.totalPoints,
             logo1: espnSchedule[i].away.logo,
+            shorterName1: espnSchedule[i].away.shorterName,
 
             roster2: espnSchedule[i].home.teamId,
             points2: espnSchedule[i].home.totalPoints,
-            logo2: espnSchedule[i].home.logo
+            logo2: espnSchedule[i].home.logo,
+            shorterName2: espnSchedule[i].home.shorterName
         })
     }
 
@@ -185,11 +187,11 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
         let points2 = parseFloat(matchups[i].points2);
 
         if (points1 > points2) {
-          graphPPG.push({ label: matchups[i].roster1, y: points1, color: "#00006b" });
-          graphPPG.push({ label: matchups[i].roster2, y: points2, color: "#b61e1e" });
+          graphPPG.push({ label: matchups[i].shorterName1, y: points1, color: "#00006b" });
+          graphPPG.push({ label: matchups[i].shorterName2, y: points2, color: "#b61e1e" });
         } else {
-          graphPPG.push({ label: matchups[i].roster1, y: points1, color: "#b61e1e" });
-          graphPPG.push({ label: matchups[i].roster2, y: points2, color: "#00006b" });
+          graphPPG.push({ label: matchups[i].shorterName1, y: points1, color: "#b61e1e" });
+          graphPPG.push({ label: matchups[i].shorterName2, y: points2, color: "#00006b" });
         }
     }
 
