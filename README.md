@@ -1,4 +1,4 @@
-# Fantasy-football-weekly-report
+# Fantasy-football-Weekly-Report
 
 When people play competetive games there is always anticipation or interest in their stats and data. This app is aimed towards commissioners of fantasy football leagues who like looking at leaderboards/stats and want to keep owners interested throughout the year.
 
