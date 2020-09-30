@@ -46,7 +46,7 @@ To run this project, install it locally using npm:
   <li>Go to your league settings and make the league viewable to public. (Can only be done by the league commissioner)</li>
 </ol>
 
-![Image](./client/public/images/espn-public-red-circle.png "espn-public-red-circle")
+![Image](./client/public/images/espn-public-red-circle.jpg "espn-public-red-circle")
 
 
 ## Sleeper Guide 
