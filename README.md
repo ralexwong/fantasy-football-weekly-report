@@ -1,6 +1,6 @@
 # Fantasy-football-weekly-report
 
-This app is aimed towards commissioners of fantasy football leagues who want to make things more fun. Or those who like looking at leaderboards/stats. 
+When people play competetive games there is always inticipation or interest in their stats and data. This app is aimed towards commissioners of fantasy football leagues like looking at leaderboards/stats and want to keep owners interested throughout the year.
 
 ## How it works
 
@@ -9,7 +9,8 @@ This app is aimed towards commissioners of fantasy football leagues who want to 
   <li>Depending on the platform you may need to provide more information such as username or league ID</li>
   <li>Press submit and the app will pull your leagues info through the API and download it into our database</li>
   <li>It will then pull from the database and display the stats on the screen!</li>
-  <li>For now, you will need to take a screenshot of the page. But a `print to pdf` button will eventually make its way into this app to make things easier</li>
+  <li>Press the `print to pdf` button and your report will download</li>
+  <li>There is an overall stat page and a weekly stat page</li>
 </ul>
 
 ## Visuals
@@ -21,7 +22,8 @@ This app is aimed towards commissioners of fantasy football leagues who want to 
 ## Roadmap
 
 
-The site will only be compatiatible with sleeper leagues for now. I want to have a working app before i start to integrate more platforms. Eventually ESPN and YAHOO leagues will work with this app. 
+The app is compatiable with mobile and desktop. Sleeper and ESPN leagues both work. Other platforms like Yahoo, NFL, etc will be integrated if their API is available.
+Will work on implementing GraphQL so accessing the APIs will be easier and React Native to deploy an app store version.
 
 
 ## Suggestions/Feedback
