@@ -45,6 +45,7 @@ class Cards extends Component {
             last_place_name = this.props.sleeper_last_place.name;
         }
 
+        console.log(this.props)
         
         if (this.state.width < 575) {
             return (

@@ -18,7 +18,18 @@ class OptionalInput extends Component {
         if (!isValid) {
 
         } else {
-            this.setState({ input: e.target.value });
+            let maxLength;
+
+            if (this.props.input === 'Season') {
+                maxLength = 2
+            } else if (this.props.input === 'Caption') {
+                maxLength = 100
+            } else if (this.props.input === 'Title') {
+                maxLength = 30
+            }
+
+            const message = e.target.value.slice(0, maxLength);
+            this.setState({ input: message });
         }
     }
     

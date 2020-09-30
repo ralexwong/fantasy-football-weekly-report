@@ -15,8 +15,8 @@ class ComponentToPrint extends React.Component {
 }
 
 class EspnWeeklyReport extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.componentRef = React.createRef();
 
     if (this.props.location.pathname === "/weekly-report-espn") {

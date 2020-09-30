@@ -39,7 +39,7 @@ class Sleeper2 extends Component {
 
     render() {
         return (
-            <Jumbotron className="sleeper__jumbotron">
+            <Jumbotron className="sleeper__jumbotron" ref={this.props.reference}>
                 <div className="sleeper__helpertext">
                     <p className="bold">
                         Click on one league!

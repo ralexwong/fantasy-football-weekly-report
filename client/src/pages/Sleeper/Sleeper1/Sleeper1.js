@@ -12,8 +12,11 @@ class Sleeper1 extends Component {
         }
     }
 
-    handleChange = (e) => {
-        this.setState({ input: e.target.value });
+    handleChange = (event) => {
+        const { maxLength } = event.target;
+        const message = event.target.value.slice(0, maxLength);
+
+        this.setState({ input: message });
     }
 
     onSubmit = (e) => {
@@ -44,6 +47,7 @@ class Sleeper1 extends Component {
                 <form onSubmit={this.onSubmit} className="sleeperForm">
                         <input
                             required
+                            maxlength="25"
                             className="sleeper__input"
                             onChange={this.handleChange}
                             value={this.state.input}

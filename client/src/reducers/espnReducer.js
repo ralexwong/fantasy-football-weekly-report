@@ -40,7 +40,7 @@ const initialState = {
     espnMatchups: matchups,
     espnYear: 2020,
     espnRecap: recap,
-    points: points
+    espnGraphPPG: points
 }
 
 

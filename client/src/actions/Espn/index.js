@@ -75,8 +75,9 @@ export const fetchEspn = (id, year) => async dispatch => {
         let wins = teamsInfo[i].wins;
         let losses = teamsInfo[i].losses;
 
-        let name = teamsInfo[i].name
+        let name = teamsInfo[i].name;
         let logo = teamsInfo[i].logo;
+        let shorterName = teamsInfo[i].shorterName;
 
         recapInfo.push({ 
             abbrev: abbrev,
@@ -88,6 +89,7 @@ export const fetchEspn = (id, year) => async dispatch => {
 
             name: name,
             logo: logo,
+            shorterName: shorterName
         })
     }
 
@@ -123,6 +125,8 @@ export const fetchEspn = (id, year) => async dispatch => {
         name: recapInfo[recapInfo.length - 1].shorterName,
         logo: recapInfo[recapInfo.length - 1].logo
     }
+
+    console.log(first_place)
 
     dispatch({ type: FETCH_ESPN, payload: teamsInfo });
     dispatch({ type: ESPN_SCHEDULE, payload: schedule });

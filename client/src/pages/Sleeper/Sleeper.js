@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 // import YearInput from '../../components/YearInput';
 import Sleeper1 from './Sleeper1';
@@ -11,23 +11,31 @@ import GenerateReportButton from '../../components/GenerateReportButton';
 
 import { Container, Row, Col } from "reactstrap";
 
-export default function Sleeper() {
-  return (
-    <div className="inputBackground inputBackground--sleeper">
-      <Container>
-        <Row>
-          <Col className="sleeper">
-            {/* <YearInput platform={'sleeper'} /> */}
-            <Sleeper1 />
-            <Sleeper2 />
-            <Sleeper3 />
+class Sleeper extends Component {
+  constructor() {
+    super()
 
-            <OptionalInputs platform={'sleeper'} />
-
-            <GenerateReportButton reportPage={'weekly-report-sleeper'} />
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  )
+  }
+  render() {
+    return (
+      <div className="inputBackground inputBackground--sleeper">
+        <Container>
+          <Row>
+            <Col className="sleeper">
+              {/* <YearInput platform={'sleeper'} /> */}
+              <Sleeper1 />
+              <Sleeper2 />
+              <Sleeper3 />
+  
+              <OptionalInputs platform={'sleeper'} />
+  
+              <GenerateReportButton reportPage={'weekly-report-sleeper'} />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    )
+  }
 }
+
+export default Sleeper;

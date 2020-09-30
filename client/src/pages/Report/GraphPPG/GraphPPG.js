@@ -31,7 +31,7 @@ class GraphPPG extends React.Component {
   render() {
     let font_size = ""
     if (this.state.width < 575) {
-      font_size = 7
+      font_size = 6.9
     } else {
       font_size = 12
     }

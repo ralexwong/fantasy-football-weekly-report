@@ -1,5 +1,6 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
+import ScrollToTop from './ScrollToTop';
 
 import Intronav from './components/Nav'
 
@@ -32,6 +33,7 @@ function App() {
   return (
     <Router history={history}>
       <div style={style}>
+        <ScrollToTop/>
         <Intronav />
         <Switch>
           <Route exact path="/" component={Intro} />

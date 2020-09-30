@@ -9,7 +9,6 @@ const style = {
 }
 
 class Index extends Component {
-
   constructor(props) {
     super(props) 
     this.myRef = React.createRef()

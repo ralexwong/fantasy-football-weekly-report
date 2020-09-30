@@ -7,7 +7,7 @@
         text-align: center;
         padding: 1% 7%;
         display: inline-block;
-        border-radius: 1rem;
+        border-radius: $border-radius-app;
         transition: all .2s;
         position: relative;
         font-size: $default-font-size;
@@ -40,7 +40,7 @@
         display: inline-block;
         height: 100%;
         width: 100%;
-        border-radius: 10rem;
+        border-radius: $border-radius-app;
         position: absolute;
         top: 0;
         left: 0;
