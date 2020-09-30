@@ -59,9 +59,9 @@ To run this project, install it locally using npm:
 ## Visuals
 
 
-![Image](./client/public/images/intro/overall-report-example.png "overall-report-example")  
+![Image](./client/public/images/overall-report-example.png "overall-report-example")  
 
-![Image](./client/public/images/intro/weekly-report-example.png "weekly-report-example")
+![Image](./client/public/images/weekly-report-example.png "weekly-report-example")
 
 
 ## Roadmap
