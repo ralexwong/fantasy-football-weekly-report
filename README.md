@@ -4,6 +4,7 @@ When people play competetive games there is always anticipation or interest in t
 
 ## Table of Contents
 * [Installation](#installation)
+* [Technologies](#technologies)
 * [How it works](#how-it-works)
 * [Espn Guide](#espn-guide)
 * [Sleeper Guide](#sleeper-guide)
@@ -21,6 +22,12 @@ To run this project, install it locally using npm:
  $ npm start
 ```
 
+## Technologies
+
+Project is created with:
+* Node version: 10.15
+* React version: 16.13
+* Bootstrap v4
 
 ## How it works
 
