@@ -1,9 +1,10 @@
-# Fantasy-football-weekly-report
+# Fantasy-football-Weekly-Report
 
 When people play competetive games there is always anticipation or interest in their stats and data. This app is aimed towards commissioners of fantasy football leagues who like looking at leaderboards/stats and want to keep owners interested throughout the year.
 
 ## Table of Contents
 * [Installation](#installation)
+* [Technologies](#technologies)
 * [How it works](#how-it-works)
 * [Espn Guide](#espn-guide)
 * [Sleeper Guide](#sleeper-guide)
@@ -21,6 +22,12 @@ To run this project, install it locally using npm:
  $ npm start
 ```
 
+## Technologies
+
+Project is created with:
+* Node version: 10.15
+* React version: 16.13
+* Bootstrap v4
 
 ## How it works
 
