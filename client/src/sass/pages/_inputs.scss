@@ -34,6 +34,7 @@
         background-color: inherit;
         border: none;
         padding: 1rem 2rem;
+        cursor: pointer;
 
         &--active {
             box-shadow: 0 .1rem 1rem rgba($black-color, .5);
