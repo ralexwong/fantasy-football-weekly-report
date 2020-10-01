@@ -267,21 +267,24 @@ export const fetchMatchupPoints = (week, league_id, league_info) => async dispat
     graphPPG.sort(function (a, b) { return b.y - a.y })
 
     for (let k = 0; k < matchups.length; k++) {
-        if (matchups[k].points1 > topScorer.score) {
+        let points1 = parseFloat(matchups[k].points1);
+        let points2 = parseFloat(matchups[k].points2);
+
+        if (points1 > topScorer.score) {
             topScorer.score = matchups[k].points1;
             topScorer.name = matchups[k].roster1;
             topScorer.logo = matchups[k].logo1;
         }
 
-        if (matchups[k].points2 > topScorer.score) {
+        if (points2 > topScorer.score) {
             topScorer.score = matchups[k].points2;
             topScorer.name = matchups[k].roster2;
             topScorer.logo = matchups[k].logo2;
         }
 
-        if (Math.abs(parseFloat(matchups[k].points1) - parseFloat(matchups[k].points2)) < closeOne.difference) {
-            closeOne.difference = Math.abs(parseFloat(matchups[k].points1) - parseFloat(matchups[k].points2)).toFixed(2);
-            if (parseFloat(matchups[k].points1) > parseFloat(matchups[k].points2)) {
+        if (Math.abs(points1 - points2) < closeOne.difference) {
+            closeOne.difference = Math.abs(points1 - points2).toFixed(2);
+            if (points1 > points2) {
               closeOne.name = matchups[k].roster1;
               closeOne.logo = matchups[k].logo1
             } else {

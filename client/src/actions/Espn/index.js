@@ -228,6 +228,8 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
         }
     }
 
+    console.log(matchups)
+
     dispatch({ type: SET_ESPN_GRAPH_PPG, payload: graphPPG })
     dispatch({ type: SET_ESPN_CLOSE_ONE, payload: closeOne })
     dispatch({ type: SET_ESPN_TOP_SCORER, payload: topScorer })
