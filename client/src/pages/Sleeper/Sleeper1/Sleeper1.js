@@ -8,7 +8,8 @@ class Sleeper1 extends Component {
     constructor() {
         super()
         this.state = {
-            input: ""
+            input: "",
+            loading: false
         }
     }
 
@@ -20,8 +21,10 @@ class Sleeper1 extends Component {
     }
 
     onSubmit = (e) => {
-        e.preventDefault()
-        console.log(this.state.input)
+        e.preventDefault();
+        this.onLoading();
+        console.log(this.state.input);
+
         let regex = /^[A-Za-z0-9 ]+$/;
 
         let isValid = regex.test(this.state.input);
@@ -31,6 +34,14 @@ class Sleeper1 extends Component {
             this.props.fetchLeagues(this.state.input, this.props.sleeperYear)
         }
 
+    }
+
+    onLoading = () => {
+        this.setState({ loading: true });
+        setTimeout(() => { 
+            this.setState({ loading: false })
+        }, 
+        1000);
     }
 
     render() {
@@ -47,14 +58,23 @@ class Sleeper1 extends Component {
                 <form onSubmit={this.onSubmit} className="sleeperForm">
                         <input
                             required
-                            maxlength="25"
+                            maxLength="25"
                             className="sleeper__input"
                             onChange={this.handleChange}
                             value={this.state.input}
                             autoComplete="off"
                             placeholder="Username" 
                         />
-                    <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
+                    {this.state.loading ? (
+                        <button class="btn btn--sleeper" type="button" disabled>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button>
+                    ) : (
+                        <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
+                    )
+                    
+                }
                 </form>
             </Jumbotron>
         )

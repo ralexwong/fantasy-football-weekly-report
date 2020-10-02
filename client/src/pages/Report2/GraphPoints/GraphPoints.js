@@ -20,8 +20,6 @@ class GraphPoints extends React.Component {
 	}
 
   render() {
-    console.log(this.props)
-
     let data = [];
     if (this.props.espnReport && this.props.espnGraphPoints) {
       data = this.props.espnGraphPoints

@@ -44,9 +44,7 @@ class Cards extends Component {
             last_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${this.props.sleeper_last_place.logo}`;
             last_place_name = this.props.sleeper_last_place.name;
         }
-
-        console.log(this.props)
-        
+            
         if (this.state.width < 575) {
             return (
                 <>

@@ -6,7 +6,6 @@ import Table from 'react-bootstrap/Table'
 
 class Recap extends Component {
   render() {
-    console.log(this.props)
     let week = "";
     if (this.props.espnReport && this.props.espnWeek) {
       week = this.props.espnWeek

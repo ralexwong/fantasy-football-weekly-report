@@ -8,7 +8,8 @@ class Espn1 extends Component {
     constructor() {
         super()
         this.state = {
-            input: ""
+            input: "",
+            loading: false
         }
     }
     
@@ -21,8 +22,17 @@ class Espn1 extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+        this.onLoading();
         console.log(this.state.input);
         this.props.fetchEspn(this.state.input, this.props.espnYear);
+    }
+
+    onLoading = () => {
+        this.setState({ loading: true });
+        setTimeout(() => { 
+            this.setState({ loading: false })
+        }, 
+        1500);
     }
 
     render() {
@@ -44,7 +54,15 @@ class Espn1 extends Component {
                         type="number"
                         value={this.state.input}
                     />
-                    <button onClick={this.onSubmit} type="button" className="btn btn--espn">Submit</button>
+                {this.state.loading ? (
+                        <button class="btn btn--espn" type="button" disabled>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button>
+                    ) : (
+                        <button onClick={this.onSubmit} type="button" className="btn btn--espn">Submit</button>
+                    )
+                }
                 </form>
             </Jumbotron>
         )

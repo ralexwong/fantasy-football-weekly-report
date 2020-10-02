@@ -7,10 +7,7 @@ import { Jumbotron } from 'reactstrap';
 class Sleeper2 extends Component {
     state = {
         active: ''
-    }
-    componentDidMount() {
-        console.log(this.props);
-    }
+    }   
 
     onClick = (e) => {
         console.log(e.target.getAttribute('id'));

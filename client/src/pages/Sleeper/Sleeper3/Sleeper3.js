@@ -8,7 +8,8 @@ class Sleeper3 extends Component {
     constructor() {
         super()
         this.state = {
-            week: ""
+            week: "",
+            loading: false
         }
     }
 
@@ -20,9 +21,18 @@ class Sleeper3 extends Component {
     }
 
     onSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        this.onLoading();
         console.log(this.state.week);
         this.props.fetchMatchupPoints(this.state.week, this.props.league_id, this.props.league_info);
+    }
+
+    onLoading = () => {
+        this.setState({ loading: true });
+        setTimeout(() => { 
+            this.setState({ loading: false })
+        }, 
+        2000);
     }
 
     render() {
@@ -36,7 +46,7 @@ class Sleeper3 extends Component {
                 <form onSubmit={this.onSubmit} className="ui form error">
                     <input
                         required
-                        maxlength="2"
+                        maxLength="2"
                         className="sleeper__input"
                         onChange={this.handleChange}
                         autoComplete="off"
@@ -44,7 +54,15 @@ class Sleeper3 extends Component {
                         type="number"
                         value={this.state.input}
                     />
-                    <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
+                {this.state.loading ? (
+                        <button class="btn btn--sleeper" type="button" disabled>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button>
+                    ) : (
+                        <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
+                    )
+                }
                 </form>
             </Jumbotron>
         )

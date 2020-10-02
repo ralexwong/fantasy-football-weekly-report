@@ -8,7 +8,8 @@ class Espn2 extends Component {
     constructor() {
         super()
         this.state = {
-            input: ""
+            input: "",
+            loading: false
         }
     }
     handleChange = (event) => {
@@ -19,13 +20,21 @@ class Espn2 extends Component {
     }
 
     onSubmit = (e) => {
-        e.preventDefault()
-        console.log()
+        e.preventDefault();
+        this.onLoading();
         this.props.setEspnWeek(
             parseInt(this.state.input), 
             this.props.espn, 
             this.props.espnSchedule
         )
+    }
+
+    onLoading = () => {
+        this.setState({ loading: true });
+        setTimeout(() => { 
+            this.setState({ loading: false })
+        }, 
+        2000);
     }
 
     render() {
@@ -46,7 +55,15 @@ class Espn2 extends Component {
                         value={this.state.input}
                         maxLength={2}
                     />
-                    <button onClick={this.onSubmit} type="button" className="btn btn--espn">Submit</button>
+                {this.state.loading ? (
+                        <button class="btn btn--espn" type="button" disabled>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button>
+                    ) : (
+                        <button onClick={this.onSubmit} type="button" className="btn btn--espn">Submit</button>
+                    )
+                }
                 </form>
             </Jumbotron>
         )
