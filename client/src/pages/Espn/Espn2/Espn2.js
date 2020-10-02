@@ -50,7 +50,7 @@ class Espn2 extends Component {
                         className="sleeper__input"
                         onChange={this.handleChange}
                         autoComplete="off"
-                        placeholder="week"
+                        placeholder={this.props.espnWeek ? this.props.espnWeek : "Week"}
                         type="number"
                         value={this.state.input}
                         maxLength={2}
@@ -74,6 +74,7 @@ const mapStateToProps = (state) => {
     return {
         espn: state.espn.espn,
         espnSchedule: state.espn.espnSchedule,
+        espnWeek: state.espn.espnWeek,
     }
 }
 

@@ -50,7 +50,7 @@ class Sleeper3 extends Component {
                         className="sleeper__input"
                         onChange={this.handleChange}
                         autoComplete="off"
-                        placeholder="Week"
+                        placeholder={this.props.sleeperWeek ? this.props.sleeperWeek : 'Week'}
                         type="number"
                         value={this.state.input}
                     />
@@ -72,7 +72,9 @@ class Sleeper3 extends Component {
 const mapStateToProps = (state) => {
     return { 
         league_id: state.sleeper.league_id,
-        league_info: state.sleeper.league_info
+        league_info: state.sleeper.league_info,
+
+        sleeperWeek: state.sleeper.sleeperWeek
     }
 }
 

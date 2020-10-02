@@ -1,6 +1,7 @@
 import {
     FETCH_ESPN,
     SET_ESPN_WEEK,
+    ESPN_ID,
     ESPN_SCHEDULE,
     ESPN_RECAP,
     ESPN_FIRST_PLACE,
@@ -134,6 +135,7 @@ export const fetchEspn = (id, year) => async dispatch => {
     dispatch({ type: ESPN_FIRST_PLACE, payload: first_place })
     dispatch({ type: ESPN_LAST_PLACE, payload: last_place })
     dispatch({ type: ESPN_GRAPH_POINTS, payload: graphPointsInfo })
+    dispatch({ type: ESPN_ID, payload: id })
 }
 
 // setting the espn week --------------------------------------------------------

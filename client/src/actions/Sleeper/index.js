@@ -20,7 +20,8 @@ import {
     SET_SLEEPER_CLOSE_ONE,
     SET_SLEEPER_TOP_SCORER,
     SET_SLEEPER_WEEK,
-    SET_SLEEPER_MATCHUPS
+    SET_SLEEPER_MATCHUPS,
+    SET_SLEEPER_USERNAME,
 
 } from '../types';
 import axios from 'axios';
@@ -52,6 +53,7 @@ export const fetchLeagues = (username, year) => async dispatch => {
         return;
     }
     dispatch({ type: FETCH_LEAGUES, payload: league_data });
+    dispatch({ type: SET_SLEEPER_USERNAME, payload: username })
 }
 
 // Grabs the leagues -------------------------------------------------

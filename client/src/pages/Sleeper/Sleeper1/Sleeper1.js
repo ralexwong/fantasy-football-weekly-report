@@ -63,7 +63,7 @@ class Sleeper1 extends Component {
                             onChange={this.handleChange}
                             value={this.state.input}
                             autoComplete="off"
-                            placeholder="Username" 
+                            placeholder={this.props.sleeperUsername ? this.props.sleeperUsername : 'Username'}
                         />
                     {this.state.loading ? (
                         <button class="btn btn--sleeper" type="button" disabled>
@@ -84,6 +84,7 @@ class Sleeper1 extends Component {
 const mapStateToProps = (state) => {
     return { 
         nullUsername: state.nullUsername,
+        sleeperUsername: state.sleeper.sleeperUsername,
         sleeperYear: state.sleeper.sleeperYear,
      }
 }

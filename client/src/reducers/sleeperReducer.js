@@ -24,7 +24,8 @@ import {
     SET_SLEEPER_CLOSE_ONE,
     SET_SLEEPER_TOP_SCORER,
     SET_SLEEPER_WEEK,
-    SET_SLEEPER_MATCHUPS
+    SET_SLEEPER_MATCHUPS,
+    SET_SLEEPER_USERNAME
     
 } from '../actions/types';
 
@@ -56,6 +57,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case SET_SLEEPER_USERNAME:
+            return { ...state, sleeperUsername: action.payload }
         case FETCH_LEAGUES:
             // reassign nullUsername: null to clear the state again in case they entered the wrong username before
             return { ...state, nullUsername: null, leagues: action.payload }

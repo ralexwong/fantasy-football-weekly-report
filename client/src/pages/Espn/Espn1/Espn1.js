@@ -50,7 +50,7 @@ class Espn1 extends Component {
                         className="sleeper__input"
                         onChange={this.handleChange}
                         autoComplete="off"
-                        placeholder="ID" 
+                        placeholder={this.props.espnID ? this.props.espnID : "ID"}
                         type="number"
                         value={this.state.input}
                     />
@@ -72,6 +72,7 @@ class Espn1 extends Component {
 const mapStateToProps = (state) => {
     return {
         espnYear: state.espn.espnYear,
+        espnID: state.espn.espnID,
     }
 }
 

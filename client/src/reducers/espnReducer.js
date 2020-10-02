@@ -1,6 +1,7 @@
 import {
     FETCH_ESPN,
     SET_ESPN_WEEK,
+    ESPN_ID,
     ESPN_SCHEDULE,
     ESPN_RECAP,
     ESPN_FIRST_PLACE,
@@ -48,6 +49,8 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case FETCH_ESPN:
             return { ...state, espn: action.payload }
+        case ESPN_ID:
+            return { ...state, espnID: action.payload }
         case SET_ESPN_WEEK:
             return { ...state, espnWeek: action.payload }
         case ESPN_SCHEDULE:
