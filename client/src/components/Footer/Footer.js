@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 class Footer extends Component {
   render() {
@@ -20,8 +22,8 @@ class Footer extends Component {
           <Col xs='4'>
             <div className='footer__navigation'>
               <ul className='footer__list'>
-                <li className='footer__item'><Link to='#' className='footer__link'>Contact Me</Link></li>
-                <li className='footer__item'><Link to='#' className='footer__link'>Terms</Link></li>
+                <li className='footer__item'><Link to='https://github.com/ralexwong' className='footer__link'><GitHubIcon /> </Link></li>
+                <li className='footer__item'><Link to='https://www.linkedin.com/in/iamwong/' className='footer__link'><LinkedInIcon /></Link></li>
               </ul>
             </div>
           </Col>

@@ -45,8 +45,17 @@
         display: block;
         font-size: 2rem;
         margin: auto;
-        margin-bottom: 2rem;
+
+        &--error {
+            border: 1px solid red;
+        }
     }
+}
+
+.helperText {
+    margin-bottom: 2rem;
+    margin-right: 4rem;
+    font-size: 1.3rem;
 }
 
 

@@ -54,15 +54,15 @@ class Sleeper3 extends Component {
                         type="number"
                         value={this.state.input}
                     />
-                {this.state.loading ? (
+                    <p className='helperText'></p>
+                    {this.state.loading ? (
                         <button class="btn btn--sleeper" type="button" disabled>
                             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Loading...
                         </button>
                     ) : (
                         <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
-                    )
-                }
+                    )}
                 </form>
             </Jumbotron>
         )

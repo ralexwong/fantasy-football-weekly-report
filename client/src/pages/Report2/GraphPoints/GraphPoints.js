@@ -2,8 +2,6 @@ import React from 'react';
 import CanvasJSReact from '../../../canvasjs.react';
 
 import { connect } from 'react-redux';
-import { setGraphPointsToState, } from '../../../actions/Sleeper';
-
 import { Row, Col } from "reactstrap"
 
 const CanvasJS = CanvasJSReact.CanvasJS;
@@ -21,10 +19,10 @@ class GraphPoints extends React.Component {
 
   render() {
     let data = [];
-    if (this.props.espnReport && this.props.espnGraphPoints) {
-      data = this.props.espnGraphPoints
-    } else if (this.props.sleeperReport && this.props.sleeperGraphPoints) {
-      data = this.props.sleeperGraphPoints  
+    if (this.props.espnReport && this.props.espnPowerRanking) {
+      data = this.props.espnPowerRanking
+    } else if (this.props.sleeperReport && this.props.sleeperPowerRanking) {
+      data = this.props.sleeperPowerRanking  
     } else {
       data = [
         { y:  1500, label: "User1" },
@@ -40,7 +38,7 @@ class GraphPoints extends React.Component {
 			animationEnabled: true,
 			theme: "light2",
 			title:{
-				text: "Total Points"
+				text: "Power Rankings"
 			},
 			axisX: {
 				reversed: true,
@@ -70,14 +68,14 @@ class GraphPoints extends React.Component {
 const mapStateToProps = (state) => {
   return { 
     sleeperReport: state.sleeper.sleeperReport,
-    sleeperGraphPoints: state.sleeper.sleeperGraphPoints,
+    sleeperPowerRanking: state.sleeper.sleeperPowerRanking,
 
     espnReport: state.espn.espnReport,
-    espnGraphPoints: state.espn.espnGraphPoints,
+    espnPowerRanking: state.espn.espnPowerRanking,
   }
 }
 
-export default connect(mapStateToProps, { setGraphPointsToState, })(GraphPoints)
+export default connect(mapStateToProps)(GraphPoints)
 
 
 

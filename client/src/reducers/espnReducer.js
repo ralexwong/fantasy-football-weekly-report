@@ -7,7 +7,7 @@ import {
     ESPN_FIRST_PLACE,
     ESPN_LAST_PLACE,
     SET_ESPN_REPORT,
-    ESPN_GRAPH_POINTS,
+    ESPN_POWER_RANKING,
     SET_ESPN_MATCHUPS,
     SET_ESPN_CLOSE_ONE,
     SET_ESPN_TOP_SCORER,
@@ -63,8 +63,8 @@ export default (state = initialState, action) => {
             return { ...state, espn_last_place: action.payload }
         case SET_ESPN_REPORT:
             return { ...state, espnReport: action.payload }
-        case ESPN_GRAPH_POINTS: 
-            return { ...state, espnGraphPoints: action.payload }
+        case ESPN_POWER_RANKING: 
+            return { ...state, espnPowerRanking: action.payload }
         case SET_ESPN_MATCHUPS:
             return { ...state, espnMatchups: action.payload }
         case SET_ESPN_CLOSE_ONE:

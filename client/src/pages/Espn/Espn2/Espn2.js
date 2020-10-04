@@ -55,6 +55,7 @@ class Espn2 extends Component {
                         value={this.state.input}
                         maxLength={2}
                     />
+                    <p className='helperText'></p>
                 {this.state.loading ? (
                         <button class="btn btn--espn" type="button" disabled>
                             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

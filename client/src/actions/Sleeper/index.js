@@ -1,10 +1,8 @@
 import {
     FETCH_LEAGUES,
-    INVALID_USERNAME,
     FETCH_LEAGUE_INFO,
     SET_LEAGUE_ID,
     FETCH_MATCHUPPOINTS,
-    SET_GRAPH_POINTS_TO_STATE,
     SET_WAIVERS_TO_STATE,
     SET_SLEEPER_REPORT,
     SET_ESPN_REPORT,
@@ -16,7 +14,7 @@ import {
     SLEEPER_RECAP,
     SLEEPER_FIRST_PLACE,
     SLEEPER_LAST_PLACE,
-    SLEEPER_GRAPH_POINTS,
+    SLEEPER_POWER_RANKING,
     SET_SLEEPER_CLOSE_ONE,
     SET_SLEEPER_TOP_SCORER,
     SET_SLEEPER_WEEK,
@@ -39,6 +37,8 @@ export const fetchLeagues = (username, year) => async dispatch => {
     // if they pass through a username that isn't valid
     if (data === null) {
         console.log("is not valid username");
+        dispatch({ type: SET_SLEEPER_USERNAME, payload: null })
+        return
     } else {
         console.log(`${username}'s user_id: ${data.user_id}`);
 
@@ -48,10 +48,6 @@ export const fetchLeagues = (username, year) => async dispatch => {
         league_data = leagues.data;
     }
 
-    if (league_data === "is not valid username") {
-        await dispatch({ type: INVALID_USERNAME, payload: league_data });
-        return;
-    }
     dispatch({ type: FETCH_LEAGUES, payload: league_data });
     dispatch({ type: SET_SLEEPER_USERNAME, payload: username })
 }
@@ -101,19 +97,22 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
 
     // console.log(teamsInfo);
 
-    // create the graphPoints object
-    let graphPointsInfo = []
+    // create the powerRanking object
+    let powerRanking = []
     for (let i = 0; i < teamsInfo.length; i++) {
-        graphPointsInfo.push({
+
+        const winsCalculation = (teamsInfo[i].totalPoints * (teamsInfo[i].wins / (teamsInfo[i].wins + teamsInfo[i].losses)));
+        const ppg = parseFloat((teamsInfo[i].totalPoints / ((teamsInfo[i].wins) + (teamsInfo[i].losses))).toFixed(2));
+        const score = teamsInfo[i].totalPoints + winsCalculation + ppg
+
+        powerRanking.push({
             label: teamsInfo[i].name,
-            y: teamsInfo[i].totalPoints
+            y: score
         })
     }
 
-    // console.log(graphPointsInfo)
-
-    // sorts the graphPointsInfo by points
-    graphPointsInfo.sort(function (a, b) { return b.y - a.y })
+    // sorts the powerRanking by points
+    powerRanking.sort(function (a, b) { return b.y - a.y })
 
     // create the recap object
     let recapInfo = []
@@ -178,7 +177,7 @@ export const fetchLeagueInfo = (league_id) => async dispatch => {
     dispatch({ type: SLEEPER_RECAP, payload: recapInfo });
     dispatch({ type: SLEEPER_FIRST_PLACE, payload: first_place })
     dispatch({ type: SLEEPER_LAST_PLACE, payload: last_place })
-    dispatch({ type: SLEEPER_GRAPH_POINTS, payload: graphPointsInfo })
+    dispatch({ type: SLEEPER_POWER_RANKING, payload: powerRanking })
 
     dispatch({ type: FETCH_LEAGUE_INFO, payload: rosters }) 
 }
@@ -313,13 +312,6 @@ export const fetchMatchupPoints = (week, league_id, league_info) => async dispat
 // export const fetchPayout = () => async dispatch => {
 //     const response = await axios.get(``)
 // }
-
-// push graph points to state ---------------------------------------
-
-export const setGraphPointsToState = (data) => dispatch => {
-    console.log(data);
-    dispatch({ type: SET_GRAPH_POINTS_TO_STATE, payload: data})
-}
 
 // push waivers data to state -------------------------------------
 

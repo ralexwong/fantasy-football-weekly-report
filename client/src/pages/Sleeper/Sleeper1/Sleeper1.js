@@ -45,6 +45,10 @@ class Sleeper1 extends Component {
     }
 
     render() {
+        let error = false
+        if (this.props.sleeperUsername === null) {
+            error = true
+        }
         return (
             <Jumbotron className="sleeper__jumbotron">
                 <div className="sleeper__helpertext">
@@ -59,22 +63,25 @@ class Sleeper1 extends Component {
                         <input
                             required
                             maxLength="25"
-                            className="sleeper__input"
+                            className={`sleeper__input ${error ? 'sleeper__input--error' : ''}`}
                             onChange={this.handleChange}
                             value={this.state.input}
                             autoComplete="off"
                             placeholder={this.props.sleeperUsername ? this.props.sleeperUsername : 'Username'}
                         />
+                        {error ? (
+                            <p className='helperText red'>This username cannot be found</p>
+                        ) : (
+                            <p className='helperText'></p>
+                        )}
                     {this.state.loading ? (
-                        <button class="btn btn--sleeper" type="button" disabled>
+                        <button className="btn btn--sleeper" type="button" disabled>
                             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Loading...
                         </button>
                     ) : (
                         <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
-                    )
-                    
-                }
+                    )}
                 </form>
             </Jumbotron>
         )
@@ -83,7 +90,6 @@ class Sleeper1 extends Component {
 
 const mapStateToProps = (state) => {
     return { 
-        nullUsername: state.nullUsername,
         sleeperUsername: state.sleeper.sleeperUsername,
         sleeperYear: state.sleeper.sleeperYear,
      }

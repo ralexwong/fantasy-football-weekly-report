@@ -1,12 +1,10 @@
 import {
     FETCH_LEAGUES,
-    INVALID_USERNAME,
     FETCH_LEAGUE_INFO,
     SET_LEAGUE_ID,
     FETCH_MATCHUPPOINTS,
     FETCH_ROSTERS,
     REFACTORED_DATA,
-    SET_GRAPH_POINTS_TO_STATE,
     SET_WAIVERS_TO_STATE,
     LAST_PLACE_TO_STATE,
     FIRST_PLACE_TO_STATE,
@@ -20,7 +18,7 @@ import {
     SLEEPER_RECAP,
     SLEEPER_FIRST_PLACE,
     SLEEPER_LAST_PLACE,
-    SLEEPER_GRAPH_POINTS,
+    SLEEPER_POWER_RANKING,
     SET_SLEEPER_CLOSE_ONE,
     SET_SLEEPER_TOP_SCORER,
     SET_SLEEPER_WEEK,
@@ -47,7 +45,6 @@ for (let i = 0; i < 5; i++) {
 }
 
 const initialState = {
-    nullUsername: null,
     sleeperMatchups: matchups,
     sleeperYear: 2020,
     sleeperRecap: recap,
@@ -61,9 +58,7 @@ export default (state = initialState, action) => {
             return { ...state, sleeperUsername: action.payload }
         case FETCH_LEAGUES:
             // reassign nullUsername: null to clear the state again in case they entered the wrong username before
-            return { ...state, nullUsername: null, leagues: action.payload }
-        case INVALID_USERNAME:
-            return { ...state, nullUsername: action.payload }
+            return { ...state, leagues: action.payload }
         case FETCH_LEAGUE_INFO:
             return { ...state, league_info: action.payload }
         case SET_LEAGUE_ID:
@@ -76,8 +71,6 @@ export default (state = initialState, action) => {
             return { ...state, sleeperGraphPPG: action.payload }
         case REFACTORED_DATA:
             return { ...state, sleeperGraphPPG: action.payload }
-        case SET_GRAPH_POINTS_TO_STATE:
-            return { ...state, sleeperGraphPoints: action.payload }
         case SET_WAIVERS_TO_STATE:
             return { ...state, waivers: action.payload }
         case LAST_PLACE_TO_STATE:
@@ -102,8 +95,8 @@ export default (state = initialState, action) => {
             return { ...state, sleeper_first_place: action.payload }
         case SLEEPER_LAST_PLACE: 
             return { ...state, sleeper_last_place: action.payload }
-        case SLEEPER_GRAPH_POINTS:
-            return { ...state, sleeperGraphPoints: action.payload }
+        case SLEEPER_POWER_RANKING:
+            return { ...state, sleeperPowerRanking: action.payload }
         case SET_SLEEPER_CLOSE_ONE:
             return { ...state, sleeperCloseOne: action.payload }
         case SET_SLEEPER_TOP_SCORER:

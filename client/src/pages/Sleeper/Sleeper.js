@@ -12,10 +12,6 @@ import GenerateReportButton from '../../components/GenerateReportButton';
 import { Container, Row, Col } from "reactstrap";
 
 class Sleeper extends Component {
-  constructor() {
-    super()
-
-  }
   render() {
     return (
       <div className="inputBackground inputBackground--sleeper">

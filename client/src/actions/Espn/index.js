@@ -8,7 +8,7 @@ import {
     ESPN_LAST_PLACE,
     SET_ESPN_REPORT,
     SET_SLEEPER_REPORT,
-    ESPN_GRAPH_POINTS,
+    ESPN_POWER_RANKING,
     SET_ESPN_MATCHUPS,
     SET_ESPN_CLOSE_ONE,
     SET_ESPN_TOP_SCORER,
@@ -23,15 +23,18 @@ import axios from 'axios';
 
 // grab the espn league info -------------------------------------
 export const fetchEspn = (id, year) => async dispatch => {
-    console.log(id)
-
-    const response = await axios.get(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/${year}/segments/0/leagues/${id}?view=mStandings&view=mTeam`);
+    console.log(id);
+    let response;
+    try {
+        response = await axios.get(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/${year}/segments/0/leagues/${id}?view=mStandings&view=mTeam`);
+    } catch (e) {
+        dispatch({ type: ESPN_ID, payload: null })
+        return
+    }
 
     const data = response.data;
     const teams = data.teams
     const schedule = data.schedule;
-
-    console.log(data)
 
     // teams info object for overall report page
     const teamsInfo = [];
@@ -55,16 +58,21 @@ export const fetchEspn = (id, year) => async dispatch => {
     console.log(teamsInfo)
 
     // create the graphPoints object
-    let graphPointsInfo = []
+    let powerRanking = []
     for (let i = 0; i < teamsInfo.length; i++) {
-        graphPointsInfo.push({
+
+        const winsCalculation = (teamsInfo[i].totalPoints * (teamsInfo[i].wins / (teamsInfo[i].wins + teamsInfo[i].losses)));
+        const ppg = parseFloat((teamsInfo[i].totalPoints / ((teamsInfo[i].wins) + (teamsInfo[i].losses))).toFixed(2));
+        const score = teamsInfo[i].totalPoints + winsCalculation + ppg
+
+        powerRanking.push({
             label: teamsInfo[i].shorterName,
-            y: teamsInfo[i].totalPoints
+            y: score
         })
     }
 
-    // sorts the graphPointsInfo by points
-    graphPointsInfo.sort(function (a, b) { return b.y - a.y })
+    // sorts the powerRanking by points
+    powerRanking.sort(function (a, b) { return b.y - a.y })
 
     // create the recap object
     let recapInfo = []
@@ -134,7 +142,7 @@ export const fetchEspn = (id, year) => async dispatch => {
     dispatch({ type: ESPN_RECAP, payload: recapInfo });
     dispatch({ type: ESPN_FIRST_PLACE, payload: first_place })
     dispatch({ type: ESPN_LAST_PLACE, payload: last_place })
-    dispatch({ type: ESPN_GRAPH_POINTS, payload: graphPointsInfo })
+    dispatch({ type: ESPN_POWER_RANKING, payload: powerRanking })
     dispatch({ type: ESPN_ID, payload: id })
 }
 

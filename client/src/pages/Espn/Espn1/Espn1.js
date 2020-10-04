@@ -36,6 +36,10 @@ class Espn1 extends Component {
     }
 
     render() {
+        let error = false
+        if (this.props.espnID === null) {
+            error = true
+        }
         return (
             <Jumbotron className="sleeper__jumbotron">
                 <p className="sleeper__helpertext">
@@ -46,23 +50,27 @@ class Espn1 extends Component {
                 <form onSubmit={this.onSubmit} className="espnForm">
                     <input
                         required
-                        maxlength="10"
-                        className="sleeper__input"
+                        maxLength="10"
+                        className={`sleeper__input ${error ? 'sleeper__input--error' : ''}`}
                         onChange={this.handleChange}
                         autoComplete="off"
                         placeholder={this.props.espnID ? this.props.espnID : "ID"}
                         type="number"
                         value={this.state.input}
                     />
-                {this.state.loading ? (
-                        <button class="btn btn--espn" type="button" disabled>
+                    {error ? (
+                        <p className='helperText red'>This league cannot be found</p>
+                    ) : (
+                        <p className='helperText'></p>
+                    )}
+                    {this.state.loading ? (
+                        <button className="btn btn--espn" type="button" disabled>
                             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Loading...
                         </button>
                     ) : (
                         <button onClick={this.onSubmit} type="button" className="btn btn--espn">Submit</button>
-                    )
-                }
+                    )}
                 </form>
             </Jumbotron>
         )

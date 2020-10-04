@@ -14,11 +14,6 @@ import GenerateReportButton from '../../components/GenerateReportButton';
 import { Container, Row, Col } from "reactstrap"
 
 class Espn extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         return (
             <div className="inputBackground inputBackground--espn">
