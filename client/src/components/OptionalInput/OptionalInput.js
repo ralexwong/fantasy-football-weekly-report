@@ -68,6 +68,8 @@ class OptionalInput extends Component {
                         placeholder={this.props.input} 
                         value={this.state.input}
                     />
+                    <p className='helperText'></p>
+
                 </form>
                 <button onClick={this.onSubmit} type="button" className={this.props.platform === 'sleeper' ? "btn btn--sleeper" : "btn btn--espn"}>Submit</button>
             </>

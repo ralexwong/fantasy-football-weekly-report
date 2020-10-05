@@ -57,7 +57,7 @@ class Espn2 extends Component {
                     />
                     <p className='helperText'></p>
                 {this.state.loading ? (
-                        <button class="btn btn--espn" type="button" disabled>
+                        <button className="btn btn--espn" type="button" disabled>
                             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Loading...
                         </button>
