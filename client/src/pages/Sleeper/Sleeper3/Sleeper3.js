@@ -17,7 +17,11 @@ class Sleeper3 extends Component {
         const { maxLength } = event.target;
         const message = event.target.value.slice(0, maxLength);
 
-        this.setState({ week: message });
+        if (message < 1) {
+
+        } else {
+            this.setState({ week: message });
+        }
     }
 
     onSubmit = (e) => {

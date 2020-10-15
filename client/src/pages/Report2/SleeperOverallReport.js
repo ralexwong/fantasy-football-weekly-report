@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { exportComponentAsPNG } from "react-component-export-image";
 import { createSleeperOverallReport } from '../../actions/Sleeper';
 import Report2 from "./Report2"
@@ -27,11 +28,16 @@ class SleeperOverallReport extends Component {
   render() {
     return (
       <>
-        <ComponentToPrint ref={this.componentRef} />
-        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+        <div style={{ textAlign: "center", marginTop: "3rem" }}>
           <button className="btn btn--sleeper" onClick={() => exportComponentAsPNG(this.componentRef)}>
             Click here for your report to be converted to an image!
-        </button>
+          </button>
+        </div>
+        <ComponentToPrint ref={this.componentRef} />
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <button className="btn btn--sleeper">
+            <Link to="/weekly-report-sleeper">Click here for the weekly report!</Link>
+          </button>
         </div>
       </>
     )

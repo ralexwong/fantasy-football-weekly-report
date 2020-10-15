@@ -15,8 +15,12 @@ class Espn2 extends Component {
     handleChange = (event) => {
         const { maxLength } = event.target;
         const message = event.target.value.slice(0, maxLength);
-        
-        this.setState({ input: message });
+
+        if (message < 1) {
+
+        } else {
+            this.setState({ input: message });
+        }
     }
 
     onSubmit = (e) => {
