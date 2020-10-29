@@ -36,9 +36,11 @@ class EspnWeeklyReport extends Component {
         </div>
           <ComponentToPrint ref={this.componentRef} />
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+        <Link to="/overall-report-espn">
           <button className="btn btn--espn">
-            <Link to="/overall-report-espn">Click here for the overall report!</Link>
+           Click here for the overall report!
           </button>
+        </Link>
         </div>
       </>
     )

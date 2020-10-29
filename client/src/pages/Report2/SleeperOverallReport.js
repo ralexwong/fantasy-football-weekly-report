@@ -35,9 +35,11 @@ class SleeperOverallReport extends Component {
         </div>
         <ComponentToPrint ref={this.componentRef} />
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+        <Link to="/weekly-report-sleeper">
           <button className="btn btn--sleeper">
-            <Link to="/weekly-report-sleeper">Click here for the weekly report!</Link>
+            Click here for the weekly report!
           </button>
+        </Link>
         </div>
       </>
     )
