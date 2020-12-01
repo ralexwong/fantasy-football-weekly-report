@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -22,8 +21,8 @@ class Footer extends Component {
           <Col xs='4'>
             <div className='footer__navigation'>
               <ul className='footer__list'>
-                <li className='footer__item'><Link to='https://github.com/ralexwong' className='footer__link'><GitHubIcon /> </Link></li>
-                <li className='footer__item'><Link to='https://www.linkedin.com/in/iamwong/' className='footer__link'><LinkedInIcon /></Link></li>
+                <li className='footer__item'><a href='https://github.com/ralexwong' className='footer__link'><GitHubIcon /> </a></li>
+                <li className='footer__item'><a href='https://www.linkedin.com/in/iamwong/' className='footer__link'><LinkedInIcon /></a></li>
               </ul>
             </div>
           </Col>
