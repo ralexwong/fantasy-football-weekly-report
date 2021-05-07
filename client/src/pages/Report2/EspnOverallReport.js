@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { exportComponentAsPNG } from "react-component-export-image";
 import { createEspnOverallReport } from '../../actions/Espn';
 import Report2 from "./Report2"
 
-const ComponentToPrint = () => {
+const ComponentToPrint = React.forwardRef((props, ref) => {
   return (
-    <div style={{ padding: "1rem" }}>
+    <div ref={ref} style={{ padding: "1rem" }}>
       <Report2 />
     </div>
     )
-}
+})
 
 const EspnOverallReport = (props) => {
-  const componentRef = React.createRef();
+  const componentRef = useRef(null)
   const dispatch = useDispatch()
 
   if (props.location.pathname === "/overall-report-espn") {

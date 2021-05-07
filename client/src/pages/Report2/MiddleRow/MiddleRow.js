@@ -1,51 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Cards from '../Cards';
 import Recap from '../Recap';
 
 import { Row } from "reactstrap"
 
-class MiddleRow extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            width: 0,
-            height: 0
+const MiddleRow = () => {
+
+    const [width, setWidth] = useState(0)
+
+    useEffect(() => {
+        updateWindowDimensions()
+        window.addEventListener("resize", updateWindowDimensions)
+
+        return () => {
+            window.removeEventListener("resize", updateWindowDimensions);
         }
-    }
+    }, [])
 
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    const updateWindowDimensions = () => {
+        setWidth(window.innerWidth);
     };
 
-    render() {
-        if (this.state.width < 575) {
-            return (
-                <>
-                    <Row className="u-space-evenly u-margin-top">
-                        <Cards />
-                    </Row>
-                    <Row className="u-margin-top">
-                        <Recap border={"none"} />
-                    </Row>
-                </>
-            )
-        } else {
-            return (
-                <Row className="u-margin-top">
-                    <Recap />
+    if (width < 575) {
+        return (
+            <>
+                <Row className="u-space-evenly u-margin-top">
                     <Cards />
                 </Row>
-            )
-        }
+                <Row className="u-margin-top">
+                    <Recap border={"none"} />
+                </Row>
+            </>
+        )
+    } else {
+        return (
+            <Row className="u-margin-top">
+                <Recap />
+                <Cards />
+            </Row>
+        )
     }
 }
 

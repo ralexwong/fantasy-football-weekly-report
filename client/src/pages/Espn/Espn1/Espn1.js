@@ -11,8 +11,6 @@ const Espn1 = (props) => {
 
     const state = useSelector((state) => state)
     const dispatch = useDispatch()
-
-    console.log(state)
     
     const handleChange = (event) => {
         const { maxLength } = event.target;

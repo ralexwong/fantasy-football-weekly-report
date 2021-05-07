@@ -1,98 +1,87 @@
-import React, { Component } from "react";
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchLeagues } from '../../../actions/Sleeper';
 
 import { Jumbotron } from 'reactstrap';
 
-class Sleeper1 extends Component {
-    constructor() {
-        super()
-        this.state = {
-            input: "",
-            loading: false
-        }
-    }
+const Sleeper1 = () => {
+    const [input, setInput] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    handleChange = (event) => {
+    const state = useSelector((state) => state)
+    const dispatch = useDispatch()
+    
+    const handleChange = (event) => {
         const { maxLength } = event.target;
         const message = event.target.value.slice(0, maxLength);
 
-        this.setState({ input: message });
+        setInput(message);
     }
 
-    onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
-        this.onLoading();
-        console.log(this.state.input);
+        onLoading();
+        console.log(input);
 
         let regex = /^[A-Za-z0-9 ]+$/;
 
-        let isValid = regex.test(this.state.input);
+        let isValid = regex.test(input);
         if (!isValid) {
             alert('Invalid characters')
         } else {
-            this.props.fetchLeagues(this.state.input, this.props.sleeperYear)
+            dispatch(fetchLeagues(input, state.sleeper.sleeperYear))
         }
 
     }
 
-    onLoading = () => {
-        this.setState({ loading: true });
+    const onLoading = () => {
+        setLoading(true);
         setTimeout(() => { 
-            this.setState({ loading: false })
+            setLoading(false)
         }, 
-        1000);
+        1500);
     }
 
-    render() {
-        let error = false
-        if (this.props.sleeperUsername === null) {
-            error = true
-        }
-        return (
-            <Jumbotron className="sleeper__jumbotron">
-                <div className="sleeper__helpertext">
-                    <p className="bold">
-                        First enter your username here!
-                    </p>
-                    <p>
-                        (You can use my username if you want to test it out: <b>wongman</b>)
-                    </p>
-                </div>
-                <form onSubmit={this.onSubmit} className="sleeperForm">
-                        <input
-                            required
-                            maxLength="25"
-                            className={`sleeper__input ${error ? 'sleeper__input--error' : ''}`}
-                            onChange={this.handleChange}
-                            value={this.state.input}
-                            autoComplete="off"
-                            placeholder={this.props.sleeperUsername ? this.props.sleeperUsername : 'Username'}
-                        />
-                        {error ? (
-                            <p className='helperText red'>This username cannot be found</p>
-                        ) : (
-                            <p className='helperText'></p>
-                        )}
-                    {this.state.loading ? (
-                        <button className="btn btn--sleeper" type="button" disabled>
-                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            Loading...
-                        </button>
+    let error = false
+    if (state.sleeper.sleeperUsername === null) {
+        error = true
+    }
+    return (
+        <Jumbotron className="sleeper__jumbotron">
+            <div className="sleeper__helpertext">
+                <p className="bold">
+                    First enter your username here!
+                </p>
+                <p>
+                    (You can use my username if you want to test it out: <b>wongman</b>)
+                </p>
+            </div>
+            <form onSubmit={onSubmit} className="sleeperForm">
+                    <input
+                        required
+                        maxLength="25"
+                        className={`sleeper__input ${error ? 'sleeper__input--error' : ''}`}
+                        onChange={handleChange}
+                        value={input}
+                        autoComplete="off"
+                        placeholder={state.sleeper.sleeperUsername ? state.sleeper.sleeperUsername : 'Username'}
+                    />
+                    {error ? (
+                        <p className='helperText red'>This username cannot be found</p>
                     ) : (
-                        <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
+                        <p className='helperText'></p>
                     )}
-                </form>
-            </Jumbotron>
-        )
-    }
+                {loading ? (
+                    <button className="btn btn--sleeper" type="button" disabled>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button>
+                ) : (
+                    <button onClick={onSubmit} type="button" className="btn btn--sleeper">Submit</button>
+                )}
+            </form>
+        </Jumbotron>
+    )
 }
 
-const mapStateToProps = (state) => {
-    return { 
-        sleeperUsername: state.sleeper.sleeperUsername,
-        sleeperYear: state.sleeper.sleeperYear,
-     }
-}
-
-export default connect(mapStateToProps, { fetchLeagues })((Sleeper1))
+export default Sleeper1;
