@@ -77,7 +77,6 @@
 
 import React from 'react'
 import { Col, Jumbotron } from "reactstrap"
-import EspnGuide from '.'
 
 const EspnGuide = () => {
     return (
