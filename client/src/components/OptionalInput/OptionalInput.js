@@ -1,17 +1,11 @@
-import React, { Component } from "react";
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
 import { setEspnSeason, setEspnTitle, setEspnCaption } from '../../actions/Espn';
 import { setSleeperSeason, setSleeperTitle, setSleeperCaption } from '../../actions/Sleeper';
 
-class OptionalInput extends Component {
-    constructor() {
-        super()
-        this.state = {
-            input: ""
-        }
-    }
+const OptionalInput = ( props ) => {
+    const [input, setInput] = useState('') 
 
-    handleChange = (e) => {
+    const handleChange = (e) => {
         let regex = /^[A-Za-z0-9 ]+$/;
 
         let isValid = regex.test(e.target.value);
@@ -20,68 +14,58 @@ class OptionalInput extends Component {
         } else {
             let maxLength;
 
-            if (this.props.input === 'Season') {
+            if (props.input === 'Season') {
                 maxLength = 2
-            } else if (this.props.input === 'Caption') {
+            } else if (props.input === 'Caption') {
                 maxLength = 100
-            } else if (this.props.input === 'Title') {
+            } else if (props.input === 'Title') {
                 maxLength = 30
             }
 
             const message = e.target.value.slice(0, maxLength);
-            this.setState({ input: message });
+            setInput(message);
         }
     }
     
-    onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state.input);
+        console.log(input);
     
-        if (this.props.platform === 'sleeper') {
-            if (this.props.input === 'Season') {
-                this.props.setSleeperSeason(this.state.input);
-            } else if (this.props.input === 'Caption') {
-                this.props.setSleeperCaption(this.state.input)
-            } else if (this.props.input === 'Title') {
-                this.props.setSleeperTitle(this.state.input)
+        if (props.platform === 'sleeper') {
+            if (props.input === 'Season') {
+                setSleeperSeason(input);
+            } else if (props.input === 'Caption') {
+                setSleeperCaption(input)
+            } else if (props.input === 'Title') {
+                setSleeperTitle(input)
             }
-        } else if (this.props.platform === 'espn') {
-            if (this.props.input === 'Season') {
-                this.props.setEspnSeason(this.state.input);
-            } else if (this.props.input === 'Caption') {
-                this.props.setEspnCaption(this.state.input)
-            } else if (this.props.input === 'Title') {
-                this.props.setEspnTitle(this.state.input)
+        } else if (props.platform === 'espn') {
+            if (props.input === 'Season') {
+                setEspnSeason(input);
+            } else if (props.input === 'Caption') {
+                setEspnCaption(input)
+            } else if (props.input === 'Title') {
+                setEspnTitle(input)
             }
         }
     }
+    return (
+        <>
+            <form onSubmit={onSubmit}>
+                <input
+                    className="sleeper__input"
+                    onChange={handleChange}
+                    autoComplete="off"
+                    placeholder={input} 
+                    value={input}
+                />
+                <p className='helperText'></p>
 
-
-    render() {
-        return (
-            <>
-                <form onSubmit={this.onSubmit} className="espnForm">
-                    <input
-                        className="sleeper__input"
-                        onChange={this.handleChange}
-                        autoComplete="off"
-                        placeholder={this.props.input} 
-                        value={this.state.input}
-                    />
-                    <p className='helperText'></p>
-
-                </form>
-                <button onClick={this.onSubmit} type="button" className={this.props.platform === 'sleeper' ? "btn btn--sleeper" : "btn btn--espn"}>Submit</button>
-            </>
-        )
-    }
+            </form>
+            <button onClick={onSubmit} type="button" className={`btn btn--${props.platform}`}>Submit</button>
+        </>
+    )
+    
 }
 
-export default connect(null, { 
-    setEspnSeason, 
-    setSleeperSeason,
-    setEspnTitle, 
-    setEspnCaption,
-    setSleeperTitle, 
-    setSleeperCaption
- })(OptionalInput)
+export default OptionalInput;

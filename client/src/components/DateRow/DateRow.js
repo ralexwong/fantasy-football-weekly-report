@@ -1,12 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
+import { useSelector } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-class DateRow extends React.Component {
+const DateRow = () => {
 
-    grabDate = () => {
+    const state = useSelector((state) => state)
+
+    const grabDate = () => {
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -20,46 +21,31 @@ class DateRow extends React.Component {
         return date;
     }
 
+    let week;
+    let season = 1; 
 
-    render() {
-        let week;
-        let season = 1; 
-
-        if (this.props.espnReport) {
-            week = this.props.espnWeek
-        } else if (this.props.sleeperReport) {
-            week = this.props.sleeperWeek;
-        }
-
-        if (this.props.espnReport && this.props.espnSeason) {
-            season = this.props.espnSeason
-        } else if (this.props.sleeperReport && this.props.sleeperSeason) {
-            season = this.props.sleeperSeason
-        }
-
-        return (
-            <Row className="dateRow">
-                <Col>
-                    <p>{this.grabDate()}</p>
-                </Col>
-                <Col>
-                    <p style={{float: 'right'}}>Season {season} | Week {week}</p>
-                </Col>
-            </Row>
-        );
+    if (state.espn.espnReport) {
+        week = state.espn.espnWeek
+    } else if (state.sleeper.sleeperReport) {
+        week = state.sleeper.sleeperWeek;
     }
+
+    if (state.espn.espnReport && state.espn.espnSeason) {
+        season = state.espn.espnSeason
+    } else if (state.sleeper.sleeperReport && state.sleeper.sleeperSeason) {
+        season = state.sleeper.sleeperSeason
+    }
+
+    return (
+        <Row className="dateRow">
+            <Col>
+                <p>{grabDate()}</p>
+            </Col>
+            <Col>
+                <p style={{float: 'right'}}>Season {season} | Week {week}</p>
+            </Col>
+        </Row>
+    );
 }
 
-const mapStateToProps = (state) => {
-    return { 
-        sleeperReport: state.sleeper.sleeperReport,
-        sleeperWeek: state.sleeper.sleeperWeek,
-        sleeperSeason: state.sleeper.sleeperSeason,
-        
-        espnReport: state.espn.espnReport,
-        espnWeek: state.espn.espnWeek,
-        espnSeason: state.espn.espnSeason,
-    }
-}
-
-export default connect(mapStateToProps)(DateRow);
+export default DateRow;

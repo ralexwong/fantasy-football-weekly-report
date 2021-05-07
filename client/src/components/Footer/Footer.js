@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,8 +6,7 @@ import Col from 'react-bootstrap/Col';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
-class Footer extends Component {
-  render() {
+function Footer() {
     return (
       <footer className='footer'>
         <div className='footer__logo-box'>
@@ -35,7 +34,6 @@ class Footer extends Component {
         </Row>
       </footer>
     );
-  }
 }
 
 export default Footer;

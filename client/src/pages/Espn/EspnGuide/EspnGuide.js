@@ -77,8 +77,9 @@
 
 import React from 'react'
 import { Col, Jumbotron } from "reactstrap"
+import EspnGuide from '.'
 
-export default function EspnGuide() {
+const EspnGuide = () => {
     return (
         <div className='espnGuide'>
             <Jumbotron className="jumbotron sleeper__jumbotron">
@@ -107,3 +108,5 @@ export default function EspnGuide() {
         </div>
     )
 }
+
+export default EspnGuide;
