@@ -1,93 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import CanvasJSReact from '../../../canvasjs.react';
-import { connect } from 'react-redux';
 
 import { Row, Col } from "reactstrap"
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-class GraphPPG extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-        width: 0,
-        height: 0
-    }
-  }
+const GraphPPG = () => {
+  const [width, setWidth] = useState(0)
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
-  }
+  const state = useSelector((state) => state)
 
-  componentWillUnmount() {
-      window.removeEventListener("resize", this.updateWindowDimensions);
-  }
+  useEffect(() => {
+      updateWindowDimensions()
+      window.addEventListener("resize", updateWindowDimensions)
 
-  updateWindowDimensions = () => {
-      this.setState({ width: window.innerWidth, height: window.innerHeight });
+      return () => {
+          window.removeEventListener("resize", updateWindowDimensions);
+      }
+  }, [])
+
+  const updateWindowDimensions = () => {
+      setWidth(window.innerWidth);
   };
 
-  render() {
-    let font_size = ""
-    if (this.state.width < 575) {
-      font_size = 6.9
-    } else {
-      font_size = 12
-    }
-
-    let graphPPG = []
-
-    if (this.props.espnReport) {
-      graphPPG = this.props.espnGraphPPG
-    } else if (this.props.sleeperReport) {
-      graphPPG = this.props.sleeperGraphPPG
-    } 
-
-    const options = {
-      animationEnabled: true,
-      theme: "light2", //"light1", "dark1", "dark2"
-      title: {
-        text: "Points for the Week",
-      },
-
-      axisX: {
-        labelFontSize: font_size,
-        labelAngle: -30,
-        margin: 30
-      },
-      data: [{
-        type: "column", //change type to bar, line, area, pie, etc
-        //indexLabel: "{y}", //Shows y value on all Data Points
-        indexLabelFontColor: "black",
-        indexLabelPlacement: "outside",
-        dataPoints: graphPPG
-      }]
-    }
-
-    return (
-      <Row>
-        <Col className="pointsGraph">
-          <CanvasJSChart options={options}
-          // onRef={ref => this.chart = ref}
-          />
-        </Col>
-      </Row>
-    );
+  let font_size = ""
+  if (width < 575) {
+    font_size = 6.9
+  } else {
+    font_size = 12
   }
+
+  let graphPPG = []
+
+  if (state.espn.espnReport) {
+    graphPPG = state.espn.espnGraphPPG
+  } else if (state.sleeper.sleeperReport) {
+    graphPPG = state.sleeper.sleeperGraphPPG
+  } 
+
+  const options = {
+    animationEnabled: true,
+    theme: "light2", //"light1", "dark1", "dark2"
+    title: {
+      text: "Points for the Week",
+    },
+
+    axisX: {
+      labelFontSize: font_size,
+      labelAngle: -30,
+      margin: 30
+    },
+    data: [{
+      type: "column", //change type to bar, line, area, pie, etc
+      //indexLabel: "{y}", //Shows y value on all Data Points
+      indexLabelFontColor: "black",
+      indexLabelPlacement: "outside",
+      dataPoints: graphPPG
+    }]
+  }
+
+  return (
+    <Row>
+      <Col className="pointsGraph">
+        <CanvasJSChart options={options}
+        // onRef={ref => this.chart = ref}
+        />
+      </Col>
+    </Row>
+  );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    sleeperReport: state.sleeper.sleeperReport,
-    sleeperGraphPPG: state.sleeper.sleeperGraphPPG,
-
-    espnReport: state.espn.espnReport,
-    espnGraphPPG: state.espn.espnGraphPPG
-  }
-}
-
-export default connect(mapStateToProps)(GraphPPG)
+export default GraphPPG;
 
 
 

@@ -1,20 +1,18 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 import { setWaiversToState } from '../../../actions';
 import { Row } from "reactstrap"
 
 import Table from 'react-bootstrap/Table'
 
-class Waivers extends Component {
-    componentDidMount() {
-        if (!this.props.roster) {
+const Waivers = () => {
 
-        } else {
-          this.refactorData(this.props.roster, this.props.league_info)
+    useEffect(() => {
+        if (state.sleeper.roster) {
+            refactorData(state.sleeper.roster, state.sleeper.league_info)
         }
-    }
+    }, [state.sleeper.roster])
 
-    refactorData = (roster, league_info) => {
+    const refactorData = (roster, league_info) => {
         let combinedObjects = [];
         console.log(roster);
         for (let i = 0; i < roster.length; i++) {
@@ -33,48 +31,38 @@ class Waivers extends Component {
         }
         combinedObjects.sort((a, b) => (a.waiverOrder > b.waiverOrder) ? 1 : -1)
         console.log(combinedObjects);
-        this.props.setWaiversToState(combinedObjects);
+        dispatch(setWaiversToState(combinedObjects));
     }
 
-    render() {
-        return (
-            <Fragment>
-                <Row>
-                    <p className="cardTitle">WAIVER ORDER</p>
-                </Row>
-                <Table striped bordered >
-                    <thead>
-                        <tr>
-                        <th>Team Name</th>
-                        <th>Order</th>
-                        <th>Budget</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.waivers ? 
-                        (
-                            this.props.waivers.map(player => (
-                                <tr key={player.waiverOrder}>
-                                    <td>{player.name}</td>
-                                    <td>{player.waiverOrder}</td>
-                                    <td>{player.budget}</td>
-                                </tr>
-                            ))
-                        ) : 
-                        ('')}
-                    </tbody>
-                </Table>
-            </Fragment>
-        )
-    }
+    return (
+        <Fragment>
+            <Row>
+                <p className="cardTitle">WAIVER ORDER</p>
+            </Row>
+            <Table striped bordered >
+                <thead>
+                    <tr>
+                    <th>Team Name</th>
+                    <th>Order</th>
+                    <th>Budget</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {state.sleeper.waivers ? 
+                    (
+                        state.sleeper.waivers.map(player => (
+                            <tr key={player.waiverOrder}>
+                                <td>{player.name}</td>
+                                <td>{player.waiverOrder}</td>
+                                <td>{player.budget}</td>
+                            </tr>
+                        ))
+                    ) : 
+                    ('')}
+                </tbody>
+            </Table>
+        </Fragment>
+    )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        league_info: state.sleeper.league_info,
-        roster: state.sleeper.roster,
-        waivers: state.sleeper.waivers
-    }
-}
-
-export default connect(mapStateToProps, { setWaiversToState })(Waivers)
+export default Waivers;

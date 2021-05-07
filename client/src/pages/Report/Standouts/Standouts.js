@@ -1,103 +1,50 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { } from '../../../actions/Sleeper';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Col } from "reactstrap"
 
 
-class Standouts extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            width: 0,
-            height: 0
+const Standouts = () => {
+
+    const [width, setWidth] = useState(0)
+
+    const state = useSelector((state) => state)
+
+    useEffect(() => {
+        updateWindowDimensions()
+        window.addEventListener("resize", updateWindowDimensions)
+
+        return () => {
+            window.removeEventListener("resize", updateWindowDimensions);
         }
-    }
+    }, [])
 
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    const updateWindowDimensions = () => {
+        setWidth(window.innerWidth);
     };
 
-    render() {
-        let topScorer = {
-            name: "",
-            score: 0,
-            logo: ""
-        }
-        let closeOne = {
-            name: "",
-            difference: 0,
-            logo: ""
-        }
+    let topScorer = {
+        name: "",
+        score: 0,
+        logo: ""
+    }
+    let closeOne = {
+        name: "",
+        difference: 0,
+        logo: ""
+    }
 
-        if (this.props.espnReport && this.props.espnTopScorer) {
-            topScorer = this.props.espnTopScorer;
-            closeOne = this.props.espnCloseOne;
-        } else if (this.props.sleeperReport && this.props.sleeperTopScorer) {
-            topScorer = this.props.sleeperTopScorer;
-            closeOne = this.props.sleeperCloseOne;
-        }
+    if (state.espn.espnReport && state.espn.espnTopScorer) {
+        topScorer = state.espn.espnTopScorer;
+        closeOne = state.espn.espnCloseOne;
+    } else if (state.sleeper.sleeperReport && state.sleeper.sleeperTopScorer) {
+        topScorer = state.sleeper.sleeperTopScorer;
+        closeOne = state.sleeper.sleeperCloseOne;
+    }
 
-        if (this.state.width < 575) {
-            return (
-                <React.Fragment>
-                    <Col xs={6} className="cards">
-                        <p className="reportTitle">TOP SCORER</p>
-
-                        <div className='cards__outerBox'>
-                            <div className='cards__innerBox'>
-                                <img 
-                                    crossOrigin="anonymous"
-                                    referrerPolicy="origin" 
-                                    onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
-                                    src={`https://whispering-woodland-11588.herokuapp.com/${topScorer.logo}`} 
-                                    alt="poop" 
-                                    className="cards__image" />
-                            </div>
-                        </div>
-                        <div className='cards__lowerBox'>
-                            <p className="cards__name">
-                                {topScorer.name}: 
-                                <br />
-                                {topScorer.score}
-                            </p>
-                        </div>
-                    </Col>
-                    <Col xs={6} className="cards">
-                        <p className="reportTitle">CLOSE ONE</p>
-
-                        <div className='cards__outerBox'>
-                            <div className='cards__innerBox'>
-                                <img 
-                                    crossOrigin="anonymous"
-                                    referrerPolicy="origin" 
-                                    onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
-                                    src={`https://whispering-woodland-11588.herokuapp.com/${closeOne.logo}`} 
-                                    alt="poop" 
-                                    className="cards__image" />
-                            </div>
-                        </div>
-                        <div className='cards__lowerBox'>
-                            <p className="cards__name">
-                                {closeOne.name}:
-                                <br></br>
-                                +{closeOne.difference}
-                            </p>
-                        </div>
-                    </Col>
-                </React.Fragment>
-            )
-        } else {
-            return (
-                <Col className="cards">
+    if (width < 575) {
+        return (
+            <React.Fragment>
+                <Col xs={6} className="cards">
                     <p className="reportTitle">TOP SCORER</p>
 
                     <div className='cards__outerBox'>
@@ -112,15 +59,14 @@ class Standouts extends Component {
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p>
+                        <p className="cards__name">
                             {topScorer.name}: 
                             <br />
                             {topScorer.score}
                         </p>
                     </div>
-
-                    <div className="hr"></div>
-
+                </Col>
+                <Col xs={6} className="cards">
                     <p className="reportTitle">CLOSE ONE</p>
 
                     <div className='cards__outerBox'>
@@ -135,28 +81,64 @@ class Standouts extends Component {
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p>
+                        <p className="cards__name">
                             {closeOne.name}:
                             <br></br>
                             +{closeOne.difference}
                         </p>
                     </div>
                 </Col>
-            )
-        }
+            </React.Fragment>
+        )
+    } else {
+        return (
+            <Col className="cards">
+                <p className="reportTitle">TOP SCORER</p>
+
+                <div className='cards__outerBox'>
+                    <div className='cards__innerBox'>
+                        <img 
+                            crossOrigin="anonymous"
+                            referrerPolicy="origin" 
+                            onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
+                            src={`https://whispering-woodland-11588.herokuapp.com/${topScorer.logo}`} 
+                            alt="poop" 
+                            className="cards__image" />
+                    </div>
+                </div>
+                <div className='cards__lowerBox'>
+                    <p>
+                        {topScorer.name}: 
+                        <br />
+                        {topScorer.score}
+                    </p>
+                </div>
+
+                <div className="hr"></div>
+
+                <p className="reportTitle">CLOSE ONE</p>
+
+                <div className='cards__outerBox'>
+                    <div className='cards__innerBox'>
+                        <img 
+                            crossOrigin="anonymous"
+                            referrerPolicy="origin" 
+                            onError={(event)=>event.target.setAttribute("src","./images/nfl-logo.jpg")}
+                            src={`https://whispering-woodland-11588.herokuapp.com/${closeOne.logo}`} 
+                            alt="poop" 
+                            className="cards__image" />
+                    </div>
+                </div>
+                <div className='cards__lowerBox'>
+                    <p>
+                        {closeOne.name}:
+                        <br></br>
+                        +{closeOne.difference}
+                    </p>
+                </div>
+            </Col>
+        )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        sleeperReport: state.sleeper.sleeperReport,
-        sleeperTopScorer: state.sleeper.sleeperTopScorer,
-        sleeperCloseOne: state.sleeper.sleeperCloseOne,
-
-        espnReport: state.espn.espnReport,
-        espnTopScorer: state.espn.espnTopScorer,
-        espnCloseOne: state.espn.espnCloseOne
-    }
-}
-
-export default connect(mapStateToProps, {})(Standouts);
+export default Standouts;
