@@ -21,7 +21,7 @@ const Cards = () => {
     };
 
     let first_place = ""
-    let first_place_name = "";
+    let first_place_name = "Player 1";
     if (state.espn.espn_first_place && state.espn.espnReport) {
         first_place = `https://whispering-woodland-11588.herokuapp.com/${state.espn.espn_first_place.logo}`;
         first_place_name = state.espn.espn_first_place.name
@@ -31,7 +31,7 @@ const Cards = () => {
     }
 
     let last_place = ""
-    let last_place_name = "";
+    let last_place_name = "Player 2";
     if (state.espn.espn_last_place && state.espn.espnReport) {
         last_place = `https://whispering-woodland-11588.herokuapp.com/${state.espn.espn_last_place.logo}`
         last_place_name = state.espn.espn_last_place.name;
@@ -42,7 +42,7 @@ const Cards = () => {
         
     if (width < 575) {
         return (
-            <>
+            <div>
                 <Col xs={6} className="cards">
                     <p className="reportTitle">FIRST PLACE</p>
 
@@ -80,7 +80,7 @@ const Cards = () => {
                         <p className="cards__name">{last_place_name}</p>
                     </div>
                 </Col>
-            </>
+            </div>
         )
     } else {
         return (

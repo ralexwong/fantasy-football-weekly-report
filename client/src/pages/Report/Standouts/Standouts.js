@@ -4,9 +4,8 @@ import { Col } from "reactstrap"
 
 
 const Standouts = () => {
-
+    
     const [width, setWidth] = useState(0)
-
     const state = useSelector((state) => state)
 
     useEffect(() => {
