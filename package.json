@@ -33,7 +33,7 @@
     "express": "^4.17.1",
     "html2canvas": "^1.0.0-rc.7",
     "if-env": "^1.0.4",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.1",
     "node-sass": "^4.14.1",
