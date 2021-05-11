@@ -17,3 +17,13 @@
 .pointsGraph {
     margin-top: 5rem;
 }
+
+.middleRow {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    
+    @include respond(phone) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}

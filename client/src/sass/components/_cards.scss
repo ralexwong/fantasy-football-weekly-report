@@ -1,9 +1,12 @@
 .cards {
-    max-width: 25%;
+    // max-width: 25%;
 
-    @include respond(phone) {
-        max-width: 40%;
-    }
+    // @include respond(phone) {
+    //     max-width: 40%;
+    // }
+
+    max-width: 75%;
+    margin: 0 auto;
 
     &__image {
         width: 100%;
@@ -60,5 +63,16 @@
             font-size: 1.2rem;
         }
     }
+}
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: space-between;
+
+    @include respond(phone) {
+        display: flex;
+    }
+
 }
 

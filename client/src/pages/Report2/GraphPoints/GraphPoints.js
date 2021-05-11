@@ -8,7 +8,6 @@ const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const GraphPoints = () => {
-
   const state = useSelector((state) => state)
 
   const addSymbols = (e) => {

@@ -24,7 +24,7 @@ const Recap = (props) => {
 
   return (
     <Col className="recap">
-      <p className="reportTitle">NUMBERS RECAP</p>
+      <p className="u-margin-top reportTitle">NUMBERS RECAP</p>
       <Table bordered >
         <thead>
           <tr>

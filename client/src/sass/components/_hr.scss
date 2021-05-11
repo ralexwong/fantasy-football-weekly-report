@@ -1,11 +1,11 @@
 .hr {
     border: 1px solid black;
     height: 1px;
-    width: 100%;
+    width: 75%;
 
-    margin: 4rem 0 3rem 0;
+    margin: 0 auto;
 
     @include respond(phone) {
-        margin: 3rem 0 2rem 0;
+        display: none;
     }
 }
