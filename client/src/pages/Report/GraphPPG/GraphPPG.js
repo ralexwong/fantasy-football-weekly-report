@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import CanvasJSReact from '../../../canvasjs.react';
 
-import { Row, Col } from "reactstrap"
-
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const GraphPPG = () => {
@@ -61,13 +59,11 @@ const GraphPPG = () => {
   }
 
   return (
-    <Row>
-      <Col className="pointsGraph">
+      <div className="pointsGraph">
         <CanvasJSChart options={options}
         // onRef={ref => this.chart = ref}
         />
-      </Col>
-    </Row>
+      </div>
   );
 }
 

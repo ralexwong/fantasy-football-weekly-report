@@ -4,17 +4,14 @@ import DateRow from "../../components/DateRow";
 import MiddleRow from './MiddleRow';
 import GraphPoints from './GraphPoints';
 
-import { Container } from "reactstrap"
-
-
 const Report2 = () => {
   return (
-    <Container className="reportContainer">
+    <div className="reportContainer col">
       <Title />
       <DateRow />
       <MiddleRow />
       <GraphPoints />
-    </Container>
+    </div>
   );
 }
 

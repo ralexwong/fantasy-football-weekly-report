@@ -28,7 +28,7 @@ const Sleeper2 = () => {
     const mapLeagues = (leagues) => {
         return leagues.map(league => {
             return (
-                <p className={`sleeper__list ${active === league.league_id ? `sleeper__list--active` : ``}`} id={league.league_id} key={league.league_id} onClick={(e) => onClick(e)} >
+                <p className={`input__list ${active === league.league_id ? `input__list--active` : ``}`} id={league.league_id} key={league.league_id} onClick={(e) => onClick(e)} >
                     {league.name}
                 </p>
             )
@@ -36,8 +36,8 @@ const Sleeper2 = () => {
     }
 
     return (
-        <Jumbotron className="sleeper__jumbotron" ref={state.sleeper.reference}>
-            <div className="sleeper__helpertext">
+        <Jumbotron className="input__jumbotron" ref={state.sleeper.reference}>
+            <div className="input__helpertext">
                 <p className="bold">
                     Click on one league!
                 </p>

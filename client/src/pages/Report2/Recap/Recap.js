@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Col } from "reactstrap"
 
 import Table from 'react-bootstrap/Table'
 
@@ -23,8 +22,8 @@ const Recap = (props) => {
   }
 
   return (
-    <Col className="recap">
-      <p className="u-margin-top reportTitle">NUMBERS RECAP</p>
+    <div className="recap col">
+      <p className="reportTitle">NUMBERS RECAP</p>
       <Table bordered >
         <thead>
           <tr>
@@ -59,7 +58,7 @@ const Recap = (props) => {
             (<tr></tr>))}
         </tbody>
       </Table>
-    </Col>
+    </div>
   )
 }
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSelector } from 'react-redux';
 
 import { setEspnYear } from '../../actions/Espn';
 import { setSleeperYear } from '../../actions/Sleeper';
@@ -26,15 +25,15 @@ const YearInput = (props) => {
     }
 
     return (
-        <Jumbotron className='sleeper__jumbotron'>
-            <div className="sleeper__helpertext">
+        <Jumbotron className='input__jumbotron'>
+            <div className="input__helpertext">
                 <p className="bold">
                     The year will default to the current season's year
                 </p>
             </div>
             <form onSubmit={onSubmit} className="espnForm">
                 <input
-                    className="sleeper__input"
+                    className="input__input"
                     onChange={handleChange}
                     autoComplete="off"
                     placeholder="Year" 

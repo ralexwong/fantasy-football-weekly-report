@@ -3,8 +3,10 @@
     margin: 3rem auto;
     background: white;
 
+    max-width: 90%;
+
     @include respond(phone) {
-        
+        max-width: 100%;
     }
 }
 

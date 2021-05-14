@@ -1,7 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 const DateRow = () => {
 
@@ -37,14 +35,10 @@ const DateRow = () => {
     }
 
     return (
-        <Row className="dateRow">
-            <Col>
-                <p>{grabDate()}</p>
-            </Col>
-            <Col>
-                <p style={{float: 'right'}}>Season {season} | Week {week}</p>
-            </Col>
-        </Row>
+        <div className="dateRow">
+            <p>{grabDate()}</p>
+            <p>Season {season} | Week {week}</p>
+        </div>
     );
 }
 

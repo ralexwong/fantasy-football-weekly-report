@@ -38,8 +38,8 @@ const Sleeper3 = () => {
     }
 
     return (
-        <Jumbotron className="sleeper__jumbotron">
-            <div className="sleeper__helpertext">
+        <Jumbotron className="input__jumbotron">
+            <div className="input__helpertext">
                 <p className="bold">
                     Select a week!
                 </p>
@@ -48,7 +48,7 @@ const Sleeper3 = () => {
                 <input
                     required
                     maxLength="2"
-                    className="sleeper__input"
+                    className="input__input"
                     onChange={handleChange}
                     autoComplete="off"
                     placeholder={state.sleeper.sleeperWeek ? state.sleeper.sleeperWeek : 'Week'}

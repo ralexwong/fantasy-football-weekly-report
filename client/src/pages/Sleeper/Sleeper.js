@@ -6,28 +6,18 @@ import Sleeper2 from './Sleeper2';
 import Sleeper3 from './Sleeper3';
 
 import OptionalInputs from './../../components/OptionalInputs';
-
 import GenerateReportButton from '../../components/GenerateReportButton';
-
-import { Container, Row, Col } from "reactstrap";
 
 const Sleeper = () => {
   return (
-    <div className="inputBackground inputBackground--sleeper">
-      <Container>
-        <Row>
-          <Col className="sleeper">
-            {/* <YearInput platform={'sleeper'} /> */}
-            <Sleeper1 />
-            <Sleeper2 />
-            <Sleeper3 />
+    <div className="input input--sleeper">
+      {/* <YearInput platform={'sleeper'} /> */}
+      <Sleeper1 />
+      <Sleeper2 />
+      <Sleeper3 />
 
-            <OptionalInputs platform={'sleeper'} />
-
-            <GenerateReportButton reportPage={'weekly-report-sleeper'} />
-          </Col>
-        </Row>
-      </Container>
+      <OptionalInputs platform={'sleeper'} />
+      <GenerateReportButton reportPage={'weekly-report-sleeper'} />
     </div>
   )
   

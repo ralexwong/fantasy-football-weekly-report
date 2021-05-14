@@ -39,8 +39,8 @@ const Espn1 = (props) => {
         error = true
     }
     return (
-        <Jumbotron className="sleeper__jumbotron">
-            <p className="sleeper__helpertext">
+        <Jumbotron className="input__jumbotron">
+            <p className="input__helpertext">
                 Please enter your ESPN league ID
                 <br />
                 (You can use my espn league if you want to try it out: <b>20294539</b>)
@@ -49,7 +49,7 @@ const Espn1 = (props) => {
                 <input
                     required
                     maxLength="10"
-                    className={`sleeper__input ${error ? 'sleeper__input--error' : ''}`}
+                    className={`input__input ${error ? 'input__input--error' : ''}`}
                     onChange={handleChange}
                     autoComplete="off"
                     placeholder={state.espn.espnID ? state.espn.espnID : "ID"}

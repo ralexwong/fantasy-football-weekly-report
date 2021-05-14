@@ -76,35 +76,29 @@
 // }));
 
 import React from 'react'
-import { Col, Jumbotron } from "reactstrap"
+import { Jumbotron } from "reactstrap"
 
 const EspnGuide = () => {
     return (
-        <div className='espnGuide'>
-            <Jumbotron className="jumbotron sleeper__jumbotron">
-                    <Col xs={12}>
-                        <h3 className='steps'><u><b>Step 1</b></u></h3>
-                        <p className='paragraph-lg'>Log on to the espn website. (ID cannot be viewed on the app)</p>
+        <>
+            <Jumbotron className="input__jumbotron">
+                    
+                <h3 className='steps'><u><b>Step 1</b></u></h3>
+                <p className='paragraph-lg'>Log on to the espn website. (ID cannot be viewed on the app)</p>
 
-                        <h3 className='steps'><u><b>Step 2</b></u></h3>
-                        <p className='paragraph-lg'>Copy or remember the highlighted number for your league. This is your league ID.</p>
-                    </Col>
+                <h3 className='steps'><u><b>Step 2</b></u></h3>
+                <p className='paragraph-lg'>Copy or remember the highlighted number for your league. This is your league ID.</p>
 
-                    <Col xs={12}>
-                        <a target="_blank" href='/images/espn-id.png'><img className='espnGuide__image' src="./images/espn-id.png" alt="photo1"></img></a>
-                    </Col>
+                <a target="_blank" href='/images/espn-id.png'><img className='espnGuide__image' src="./images/espn-id.png" alt="photo1"></img></a>
             </Jumbotron>
-            <Jumbotron className="jumbotron sleeper__jumbotron">
-                    <Col xs={12}>
-                        <h3 className='steps'><u><b>Step 3</b></u></h3>
-                        <p className='paragraph-lg'>Go to your league settings and make the league viewable to public. (Can only be done by the league commissioner)</p>
-                    </Col>
-
-                    <Col xs={12}>
-                        <a target="_blank" href='/images/espn-public-red-circle.jpg'><img className='espnGuide__image' src="./images/espn-public-red-circle.jpg" alt="photo2"></img></a>
-                    </Col>
+            <Jumbotron className="input__jumbotron">
+            
+                <h3 className='steps'><u><b>Step 3</b></u></h3>
+                <p className='paragraph-lg'>Go to your league settings and make the league viewable to public. (Can only be done by the league commissioner)</p>
+            
+                <a target="_blank" href='/images/espn-public-red-circle.jpg'><img className='espnGuide__image' src="./images/espn-public-red-circle.jpg" alt="photo2"></img></a>
             </Jumbotron>
-        </div>
+        </>
     )
 }
 

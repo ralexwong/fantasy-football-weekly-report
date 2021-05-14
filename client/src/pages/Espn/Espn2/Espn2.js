@@ -40,14 +40,14 @@ const Espn2 = () => {
     }
 
     return (
-        <Jumbotron className="sleeper__jumbotron">
-            <p className="sleeper__helpertext">
+        <Jumbotron className="input__jumbotron">
+            <p className="input__helpertext">
                 Please enter the week
             </p>
             <form onSubmit={onSubmit} className="espnForm">
                 <input
                     required
-                    className="sleeper__input"
+                    className="input__input"
                     onChange={handleChange}
                     autoComplete="off"
                     placeholder={state.espn.espnWeek ? state.espn.espnWeek : "Week"}

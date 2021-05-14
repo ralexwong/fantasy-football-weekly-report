@@ -30,7 +30,7 @@ export default function OptionalInputs(props) {
 
   return (
     <>
-    <Jumbotron className="sleeper__jumbotron">
+    <Jumbotron className="input__jumbotron">
     <p className="heading-tertiary">Optional Inputs</p>
 
     <div className={classes.root}>

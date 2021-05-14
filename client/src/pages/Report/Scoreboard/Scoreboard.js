@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Container, Row, Col } from "reactstrap"
 import ScoreboardRow from '../ScoreboardRow';
 
 const Scoreboard = () => {
@@ -22,34 +21,25 @@ const Scoreboard = () => {
     }
 
     return (
-        <Col className="scoreboard">
-            <Container>
-                <Row>
-                    <Col>
-                        <p className="reportTitle reportTitle__scoreboard">SCOREBOARD</p>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="scoreboard__week">
-                        <p>Week {week}</p>
-                    </Col>
-                </Row>
+        <div className="scoreboard">
+            <p className="reportTitle reportTitle__scoreboard">SCOREBOARD</p>
 
-                {matchups ?
-                    (matchups.map((matchup, i) => (
-                        <ScoreboardRow
-                            key={i}
-                            points1={matchup.points1}
-                            points2={matchup.points2}
-                            roster1={matchup.roster1}
-                            roster2={matchup.roster2}
-                        />
-                    ))
-                    ) :
-                    (<div></div>)
-                }
-            </Container>
-        </Col>
+            <p className="scoreboard__week">Week {week}</p>
+
+            {matchups ?
+                (matchups.map((matchup, i) => (
+                    <ScoreboardRow
+                        key={i}
+                        points1={matchup.points1}
+                        points2={matchup.points2}
+                        roster1={matchup.roster1}
+                        roster2={matchup.roster2}
+                    />
+                ))
+                ) :
+                (<></>)
+            }
+        </div>
     );
 }
 

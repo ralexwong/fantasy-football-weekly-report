@@ -51,6 +51,8 @@ const Standouts = () => {
                 </div>
             </div>
 
+            <hr className='hr' />
+
             <div>
                 <p className="reportTitle">CLOSE ONE</p>
 

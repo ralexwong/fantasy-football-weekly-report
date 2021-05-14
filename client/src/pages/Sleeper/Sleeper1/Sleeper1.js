@@ -47,8 +47,8 @@ const Sleeper1 = () => {
         error = true
     }
     return (
-        <Jumbotron className="sleeper__jumbotron">
-            <div className="sleeper__helpertext">
+        <Jumbotron className="input__jumbotron">
+            <div className="input__helpertext">
                 <p className="bold">
                     First enter your username here!
                 </p>
@@ -56,11 +56,11 @@ const Sleeper1 = () => {
                     (You can use my username if you want to test it out: <b>wongman</b>)
                 </p>
             </div>
-            <form onSubmit={onSubmit} className="sleeperForm">
+            <form onSubmit={onSubmit} className="inputForm">
                     <input
                         required
                         maxLength="25"
-                        className={`sleeper__input ${error ? 'sleeper__input--error' : ''}`}
+                        className={`input__input ${error ? 'input__input--error' : ''}`}
                         onChange={handleChange}
                         value={input}
                         autoComplete="off"
