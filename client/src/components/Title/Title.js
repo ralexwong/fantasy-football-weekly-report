@@ -1,9 +1,6 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
 const Title = () => {
     const state = useSelector((state) => state)
 
@@ -27,13 +24,11 @@ const Title = () => {
     }
 
     return (
-        <Row>
-            <Col>
-                <p className="reportTitle reportTitle__header">{title}</p>
-                <p className="reportCaption">{caption}</p>
-            </Col>
-        </Row>
-    ) 
+        <>
+            <p className="reportTitle reportTitle__header">{title}</p>
+            <p className="reportCaption">{caption}</p>
+        </>
+    )
 }
 
 export default Title;

@@ -8,6 +8,7 @@
     font-size: $default-font-size;
 
     transform: skewX(-12deg);
+    grid-column: 1/3;
 
     @include respond(tab-port) {
         padding: 4rem;

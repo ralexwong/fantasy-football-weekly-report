@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import { setEspnSeason, setEspnTitle, setEspnCaption } from '../../actions/Espn';
 import { setSleeperSeason, setSleeperTitle, setSleeperCaption } from '../../actions/Sleeper';
 
-const OptionalInput = ( props ) => {
-    const [input, setInput] = useState('') 
+const OptionalInput = (props) => {
+    const [input, setInput] = useState('')
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         let regex = /^[A-Za-z0-9 ]+$/;
 
-        let isValid = regex.test(e.target.value);
-        if (!isValid) {
+        if (e.target.value === '') {
+            setInput('');
+            return
+        }
 
-        } else {
+        let isValid = regex.test(e.target.value);
+        if (isValid) {
             let maxLength;
 
             if (props.input === 'Season') {
@@ -26,11 +30,12 @@ const OptionalInput = ( props ) => {
             setInput(message);
         }
     }
-    
+
     const onSubmit = (e) => {
         e.preventDefault()
+        onLoading();
         console.log(input);
-    
+
         if (props.platform === 'sleeper') {
             if (props.input === 'Season') {
                 setSleeperSeason(input);
@@ -49,23 +54,41 @@ const OptionalInput = ( props ) => {
             }
         }
     }
+
+    const onLoading = () => {
+        setLoading(true);
+        setTimeout(() => { 
+            setLoading(false)
+        }, 
+        1500);
+    }
+
+
     return (
-        <>
+        <div className={props.open === true ? 'accordian__form--open' : 'accordian__form--close'}>
             <form onSubmit={onSubmit}>
                 <input
-                    className="sleeper__input"
+                    className="input__input"
                     onChange={handleChange}
                     autoComplete="off"
-                    placeholder={input} 
+                    placeholder={input ? input : `${props.input}`}
                     value={input}
                 />
                 <p className='helperText'></p>
 
             </form>
-            <button onClick={onSubmit} type="button" className={`btn btn--${props.platform}`}>Submit</button>
-        </>
+
+            {loading ? (
+                <button className="btn btn--sleeper" type="button" disabled>
+                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                </button>
+            ) : (
+                <button onClick={onSubmit} type="button" className={`btn btn--${props.platform ? 'sleeper' : 'espn'}`}>Submit</button>
+            )}
+        </div>
     )
-    
+
 }
 
 export default OptionalInput;

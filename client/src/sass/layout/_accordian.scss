@@ -1,0 +1,35 @@
+.accordian {
+    width: 80%;
+    margin: auto;
+    border: 1px solid $black-color;
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: $light-grey;
+
+    &__title {
+        font-size: 2rem;
+        border-bottom: 1px solid $black-color;
+        
+    }
+
+    &__form--open {
+        height: auto;
+        max-height: 999px;
+        transition: .5s all;
+        border-bottom: none;
+
+        padding: 2rem 0;
+        background-color: $light-grey;
+
+        &:last-child {
+            border-bottom: 1px solid $black-color;
+        }
+    }
+
+    &__form--close {
+        max-height: 0;
+        overflow: hidden;
+        transition: .5s all;
+    }
+}

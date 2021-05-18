@@ -4,6 +4,10 @@ import About from './About';
 import Platforms from './Platforms';
 import Footer from '../../components/Footer'
 
+import Features from './Features'
+import Reviews from './Reviews';
+import Register from './Register';
+
 const style = {
   color: "#777",
 }
@@ -17,7 +21,10 @@ const Index = () => {
     <div style={style} >
       <Header click={()=> scrollToSection(el2)} />
       <About />
+      <Features />
       <Platforms reference={el2} />
+      {/* <Reviews /> */}
+      <Register />
       <Footer />
     </div>
   );
