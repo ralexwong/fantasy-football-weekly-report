@@ -5,16 +5,14 @@ import DateRow from "../../components/DateRow";
 import MiddleRow from './Middle';
 import GraphPPG from "./GraphPPG";
 
-import { Container } from "reactstrap"
-
 const Report = () => {
   return (
-    <Container className="reportContainer">
+    <div className="reportContainer">
       <Title />
       <DateRow />
       <MiddleRow />
       <GraphPPG />
-    </Container>
+    </div>
   );
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchMatchupPoints } from '../../../actions/Sleeper';
 
-import { Jumbotron } from 'reactstrap';
+
 
 const Sleeper3 = () => {
 
@@ -38,7 +38,7 @@ const Sleeper3 = () => {
     }
 
     return (
-        <Jumbotron className="input__jumbotron">
+        <div className="input__jumbotron">
             <div className="input__helpertext">
                 <p className="bold">
                     Select a week!
@@ -65,7 +65,7 @@ const Sleeper3 = () => {
                     <button onClick={onSubmit} type="button" className="btn btn--sleeper">Submit</button>
                 )}
             </form>
-        </Jumbotron>
+        </div>
     )
 }
 

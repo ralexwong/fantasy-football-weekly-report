@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { setEspnYear } from '../../actions/Espn';
 import { setSleeperYear } from '../../actions/Sleeper';
 
-import { Jumbotron } from 'reactstrap';
-
 const YearInput = (props) => {
 
     const [input, setInput] = useState(2020)
@@ -25,7 +23,7 @@ const YearInput = (props) => {
     }
 
     return (
-        <Jumbotron className='input__jumbotron'>
+        <div className='input__jumbotron'>
             <div className="input__helpertext">
                 <p className="bold">
                     The year will default to the current season's year
@@ -42,7 +40,7 @@ const YearInput = (props) => {
                     />
                 <button onClick={onSubmit} type="button" className="btn btn--sleeper">Submit</button>
             </form>
-        </Jumbotron>
+        </div>
     )
 }
 

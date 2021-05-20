@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchEspn } from '../../../actions/Espn';
 
-import { Jumbotron } from 'reactstrap';
-
 const Espn1 = (props) => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
@@ -39,7 +37,7 @@ const Espn1 = (props) => {
         error = true
     }
     return (
-        <Jumbotron className="input__jumbotron">
+        <div className="input__jumbotron">
             <p className="input__helpertext">
                 Please enter your ESPN league ID
                 <br />
@@ -70,7 +68,7 @@ const Espn1 = (props) => {
                     <button onClick={onSubmit} type="button" className="btn btn--espn">Submit</button>
                 )}
             </form>
-        </Jumbotron>
+        </div>
     )
 }
 

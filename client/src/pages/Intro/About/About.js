@@ -5,7 +5,7 @@ const About = () => {
         <section className='about'>
             <h2 className='heading-secondary u-margin-bottom-big'>Exciting reports for exciting people</h2>
 
-            <div>
+            <div className='about__description'>
                 <h3 className='heading-teritary'>Spice up your league</h3>
                 <p className='paragraph'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley 

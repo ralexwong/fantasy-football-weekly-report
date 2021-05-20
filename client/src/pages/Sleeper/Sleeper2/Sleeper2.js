@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { setLeague_id, fetchLeagueInfo } from '../../../actions/Sleeper';
 
-import { Jumbotron } from 'reactstrap';
-
 const Sleeper2 = () => {
 
     const [active, setActive] = useState('');
@@ -36,7 +34,7 @@ const Sleeper2 = () => {
     }
 
     return (
-        <Jumbotron className="input__jumbotron" ref={state.sleeper.reference}>
+        <div className="input__jumbotron" ref={state.sleeper.reference}>
             <div className="input__helpertext">
                 <p className="bold">
                     Click on one league!
@@ -48,7 +46,7 @@ const Sleeper2 = () => {
                     )}
             </div>
 
-        </Jumbotron>
+        </div>
     )
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { setEspnWeek } from '../../../actions/Espn';
 
-import { Jumbotron } from 'reactstrap';
+
 
 const Espn2 = () => {
 
@@ -40,7 +40,7 @@ const Espn2 = () => {
     }
 
     return (
-        <Jumbotron className="input__jumbotron">
+        <div className="input__jumbotron">
             <p className="input__helpertext">
                 Please enter the week
             </p>
@@ -66,7 +66,7 @@ const Espn2 = () => {
                 )
             }
             </form>
-        </Jumbotron>
+        </div>
     )
 }
 

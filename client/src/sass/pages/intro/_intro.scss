@@ -41,15 +41,21 @@
     margin-top: -12rem;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
 
     @include respond(tab-port) {
        padding: 20rem 5rem 30rem 5rem;     
     } 
     
     @include respond(phone) {
-        padding: 23rem 5rem 70rem 5rem;
-        grid-template-columns: 1fr;
+        grid-template-columns: none;
+        grid-template-areas: 
+        'title'
+        'description'
+        'photos'
+        ;
+
     }
 
     @include respond(iphone) {
@@ -94,10 +100,13 @@
     margin-top: -10rem;
     background-color: $light-grey;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
 
     @include respond(phone) {
-        grid-template-columns: 1fr;
+        grid-template-areas: 
+        'title'
+        'espn'
+        'sleeper'
+        'yahoo';
     }
 }
 

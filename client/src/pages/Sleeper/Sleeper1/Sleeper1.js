@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchLeagues } from '../../../actions/Sleeper';
 
-import { Jumbotron } from 'reactstrap';
+
 
 const Sleeper1 = () => {
     const [input, setInput] = useState("");
@@ -47,7 +47,7 @@ const Sleeper1 = () => {
         error = true
     }
     return (
-        <Jumbotron className="input__jumbotron">
+        <div className="input__jumbotron">
             <div className="input__helpertext">
                 <p className="bold">
                     First enter your username here!
@@ -80,7 +80,7 @@ const Sleeper1 = () => {
                     <button onClick={onSubmit} type="button" className="btn btn--sleeper">Submit</button>
                 )}
             </form>
-        </Jumbotron>
+        </div>
     )
 }
 

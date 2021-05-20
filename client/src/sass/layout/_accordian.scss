@@ -15,8 +15,8 @@
 
     &__form--open {
         height: auto;
-        max-height: 999px;
-        transition: .5s all;
+        max-height: 150px;
+        transition: max-height 0.2s ease-out;
         border-bottom: none;
 
         padding: 2rem 0;
@@ -30,6 +30,15 @@
     &__form--close {
         max-height: 0;
         overflow: hidden;
-        transition: .5s all;
+        transition: max-height 0.5s ease-out;
+    }
+
+    &__arrow {
+        transition: 0.2s;
+
+        &--active {
+            transition: 0.2s;
+            transform: rotate(180deg);
+        }
     }
 }

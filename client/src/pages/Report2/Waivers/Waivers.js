@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { setWaiversToState } from '../../../actions';
-import { Row } from "reactstrap"
 
 import Table from 'react-bootstrap/Table'
 
@@ -36,9 +35,9 @@ const Waivers = () => {
 
     return (
         <Fragment>
-            <Row>
+            <div>
                 <p className="cardTitle">WAIVER ORDER</p>
-            </Row>
+            </div>
             <Table striped bordered >
                 <thead>
                     <tr>

@@ -84,7 +84,7 @@ const OptionalInput = (props) => {
                         Loading...
                 </button>
             ) : (
-                <button onClick={onSubmit} type="button" className={`btn btn--${props.platform ? 'sleeper' : 'espn'}`}>Submit</button>
+                <button onClick={onSubmit} type="button" className={`btn btn--${props.platform === 'sleeper' ? 'sleeper' : 'espn'}`}>Submit</button>
             )}
         </div>
     )

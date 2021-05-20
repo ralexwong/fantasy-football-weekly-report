@@ -22,7 +22,7 @@ const Recap = (props) => {
   }
 
   return (
-    <div className="recap col">
+    <div className="recap">
       <p className="reportTitle">NUMBERS RECAP</p>
       <Table bordered >
         <thead>
