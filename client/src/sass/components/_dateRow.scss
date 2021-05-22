@@ -1,8 +1,12 @@
 .dateRow {
-    border-top:2px solid black;
+    border-top: 2px solid black;
     border-bottom: 4px solid black;
     margin: 0px auto;
+    padding: 0 5px;
     font-size: 2rem;
+
+    display: flex; 
+    justify-content: space-between;
 
     @include respond(phone) {
         font-size: 1.75rem;

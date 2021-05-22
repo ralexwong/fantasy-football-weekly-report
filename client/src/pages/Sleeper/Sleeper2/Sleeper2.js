@@ -1,60 +1,53 @@
-import React, { Component } from "react";
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { setLeague_id, fetchLeagueInfo } from '../../../actions/Sleeper';
 
-import { Jumbotron } from 'reactstrap';
+const Sleeper2 = () => {
 
-class Sleeper2 extends Component {
-    state = {
-        active: ''
-    }   
+    const [active, setActive] = useState('');
+    const state = useSelector((state) => state)
+    const dispatch = useDispatch();
 
-    onClick = (e) => {
+    const onClick = (e) => {
         console.log(e.target.getAttribute('id'));
         const league = e.target.id;
 
-        if(this.state.active === league) { 
-            this.setState({active: ''});
+        if(active === league) { 
+            setActive('');
         } else {
-            this.setState({active: league})
+            setActive(league)
        }
 
         localStorage.setItem("league", league);
-        this.props.setLeague_id(league);
-        this.props.fetchLeagueInfo(league);
+        dispatch(setLeague_id(league));
+        dispatch(fetchLeagueInfo(league));
     }
 
-    mapLeagues = (leagues) => {
+    const mapLeagues = (leagues) => {
         return leagues.map(league => {
             return (
-                <p className={`sleeper__list ${this.state.active === league.league_id ? `sleeper__list--active` : ``}`} id={league.league_id} key={league.league_id} onClick={(e) => this.onClick(e)} >
+                <p className={`input__list ${active === league.league_id ? `input__list--active` : ``}`} id={league.league_id} key={league.league_id} onClick={(e) => onClick(e)} >
                     {league.name}
                 </p>
             )
         })
     }
 
-    render() {
-        return (
-            <Jumbotron className="sleeper__jumbotron" ref={this.props.reference}>
-                <div className="sleeper__helpertext">
-                    <p className="bold">
-                        Click on one league!
-                    </p>
-                    {this.props.leagues ? (
-                        this.mapLeagues(this.props.leagues)
-                    ) : (
-                            <p className="paragraph">No Leagues Found</p>
-                        )}
-                </div>
+    return (
+        <div className="input__jumbotron" ref={state.sleeper.reference}>
+            <div className="input__helpertext">
+                <p className="bold">
+                    Click on one league!
+                </p>
+                {state.sleeper.leagues ? (
+                    mapLeagues(state.sleeper.leagues)
+                ) : (
+                        <p className="paragraph">No Leagues Found</p>
+                    )}
+            </div>
 
-            </Jumbotron>
-        )
-    }
+        </div>
+    )
 }
 
-const mapStateToProps = (state) => {
-    return { leagues: state.sleeper.leagues }
-}
-
-export default connect(mapStateToProps, { setLeague_id, fetchLeagueInfo })(Sleeper2)
+export default Sleeper2;

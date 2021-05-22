@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import { useDispatch } from 'react-redux';
 
 // import YearInput from '../../components/YearInput';
 import Sleeper1 from './Sleeper1';
@@ -6,32 +7,21 @@ import Sleeper2 from './Sleeper2';
 import Sleeper3 from './Sleeper3';
 
 import OptionalInputs from './../../components/OptionalInputs';
-
 import GenerateReportButton from '../../components/GenerateReportButton';
 
-import { Container, Row, Col } from "reactstrap";
+const Sleeper = () => {
+  return (
+    <div className="input input--sleeper">
+      {/* <YearInput platform={'sleeper'} /> */}
+      <Sleeper1 />
+      <Sleeper2 />
+      <Sleeper3 />
 
-class Sleeper extends Component {
-  render() {
-    return (
-      <div className="inputBackground inputBackground--sleeper">
-        <Container>
-          <Row>
-            <Col className="sleeper">
-              {/* <YearInput platform={'sleeper'} /> */}
-              <Sleeper1 />
-              <Sleeper2 />
-              <Sleeper3 />
+      <OptionalInputs platform={'sleeper'} />
+      <GenerateReportButton reportPage={'weekly-report-sleeper'} />
+    </div>
+  )
   
-              <OptionalInputs platform={'sleeper'} />
-  
-              <GenerateReportButton reportPage={'weekly-report-sleeper'} />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    )
-  }
 }
 
 export default Sleeper;

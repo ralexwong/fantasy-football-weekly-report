@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import Container from "react-bootstrap/Container";
-
 class Signup extends Component {
 	constructor() {
 		super()
@@ -52,7 +50,6 @@ class Signup extends Component {
 		return (
 
 			<div id="body" className="SignupForm">
-				<Container>
 					<p id="logIn">Create an Account</p>
 					<form className="form-horizontal">
 						<div className="form-group">
@@ -104,7 +101,6 @@ class Signup extends Component {
 						<span>Already have an account? </span>
 						<a class="signUpLink" href="/login">Log In</a>
 					</p>
-				</Container>
 			</div>
 
 		)

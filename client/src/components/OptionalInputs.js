@@ -1,79 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import OptionalInput from './OptionalInput';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-import { Jumbotron } from 'reactstrap';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
-  heading: {
-    fontSize: '2.5rem',
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-  accordianDetails: {
-    display: 'block',
-    
-  }
-}));
+const inputs = ['Season', 'Title', 'Caption']
 
 export default function OptionalInputs(props) {
-  const classes = useStyles();
+
+  const [open, setOpen] = useState(new Array(inputs.length).fill(false))
+  const handleClick = (i) => {
+    console.log(i)
+    let set = [...open]
+    set[i] = !set[i]
+    setOpen(set)
+  }
 
   return (
     <>
-    <Jumbotron className="sleeper__jumbotron">
-    <p className="heading-tertiary">Optional Inputs</p>
+      <div className="input__jumbotron">
+        <p className="heading-tertiary">Optional Inputs</p>
 
-    <div className={classes.root}>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>
-            Season
-            </Typography>
-        </AccordionSummary>
-        <AccordionDetails className={classes.accordianDetails}>
-            <OptionalInput input={'Season'} platform={props.platform} />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography className={classes.heading}>Title</Typography>
-        </AccordionSummary>
-        <AccordionDetails className={classes.accordianDetails}>
-            <OptionalInput input={'Title'} platform={props.platform} />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3a-content"
-          id="panel3a-header"
-        >
-          <Typography className={classes.heading}>Caption</Typography>
-        </AccordionSummary>
-        <AccordionDetails className={classes.accordianDetails}>
-            <OptionalInput input={'Caption'} platform={props.platform} />
-        </AccordionDetails>
-      </Accordion>
-    </div>
-    </Jumbotron>
+        {inputs.map((input, i) => {
+          return <div className='accordian' key={i}>
+            <div className='accordian__title' onClick={() => handleClick(i)} >
+              {input} <span className={open[i] === true ? 'accordian__arrow--active' : 'accordian__arrow'}>V</span>
+            </div>
+            <OptionalInput platform={props.platform} input={input} open={open[i]} />
+          </div>
+        })}
+
+      </div>
     </>
   );
 }

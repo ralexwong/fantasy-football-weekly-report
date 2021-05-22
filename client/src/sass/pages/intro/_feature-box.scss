@@ -7,7 +7,16 @@
     transition: .2s all;
     position: relative;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem 2rem;
+
     height: 35rem;
+
+    @include respond(iphone) {
+        height: 26rem;
+    }
 
     &--working:hover {
         transform: translateY(-1.5rem) scale(1.03);
@@ -53,9 +62,20 @@
         text-transform: uppercase;
     }
 
-    @include respond(iphone) {
-        margin-bottom: 3rem;
-
-        height: 26rem;
+    &__text {
+        padding: 0 1rem;
     }
+
+}
+
+.espn {
+    grid-area: espn;
+}
+
+.sleeper {
+    grid-area: sleeper;
+}
+
+.yahoo {
+    grid-area: yahoo;
 }

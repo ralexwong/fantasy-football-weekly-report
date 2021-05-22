@@ -27,6 +27,11 @@ html {
 
 body {
     box-sizing: border-box;
+    margin: 0;
+    padding: 2rem;
+    box-sizing: "border-box inherit";
+    font-weight: 400;
+    line-height: 1.7;
 }
 
 ::selection {

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Container from "react-bootstrap/Container";
 
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
@@ -52,13 +51,11 @@ class League extends Component {
 
   render() {
     return (
-      <Container>
         <Table striped bordered hover>
           <tbody>
             {this.mapTableRows(13)}
           </tbody>
         </Table>
-      </Container>
     )
   }
 }

@@ -49,12 +49,17 @@ p {
     transition: all .2s;
     width: 80%;
 
+    text-align: center;
+    grid-column: 1/4;
+    margin: auto;
+
     @include respond(tab-port) {
         font-size: 3rem;
     }
 
     @include respond(phone) {
         font-size: 2.5rem;
+        grid-area: title;
     }
 }
 

@@ -1,29 +1,26 @@
 import React from 'react';
 
-import { Row, Col } from "reactstrap"
-
-
-function ScoreboardRow(props) {
+const ScoreboardRow = (props) => {
     return (
-        <Row className="scoreboard__row">
-            <Col className="scoreboard__scores col-2">
+        <div className="scoreboard__row">
+            <div className="scoreboard__scores">
                 <p>{props.points1}</p>
 
                 <p>{props.points2}</p>
-            </Col>
+            </div>
 
-            <Col className="scoreboard__names col-9">
+            <div className="scoreboard__names">
                 <p>{props.roster1}</p>
 
                 <p>{props.roster2}</p>
-            </Col>
+            </div>
 
-            <Col className="scoreboard__record col-1">
+            <div className="scoreboard__record">
                 <p>{(parseFloat(props.points1) > parseFloat(props.points2)) ? "W" : "L"}</p>
 
                 <p>{(parseFloat(props.points2) > parseFloat(props.points1)) ? "W" : "L"}</p>
-            </Col>
-        </Row>
+            </div>
+        </div>
     );
 }
 

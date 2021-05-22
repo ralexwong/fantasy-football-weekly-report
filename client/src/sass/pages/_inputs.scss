@@ -1,7 +1,9 @@
-.inputBackground {
+.input {
     min-height: 1000px;
     border-bottom-left-radius: $border-radius-app;
     border-bottom-right-radius: $border-radius-app;
+    text-align: center;
+    padding: 1rem;
 
     &--sleeper {
         background-image: linear-gradient(
@@ -13,14 +15,17 @@
     &--espn {
         background: linear-gradient(to right, $light-green, $dark-green)
     }
-}
-
-.sleeper {
-    text-align: center;
 
     &__jumbotron {
         max-width: 65rem;
-        margin: 2rem auto;
+        margin: auto;
+        padding: 2rem 1rem;
+        background-color: #e9ecef;
+        border-radius: .3rem;
+
+        &:not(:first-child) {
+            margin-top: 2rem;
+        }
     }
 
     &__helpertext {

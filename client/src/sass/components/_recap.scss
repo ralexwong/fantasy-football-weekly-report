@@ -1,5 +1,9 @@
 .recap {
     border-right: 2px solid black;
+    
+    @include respond(phone) {
+        border: none;
+    }
 
     &__week {
         background : $darker-blue;

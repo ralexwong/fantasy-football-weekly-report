@@ -1,85 +1,72 @@
-import React, { Component } from "react";
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchMatchupPoints } from '../../../actions/Sleeper';
 
-import { Jumbotron } from 'reactstrap';
 
-class Sleeper3 extends Component {
-    constructor() {
-        super()
-        this.state = {
-            week: "",
-            loading: false
-        }
-    }
 
-    handleChange = (event) => {
+const Sleeper3 = () => {
+
+    const [week, setWeek] = useState('');
+    const [loading, setLoading] = useState(false)
+    const state = useSelector((state) => state)
+    const dispatch = useDispatch();
+
+    const handleChange = (event) => {
         const { maxLength } = event.target;
         const message = event.target.value.slice(0, maxLength);
 
         if (message < 1) {
 
         } else {
-            this.setState({ week: message });
+            setWeek(message);
         }
     }
 
-    onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
-        this.onLoading();
-        console.log(this.state.week);
-        this.props.fetchMatchupPoints(this.state.week, this.props.league_id, this.props.league_info);
+        onLoading();
+        console.log(week);
+        dispatch(fetchMatchupPoints(week, state.sleeper.league_id, state.sleeper.league_info));
     }
 
-    onLoading = () => {
-        this.setState({ loading: true });
+    const onLoading = () => {
+        setLoading(true);
         setTimeout(() => { 
-            this.setState({ loading: false })
+            setLoading(false)
         }, 
         2000);
     }
 
-    render() {
-        return (
-            <Jumbotron className="sleeper__jumbotron">
-                <div className="sleeper__helpertext">
-                    <p className="bold">
-                        Select a week!
-                    </p>
-                </div>
-                <form onSubmit={this.onSubmit} className="ui form error">
-                    <input
-                        required
-                        maxLength="2"
-                        className="sleeper__input"
-                        onChange={this.handleChange}
-                        autoComplete="off"
-                        placeholder={this.props.sleeperWeek ? this.props.sleeperWeek : 'Week'}
-                        type="number"
-                        value={this.state.input}
-                    />
-                    <p className='helperText'></p>
-                    {this.state.loading ? (
-                        <button class="btn btn--sleeper" type="button" disabled>
-                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            Loading...
-                        </button>
-                    ) : (
-                        <button onClick={this.onSubmit} type="button" className="btn btn--sleeper">Submit</button>
-                    )}
-                </form>
-            </Jumbotron>
-        )
-    }
+    return (
+        <div className="input__jumbotron">
+            <div className="input__helpertext">
+                <p className="bold">
+                    Select a week!
+                </p>
+            </div>
+            <form onSubmit={onSubmit} className="ui form error">
+                <input
+                    required
+                    maxLength="2"
+                    className="input__input"
+                    onChange={handleChange}
+                    autoComplete="off"
+                    placeholder={state.sleeper.sleeperWeek ? state.sleeper.sleeperWeek : 'Week'}
+                    type="number"
+                    value={week}
+                />
+                <p className='helperText'></p>
+                {loading ? (
+                    <button className="btn btn--sleeper" type="button" disabled>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button>
+                ) : (
+                    <button onClick={onSubmit} type="button" className="btn btn--sleeper">Submit</button>
+                )}
+            </form>
+        </div>
+    )
 }
 
-const mapStateToProps = (state) => {
-    return { 
-        league_id: state.sleeper.league_id,
-        league_info: state.sleeper.league_info,
-
-        sleeperWeek: state.sleeper.sleeperWeek
-    }
-}
-
-export default connect(mapStateToProps, { fetchMatchupPoints })((Sleeper3))
+export default Sleeper3;

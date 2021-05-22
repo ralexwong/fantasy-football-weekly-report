@@ -24,10 +24,15 @@
         }
     }
 
+    &__info {
+        display: flex;
+        margin: 0 5rem;
+        justify-content: space-between;
+    }
+
     &__navigation {
         border-top: 1px solid $grey-color-2;
         padding-top: 2rem;
-        float: left;
     }
 
     &__list {

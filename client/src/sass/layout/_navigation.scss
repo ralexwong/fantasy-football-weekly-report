@@ -1,0 +1,29 @@
+.nav {
+    position: relative;
+    
+
+    &__button {
+        margin-right: 3rem;
+    }
+
+    &__dropdown {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+
+        &--active {
+            display: block;
+        }
+
+        &__link {
+            padding: 1rem;
+
+            &:hover {
+                background-color: $grey-color;
+            }
+        }
+    }
+}
