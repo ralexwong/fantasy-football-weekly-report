@@ -1,32 +1,18 @@
-import React, { Component } from "react";
-import { connect } from 'react-redux';
-
+import React from "react";
 import Title from "../../components/Title";
 import DateRow from "../../components/DateRow";
 import MiddleRow from './MiddleRow';
 import GraphPoints from './GraphPoints';
 
-import { Container } from "reactstrap"
-
-
-class Report2 extends Component {
-  render() {
-    return (
-      <Container className="reportContainer">
-        <Title />
-        <DateRow />
-        <MiddleRow />
-        <GraphPoints />
-      </Container>
-    );
-  }
-
+const Report2 = () => {
+  return (
+    <div className="reportContainer col">
+      <Title />
+      <DateRow />
+      <MiddleRow />
+      <GraphPoints />
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps)(Report2);
+export default Report2;

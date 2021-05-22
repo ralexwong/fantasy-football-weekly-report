@@ -40,12 +40,22 @@
     padding: 30rem 5rem 65rem 5rem;
     margin-top: -12rem;
 
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+
     @include respond(tab-port) {
        padding: 20rem 5rem 30rem 5rem;     
     } 
     
     @include respond(phone) {
-        padding: 23rem 5rem 70rem 5rem;
+        grid-template-columns: none;
+        grid-template-areas: 
+        'title'
+        'description'
+        'photos'
+        ;
+
     }
 
     @include respond(iphone) {
@@ -65,34 +75,52 @@
     background-size: cover;
     margin-top: -8rem;
 
-    transform: skewY(-4deg);
+    transform: skewY(4deg);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    @include respond(tab-port) {
+        padding: 15rem 2rem;
+        grid-template-columns: 1fr 1fr;
+    }
 
     @include respond(phone) {
-        padding: 15rem 0;
+        padding: 15rem 2rem;
+        grid-template-columns: 1fr;
     }
 
     & > * {
-        transform: skewY(4deg);
+        transform: skewY(-4deg);
     }
 }
 
 .platforms {
-    padding: 0 0 10rem 0;
+    padding: 20rem 0 10rem 0;
+    margin-top: -10rem;
     background-color: $light-grey;
+    display: grid;
 
     @include respond(phone) {
-        padding: 0 0 10rem 0;
+        grid-template-areas: 
+        'title'
+        'espn'
+        'sleeper'
+        'yahoo';
     }
 }
 
 .reviews {
-    padding: 15rem 0;
+    padding: 15rem 3rem;
     position: relative;
+    display: grid;
 }
 
 .register {
     padding: 15rem 0;
     background-image: linear-gradient(to right bottom, $light-blue, $dark-blue);
+    display: flex;
+    justify-content: center;
 }
 
 

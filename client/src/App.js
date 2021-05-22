@@ -20,19 +20,10 @@ import SleeperOverallReport from './pages/Report2/SleeperOverallReport';
 
 import history from './history';
 
-const style = {
-  margin: "0",
-  padding: "2rem",
-  boxSizing: "border-box inherit",
-  fontFamily: "Lato, sans-serif",
-  fontWeight: "400",
-  lineHeight: "1.7",
-}
-
 function App() {
   return (
     <Router history={history}>
-      <div style={style}>
+      <>
         <ScrollToTop/>
         <Intronav />
         <Switch>
@@ -42,8 +33,8 @@ function App() {
           <Route exact path="/payouts" render={props => <Payouts {...props} />} />
           <Route exact path="/login" render={props => <Login {...props} />} />
           <Route exact path="/signup" render={props => <Signup {...props} />} />
-          <Route exact path="/sleeper" render={props => <Sleeper {...props} />} />
-          <Route exact path="/espn" render={props => <Espn {...props} />} />
+          <Route exact path="/sleeper" render={Sleeper} />
+          <Route exact path="/espn" render={Espn} />
 
           <Route exact path="/weekly-report-espn" render={props => <EspnWeeklyReport {...props} />} />
           <Route exact path="/overall-report-espn" render={props => <EspnOverallReport {...props} />}  />
@@ -51,7 +42,7 @@ function App() {
 
           <Route component={NoMatch} />
         </Switch>
-      </div>
+      </>
     </Router>
   );
 }

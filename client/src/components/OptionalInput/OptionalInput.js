@@ -1,87 +1,94 @@
-import React, { Component } from "react";
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
 import { setEspnSeason, setEspnTitle, setEspnCaption } from '../../actions/Espn';
 import { setSleeperSeason, setSleeperTitle, setSleeperCaption } from '../../actions/Sleeper';
 
-class OptionalInput extends Component {
-    constructor() {
-        super()
-        this.state = {
-            input: ""
-        }
-    }
+const OptionalInput = (props) => {
+    const [input, setInput] = useState('')
+    const [loading, setLoading] = useState(false);
 
-    handleChange = (e) => {
+    const handleChange = (e) => {
         let regex = /^[A-Za-z0-9 ]+$/;
 
-        let isValid = regex.test(e.target.value);
-        if (!isValid) {
+        if (e.target.value === '') {
+            setInput('');
+            return
+        }
 
-        } else {
+        let isValid = regex.test(e.target.value);
+        if (isValid) {
             let maxLength;
 
-            if (this.props.input === 'Season') {
+            if (props.input === 'Season') {
                 maxLength = 2
-            } else if (this.props.input === 'Caption') {
+            } else if (props.input === 'Caption') {
                 maxLength = 100
-            } else if (this.props.input === 'Title') {
+            } else if (props.input === 'Title') {
                 maxLength = 30
             }
 
             const message = e.target.value.slice(0, maxLength);
-            this.setState({ input: message });
+            setInput(message);
         }
     }
-    
-    onSubmit = (e) => {
+
+    const onSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state.input);
-    
-        if (this.props.platform === 'sleeper') {
-            if (this.props.input === 'Season') {
-                this.props.setSleeperSeason(this.state.input);
-            } else if (this.props.input === 'Caption') {
-                this.props.setSleeperCaption(this.state.input)
-            } else if (this.props.input === 'Title') {
-                this.props.setSleeperTitle(this.state.input)
+        onLoading();
+        console.log(input);
+
+        if (props.platform === 'sleeper') {
+            if (props.input === 'Season') {
+                setSleeperSeason(input);
+            } else if (props.input === 'Caption') {
+                setSleeperCaption(input)
+            } else if (props.input === 'Title') {
+                setSleeperTitle(input)
             }
-        } else if (this.props.platform === 'espn') {
-            if (this.props.input === 'Season') {
-                this.props.setEspnSeason(this.state.input);
-            } else if (this.props.input === 'Caption') {
-                this.props.setEspnCaption(this.state.input)
-            } else if (this.props.input === 'Title') {
-                this.props.setEspnTitle(this.state.input)
+        } else if (props.platform === 'espn') {
+            if (props.input === 'Season') {
+                setEspnSeason(input);
+            } else if (props.input === 'Caption') {
+                setEspnCaption(input)
+            } else if (props.input === 'Title') {
+                setEspnTitle(input)
             }
         }
     }
 
-
-    render() {
-        return (
-            <>
-                <form onSubmit={this.onSubmit} className="espnForm">
-                    <input
-                        className="sleeper__input"
-                        onChange={this.handleChange}
-                        autoComplete="off"
-                        placeholder={this.props.input} 
-                        value={this.state.input}
-                    />
-                    <p className='helperText'></p>
-
-                </form>
-                <button onClick={this.onSubmit} type="button" className={this.props.platform === 'sleeper' ? "btn btn--sleeper" : "btn btn--espn"}>Submit</button>
-            </>
-        )
+    const onLoading = () => {
+        setLoading(true);
+        setTimeout(() => { 
+            setLoading(false)
+        }, 
+        1500);
     }
+
+
+    return (
+        <div className={props.open === true ? 'accordian__form--open' : 'accordian__form--close'}>
+            <form onSubmit={onSubmit}>
+                <input
+                    className="input__input"
+                    onChange={handleChange}
+                    autoComplete="off"
+                    placeholder={input ? input : `${props.input}`}
+                    value={input}
+                />
+                <p className='helperText'></p>
+
+            </form>
+
+            {loading ? (
+                <button className="btn btn--sleeper" type="button" disabled>
+                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                </button>
+            ) : (
+                <button onClick={onSubmit} type="button" className={`btn btn--${props.platform === 'sleeper' ? 'sleeper' : 'espn'}`}>Submit</button>
+            )}
+        </div>
+    )
+
 }
 
-export default connect(null, { 
-    setEspnSeason, 
-    setSleeperSeason,
-    setEspnTitle, 
-    setEspnCaption,
-    setSleeperTitle, 
-    setSleeperCaption
- })(OptionalInput)
+export default OptionalInput;

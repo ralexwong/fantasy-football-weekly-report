@@ -36,7 +36,7 @@ mongoose.connect(
   },
   err => {
 		/** handle initial connection error */
-		console.log('error connecting to Mongo: ' + err)
+		// console.log('error connecting to Mongo: ' + err)
 	}
 );
 

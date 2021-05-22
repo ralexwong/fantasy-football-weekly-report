@@ -1,41 +1,32 @@
-import React, { Component } from 'react'
-
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import React from 'react'
 
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
-class Footer extends Component {
-  render() {
+function Footer() {
     return (
       <footer className='footer'>
         <div className='footer__logo-box'>
           <picture className='footer__logo'>
-            <source  srcSet='./images/default.png 1x, ./images/default.png 2x' media="(max-width: 35.9em)" />
+            <source srcSet='./images/default.png 1x, ./images/default.png 2x' media="(max-width: 35.9em)" />
             <img srcSet='./images/default.png 1x, ./images/default.png 2x' alt='footer_photo' className='footer__logo' />
           </picture>
         </div>
 
-        <Row noGutters={true} className='u-space-evenly'>
-          <Col xs='4'>
-            <div className='footer__navigation'>
-              <ul className='footer__list'>
-                <li className='footer__item'><a href='https://github.com/ralexwong' className='footer__link'><GitHubIcon /> </a></li>
-                <li className='footer__item'><a href='https://www.linkedin.com/in/iamwong/' className='footer__link'><LinkedInIcon /></a></li>
-              </ul>
-            </div>
-          </Col>
+        <div className='footer__info'>
+          <div className='footer__navigation'>
+            <ul className='footer__list'>
+              <li className='footer__item'><a href='https://github.com/ralexwong' className='footer__link'><GitHubIcon /> </a></li>
+              <li className='footer__item'><a href='https://www.linkedin.com/in/iamwong/' className='footer__link'><LinkedInIcon /></a></li>
+            </ul>
+          </div>
 
-          <Col xs='4'>
-            <p className='footer__copyright'>
-              Built by Alexander Wong for personal use. Copyright &copy; by Alexander Wong. Credit to Jonas Schmedtmann for the template for the landing page.
-            </p>
-          </Col>
-        </Row>
+          <p className='footer__copyright'>
+            Built by Alexander Wong for personal use. Copyright &copy; by Alexander Wong. Credit to Jonas Schmedtmann for the template for the landing page.
+          </p>
+        </div>
       </footer>
     );
-  }
 }
 
 export default Footer;
