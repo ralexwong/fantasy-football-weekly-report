@@ -5,7 +5,7 @@ import Platforms from './Platforms';
 import Footer from '../../components/Footer'
 
 import Features from './Features'
-import Reviews from './Reviews';
+// import Reviews from './Reviews';
 import Register from './Register';
 
 const style = {

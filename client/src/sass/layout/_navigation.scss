@@ -1,9 +1,25 @@
 .nav {
     position: relative;
-    
+    background-color: #dddddddd;  
+    border-top-left-radius: $border-radius-app;
+    border-top-right-radius: $border-radius-app;  
 
     &__button {
         margin-right: 3rem;
+        cursor: pointer;
+
+        &--active {
+            background-color: $light-grey;
+        }
+
+        &--word {
+            padding: 1rem;
+            border-bottom: 3px solid transparent;
+
+            &:hover {
+                border-bottom: 3px solid red;
+            }
+        }
     }
 
     &__dropdown {

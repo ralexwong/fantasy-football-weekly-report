@@ -22,7 +22,9 @@ export default function OptionalInputs(props) {
         {inputs.map((input, i) => {
           return <div className='accordian' key={i}>
             <div className='accordian__title' onClick={() => handleClick(i)} >
-              {input} <span className={open[i] === true ? 'accordian__arrow--active' : 'accordian__arrow'}>V</span>
+              <p>{input} <span className={`accordian__arrow ${open[i] === true ? 'accordian__arrow--active' : ''}`}><svg width="16" height="10">
+    <polygon points="0,0 16,0 8,10"/>
+</svg></span></p>
             </div>
             <OptionalInput platform={props.platform} input={input} open={open[i]} />
           </div>
