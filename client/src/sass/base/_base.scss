@@ -3,7 +3,7 @@
 *::before {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 html {
@@ -32,6 +32,11 @@ body {
     box-sizing: "border-box inherit";
     font-weight: 400;
     line-height: 1.7;
+
+    @include respond(phone) {
+        padding: 0;
+        margin-top: $navbar-height;
+    }
 }
 
 ::selection {

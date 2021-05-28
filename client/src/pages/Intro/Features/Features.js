@@ -30,7 +30,7 @@ const Features = () => {
 
             <div className='box'>
                 <i className='icon-basic-link box__icon'></i>
-                <h3 className='heading-tertiary'>Share your unique report!</h3>
+                <h3 className='heading-tertiary'>Share with your league!</h3>
                 <p className='box__text'>
                     Voila! You are now able to share your report with your league!
                 </p>
