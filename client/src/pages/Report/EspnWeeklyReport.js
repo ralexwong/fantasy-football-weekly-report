@@ -24,7 +24,7 @@ const EspnWeeklyReport = (props) => {
     <>        
       <div style={{ textAlign: "center" }}>
         <button className="btn btn--espn u-margin-top" onClick={() => exportComponentAsPNG(componentRef)}>
-          Click here for your report to be converted to an image!
+          Click here to download your report as an image!
         </button>
       </div>
         <ComponentToPrint ref={componentRef} />
