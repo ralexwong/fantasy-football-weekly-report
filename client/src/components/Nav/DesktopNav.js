@@ -8,7 +8,7 @@ const DesktopNav = () => {
     return (
         <>
             <Link className="nav__button nav__button--word" to="/">
-                FFWR
+                Home
             </Link>
 
             <div className={`nav__button ${sleeperOpen === true ? "nav__button--active" : ""
