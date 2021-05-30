@@ -3,6 +3,7 @@
     background-color: #dddddd; 
     border-top-left-radius: $border-radius-app;
     border-top-right-radius: $border-radius-app;
+    padding-left: 1rem;
     
     @include respond(phone) {
         position: fixed;
