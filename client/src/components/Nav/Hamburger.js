@@ -25,7 +25,7 @@ const Hamburger = () => {
             <div className={hamburgerMenuActive ? "nav__overlay" : ""}></div>
             <div
                 className={hamburgerMenuActive ? "nav__overlay__exit" : ""}
-                onClick={() => setHamburgerMenuActive(false)}
+                onClick={() => stopScroll()}
             ></div>
             <div className={`sidebarNav ${hamburgerMenuActive ? "sidebarNav--active" : ""}`}>
                 <div className={`sidebarNav__content ${sidebarContent === 'main' ? '' : 'sidebarNav__content--off'}`}>
