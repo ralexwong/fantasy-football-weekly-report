@@ -14,15 +14,11 @@ const Platforms = (props) => {
                     </Link>
                 </div>
 
-
-
-
                 <div className='platform platform--working'>
                     <Link to="/sleeper">
                         <img className='platform__image' src={`./images/intro/sleeper.png`} alt='poop' />
                     </Link>
                 </div>
-
 
 
                 <div className='platform'>
