@@ -7,18 +7,20 @@
     border-top-right-radius: 5px;
     background-color: $light-grey;
 
+
     &__title {
         font-size: 2rem;
         border-bottom: 1px solid $black-color;
+        cursor: pointer;
         
     }
 
     &__form--open {
         height: auto;
         max-height: 150px;
-        transition: max-height 0.2s ease-out;
+        transition: all 0.5s ease;
         border-bottom: none;
-
+        opacity: 1;
         padding: 2rem 0;
         background-color: $light-grey;
 
@@ -29,15 +31,17 @@
 
     &__form--close {
         max-height: 0;
+        opacity: 0;
         overflow: hidden;
-        transition: max-height 0.5s ease-out;
+        transition: all 0.5s ease;
     }
 
     &__arrow {
-        transition: 0.2s;
+        transition: 0.5s all;
+        float: right;
+        margin-right: 1rem;
 
         &--active {
-            transition: 0.2s;
             transform: rotate(180deg);
         }
     }

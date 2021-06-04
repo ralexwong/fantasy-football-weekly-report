@@ -1,6 +1,6 @@
 .box {
     background-color: rgba($white-color, .8);
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
     border-radius: 15px;
     box-shadow: 0 1.5rem 4rem rgba($black-color, .15);
@@ -32,6 +32,30 @@
         color: transparent;
     }
 
+    &__text {
+        padding: 0 1rem;
+    }
+
+}
+
+.platform {
+    border-radius: 15px;
+    box-shadow: 0 1.5rem 4rem rgba($black-color, .15);
+    transition: .2s all;
+
+    height: 35rem;
+    position: relative;
+    width: 80%;
+
+    @include respond(iphone) {
+        height: 26rem;
+        width: 100%;
+    }
+
+    &--working:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+    }
+
     &__image {
         height: 100%;
         width: 100%;
@@ -61,21 +85,4 @@
         font-weight: 700;
         text-transform: uppercase;
     }
-
-    &__text {
-        padding: 0 1rem;
-    }
-
-}
-
-.espn {
-    grid-area: espn;
-}
-
-.sleeper {
-    grid-area: sleeper;
-}
-
-.yahoo {
-    grid-area: yahoo;
 }

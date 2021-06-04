@@ -23,9 +23,9 @@ const SleeperWeeklyReport = (props) => {
 
   return (
     <>
-      <div style={{ textAlign: "center", marginTop: "3rem" }}>
-        <button className="btn btn--sleeper" onClick={() => exportComponentAsPNG(componentRef)}>
-          Click here for your report to be converted to an image!
+      <div style={{ textAlign: "center" }}>
+        <button className="btn btn--sleeper u-margin-top" onClick={() => exportComponentAsPNG(componentRef)}>
+          Click here to download your report as an image!
         </button>
       </div>
       

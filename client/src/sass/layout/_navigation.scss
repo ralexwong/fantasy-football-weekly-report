@@ -1,9 +1,40 @@
 .nav {
     position: relative;
+    background-color: #dddddd; 
+    border-top-left-radius: $border-radius-app;
+    border-top-right-radius: $border-radius-app;
+    padding-left: 1rem;
     
+    @include respond(phone) {
+        position: fixed;
+        top:0;
+        min-height: $navbar-height;
+        display: flex;
+        align-content: center;
+        padding-left: 2rem;
+
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 100%;
+        z-index: 3;
+    }
 
     &__button {
         margin-right: 3rem;
+        cursor: pointer;
+
+        &--active {
+            background-color: $light-grey;
+        }
+
+        &--word {
+            padding: 1rem;
+            border-bottom: 3px solid transparent;
+
+            &:hover {
+                border-bottom: 3px solid red;
+            }
+        }
     }
 
     &__dropdown {
@@ -16,6 +47,7 @@
 
         &--active {
             display: block;
+            
         }
 
         &__link {
@@ -26,4 +58,124 @@
             }
         }
     }
+
+
+    &__hamburger {
+        position: relative;
+        background-color: black;
+        width: 3rem;
+        height: 2px;
+        display: inline-block;
+
+        &::before,
+        &::after {
+            content: "";
+            background-color: black;
+            width: 3rem;
+            height: 2px;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+
+            transition: all .5s;
+        }
+        &::before {
+            top: -0.8rem;
+        }
+        &::after {
+            top: 0.8rem;
+        }
+    }
+
+    &__overlay {
+        position: fixed;
+        background-color: #00000078;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        z-index: 3;
+
+        transition: .3s all;
+
+        &__exit {
+            position: fixed;
+            width: 3rem;
+            height: 2px;
+            display: inline-block;
+            background-color: transparent;
+            z-index: 4;
+            top: 4vh;
+            right: 8vw;
+
+            &::before,
+            &::after {
+                content: "";
+                background-color: $white-color;
+                width: 4rem;
+                height: 3px;
+                display: inline-block;
+                position: absolute;
+                right: 0;
+
+            }
+
+            &::before {
+                top: 0;
+                transform: rotate(135deg);
+            }
+
+            &::after {
+                top: 0;
+                transform: rotate(-135deg);
+            }
+        
+        }
+    }
+}
+
+
+.sidebarNav {        
+    position: fixed;
+    top:0;
+    left:0;
+
+    height: 100vh;
+    width: $navbar-width;
+    background-color: $white-color;
+    z-index: 3;
+
+    transform: translateX(-$navbar-width);
+    transition: transform 0.3s;
+
+    font-size: 3rem;
+
+    &--active {
+        transform: translateX(0);
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    
+    &__link {
+        padding: 0.5rem;
+
+        &--active {
+            background-color:#dddddd; 
+        }
+    }
+
+
+    &__content {
+        transform: translateX(0);
+        position: fixed;
+        top:0;
+        left:0;
+        z-index: 4;
+        transition: transform 0.3s;
+        padding: 2rem;
+
+        &--off {
+            transform: translateX(-$navbar-width);
+        }
+    }
+
+
 }

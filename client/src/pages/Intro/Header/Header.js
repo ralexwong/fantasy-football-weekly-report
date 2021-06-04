@@ -3,10 +3,6 @@ import React from 'react'
 const Header = (props) => {
     return (
         <header className='introHeader'>
-            <div className='introHeader__logo-box'>
-                <img className='introHeader__logo' src="/images/logo.png" alt="logo"></img>
-            </div>
-
             <div className='introHeader__text-box'>
                 <h1 className='heading-primary'>
                     <span className='heading-primary--main'>Fantasy Football</span>

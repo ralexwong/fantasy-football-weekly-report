@@ -18,6 +18,11 @@
     border: 1px solid $black-color;
 }
 
+@mixin bold-underline {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 // MEDIA QUERY MANAGER
 /*
 

@@ -42,11 +42,6 @@
 
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
-
-    @include respond(tab-port) {
-       padding: 20rem 5rem 30rem 5rem;     
-    } 
     
     @include respond(phone) {
         grid-template-columns: none;
@@ -58,8 +53,12 @@
 
     }
 
-    @include respond(iphone) {
-        padding: 20rem 5rem 55rem 5rem;
+    &__description {
+        padding-right: 9rem;
+
+        @include respond(phone) {
+            padding-right: 0;    
+        } 
     }
 
     
@@ -99,14 +98,19 @@
     padding: 20rem 0 10rem 0;
     margin-top: -10rem;
     background-color: $light-grey;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
 
-    @include respond(phone) {
-        grid-template-areas: 
-        'title'
-        'espn'
-        'sleeper'
-        'yahoo';
+        @include respond(phone) {
+            grid-template-columns: 1fr;
+            padding: 0 4rem;
+            gap: 4rem;
+        }
     }
 }
 

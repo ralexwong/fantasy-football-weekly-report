@@ -11,7 +11,7 @@
         border: 1px solid $black-color;
         border-radius: 2px;
         position: absolute;
-        z-index: 10;
+        z-index: 1;
         transition: all .2s;
         outline-offset: 2rem;
 
@@ -35,10 +35,9 @@
         }
 
         &:hover {
-            outline: 1.5rem solid $primary-color;
             transform: scale(1.05) translateY(5px);
             box-shadow: 0 2.5rem 4 rem rgba($black-color, .5);
-            z-index: 20;
+            z-index: 2;
         }
     }
 
