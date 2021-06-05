@@ -46,8 +46,6 @@ const Cards = () => {
                 </div>
             </div>
 
-            <hr className='hr' />
-
             <div>
                 <p className="reportTitle">LAST PLACE</p>
 
