@@ -3,7 +3,6 @@
 // import { connect } from 'react-redux';
 // import { Field, reduxForm } from 'redux-form';
 // // import { fetchPayout } from '../../actions';
-// import Table from 'react-bootstrap/Table'
 
 // class League extends Component {
 

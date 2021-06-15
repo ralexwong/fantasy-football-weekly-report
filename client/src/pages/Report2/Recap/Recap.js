@@ -1,10 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Table from 'react-bootstrap/Table'
-
-const Recap = (props) => {
-
+const Recap = () => {
   const state = useSelector((state) => state)
 
   let week = "";
@@ -24,7 +21,7 @@ const Recap = (props) => {
   return (
     <div className="recap">
       <p className="reportTitle">NUMBERS RECAP</p>
-      <Table bordered >
+      <table>
         <thead>
           <tr>
             <th className="recap__week" colSpan="7">Week {week}</th>
@@ -57,7 +54,7 @@ const Recap = (props) => {
             : 
             (<tr></tr>))}
         </tbody>
-      </Table>
+      </table>
     </div>
   )
 }

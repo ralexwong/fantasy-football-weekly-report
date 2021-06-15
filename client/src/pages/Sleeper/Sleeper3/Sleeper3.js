@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchMatchupPoints } from '../../../actions/Sleeper';
 
-
-
 const Sleeper3 = () => {
-
     const [week, setWeek] = useState('');
     const [loading, setLoading] = useState(false)
     const state = useSelector((state) => state)
@@ -44,7 +41,7 @@ const Sleeper3 = () => {
                     Select a week!
                 </p>
             </div>
-            <form onSubmit={onSubmit} className="ui form error">
+            <form onSubmit={onSubmit}>
                 <input
                     required
                     maxLength="2"

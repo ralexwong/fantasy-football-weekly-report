@@ -8,15 +8,9 @@
     display: flex; 
     justify-content: space-between;
 
-    @include respond(phone) {
-        font-size: 1.75rem;
-    }
-
-    @include respond(galaxy) {
-        font-size: 1.6rem;
-    }
-
     @include respond(iphone) {
         font-size: 1.3rem;
+        border-top: 1px solid black;
+        border-bottom: 2px solid black;
     }
 }

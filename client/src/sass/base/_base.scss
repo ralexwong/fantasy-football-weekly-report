@@ -9,6 +9,10 @@
 html {
     // This defines what 1rem is
     font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+    font-family: -apple-system,BlinkMacSystemFont,
+    "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",
+    "Liberation Sans",sans-serif,"Apple Color Emoji",
+    "Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 
     @include respond(tab-land) { // width < 1200?
         font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
@@ -42,4 +46,10 @@ body {
 ::selection {
     background-color: $primary-color;
     color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    background-color: initial;
 }
