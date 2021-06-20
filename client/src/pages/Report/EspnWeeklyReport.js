@@ -17,9 +17,7 @@ const EspnWeeklyReport = (props) => {
   const componentRef = useRef(null)
   const dispatch = useDispatch()
 
-  if (props.location.pathname === "/weekly-report-espn") {
-    dispatch(createEspnWeeklyReport())
-  }
+  dispatch(createEspnWeeklyReport())
   return (
     <>        
       <div style={{ textAlign: "center" }}>

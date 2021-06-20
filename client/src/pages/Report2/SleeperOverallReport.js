@@ -17,9 +17,7 @@ const SleeperOverallReport = (props) => {
   const componentRef = useRef(null)
   const dispatch = useDispatch();
 
-  if (props.location.pathname === "/overall-report-sleeper") {
-    dispatch(createSleeperOverallReport())
-  }
+  dispatch(createSleeperOverallReport())
 
   return (
     <>

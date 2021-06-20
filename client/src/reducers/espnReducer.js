@@ -23,6 +23,29 @@ import points from './points';
 
 const matchups = []
 
+const espnFirstPlace = {
+    name: '',
+    logo: '',
+    original: ''
+}
+const espnLastPlace = {
+    name: '',
+    logo: '',
+    original: ''
+}
+
+const espnTopScorer = {
+    name: "",
+    score: 0,
+    logo: "",
+}
+
+const espnCloseOne = {
+    name: "",
+    difference: 0,
+    logo: "",
+}
+
 for (let i = 0; i < 5; i++) {
     matchups.push({
         points1: 100,
@@ -41,7 +64,11 @@ const initialState = {
     espnMatchups: matchups,
     espnYear: 2020,
     espnRecap: recap,
-    espnGraphPPG: points
+    espnGraphPPG: points,
+    espnTopScorer,
+    espnCloseOne,
+    espnFirstPlace,
+    espnLastPlace
 }
 
 
@@ -58,9 +85,9 @@ export default (state = initialState, action) => {
         case ESPN_RECAP:
             return { ...state, espnRecap: action.payload }
         case ESPN_FIRST_PLACE:
-            return { ...state, espn_first_place: action.payload }
+            return { ...state, espnFirstPlace: action.payload }
         case ESPN_LAST_PLACE:
-            return { ...state, espn_last_place: action.payload }
+            return { ...state, espnLastPlace: action.payload }
         case SET_ESPN_REPORT:
             return { ...state, espnReport: action.payload }
         case ESPN_POWER_RANKING: 

@@ -1,20 +1,21 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const Standouts = () => {
-
+const Standouts = () => {   
     const state = useSelector((state) => state)
 
     let topScorer = {
         name: "",
         score: 0,
-        logo: ""
+        logo: "",
     }
+
     let closeOne = {
         name: "",
         difference: 0,
-        logo: ""
+        logo: "",
     }
+
 
     if (state.espn.espnReport && state.espn.espnTopScorer) {
         topScorer = state.espn.espnTopScorer;
@@ -23,6 +24,7 @@ const Standouts = () => {
         topScorer = state.sleeper.sleeperTopScorer;
         closeOne = state.sleeper.sleeperCloseOne;
     }
+     
 
     return (
         <div className="cardsContainer">
@@ -36,7 +38,7 @@ const Standouts = () => {
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin"
                                 onError={(event) => event.target.setAttribute("src", "./images/nfl-logo.jpg")}
-                                src={`https://whispering-woodland-11588.herokuapp.com/${topScorer.logo}`}
+                                src={topScorer.logo}
                                 alt="poop"
                                 className="cards__image" />
                         </div>
@@ -51,8 +53,6 @@ const Standouts = () => {
                 </div>
             </div>
 
-            <hr className='hr' />
-
             <div>
                 <p className="reportTitle">CLOSE ONE</p>
 
@@ -63,7 +63,7 @@ const Standouts = () => {
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin"
                                 onError={(event) => event.target.setAttribute("src", "./images/nfl-logo.jpg")}
-                                src={`https://whispering-woodland-11588.herokuapp.com/${closeOne.logo}`}
+                                src={closeOne.logo}
                                 alt="poop"
                                 className="cards__image" />
                         </div>

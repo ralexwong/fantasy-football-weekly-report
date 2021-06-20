@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setEspnWeek } from '../../../actions/Espn';
 
 
-
 const Espn2 = () => {
-
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -27,7 +25,9 @@ const Espn2 = () => {
         dispatch(setEspnWeek(
             parseInt(input), 
             state.espn.espn, 
-            state.espn.espnSchedule
+            state.espn.espnSchedule,
+            state.espn.espnTopScorer,
+            state.espn.espnCloseOne
         ))
     }
 

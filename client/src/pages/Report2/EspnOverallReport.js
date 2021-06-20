@@ -17,9 +17,7 @@ const EspnOverallReport = (props) => {
   const componentRef = useRef(null)
   const dispatch = useDispatch()
 
-  if (props.location.pathname === "/overall-report-espn") {
-    dispatch(createEspnOverallReport())
-  }
+  dispatch(createEspnOverallReport())
   
   return (
     <>

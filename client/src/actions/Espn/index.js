@@ -20,10 +20,11 @@ import {
 } from '../types'
 
 import axios from 'axios';
+import SvgToPngConverter from '../../components/SvgToPngConverter';
 
 // grab the espn league info -------------------------------------
-export const fetchEspn = (id, year) => async dispatch => {
-    console.log(id);
+export const fetchEspn = (id, year, oldFirstPlace, oldLastPlace) => async dispatch => {
+    // console.log(id);
     let response;
     try {
         response = await axios.get(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/${year}/segments/0/leagues/${id}?view=mStandings&view=mTeam`);
@@ -55,7 +56,7 @@ export const fetchEspn = (id, year) => async dispatch => {
         })
     }
 
-    console.log(teamsInfo)
+    // console.log(teamsInfo)
 
     // create the graphPoints object
     let powerRanking = []
@@ -125,42 +126,75 @@ export const fetchEspn = (id, year) => async dispatch => {
     recapInfo.sort((a, b) => (a.wins < b.wins) ? 1 : (a.wins === b.wins) ? ((a.PF < b.PF) ? 1 : -1) : -1)
 
     // console.log(recapInfo)
+
     // set the first and last place
-    let first_place = {
+    let firstPlace = {
         name: recapInfo[0].shorterName,
-        logo: recapInfo[0].logo
+        logo: recapInfo[0].logo,
+        original: recapInfo[0].logo
     }
-    let last_place = {
+    let lastPlace = {
         name: recapInfo[recapInfo.length - 1].shorterName,
-        logo: recapInfo[recapInfo.length - 1].logo
+        logo: recapInfo[recapInfo.length - 1].logo,
+        original: recapInfo[recapInfo.length - 1].logo
     }
 
-    console.log(first_place)
+    // check if the previous logo is the same
+    // if its not then go through svg check and conversion
+    if (oldFirstPlace.original !== firstPlace.original) {
+        const firstPlaceLength = firstPlace.logo.length
+        const firstPlaceString = firstPlace.logo.substring(firstPlaceLength-3, firstPlaceLength)
+    
+        if (firstPlaceString === 'svg') {
+            new SvgToPngConverter().convertFromInput(firstPlace.logo, function(imgData){
+                firstPlace.logo = imgData
+            });
+        } else {
+            firstPlace.logo = `https://whispering-woodland-11588.herokuapp.com/${firstPlace.logo}`
+        }
+    }
+
+    if (oldLastPlace.original !== lastPlace.original) {
+        const lastPlaceLength = lastPlace.logo.length
+        const lastPlaceString = lastPlace.logo.substring(lastPlaceLength-3, lastPlaceLength)
+    
+        if (lastPlaceString === 'svg') {
+            new SvgToPngConverter().convertFromInput(lastPlace.logo, function(imgData){
+                lastPlace.logo = imgData
+            });
+        } else {
+            lastPlace.logo = `https://whispering-woodland-11588.herokuapp.com/${lastPlace.logo}`
+        }
+    }
+
+    // console.log(firstPlace)
 
     dispatch({ type: FETCH_ESPN, payload: teamsInfo });
     dispatch({ type: ESPN_SCHEDULE, payload: schedule });
     dispatch({ type: ESPN_RECAP, payload: recapInfo });
-    dispatch({ type: ESPN_FIRST_PLACE, payload: first_place })
-    dispatch({ type: ESPN_LAST_PLACE, payload: last_place })
+    dispatch({ type: ESPN_FIRST_PLACE, payload: firstPlace })
+    dispatch({ type: ESPN_LAST_PLACE, payload: lastPlace })
     dispatch({ type: ESPN_POWER_RANKING, payload: powerRanking })
     dispatch({ type: ESPN_ID, payload: id })
 }
 
 // setting the espn week --------------------------------------------------------
-export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
+export const setEspnWeek = (week, espn, espnSchedule, oldTopScorer, oldCloseOne) => async dispatch => {
 
-    console.log(espn);
-    console.log(espnSchedule);
+    // console.log(espn);
+    // console.log(espnSchedule);
 
     let topScorer = {
         name: "bob",
         score: 0,
-        logo: ""
+        logo: "",
+        original : ''
     }
     let closeOne = {
         name: "bob",
         difference: Infinity,
-        logo: ""
+        logo: "",
+        original : ''
     }
     let matchups = [];
     let graphPPG = [];
@@ -218,27 +252,60 @@ export const setEspnWeek = (week, espn, espnSchedule) => async dispatch => {
             topScorer.score = matchups[k].points1;
             topScorer.name = matchups[k].roster1;
             topScorer.logo = matchups[k].logo1;
+            topScorer.original = matchups[k].logo1;
         }
 
         if (matchups[k].points2 > topScorer.score) {
             topScorer.score = matchups[k].points2;
             topScorer.name = matchups[k].roster2;
             topScorer.logo = matchups[k].logo2;
+            topScorer.original = matchups[k].logo2;
         }
 
         if (Math.abs(parseFloat(matchups[k].points1) - parseFloat(matchups[k].points2)) < closeOne.difference) {
             closeOne.difference = Math.abs(parseFloat(matchups[k].points1) - parseFloat(matchups[k].points2)).toFixed(2);
             if (parseFloat(matchups[k].points1) > parseFloat(matchups[k].points2)) {
               closeOne.name = matchups[k].roster1;
-              closeOne.logo = matchups[k].logo1
+              closeOne.logo = matchups[k].logo1;
+              closeOne.original = matchups[k].logo1;
             } else {
               closeOne.name = matchups[k].roster2;
               closeOne.logo = matchups[k].logo2;
+              closeOne.original = matchups[k].logo2;
             }
         }
     }
 
-    console.log(matchups)
+    // check if the previous logo is the same
+    // if its not then go through svg check and conversion
+    if (oldTopScorer.original !== topScorer.original) {
+        const topScorerLength = topScorer.logo.length
+        const topScorerString = topScorer.logo.substring(topScorerLength-3, topScorerLength)
+    
+        if (topScorerString === 'svg') {
+            new SvgToPngConverter().convertFromInput(topScorer.logo, function(imgData){
+                topScorer.logo = imgData
+            });
+        } else {
+            topScorer.logo = `https://whispering-woodland-11588.herokuapp.com/${topScorer.logo}`
+        }
+    }
+
+    if (oldCloseOne.original !== closeOne.original) {
+        const closeOneLength = closeOne.logo.length
+        const closeOneString = closeOne.logo.substring(closeOneLength-3, closeOneLength)
+
+        if (closeOneString === 'svg') {
+            console.log('hit')
+            new SvgToPngConverter().convertFromInput(closeOne.logo, function(imgData){
+                closeOne.logo = imgData
+            });
+        } else {
+            closeOne.logo = `https://whispering-woodland-11588.herokuapp.com/${closeOne.logo}`
+        }
+    }
+
+    // console.log(matchups)
 
     dispatch({ type: SET_ESPN_GRAPH_PPG, payload: graphPPG })
     dispatch({ type: SET_ESPN_CLOSE_ONE, payload: closeOne })

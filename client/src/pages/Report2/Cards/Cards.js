@@ -4,24 +4,24 @@ import { useSelector } from 'react-redux';
 const Cards = () => {
     const state = useSelector((state) => state)
 
-    let first_place = ""
-    let first_place_name = "Player 1";
-    if (state.espn.espn_first_place && state.espn.espnReport) {
-        first_place = `https://whispering-woodland-11588.herokuapp.com/${state.espn.espn_first_place.logo}`;
-        first_place_name = state.espn.espn_first_place.name
-    } else if (state.sleeper.sleeper_first_place && state.sleeper.sleeperReport) {
-        first_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${state.sleeper.sleeper_first_place.logo}`;
-        first_place_name = state.sleeper.sleeper_first_place.name
+    let firstPlace = ""
+    let firstPlaceName = "Player 1";
+    if (state.espn.espnFirstPlace && state.espn.espnReport) {
+        firstPlace = `https://whispering-woodland-11588.herokuapp.com/${state.espn.espnFirstPlace.logo}`;
+        firstPlaceName = state.espn.espnFirstPlace.name
+    } else if (state.sleeper.sleeperFirstPlace && state.sleeper.sleeperReport) {
+        firstPlace = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${state.sleeper.sleeperFirstPlace.logo}`;
+        firstPlaceName = state.sleeper.sleeperFirstPlace.name
     }
 
-    let last_place = ""
-    let last_place_name = "Player 2";
-    if (state.espn.espn_last_place && state.espn.espnReport) {
-        last_place = `https://whispering-woodland-11588.herokuapp.com/${state.espn.espn_last_place.logo}`
-        last_place_name = state.espn.espn_last_place.name;
-    } else if (state.sleeper.sleeper_last_place && state.sleeper.sleeperReport) {
-        last_place = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${state.sleeper.sleeper_last_place.logo}`;
-        last_place_name = state.sleeper.sleeper_last_place.name;
+    let lastPlace = ""
+    let lastPlaceName = "Player 2";
+    if (state.espn.espnLastPlace && state.espn.espnReport) {
+        lastPlace = `https://whispering-woodland-11588.herokuapp.com/${state.espn.espnLastPlace.logo}`
+        lastPlaceName = state.espn.espnLastPlace.name;
+    } else if (state.sleeper.sleeperLastPlace && state.sleeper.sleeperReport) {
+        lastPlace = `https://whispering-woodland-11588.herokuapp.com/http://sleepercdn.com/avatars/${state.sleeper.sleeperLastPlace.logo}`;
+        lastPlaceName = state.sleeper.sleeperLastPlace.name;
     }
     return (
         <div className="cardsContainer">
@@ -35,13 +35,13 @@ const Cards = () => {
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin"
                                 onError={(event) => event.target.setAttribute("src", "./images/nfl-logo.jpg")}
-                                src={first_place}
+                                src={firstPlace}
                                 alt="poop"
                                 className="cards__image" />
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p className="cards__name">{first_place_name}</p>
+                        <p className="cards__name">{firstPlaceName}</p>
                     </div>
                 </div>
             </div>
@@ -56,13 +56,13 @@ const Cards = () => {
                                 crossOrigin="anonymous"
                                 referrerPolicy="origin"
                                 onError={(event) => event.target.setAttribute("src", "./images/nfl-logo.jpg")}
-                                src={last_place}
+                                src={lastPlace}
                                 alt="poop"
                                 className="cards__image" />
                         </div>
                     </div>
                     <div className='cards__lowerBox'>
-                        <p className="cards__name">{last_place_name}</p>
+                        <p className="cards__name">{lastPlaceName}</p>
                     </div>
                 </div>
             </div>

@@ -32,6 +32,29 @@ import recap from './recap';
 
 const matchups = []
 
+const sleeperFirstPlace = {
+    name: '',
+    logo: '',
+    original: ''
+}
+const sleeperLastPlace = {
+    name: '',
+    logo: '',
+    original: ''
+}
+
+const sleeperTopScorer = {
+    name: "",
+    score: 0,
+    logo: "",
+}
+
+const sleeperCloseOne = {
+    name: "",
+    difference: 0,
+    logo: "",
+}
+
 for (let i = 0; i < 5; i++) {
     matchups.push({
         points1: 100,
@@ -48,7 +71,11 @@ const initialState = {
     sleeperMatchups: matchups,
     sleeperYear: 2020,
     sleeperRecap: recap,
-    sleeperGraphPPG: points
+    sleeperGraphPPG: points,
+    sleeperTopScorer,
+    sleeperCloseOne,
+    sleeperFirstPlace,
+    sleeperLastPlace
 }
 
 
@@ -92,9 +119,9 @@ export default (state = initialState, action) => {
         case SLEEPER_RECAP:
             return { ...state, sleeperRecap: action.payload }
         case SLEEPER_FIRST_PLACE:
-            return { ...state, sleeper_first_place: action.payload }
+            return { ...state, sleeperFirstPlace: action.payload }
         case SLEEPER_LAST_PLACE: 
-            return { ...state, sleeper_last_place: action.payload }
+            return { ...state, sleeperLastPlace: action.payload }
         case SLEEPER_POWER_RANKING:
             return { ...state, sleeperPowerRanking: action.payload }
         case SET_SLEEPER_CLOSE_ONE:

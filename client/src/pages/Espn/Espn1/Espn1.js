@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchEspn } from '../../../actions/Espn';
 
-const Espn1 = (props) => {
+const Espn1 = () => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -21,7 +21,12 @@ const Espn1 = (props) => {
         e.preventDefault();
         onLoading();
         console.log(input);
-        dispatch(fetchEspn(input, state.espn.espnYear))
+        dispatch(fetchEspn(
+            input, 
+            state.espn.espnYear,
+            state.espn.espnFirstPlace,
+            state.espn.espnLastPlace
+        ))
     }
 
     const onLoading = () => {

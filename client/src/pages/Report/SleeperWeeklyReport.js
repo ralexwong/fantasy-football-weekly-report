@@ -17,9 +17,7 @@ const SleeperWeeklyReport = (props) => {
   const componentRef = useRef(null)
   const dispatch = useDispatch()
 
-  if (props.location.pathname === "/weekly-report-sleeper") {
-    dispatch(createSleeperWeeklyReport())
-  }
+  dispatch(createSleeperWeeklyReport())
 
   return (
     <>

@@ -79,7 +79,7 @@ const OptionalInput = (props) => {
             </form>
 
             {loading ? (
-                <button className="btn btn--sleeper" type="button" disabled>
+                <button className={`btn btn--${props.platform === 'sleeper' ? 'sleeper' : 'espn'}`} type="button" disabled>
                     <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...
                 </button>
