@@ -20,6 +20,7 @@ import {
     SET_SLEEPER_WEEK,
     SET_SLEEPER_MATCHUPS,
     SET_SLEEPER_USERNAME,
+    SLEEPER_WEEK_ERROR
 
 } from '../types';
 import axios from 'axios';
@@ -191,8 +192,16 @@ export const setLeague_id = (league_id) => dispatch => {
 // Grabs the points for that week --------------------------------------------------
 
 export const fetchMatchupPoints = (week, league_id, league_info) => async dispatch => {
-    const response = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/matchups/${week}`);
+    let response
+    try {
+        response = await axios.get(`https://api.sleeper.app/v1/league/${league_id}/matchups/${week}`);
+    } catch(error) {
+        dispatch({ type: SLEEPER_WEEK_ERROR, payload: "This week has not happened yet!" })
+        return
+    }
     const data = response.data;
+
+    console.log(data)
 
     // push relevant data into array and send to client side to be pushed into state
     const array = [];
@@ -348,4 +357,11 @@ export const setSleeperSeason = data => async dispatch => {
 // set sleeper year -------------------------------------------
 export const setSleeperYear = data => async dispatch => {
     dispatch({ type: SET_SLEEPER_YEAR, payload: data })
+}
+
+// pass sleeper week error message -------------------------------
+export const setSleeperError = data => async dispatch => {
+    console.log('hit')
+    console.log(data)
+    dispatch({ type: SLEEPER_WEEK_ERROR, payload: data })
 }

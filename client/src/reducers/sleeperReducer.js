@@ -23,7 +23,8 @@ import {
     SET_SLEEPER_TOP_SCORER,
     SET_SLEEPER_WEEK,
     SET_SLEEPER_MATCHUPS,
-    SET_SLEEPER_USERNAME
+    SET_SLEEPER_USERNAME,
+    SLEEPER_WEEK_ERROR
     
 } from '../actions/types';
 
@@ -75,7 +76,8 @@ const initialState = {
     sleeperTopScorer,
     sleeperCloseOne,
     sleeperFirstPlace,
-    sleeperLastPlace
+    sleeperLastPlace,
+    setSleeperError: false
 }
 
 
@@ -132,7 +134,8 @@ export default (state = initialState, action) => {
             return { ...state, sleeperWeek: action.payload }
         case SET_SLEEPER_MATCHUPS:
             return { ...state, sleeperMatchups: action.payload } 
-
+        case SLEEPER_WEEK_ERROR:
+            return { ...state, sleeperWeekError: action.payload }
         default:
             return state;
     }

@@ -17,13 +17,14 @@ import {
     SET_ESPN_CAPTION,
     SET_ESPN_SEASON,
     SET_ESPN_YEAR,
+    RESET_ESPN_WEEK
 } from '../types'
 
 import axios from 'axios';
 import SvgToPngConverter from '../../components/SvgToPngConverter';
 
 // grab the espn league info -------------------------------------
-export const fetchEspn = (id, year, oldFirstPlace, oldLastPlace) => async dispatch => {
+export const fetchEspn = (id, year, oldFirstPlace, oldLastPlace, oldID) => async dispatch => {
     // console.log(id);
     let response;
     try {
@@ -167,6 +168,11 @@ export const fetchEspn = (id, year, oldFirstPlace, oldLastPlace) => async dispat
         }
     }
 
+    if (id !== oldID) {
+        console.log('hit')
+        dispatch({ type: RESET_ESPN_WEEK, payload: null })
+    }
+
     // console.log(firstPlace)
 
     dispatch({ type: FETCH_ESPN, payload: teamsInfo });
@@ -296,7 +302,7 @@ export const setEspnWeek = (week, espn, espnSchedule, oldTopScorer, oldCloseOne)
         const closeOneString = closeOne.logo.substring(closeOneLength-3, closeOneLength)
 
         if (closeOneString === 'svg') {
-            console.log('hit')
+            // console.log('hit')
             new SvgToPngConverter().convertFromInput(closeOne.logo, function(imgData){
                 closeOne.logo = imgData
             });

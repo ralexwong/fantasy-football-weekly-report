@@ -16,6 +16,7 @@ import {
     SET_ESPN_CAPTION,
     SET_ESPN_SEASON,
     SET_ESPN_YEAR,
+    RESET_ESPN_WEEK
 } from '../actions/types';
 
 import recap from './recap';
@@ -68,7 +69,8 @@ const initialState = {
     espnTopScorer,
     espnCloseOne,
     espnFirstPlace,
-    espnLastPlace
+    espnLastPlace,
+    espnID: 'ID'
 }
 
 
@@ -108,6 +110,9 @@ export default (state = initialState, action) => {
             return { ...state, espnSeason: action.payload }
         case SET_ESPN_YEAR:
             return { ...state, espnYear: action.payload }
+        case RESET_ESPN_WEEK:
+            state = initialState
+            return { ...state }
         default:
             return state;
     }

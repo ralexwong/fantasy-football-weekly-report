@@ -74,7 +74,7 @@ const OptionalInput = (props) => {
                     placeholder={input ? input : `${props.input}`}
                     value={input}
                 />
-                <p className='helperText'></p>
+                <p className='input__helpertext'></p>
 
             </form>
 

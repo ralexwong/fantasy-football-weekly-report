@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchEspn } from '../../../actions/Espn';
@@ -6,14 +6,14 @@ import { fetchEspn } from '../../../actions/Espn';
 const Espn1 = () => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false)
 
-    const state = useSelector((state) => state)
+    const state = useSelector((state) => state.espn)
     const dispatch = useDispatch()
     
     const handleChange = (event) => {
         const { maxLength } = event.target;
         const message = event.target.value.slice(0, maxLength);
-
         setInput(message);
     }
 
@@ -23,9 +23,10 @@ const Espn1 = () => {
         console.log(input);
         dispatch(fetchEspn(
             input, 
-            state.espn.espnYear,
-            state.espn.espnFirstPlace,
-            state.espn.espnLastPlace
+            state.espnYear,
+            state.espnFirstPlace,
+            state.espnLastPlace,
+            state.espnID
         ))
     }
 
@@ -37,32 +38,40 @@ const Espn1 = () => {
         1500);
     }
 
-    let error = false
-    if (state.espn.espnID === null) {
-        error = true
-    }
+    useEffect(() => {
+        if (!state.espnID) {
+            setError(true)
+        } else {
+            setError(false)
+        }
+    }, [state.espnID])
+
+    
     return (
         <div className="input__jumbotron">
-            <p className="input__helpertext">
+            <p className="input__helpertext input__helpertext--big">
                 Please enter your ESPN league ID
                 <br />
-                (You can use my espn league if you want to try it out: <b>20294539</b>)
+                (You can use my espn league if you want to try it out: 20294539)
             </p>
             <form onSubmit={onSubmit} className="espnForm">
+            <div className='input__container'>
+                <label className='input__label' htmlFor='espnID'>ID</label>
                 <input
                     required
+                    id='espnID'
                     maxLength="10"
                     className={`input__input ${error ? 'input__input--error' : ''}`}
                     onChange={handleChange}
                     autoComplete="off"
-                    placeholder={state.espn.espnID ? state.espn.espnID : "ID"}
                     type="number"
                     value={input}
                 />
+            </div>
                 {error ? (
-                    <p className='helperText red'>This league cannot be found</p>
+                    <p className='input__helpertext red'>❌ This league cannot be found</p>
                 ) : (
-                    <p className='helperText'></p>
+                    <p className='input__helpertext'></p>
                 )}
                 {loading ? (
                     <button className="btn btn--espn" type="button" disabled>

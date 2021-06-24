@@ -2,33 +2,37 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { setEspnWeek } from '../../../actions/Espn';
 
-
 const Espn2 = () => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false)
 
-    const state = useSelector((state) => state);
+    const state = useSelector((state) => state.espn);
     const dispatch = useDispatch();
 
     const handleChange = (event) => {
         const { maxLength } = event.target;
         const message = event.target.value.slice(0, maxLength);
 
-        if (message > 1) {
-            setInput(message);
-        }
+        setInput(message);
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
         onLoading();
-        dispatch(setEspnWeek(
-            parseInt(input), 
-            state.espn.espn, 
-            state.espn.espnSchedule,
-            state.espn.espnTopScorer,
-            state.espn.espnCloseOne
-        ))
+        if (!state.espnID) {
+            setError(true)
+        } else {
+            setError(false)
+            dispatch(setEspnWeek(
+                parseInt(input), 
+                state.espn, 
+                state.espnSchedule,
+                state.espnTopScorer,
+                state.espnCloseOne
+            ))
+        }
+        
     }
 
     const onLoading = () => {
@@ -41,21 +45,29 @@ const Espn2 = () => {
 
     return (
         <div className="input__jumbotron">
-            <p className="input__helpertext">
+            <p className="input__helpertext input__helpertext--big">
                 Please enter the week
             </p>
             <form onSubmit={onSubmit} className="espnForm">
-                <input
-                    required
-                    className="input__input"
-                    onChange={handleChange}
-                    autoComplete="off"
-                    placeholder={state.espn.espnWeek ? state.espn.espnWeek : "Week"}
-                    type="number"
-                    value={input}
-                    maxLength={2}
-                />
-                <p className='helperText'></p>
+                <div className='input__container'>
+                    <label className='input__label' htmlFor='espnWeek'>Week</label>
+                    <input
+                        id='espnWeek'
+                        required
+                        className={`input__input ${error ? 'input__input--error' : ''}`}
+                        onChange={handleChange}
+                        autoComplete="off"
+                        type="number"
+                        value={input}
+                        maxLength={2}
+                    />
+                </div>
+                
+                {error ? (
+                    <p className='input__helpertext red'><span aria-label='red-X' role='img'>❌</span> A valid league must be inputted first</p>
+                ) : (
+                    <p className='input__helpertext'></p>
+                )}
             {loading ? (
                     <button className="btn btn--espn" type="button" disabled>
                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

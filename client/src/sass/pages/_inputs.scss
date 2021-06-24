@@ -29,9 +29,13 @@
     }
 
     &__helpertext {
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin-bottom: 2rem;
-        font-weight: bold;
+
+        &--big {
+            font-size: 2rem;
+            font-weight: bold;
+        }
     }
 
     &__list {
@@ -46,23 +50,38 @@
         }
     }
 
+    &__container {
+        display: inline-block;
+        text-align: left;
+    }
+
+    &__label {
+        font-size: 1.5rem;
+    }
+
     &__input {
         display: block;
         font-size: 2rem;
         margin: auto;
+        
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
 
         &--error {
             border: 1px solid red;
+
+            position: relative;
+            &::after {
+                position: absolute;
+                content: '❌';
+            }
         }
     }
 }
-
-.helperText {
-    margin-bottom: 2rem;
-    margin-right: 4rem;
-    font-size: 1.3rem;
-}
-
 
 .espnGuide {
     &__image {

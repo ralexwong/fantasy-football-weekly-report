@@ -57,19 +57,22 @@ const Sleeper1 = () => {
                 </p>
             </div>
             <form onSubmit={onSubmit} className="inputForm">
+                <div className='input__container'>
+                    <label className='input__label' htmlFor='sleeperUsername'>Username</label>
                     <input
+                        id='sleeperUsername'
                         required
                         maxLength="25"
                         className={`input__input ${error ? 'input__input--error' : ''}`}
                         onChange={handleChange}
                         value={input}
                         autoComplete="off"
-                        placeholder={state.sleeper.sleeperUsername ? state.sleeper.sleeperUsername : 'Username'}
                     />
+                </div>
                     {error ? (
-                        <p className='helperText red'>This username cannot be found</p>
+                        <p className='input__helpertext red'>This username cannot be found</p>
                     ) : (
-                        <p className='helperText'></p>
+                        <p className='input__helpertext'></p>
                     )}
                 {loading ? (
                     <button className="btn btn--sleeper" type="button" disabled>

@@ -12,7 +12,7 @@ const Sleeper2 = () => {
         console.log(e.target.getAttribute('id'));
         const league = e.target.id;
 
-        if(active === league) { 
+        if (active === league) { 
             setActive('');
         } else {
             setActive(league)
@@ -27,7 +27,7 @@ const Sleeper2 = () => {
         return leagues.map(league => {
             return (
                 <p className={`input__list ${active === league.league_id ? `input__list--active` : ``}`} id={league.league_id} key={league.league_id} onClick={(e) => onClick(e)} >
-                    {league.name}
+                    {league.name} {active === league.league_id ? <span aria-label='green-checkmark' role='img'>✔️</span> : ''}
                 </p>
             )
         })
