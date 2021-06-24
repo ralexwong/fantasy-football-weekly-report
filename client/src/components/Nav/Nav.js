@@ -17,9 +17,9 @@ const Navagation = () => {
 
   return (
     <>
-      <div className="nav">
+      <nav className="nav">
         { isDesktop ? (<DesktopNav />) : (<Hamburger />) }
-      </div>
+      </nav>
     </>
   );
 };

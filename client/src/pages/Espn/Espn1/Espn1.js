@@ -69,7 +69,7 @@ const Espn1 = () => {
                 />
             </div>
                 {error ? (
-                    <p className='input__helpertext red'>❌ This league cannot be found</p>
+                    <p className='input__helpertext red'><span aria-label='red-X' role='img'>❌</span> This league cannot be found</p>
                 ) : (
                     <p className='input__helpertext'></p>
                 )}
