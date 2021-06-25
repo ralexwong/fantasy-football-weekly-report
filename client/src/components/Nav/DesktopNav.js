@@ -6,48 +6,98 @@ const DesktopNav = () => {
     const [espnOpen, setEspnOpen] = useState(false);
 
     return (
-        <>
-            <Link className="nav__button nav__button--word" to="/">
-                Home
-            </Link>
+        <ul className='nav__list' tabindex="0">
+            <li className='nav__item' tabindex="1">
+                <Link className="nav__word" to="/">
+                    Home
+                </Link>
+            </li>
 
-            <div className={`nav__button ${sleeperOpen === true ? "nav__button--active" : ""
-                }`}
+
+            <li className={`nav__item ${sleeperOpen === true ? "nav__item--active" : ""}`}
                 onClick={() => setSleeperOpen(true)}
-                onMouseLeave={() => setSleeperOpen(false)}>
-                <div className="nav__button--word">
+                onMouseLeave={() => setSleeperOpen(false)}
+                onKeyPress={() => setSleeperOpen(true)}
+                tabindex="0"
+            >
+                <p className="nav__word">
                     Sleeper
-              </div>
-                <div className={`nav__dropdown ${sleeperOpen === true ? "nav__dropdown--active" : ""}`}>
-                    <Link to="/weekly-report-sleeper" onClick={() => setSleeperOpen(false)}>
-                        <div className="nav__dropdown__link">Weekly Report</div>
-                    </Link>
-                    <Link to="/overall-report-sleeper">
-                        <div className="nav__dropdown__link">Overall Report</div>
-                    </Link>
-                    <Link to="/sleeper">
-                        <div className="nav__dropdown__link">Input</div>
-                    </Link>
-                </div>
-            </div>
+                </p>
 
-            <div className={`nav__button ${espnOpen === true ? "nav__button--active" : ""}`}
+                {sleeperOpen ?
+                    <ul className='nav__dropdown'>
+                        <li className='nav__dropdown__item'
+                            onClick={() => setSleeperOpen(false)}
+                            onKeyPress={() => setSleeperOpen(false)}
+                        >
+                            <Link to="/weekly-report-sleeper">
+                                Weekly Report
+                            </Link>
+                        </li>
+                        <li className='nav__dropdown__item'
+                            onClick={() => setSleeperOpen(false)}
+                            onKeyPress={() => setSleeperOpen(false)}
+                        >
+                            <Link to="/overall-report-sleeper">
+                                Overall Report
+                            </Link>
+                        </li>
+
+                        <li className='nav__dropdown__item'
+                            onClick={() => setSleeperOpen(false)}
+                            onKeyPress={() => setSleeperOpen(false)}
+                        >
+                            <Link to="/sleeper">
+                                Input
+                            </Link>
+                        </li>
+
+                    </ul> : <></>
+                }
+            </li>
+
+            <li className={`nav__item ${espnOpen === true ? "nav__item--active" : ""}`}
                 onClick={() => setEspnOpen(true)}
-                onMouseLeave={() => setEspnOpen(false)}>
-                <div className="nav__button--word">ESPN</div>
-                <div className={`nav__dropdown ${espnOpen === true ? "nav__dropdown--active" : ""}`}>
-                    <Link to="/weekly-report-espn">
-                        <div className="nav__dropdown__link">Weekly Report</div>
-                    </Link>
-                    <Link to="/overall-report-espn">
-                        <div className="nav__dropdown__link">Overall Report</div>
-                    </Link>
-                    <Link to="/espn">
-                        <div className="nav__dropdown__link">Input</div>
-                    </Link>
-                </div>
-            </div>
-        </>
+                onMouseLeave={() => setEspnOpen(false)}
+                onKeyPress={() => setEspnOpen(true)}
+                tabindex="0"
+            >
+                <p className="nav__word">
+                    ESPN
+                </p>
+                {espnOpen ?
+                    <ul className='nav__dropdown'>
+                        <li className='nav__dropdown__item'
+                            onClick={() => setEspnOpen(false)}
+                            onKeyPress={() => setEspnOpen(false)}
+                        >
+                            <Link to="/weekly-report-espn">
+                                Weekly Report
+                            </Link>
+                        </li>
+
+                        <li className='nav__dropdown__item'
+                            onClick={() => setEspnOpen(false)}
+                            onKeyPress={() => setEspnOpen(false)}
+                        >
+                            <Link to="/overall-report-espn">
+                                Overall Report
+                            </Link>
+                        </li>
+
+                        <li className='nav__dropdown__item'
+                            onClick={() => setEspnOpen(false)}
+                            onKeyPress={() => setEspnOpen(false)}
+                        >
+                            <Link to="/espn">
+                                Input
+                            </Link>
+                        </li>
+
+                    </ul> : <></>
+                }
+            </li>
+        </ul>
     );
 };
 
