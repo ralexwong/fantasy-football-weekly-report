@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bodyParser = require("body-parser");
-const rp = require('request-promise');
+
 const axios = require('axios');
 
 router.use(bodyParser.urlencoded({ extended: true }));

@@ -8,7 +8,7 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "install": "cd client && npm install",
+    "install": "cd client && yarn install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
@@ -17,7 +17,8 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
     "concurrently": "^5.3.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "sass": "^1.35.1"
   },
   "dependencies": {
     "@types/jest": "^26.0.23",
@@ -25,35 +26,25 @@
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.4",
     "axios": "^0.21.1",
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-mongo": "^3.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.6.0",
-    "espn-fantasy-football-api": "^0.16.1",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "jso": "^4.1.1",
-    "lodash": "^4.17.21",
     "mongodb": "^3.6.6",
     "mongoose": "^5.12.8",
-    "node-sass": "^4.14.1",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
     "react": "^16.14.0",
-    "react-component-export-image": "^0.1.9",
+    "react-component-export-image": "^1.0.6",
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^1.1.5",
     "recharts": "^1.8.5",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.6",
-    "to": "^0.2.9",
-    "typescript": "^4.2.4",
-    "upgrade": "^1.1.0"
+    "yahoo-fantasy": "^4.2.0"
   }
 }

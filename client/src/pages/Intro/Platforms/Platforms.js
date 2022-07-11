@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 const Platforms = (props) => {
+
+    const handleClick = () => {
+        
+    }
+
+
     return (
         <section className='platforms' ref={props.reference}>
             <h2 className='heading-secondary u-margin-bottom-big'>Choose your platform</h2>
@@ -21,7 +27,7 @@ const Platforms = (props) => {
                 </div>
 
 
-                <div className='platform'>
+                <div className='platform' onClick={handleClick}>
                     <img className='platform__image' src={`./images/intro/yahoo.jpg`} alt='poop' />
                     <div className="platform__disclaimer">
                         <p className='u-margin-auto'>COMING SOON</p>
